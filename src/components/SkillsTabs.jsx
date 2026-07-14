@@ -9,6 +9,12 @@ const tabs = [
   { key: 'certifications', label: 'Certifications', icon: '🏆' },
 ]
 
+function handleCardGlow(e) {
+  const rect = e.currentTarget.getBoundingClientRect()
+  e.currentTarget.style.setProperty('--mx', `${e.clientX - rect.left}px`)
+  e.currentTarget.style.setProperty('--my', `${e.clientY - rect.top}px`)
+}
+
 export default function SkillsTabs() {
   const [active, setActive] = useState('skills')
   const [ref, visible] = useReveal()
@@ -34,18 +40,20 @@ export default function SkillsTabs() {
           ))}
         </div>
 
-        {active === 'skills' && (
+       {active === 'skills' && (
           <div className="skills-grid tab-panel">
-
             {skills.map((group) => (
-              <div className="skill-card" key={group.category}>
-                <h3>{group.category}</h3>
-                <div className="skill-tags">
-                  {group.items.map((item) => (
-                    <span className="skill-tag" key={item}>
-                      {item}
-                    </span>
-                  ))}
+              <div className="skill-card" key={group.category} onMouseMove={handleCardGlow}>
+                <span className="card-glow" />
+                <div className="skill-card-inner">
+                  <h3>{group.category}</h3>
+                  <div className="skill-tags">
+                    {group.items.map((item) => (
+                      <span className="skill-tag" key={item}>
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}

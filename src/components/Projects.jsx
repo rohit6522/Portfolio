@@ -6,8 +6,16 @@ function ProjectCard({ project }) {
   const [imgIndex, setImgIndex] = useState(0)
   const images = project.images || []
 
+  function handleMouseMove(e) {
+    const rect = e.currentTarget.getBoundingClientRect()
+    e.currentTarget.style.setProperty('--mx', `${e.clientX - rect.left}px`)
+    e.currentTarget.style.setProperty('--my', `${e.clientY - rect.top}px`)
+  }
+
   return (
-    <div className="blueprint-card project-card">
+    <div className="blueprint-card project-card" onMouseMove={handleMouseMove}>
+      <span className="card-glow" />
+
       {images.length > 0 && (
         <div className="project-media">
           <img src={images[imgIndex]} alt={project.title} className="project-image" />
@@ -73,7 +81,7 @@ export default function Projects() {
         </div>
 
 
-       <div className="projects-grid">
+        <div className="projects-grid">
           {projects.map((project) => (
             <ProjectCard project={project} key={project.title} />
           ))}
@@ -125,7 +133,7 @@ export default function Projects() {
           </div>
 
 
-  )}
+        )}
 
         <div className="achievements-head">
           <span className="achievements-eyebrow-line" />
