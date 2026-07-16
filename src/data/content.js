@@ -30,7 +30,7 @@ export const stackNodes = [
   'Docker',
 ]
 
-  
+
 
 export const education = [
   {
@@ -74,10 +74,10 @@ export const certifications = [
   },
   // new add comming soon
   {
-    title: 'Programming in JAVA',
-    issuer: 'iamNeo — An NIIT Venture',
-    date: 'January 2026 – May 2026',
-    credentialUrl: 'https://drive.google.com/file/d/1e6mzjtAvUEqtJ32AK41CSEFPPy_Lo3mq/view?usp=sharing',
+    title: 'Database Management System Part - 1',
+    issuer: 'Infosys Springboard',
+    date: 'July 16, 2026',
+    credentialUrl: 'https://drive.google.com/file/d/1Hc7_7Q4vncXdIfTGl-JWTufARELLEKw_/view?usp=sharing',
   },
   {
     title: 'Programming in JAVA',
