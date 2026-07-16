@@ -15,7 +15,7 @@ export const profile = {
   social: [
     { label: 'GitHub', url: 'https://github.com/rohit6522' },
     { label: 'LinkedIn', url: 'https://www.linkedin.com/in/rohit-kumar-382948324/' },
-    { label: 'Twitter', url: 'https://twitter.com/yourhandle' },
+    { label: 'Twitter', url: 'https://x.com/mrrohit24916746?s=21' },
   ],
 }
 

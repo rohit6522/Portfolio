@@ -26,7 +26,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className={`section section-dark grid-bg reveal ${visible ? 'reveal-visible' : ''}`}
+      className={`section section-dark reveal ${visible ? 'reveal-visible' : ''}`}
     >
       <div className="container contact-grid-v2">
         <div>

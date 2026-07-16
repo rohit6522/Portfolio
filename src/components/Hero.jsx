@@ -129,7 +129,7 @@ const icons = {
 
 export default function Hero() {
   return (
-    <section id="top" className="hero grid-bg">
+   <section id="top" className="hero">
       <div className="container hero-grid">
         <div>
           <span className="eyebrow">{profile.location}</span>

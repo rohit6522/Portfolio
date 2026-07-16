@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion'
 import { skills, education, certifications, experience } from '../data/content'
 import useReveal from '../hooks/useReveal'
+import ScrambleText from './ScrambleText'
 
+import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion'
 
 function TiltCertCard({ c, index }) {
   const x = useMotionValue(0)
@@ -138,17 +139,18 @@ export default function SkillsTabs() {
           </div>
         )}
 
-        {active === 'education' && (
+       {active === 'education' && (
           <div className="edu-timeline tab-panel">
-
-            {education.map((e) => (
-              <div className="edu-item" key={e.school}>
-                <span className="edu-check" />
-                <h3 className="edu-degree">{e.school}</h3>
-                <div className="edu-meta">
-                  {e.period} — {e.degree}
+            {education.map((e, i) => (
+              <div className="edu-item-scramble" key={e.school}>
+                <span className="edu-node-diamond" />
+                <div className="edu-item-content">
+                  <ScrambleText text={e.school} delay={i * 400} className="edu-scramble-title" />
+                  <div className="edu-meta">
+                    {e.period} — {e.degree}
+                  </div>
+                  <p className="edu-desc">{e.description}</p>
                 </div>
-                <p className="edu-desc">{e.description}</p>
               </div>
             ))}
           </div>

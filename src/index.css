@@ -95,7 +95,7 @@ h3 {
 }
 
 .section-dark {
-  background: var(--ink);
+  background: transparent;
   color: var(--chalk);
 }
 
@@ -114,12 +114,12 @@ h3 {
 }
 
 /* ── blueprint grid backdrop ───────────────────────────── */
-.grid-bg {
+/* .grid-bg {
   background-image:
     linear-gradient(rgba(184, 155, 90, 0.14) 1px, transparent 1px),
     linear-gradient(90deg, rgba(184, 155, 90, 0.14) 1px, transparent 1px);
   background-size: 32px 32px;
-}
+} */
 
 /* ── nav ───────────────────────────────────────────────── */
 .nav {
@@ -1020,28 +1020,67 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 36px;
-}
-
-.edu-item {
   position: relative;
-  padding-left: 32px;
-  border-left: 2px solid var(--brass);
+  padding-left: 40px;
 }
 
-.edu-check {
+.edu-timeline::before {
+  content: '';
   position: absolute;
-  left: -9px;
+  left: 15px;
   top: 4px;
-  width: 14px;
-  height: 14px;
-  border: 2px solid var(--brass-bright);
-  background: var(--ink);
+  bottom: 4px;
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--brass-bright),
+    var(--brass-bright) 6px,
+    transparent 6px,
+    transparent 12px
+  );
 }
 
-.edu-degree {
+.edu-item-scramble {
+  position: relative;
+}
+
+.edu-node-diamond {
+  position: absolute;
+  left: -33px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  background: var(--ink);
+  border: 2px solid var(--brass-bright);
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
+}
+
+.edu-item-scramble:hover .edu-node-diamond {
+  background: var(--brass-bright);
+  box-shadow: 0 0 10px var(--brass-bright);
+}
+
+.edu-item-content {
+  border-left: 2px solid transparent;
+  padding-left: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.edu-item-scramble:hover .edu-item-content {
+  border-left: 2px solid var(--brass-bright);
+}
+
+.edu-scramble-title {
+  min-height: 1.5em;
   font-size: 19px;
   color: var(--chalk);
-  margin-bottom: 4px;
+  margin: 0 0 4px;
+  letter-spacing: 0.01em;
+}
+
+.scramble-char {
+  color: var(--brass-bright);
 }
 
 .edu-meta {
@@ -1416,105 +1455,11 @@ h3 {
   pointer-events: none;
 }
 
-.bg-grid-pan {
+.bg-canvas {
   position: absolute;
-  inset: -50px;
-  background-image:
-    linear-gradient(rgba(184, 155, 90, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(184, 155, 90, 0.07) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: gridDrift 40s linear infinite;
-}
-
-@keyframes gridDrift {
-  from {
-    transform: translate(0, 0);
-  }
-
-  to {
-    transform: translate(40px, 40px);
-  }
-}
-
-.bg-particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: var(--brass-bright);
-  border-radius: 50%;
-  opacity: 0.35;
-  animation: particleFloat 18s ease-in-out infinite;
-}
-
-.bg-particle-0 {
-  top: 12%;
-  left: 8%;
-  animation-duration: 22s;
-  animation-delay: 0s;
-}
-
-.bg-particle-1 {
-  top: 30%;
-  left: 85%;
-  animation-duration: 26s;
-  animation-delay: 2s;
-}
-
-.bg-particle-2 {
-  top: 60%;
-  left: 15%;
-  animation-duration: 20s;
-  animation-delay: 4s;
-}
-
-.bg-particle-3 {
-  top: 78%;
-  left: 70%;
-  animation-duration: 24s;
-  animation-delay: 1s;
-}
-
-.bg-particle-4 {
-  top: 45%;
-  left: 50%;
-  animation-duration: 28s;
-  animation-delay: 3s;
-}
-
-.bg-particle-5 {
-  top: 20%;
-  left: 60%;
-  animation-duration: 19s;
-  animation-delay: 5s;
-}
-
-.bg-particle-6 {
-  top: 88%;
-  left: 30%;
-  animation-duration: 23s;
-  animation-delay: 2.5s;
-}
-
-@keyframes particleFloat {
-
-  0%,
-  100% {
-    transform: translate(0, 0);
-    opacity: 0.15;
-  }
-
-  50% {
-    transform: translate(30px, -40px);
-    opacity: 0.5;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-  .bg-grid-pan,
-  .bg-particle {
-    animation: none;
-  }
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .reveal {
