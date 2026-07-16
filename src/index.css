@@ -285,6 +285,31 @@ h3 {
   flex-wrap: wrap;
 }
 
+.hero-social {
+  display: flex;
+  gap: 24px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.hero-social-link {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(184, 155, 90, 0.4);
+  border-radius: 50%;
+  color: var(--steel);
+  transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.hero-social-link:hover {
+  color: var(--brass-bright);
+  border-color: var(--brass-bright);
+  transform: translateY(-2px);
+}
+
 .btn {
   font-family: var(--font-mono);
   font-size: 13px;
