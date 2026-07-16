@@ -3,10 +3,8 @@ import { profile } from '../data/content'
 
 const links = [
   { href: '#top', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#skills', label: 'Skills' },
+  { href: '#skills', label: 'About' },
   { href: '#projects', label: 'Projects' },
-  { href: '#skills', label: 'Experience' },
   { href: '#contact', label: 'Contact' },
 ]
 

@@ -285,6 +285,16 @@ h3 {
   flex-wrap: wrap;
 }
 
+.diagram-tilt-wrap {
+  width: 100%;
+  transform-style: preserve-3d;
+}
+
+.hero-diagram {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
 .hero-social {
   display: flex;
   gap: 24px;
@@ -335,10 +345,7 @@ h3 {
   background: var(--brass-bright);
 }
 
-.hero-diagram {
-  width: 100%;
-  height: auto;
-}
+
 
 .node-label {
   font-family: var(--font-mono);
@@ -447,7 +454,7 @@ h3 {
 .skill-card-tilt:hover {
   box-shadow: 0 24px 44px rgba(0, 0, 0, 0.5);
   border-color: var(--brass-bright);
-}
+}                   
 
 .skill-card-inner {
   position: relative;
