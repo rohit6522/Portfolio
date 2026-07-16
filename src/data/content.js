@@ -95,22 +95,30 @@ export const certifications = [
 
 
 export const skills = [
-  {
-    category: 'Languages',
-    items: ['JavaScript', 'TypeScript', 'Python', 'SQL', 'Go'],
-  },
-  {
-    category: 'Frontend',
-    items: ['React', 'Next.js', 'Vue', 'Tailwind CSS', 'Redux'],
-  },
-  {
-    category: 'Backend',
-    items: ['Node.js', 'Express', 'Django', 'GraphQL', 'REST APIs'],
-  },
-  {
-    category: 'Infrastructure',
-    items: ['PostgreSQL', 'Docker', 'AWS', 'CI/CD', 'Redis'],
-  },
+ {
+  category: 'Languages',
+  items: ['Python', 'JavaScript', 'TypeScript', 'Java', 'C', 'C++', 'SQL'],
+},
+{
+  category: 'Frontend',
+  items: ['HTML', 'CSS', 'React', 'Tailwind CSS', 'Vite'],
+},
+{
+  category: 'Backend',
+  items: ['Node.js', 'Express.js', 'REST APIs', 'JWT Authentication'],
+},
+{
+  category: 'Database',
+  items: ['MySQL', 'MongoDB', 'DBMS'],
+},
+{
+  category: 'Core CS',
+  items: ['Data Structures & Algorithms', 'Object-Oriented Programming', 'Computer Networks'],
+},
+{
+  category: 'Tools',
+  items: ['Git', 'GitHub', 'VS Code', 'Postman'],
+},
 ]
 
 
