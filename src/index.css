@@ -437,12 +437,16 @@ h3 {
   padding: 22px;
   border: 1px solid rgba(184, 155, 90, 0.25);
   overflow: hidden;
-  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
-.skill-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(212, 166, 86, 0.6);
+.skill-card-tilt {
+  transform-style: preserve-3d;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.skill-card-tilt:hover {
+  box-shadow: 0 24px 44px rgba(0, 0, 0, 0.5);
+  border-color: var(--brass-bright);
 }
 
 .skill-card-inner {
@@ -1004,6 +1008,26 @@ h3 {
 
 .cert-card {
   background: var(--ink-2);
+}
+
+.cert-card-tilt {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.cert-card-tilt:hover {
+  box-shadow: 0 24px 44px rgba(0, 0, 0, 0.5);
+  border-color: var(--brass-bright);
+}
+
+.cert-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg, transparent 30%, rgba(212, 166, 86, 0.4), transparent 70%);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .cert-top {
