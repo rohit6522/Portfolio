@@ -139,33 +139,55 @@ export const skills = [
 
 export const projects = [
   {
-    title: 'Fitness Training Portal',
-
+   title: 'Fitness Training Portal',
     category: 'WEB APP',
+    featured: true,
+    status: 'STABLE',
    summary:
       'A modern full-stack fitness platform that helps users plan workouts, monitor progress, follow personalized training schedules, and securely manage their accounts with authentication and real-time data.',
 
-    images: ['/projects/fitness.jpg'],
+    features: [
+      'Personalized workout plan builder',
+      'Real-time progress & goal tracking',
+      'Secure auth with JWT & Firebase',
+      'Daily streak, calorie & water tracking',
+    ],
+    images: ['/projects/fitness.jpg','/projects/Fitness1.jpg','/projects/Fitness2.jpg'],
     tags: ['React', 'Node.js', 'Express.js', 'MongoDB','Tailwind CSS','JWT','Firebase'],
 
-    liveUrl: 'https://fitnessapp-frontend-xiht.onrender.com',
+
+   liveUrl: 'https://fitnessapp-frontend-xiht.onrender.com',
     codeUrl: 'https://github.com/rohit6522/FitnessApp',
   },
+
   {
-    title: 'Pathfinder CMS',
-    category: 'WEB APP',
-    summary:
-      'A headless content system built for editorial teams, with a drag-and-drop layout builder and versioned publishing.',
-    images: ['/projects/pathfinder-1.jpg'],
-    tags: ['Next.js', 'GraphQL', 'AWS S3'],
-    liveUrl: '#',
-    codeUrl: '#',
-  },
+  title: 'Smart Hospital Emergency System',
+  category: 'WEB APP',
+  featured: true,
+  status: 'IN PROGRESS',
+  summary:
+    'An AI-powered emergency response and routing system that helps hospitals triage and route incoming emergencies faster.',
+  features: [
+    'AI-assisted emergency routing logic',
+    'Real-time hospital availability tracking',
+    'React frontend with Java backend services',
+  ],
+  images: ['/projects/hospital.jpg','/projects/hospital1.jpg','/projects/hospital2.jpg','/projects/hospital3.jpg'],
+  tags: ['React', 'Java', 'Spring Boot', 'CSS'],
+  liveUrl: 'https://smart-hospital-frontend-wcd3.onrender.com/',
+  codeUrl: 'https://github.com/rohit6522/smart-hospital-emergency-system',
+},
   {
     title: 'Signalboard',
     category: 'WEB APP',
+    featured: false,
+    status: 'STABLE',
     summary:
       'A monitoring dashboard that turns raw infrastructure metrics into plain-language alerts for on-call engineers.',
+    features: [
+      'Plain-language alert generation',
+      'Custom on-call escalation rules',
+    ],
     images: ['/projects/signalboard-1.jpg'],
     tags: ['TypeScript', 'D3.js', 'Docker'],
     liveUrl: '#',
@@ -174,15 +196,20 @@ export const projects = [
   {
     title: 'Fieldnote',
     category: 'MOBILE APP',
+    featured: false,
+    status: 'IN PROGRESS',
     summary:
       'An offline-first note-taking tool for researchers doing fieldwork with unreliable connectivity.',
+    features: [
+      'Offline-first with background sync',
+      'Conflict-free merge engine',
+    ],
     images: ['/projects/fieldnote-1.jpg'],
     tags: ['React Native', 'SQLite', 'Sync engine'],
     liveUrl: '#',
     codeUrl: '#',
   },
 ]
-
 
 export const achievements = [
   { icon: '</>', label: 'Coding Platforms', stat: '300+ Solved', highlight: false },

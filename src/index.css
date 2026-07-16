@@ -504,11 +504,59 @@ h3 {
   position: relative;
 }
 
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  background: rgba(14, 20, 32, 0.7);
+  border: 1px solid var(--brass);
+  color: var(--chalk);
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.project-media:hover .carousel-arrow {
+  opacity: 1;
+}
+
+.carousel-arrow:hover {
+  background: var(--brass-bright);
+  color: var(--ink);
+}
+
+.carousel-arrow-left {
+  left: 10px;
+}
+
+.carousel-arrow-right {
+  right: 10px;
+}
+
+.project-carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.project-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
 .project-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
   display: block;
+  flex: 0 0 100%;
+  scroll-snap-align: start;
 }
 
 .project-dots {
@@ -540,8 +588,17 @@ h3 {
   padding: 26px 28px;
 }
 
-.project-badges {
+.project-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 14px;
+}
+
+.project-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .project-badge {
@@ -551,6 +608,73 @@ h3 {
   color: var(--steel);
   border: 1px solid rgba(184, 155, 90, 0.3);
   padding: 4px 8px;
+}
+
+.project-badge-featured {
+  color: var(--brass-bright);
+  border-color: var(--brass-bright);
+}
+
+.project-external-link {
+  color: var(--steel);
+  font-size: 18px;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.project-external-link:hover {
+  color: var(--brass-bright);
+  transform: translate(2px, -2px);
+}
+
+.project-divider {
+  height: 1px;
+  background: rgba(184, 155, 90, 0.3);
+  margin: 4px 0 16px;
+}
+
+.project-features {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-features li {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--steel);
+}
+
+.feature-arrow {
+  color: var(--brass-bright);
+}
+
+.feature-more {
+  cursor: pointer;
+  color: var(--brass-bright) !important;
+  opacity: 0.75;
+}
+
+.feature-more:hover {
+  opacity: 1;
+}
+
+.project-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.project-status {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--steel);
+  white-space: nowrap;
 }
 
 .project-card h3 {
