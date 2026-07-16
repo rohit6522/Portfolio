@@ -1,7 +1,9 @@
 import AnimatedBackground from './components/AnimatedBackground'
 import Loader from './components/Loader'
 import Nav from './components/Nav'
+
 import Hero from './components/Hero'
+
 import SkillsTabs from './components/SkillsTabs'
 
 
@@ -17,6 +19,7 @@ export default function App() {
       <Nav />
 
       <Hero />
+      
       <SkillsTabs />
       <Projects />
 

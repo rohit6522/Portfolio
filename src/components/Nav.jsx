@@ -43,14 +43,23 @@ export default function Nav() {
         </div>
       </nav>
 
-      {
-        showPhoto && (
-          <div className="photo-modal" onClick={() => setShowPhoto(false)}>
-            <img src="/rohit.jpg" alt={profile.name} className="photo-modal-img" />
-            <button className="photo-modal-close" aria-label="Close">×</button>
+      {showPhoto && (
+      <div className="photo-modal" onClick={() => setShowPhoto(false)}>
+        <div className="photo-modal-frame" onClick={(e) => e.stopPropagation()}>
+          <img src="/rohit.jpg" alt={profile.name} className="photo-modal-img" />
+          <div className="photo-modal-caption">
+            <div className="photo-modal-tag">
+              <span className="photo-modal-dash" />
+              SYSTEM_SESSION_ACTIVE
+            </div>
+            <h3 className="photo-modal-name">{profile.name}</h3>
+            <p className="photo-modal-role">{profile.role.toUpperCase()}</p>
           </div>
-        )
-      }
+        </div>
+        <button className="photo-modal-close" aria-label="Close" onClick={() => setShowPhoto(false)}>×</button>
+      </div>
+    )}
     </>
   )
 }
+

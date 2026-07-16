@@ -24,35 +24,13 @@ export const profile = {
 export const stackNodes = [
   'React',
   'Node.js',
-  'PostgreSQL',
-  'TypeScript',
+  'MySQL',
+  'JavaScript',
   'AWS',
   'Docker',
 ]
 
-export const about = {
-  paragraphs: [
-    "I'm a full-stack developer who likes systems that are boring in the middle and delightful at the edges — solid data models, clear APIs, and interfaces that don't make people think.",
-    "Over the last several years I've worked across fintech and e-commerce, shipping everything from internal tooling to customer-facing products used by thousands of people daily.",
-    "When I'm not writing code, I'm usually reading about distributed systems, contributing to open source, or attempting (badly) to keep a garden alive.",
-  ],
-  stats: [
-    { value: '6+', label: 'Years building software' },
-    { value: '30+', label: 'Projects shipped' },
-    { value: '4', label: 'Teams led' },
-  ],
-  education: [
-    {
-      degree: 'B.Tech in Computer Science & Engineering',
-      school: 'Lovely Professional University (current)',
-      period: '2024 — 2028',
-    },
-  ],
-  certifications: [
-    { name: 'AWS Certified Solutions Architect', year: '2023' },
-    { name: 'Meta Front-End Developer Professional Certificate', year: '2021' },
-  ],
-}
+  
 
 export const education = [
   {

@@ -201,11 +201,59 @@ h3 {
   cursor: zoom-out;
 }
 
-.photo-modal-img {
+.photo-modal-frame {
+  position: relative;
   max-width: min(80vw, 480px);
   max-height: 80vh;
   border: 2px solid var(--brass-bright);
+  overflow: hidden;
+}
+
+.photo-modal-img {
+  width: 100%;
+  height: 100%;
+  display: block;
   object-fit: cover;
+}
+
+.photo-modal-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 20px 20px;
+  background: linear-gradient(to top, rgba(14, 20, 32, 0.95), transparent);
+}
+
+.photo-modal-tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  color: var(--brass-bright);
+  margin-bottom: 8px;
+}
+
+.photo-modal-dash {
+  width: 20px;
+  height: 1.5px;
+  background: var(--brass-bright);
+}
+
+.photo-modal-name {
+  font-size: 22px;
+  color: var(--chalk);
+  margin: 0 0 4px;
+}
+
+.photo-modal-role {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--steel);
+  margin: 0;
 }
 
 .photo-modal-close {
@@ -926,6 +974,10 @@ h3 {
   font-size: 14.5px;
   line-height: 1.7;
 }
+
+
+
+
 
 /* ── tabs ──────────────────────────────────────────────── */
 .tabs-bar {
