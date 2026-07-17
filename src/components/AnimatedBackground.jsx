@@ -1,7 +1,33 @@
 import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function AnimatedBackground() {
   const canvasRef = useRef(null)
+  const layerRef = useRef(null)
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) return
+
+    const parallax = gsap.to(layerRef.current, {
+      yPercent: 15,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: document.body,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.6,
+      },
+    })
+
+    return () => {
+      parallax.scrollTrigger?.kill()
+      parallax.kill()
+    }
+  }, [])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -9,6 +35,7 @@ export default function AnimatedBackground() {
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReducedMotion) return
+
 
     let width = (canvas.width = window.innerWidth)
     let height = (canvas.height = window.innerHeight)
@@ -98,8 +125,8 @@ export default function AnimatedBackground() {
     }
   }, [])
 
-  return (
-    <div className="bg-layer" aria-hidden="true">
+ return (
+    <div className="bg-layer" ref={layerRef} aria-hidden="true">
       <canvas ref={canvasRef} className="bg-canvas" />
     </div>
   )

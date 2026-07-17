@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { profile } from '../data/content'
 
 const links = [
@@ -10,6 +11,7 @@ const links = [
 
 export default function Nav() {
   const [showPhoto, setShowPhoto] = useState(false)
+  const [hovered, setHovered] = useState(null)
 
   return (
     <>
@@ -32,13 +34,20 @@ export default function Nav() {
 
             <span className="nav-divider" />
           </div>
-          <ul className="nav-links">
-            {links.map((link) => (
-              <li key={link.href}>
-                <a href={link.href}>{link.label}</a>
-              </li>
-            ))}
-          </ul>
+         <ul className="nav-links" onMouseLeave={() => setHovered(null)}>
+          {links.map((link) => (
+            <li key={link.href} className="nav-link-item" onMouseEnter={() => setHovered(link.href)}>
+              <a href={link.href}>{link.label}</a>
+              {hovered === link.href && (
+                <motion.span
+                  className="nav-underline"
+                  layoutId="nav-underline"
+                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                />
+              )}
+            </li>
+          ))}
+        </ul>
 
         </div>
       </nav>

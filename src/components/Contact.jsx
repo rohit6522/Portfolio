@@ -1,12 +1,30 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { profile } from '../data/content'
 import useReveal from '../hooks/useReveal'
+import useMagnetic from '../hooks/useMagnetic'
 
 const trustPoints = [
   { icon: '⏱', label: 'I usually reply within 24 hours' },
   { icon: '🛡', label: 'Privacy & security respected' },
   { icon: '🎥', label: 'Open to video or voice calls' },
 ]
+
+function MagneticButton({ className, onClick, children }) {
+  const { ref, x, y, handleMouseMove, handleMouseLeave } = useMagnetic()
+  return (
+    <motion.button
+      ref={ref}
+      className={className}
+      onClick={onClick}
+      style={{ x, y }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      {children}
+    </motion.button>
+  )
+}
 
 export default function Contact() {
   const [ref, visible] = useReveal()
@@ -47,9 +65,9 @@ export default function Contact() {
               </li>
             ))}
           </ul>
-          <button className="btn schedule-btn" onClick={openCalendly}>
+          <MagneticButton className="btn schedule-btn" onClick={openCalendly}>
             📅 Schedule a meeting
-          </button>
+          </MagneticButton>
         </div>
 
         <div>

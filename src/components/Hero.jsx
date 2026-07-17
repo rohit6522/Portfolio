@@ -1,5 +1,41 @@
+import { useEffect, useRef } from 'react'
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion'
+import gsap from 'gsap'
 import { profile, stackNodes } from '../data/content'
+import useMagnetic from '../hooks/useMagnetic'
+
+function SplitReveal({ text }) {
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const letters = ref.current.querySelectorAll('.letter')
+      gsap.set(letters, { opacity: 0, y: 30, rotateX: -60 })
+      gsap.to(letters, {
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+        duration: 0.7,
+        ease: 'back.out(1.6)',
+        stagger: 0.03,
+        delay: 0.1,
+        overwrite: true,
+      })
+    }, ref)
+
+    return () => ctx.revert()
+  }, [text])
+
+  return (
+    <span ref={ref} className="split-reveal">
+      {[...text].map((char, i) => (
+        <span className="letter" key={i}>
+          {char === ' ' ? '\u00A0' : char}
+        </span>
+      ))}
+    </span>
+  )
+}
 
 function StackDiagram() {
   const cx = 260
@@ -127,25 +163,42 @@ const icons = {
   ),
 }
 
+function MagneticLink({ className, href, download, children }) {
+  const { ref, x, y, handleMouseMove, handleMouseLeave } = useMagnetic()
+  return (
+    <motion.a
+      ref={ref}
+      className={className}
+      href={href}
+      download={download}
+      style={{ x, y }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      {children}
+    </motion.a>
+  )
+}
+
 export default function Hero() {
   return (
-   <section id="top" className="hero">
+    <section id="top" className="hero">
       <div className="container hero-grid">
         <div>
           <span className="eyebrow">{profile.location}</span>
           <h1 className="hero-name">
-            {profile.name}
+            <SplitReveal text={profile.name} />
             <br />
-            {profile.role}
+            <SplitReveal text={profile.role} />
           </h1>
           <p className="hero-tagline">{profile.tagline}</p>
           <div className="hero-actions">
-            <a className="btn btn-solid" href="#projects">
+            <MagneticLink className="btn btn-solid" href="#projects">
               View projects
-            </a>
-            <a className="btn" href={profile.resumeUrl} download>
+            </MagneticLink>
+            <MagneticLink className="btn" href={profile.resumeUrl} download>
               Download resume
-            </a>
+            </MagneticLink>
           </div>
 
           <div className="hero-social">

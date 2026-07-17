@@ -1,8 +1,10 @@
 import { useState, useRef } from 'react'
+import { motion } from 'framer-motion'
 import { projects, achievements, archiveCategories, archiveProjects } from '../data/content'
 import useReveal from '../hooks/useReveal'
+import AnimatedStat from './AnimatedStat'
 
-function ProjectCard({ project }) {
+function ProjectCard({ project, index }) {
   const [imgIndex, setImgIndex] = useState(0)
   const [expanded, setExpanded] = useState(false)
   const images = project.images || []
@@ -41,11 +43,17 @@ function ProjectCard({ project }) {
   }
 
   return (
-    <div className="blueprint-card project-card" onMouseMove={handleMouseMove}>
+    <motion.div
+      className="blueprint-card project-card"
+      onMouseMove={handleMouseMove}
+      initial={{ opacity: 0, y: 40, scale: 0.96 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.55, delay: (index % 2) * 0.12, ease: 'easeOut' }}
+    >
       <span className="card-glow" />
 
-
-     {images.length > 0 && (
+      {images.length > 0 && (
         <div className="project-media">
           <div className="project-carousel-track" ref={trackRef} onScroll={handleScroll}>
             {images.map((src, i) => (
@@ -74,10 +82,6 @@ function ProjectCard({ project }) {
           )}
         </div>
       )}
-
-
-
-
 
       <div className="project-body">
         <div className="project-top-row">
@@ -131,7 +135,7 @@ function ProjectCard({ project }) {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
@@ -141,14 +145,11 @@ export default function Projects() {
   const [activeCategory, setActiveCategory] = useState(archiveCategories[0])
 
   return (
-
     <section
       id="projects"
       ref={ref}
       className={`section section-dark reveal ${visible ? 'reveal-visible' : ''}`}
     >
-
-
       <div className="container">
         <div className="section-head">
           <span className="eyebrow">Projects</span>
@@ -157,16 +158,13 @@ export default function Projects() {
           </h2>
         </div>
 
-
         <div className="projects-grid">
-          {projects.map((project) => (
-            <ProjectCard project={project} key={project.title} />
+          {projects.map((project, i) => (
+            <ProjectCard project={project} index={i} key={project.title} />
           ))}
         </div>
 
         <div className="archive-toggle-wrap">
-
-
           <button className="archive-toggle" onClick={() => setShowArchive(!showArchive)}>
             [ {showArchive ? 'HIDE_ARCHIVE' : 'ACCESS_ARCHIVE'} ]
             <span>{showArchive ? '▲' : '▼'}</span>
@@ -208,8 +206,6 @@ export default function Projects() {
                 ))}
             </div>
           </div>
-
-
         )}
 
         <div className="achievements-head">
@@ -226,7 +222,9 @@ export default function Projects() {
             >
               <span className="achievement-icon">{a.icon}</span>
               <span className="achievement-label">{a.label}</span>
-              <span className="achievement-stat">{a.stat}</span>
+              <span className="achievement-stat">
+                <AnimatedStat value={a.stat} />
+              </span>
             </div>
           ))}
         </div>

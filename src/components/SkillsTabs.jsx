@@ -1,9 +1,19 @@
 import { useState } from 'react'
+
+
+import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion'
 import { skills, education, certifications, experience } from '../data/content'
 import useReveal from '../hooks/useReveal'
 import ScrambleText from './ScrambleText'
 
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion'
+const tabOrder = ['skills', 'education', 'experience', 'certifications']
+
+const slideVariants = {
+  enter: (direction) => ({ opacity: 0, x: direction > 0 ? 60 : -60 }),
+  center: { opacity: 1, x: 0 },
+  exit: (direction) => ({ opacity: 0, x: direction > 0 ? -60 : 60 }),
+}
+
 
 function TiltCertCard({ c, index }) {
   const x = useMotionValue(0)
@@ -108,7 +118,14 @@ function TiltSkillCard({ group, index }) {
 }
 export default function SkillsTabs() {
   const [active, setActive] = useState('skills')
+  const [direction, setDirection] = useState(0)
   const [ref, visible] = useReveal()
+
+  function selectTab(key) {
+    const newDir = tabOrder.indexOf(key) > tabOrder.indexOf(active) ? 1 : -1
+    setDirection(newDir)
+    setActive(key)
+  }
 
   return (
     <section
@@ -120,60 +137,75 @@ export default function SkillsTabs() {
 
       <div className="container">
         <div className="tabs-bar">
+
           {tabs.map((tab) => (
             <button
               key={tab.key}
               className={`tab-btn ${active === tab.key ? 'active' : ''}`}
-              onClick={() => setActive(tab.key)}
+              onClick={() => selectTab(tab.key)}
             >
               <span>{tab.icon}</span> {tab.label}
             </button>
           ))}
         </div>
 
-       {active === 'skills' && (
-          <div className="skills-grid tab-panel">
-            {skills.map((group, i) => (
-              <TiltSkillCard group={group} index={i} key={group.category} />
-            ))}
-          </div>
-        )}
-
-       {active === 'education' && (
-          <div className="edu-timeline tab-panel">
-            {education.map((e, i) => (
-              <div className="edu-item-scramble" key={e.school}>
-                <span className="edu-node-diamond" />
-                <div className="edu-item-content">
-                  <ScrambleText text={e.school} delay={i * 400} className="edu-scramble-title" />
-                  <div className="edu-meta">
-                    {e.period} — {e.degree}
-                  </div>
-                  <p className="edu-desc">{e.description}</p>
+        <div className="tab-panel-clip">
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={active}
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.35, ease: 'easeInOut' }}
+            >
+              {active === 'skills' && (
+                <div className="skills-grid">
+                  {skills.map((group, i) => (
+                    <TiltSkillCard group={group} index={i} key={group.category} />
+                  ))}
                 </div>
-              </div>
-            ))}
-          </div>
-        )}
+              )}
 
-        {active === 'experience' && (
-          <div className="coming-soon tab-panel">
-            <span className="coming-soon-icon">🚧</span>
-            <h3>Experience — Coming Soon</h3>
-            <p>
-              I'm just getting started and haven't taken on a professional role yet.
-              This section will fill up soon — check back later!
-            </p>
-          </div>
-        )}
+              {active === 'education' && (
+                <div className="edu-timeline">
+                  {education.map((e, i) => (
+                    <div className="edu-item-scramble" key={e.school}>
+                      <span className="edu-node-diamond" />
+                      <div className="edu-item-content">
+                        <ScrambleText text={e.school} delay={i * 400} className="edu-scramble-title" />
+                        <div className="edu-meta">
+                          {e.period} — {e.degree}
+                        </div>
+                        <p className="edu-desc">{e.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
 
-        {active === 'certifications' && (
-          <div className="cert-grid tab-panel">
-            {certifications.map((c, i) => (
-              <TiltCertCard c={c} index={i} key={c.title} />
-            ))}
-          </div>
-        )}  
+              {active === 'experience' && (
+                <div className="coming-soon">
+                  <span className="coming-soon-icon">🚧</span>
+                  <h3>Experience — Coming Soon</h3>
+                  <p>
+                    I'm just getting started and haven't taken on a professional role yet.
+                    This section will fill up soon — check back later!
+                  </p>
+                </div>
+              )}
+
+              {active === 'certifications' && (
+                <div className="cert-grid">
+                  {certifications.map((c, i) => (
+                    <TiltCertCard c={c} index={i} key={c.title} />
+                  ))}
+                </div>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
 
 
