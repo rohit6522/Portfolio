@@ -12,6 +12,7 @@ const links = [
 export default function Nav() {
   const [showPhoto, setShowPhoto] = useState(false)
   const [hovered, setHovered] = useState(null)
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
     <>
@@ -50,7 +51,29 @@ export default function Nav() {
           ))}
         </ul>
         <span className="nav-right-spacer" />
+
+        <button
+          className="nav-hamburger"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
+        >
+          <span className={`hamburger-line ${mobileOpen ? 'open' : ''}`} />
+          <span className={`hamburger-line ${mobileOpen ? 'open' : ''}`} />
+          <span className={`hamburger-line ${mobileOpen ? 'open' : ''}`} />
+        </button>
       </div>
+
+      {mobileOpen && (
+        <ul className="mobile-menu">
+          {links.map((link) => (
+            <li key={link.href}>
+              <a href={link.href} onClick={() => setMobileOpen(false)}>
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
     </nav>
 
       {showPhoto && (
