@@ -1,36 +1,49 @@
-import { useEffect, useRef } from 'react'
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion'
 import gsap from 'gsap'
+import { useEffect, useRef } from 'react'
 import { profile, stackNodes } from '../data/content'
 import useMagnetic from '../hooks/useMagnetic'
 
 function SplitReveal({ text }) {
   const ref = useRef(null)
+  const words = text.split(' ')
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const letters = ref.current.querySelectorAll('.letter')
-      gsap.set(letters, { opacity: 0, y: 30, rotateX: -60 })
-      gsap.to(letters, {
-        opacity: 1,
-        y: 0,
-        rotateX: 0,
-        duration: 0.7,
-        ease: 'back.out(1.6)',
-        stagger: 0.03,
-        delay: 0.1,
-        overwrite: true,
-      })
-    }, ref)
+    let ctx
+    const raf = requestAnimationFrame(() => {
+      ctx = gsap.context(() => {
+        const letters = ref.current.querySelectorAll('.letter')
+        gsap.killTweensOf(letters)
+        gsap.set(letters, { opacity: 0, y: 30, rotateX: -60 })
+        gsap.to(letters, {
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
+          duration: 0.7,
+          ease: 'back.out(1.6)',
+          stagger: 0.03,
+          delay: 0.1,
+        })
+      }, ref)
+    })
 
-    return () => ctx.revert()
+    return () => {
+      cancelAnimationFrame(raf)
+      ctx?.revert()
+    }
   }, [text])
-
-  return (
+return (
     <span ref={ref} className="split-reveal">
-      {[...text].map((char, i) => (
-        <span className="letter" key={i}>
-          {char === ' ' ? '\u00A0' : char}
+      {words.map((word, wi) => (
+        <span key={wi}>
+          <span className="split-word">
+            {[...word].map((char, ci) => (
+              <span className="letter" key={ci}>
+                {char}
+              </span>
+            ))}
+          </span>
+          {wi < words.length - 1 ? ' ' : ''}
         </span>
       ))}
     </span>

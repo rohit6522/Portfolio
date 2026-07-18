@@ -34,7 +34,8 @@ export default function Nav() {
 
             <span className="nav-divider" />
           </div>
-         <ul className="nav-links" onMouseLeave={() => setHovered(null)}>
+
+        <ul className="nav-links" onMouseLeave={() => setHovered(null)}>
           {links.map((link) => (
             <li key={link.href} className="nav-link-item" onMouseEnter={() => setHovered(link.href)}>
               <a href={link.href}>{link.label}</a>
@@ -48,9 +49,9 @@ export default function Nav() {
             </li>
           ))}
         </ul>
-
-        </div>
-      </nav>
+        <span className="nav-right-spacer" />
+      </div>
+    </nav>
 
       {showPhoto && (
       <div className="photo-modal" onClick={() => setShowPhoto(false)}>

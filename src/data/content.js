@@ -123,10 +123,17 @@ export const skills = [
 
 
 
+// export const projects = [
+//   {
+//    title: 'Fitness Training Portal',
+//     category: 'WEB APP',
+//     featured: true,
+//     status: 'STABLE',
 export const projects = [
   {
-   title: 'Fitness Training Portal',
-    category: 'WEB APP',
+    title: 'Ledgerline',
+    category: 'Web Application',
+    period: 'Jan – Oct 2023',
     featured: true,
     status: 'STABLE',
    summary:
@@ -163,11 +170,14 @@ export const projects = [
   liveUrl: 'https://smart-hospital-frontend-wcd3.onrender.com/',
   codeUrl: 'https://github.com/rohit6522/smart-hospital-emergency-system',
 },
-  {
-    title: 'Signalboard',
-    category: 'WEB APP',
-    featured: false,
+{
+    title: 'Pathfinder CMS',
+    category: 'Web Application',
+    period: 'Dec 2023 – Present',
+    featured: true,
     status: 'STABLE',
+
+
     summary:
       'A monitoring dashboard that turns raw infrastructure metrics into plain-language alerts for on-call engineers.',
     features: [
@@ -180,10 +190,12 @@ export const projects = [
     codeUrl: '#',
   },
   {
-    title: 'Fieldnote',
-    category: 'MOBILE APP',
+    title: 'Signalboard',
+    category: 'Web Application',
+    period: 'Mar – Jun 2024',
     featured: false,
-    status: 'IN PROGRESS',
+    status: 'STABLE',
+    
     summary:
       'An offline-first note-taking tool for researchers doing fieldwork with unreliable connectivity.',
     features: [
