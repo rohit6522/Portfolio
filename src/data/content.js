@@ -129,6 +129,8 @@ export const skills = [
 //     category: 'WEB APP',
 //     featured: true,
 //     status: 'STABLE',
+
+
 export const projects = [
   {
     title: 'Ledgerline',
@@ -215,7 +217,7 @@ export const achievements = [
   { icon: '🏅', label: 'National Ranking', stat: '13th Rank, India', highlight: true },
 ]
 
-export const archiveCategories = ['Web Apps', 'Mobile Apps', 'Extensions', 'Trained Models']
+export const archiveCategories = ['Web Apps', 'Mobile Apps']
 
 export const archiveProjects = [
   {
@@ -258,30 +260,7 @@ export const archiveProjects = [
     liveUrl: '#',
     codeUrl: '#',
   },
-  {
-    title: 'TabSnap',
-    summary: 'A browser extension that saves and organizes tab sessions into named workspaces.',
-    category: 'Extensions',
-    tags: ['JavaScript', 'Chrome API'],
-    liveUrl: '#',
-    codeUrl: '#',
-  },
-  {
-    title: 'ReadMode+',
-    summary: 'A distraction-free reading extension with adjustable typography and dark mode.',
-    category: 'Extensions',
-    tags: ['TypeScript', 'Chrome API'],
-    liveUrl: '#',
-    codeUrl: '#',
-  },
-  {
-    title: 'ChurnGuard',
-    summary: 'A trained model predicting customer churn risk from usage patterns.',
-    category: 'Trained Models',
-    tags: ['Python', 'scikit-learn'],
-    liveUrl: '#',
-    codeUrl: '#',
-  },
+  
 ]
 
 export const experience = [
