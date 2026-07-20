@@ -72,13 +72,15 @@ export const certifications = [
     date: 'January 2026 – May 2026',
     credentialUrl: 'https://drive.google.com/file/d/1e6mzjtAvUEqtJ32AK41CSEFPPy_Lo3mq/view?usp=sharing',
   },
-  // new add comming soon
   {
     title: 'Database Management System Part - 1',
     issuer: 'Infosys Springboard',
     date: 'July 16, 2026',
     credentialUrl: 'https://drive.google.com/file/d/1Hc7_7Q4vncXdIfTGl-JWTufARELLEKw_/view?usp=sharing',
   },
+
+    // new add comming soon
+
   {
     title: 'Programming in JAVA',
     issuer: 'iamNeo — An NIIT Venture',
@@ -123,19 +125,12 @@ export const skills = [
 
 
 
-// export const projects = [
-//   {
-//    title: 'Fitness Training Portal',
-//     category: 'WEB APP',
-//     featured: true,
-//     status: 'STABLE',
-
 
 export const projects = [
   {
-    title: 'Ledgerline',
+    title: 'Fitness Training Portal',
     category: 'Web Application',
-    period: 'Jan – Oct 2023',
+    period: 'March – May 2026',
     featured: true,
     status: 'STABLE',
    summary:
@@ -157,21 +152,23 @@ export const projects = [
 
   {
   title: 'Smart Hospital Emergency System',
-  category: 'WEB APP',
+  category: 'Web Application',
+  period: 'June – july 2026',
   featured: true,
   status: 'IN PROGRESS',
   summary:
     'An AI-powered emergency response and routing system that helps hospitals triage and route incoming emergencies faster.',
   features: [
     'AI-assisted emergency routing logic',
-    'Real-time hospital availability tracking',
+    'Live ambulance tracking and dynamic hospital resource management',
     'React frontend with Java backend services',
   ],
   images: ['/projects/hospital.jpg','/projects/hospital1.jpg','/projects/hospital2.jpg','/projects/hospital3.jpg'],
-  tags: ['React', 'Java', 'Spring Boot', 'CSS'],
+  tags: ['React', 'Java', 'Spring Boot', 'Tailwind CSS','MySQL', 'WebSocket', 'JWT Auth'],
   liveUrl: 'https://smart-hospital-frontend-wcd3.onrender.com/',
   codeUrl: 'https://github.com/rohit6522/smart-hospital-emergency-system',
 },
+
 {
     title: 'Pathfinder CMS',
     category: 'Web Application',
@@ -191,6 +188,7 @@ export const projects = [
     liveUrl: '#',
     codeUrl: '#',
   },
+
   {
     title: 'Signalboard',
     category: 'Web Application',
