@@ -153,7 +153,7 @@ export const projects = [
   {
   title: 'Smart Hospital Emergency System',
   category: 'Web Application',
-  period: 'June – july 2026',
+  period: 'Jul 2026 – Present',
   featured: true,
   status: 'IN PROGRESS',
   summary:
@@ -170,24 +170,31 @@ export const projects = [
 },
 
 {
-    title: 'Pathfinder CMS',
-    category: 'Web Application',
-    period: 'Dec 2023 – Present',
-    featured: true,
-    status: 'STABLE',
+  title: 'Smart Cart — Budget-Aware Shopping Platform',
+  category: 'Full-Stack Web Application',
+  period: 'Jul 2026 – Present',
+  featured: true,
+  status: 'LIVE',
 
+  summary:
+    'A full-stack eCommerce platform that solves checkout anxiety by tracking a shopper\'s budget in real time as they add items to their cart, with dedicated dashboards for shoppers, admins, and delivery partners.',
 
-    summary:
-      'A monitoring dashboard that turns raw infrastructure metrics into plain-language alerts for on-call engineers.',
-    features: [
-      'Plain-language alert generation',
-      'Custom on-call escalation rules',
-    ],
-    images: ['/projects/signalboard-1.jpg'],
-    tags: ['TypeScript', 'D3.js', 'Docker'],
-    liveUrl: '#',
-    codeUrl: '#',
-  },
+  features: [
+    'Real-time budget tracker with live progress bar and over-budget alerts',
+    'Role-based authentication (Shopper / Admin / Delivery Partner) using JWT',
+    'Razorpay payment integration with Cash-on-Delivery fallback',
+    'Full order lifecycle: cart → checkout → delivery assignment → tracking',
+    'Admin panel for product & order management with delivery assignment',
+    'Automated order confirmation emails and downloadable invoices',
+  ],
+
+  images: ['/projects/smartCart.jpg','/projects/smartCart1.jpg','/projects/smartCart2.jpg','/projects/smartCart3.jpg','/projects/smartCart4.jpg'],
+
+  tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Spring Boot', 'MySQL', 'Razorpay'],
+
+  liveUrl: 'https://smartcart-frontend-g472.onrender.com/',
+  codeUrl: 'https://github.com/rohit6522/smart-cart-ecommerce',
+},
 
   {
     title: 'Signalboard',
@@ -210,9 +217,9 @@ export const projects = [
 ]
 
 export const achievements = [
-  { icon: '</>', label: 'Coding Platforms', stat: '300+ Solved', highlight: false },
-  { icon: '★', label: 'C++ · HackerRank', stat: '5-Star Status', highlight: false },
-  { icon: '🏅', label: 'National Ranking', stat: '13th Rank, India', highlight: true },
+  { icon: '</>', label: 'Coding Platforms', stat: '150+ Solved', highlight: false },
+  // { icon: '★', label: 'C++ · HackerRank', stat: '5-Star Status', highlight: false },
+  // { icon: '🏅', label: 'National Ranking', stat: '13th Rank, India', highlight: true },
 ]
 
 export const archiveCategories = ['Web Apps', 'Mobile Apps']
