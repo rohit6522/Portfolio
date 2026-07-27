@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { projects, achievements, archiveCategories, archiveProjects } from '../data/content'
 import { profile } from '../data/content'
@@ -30,6 +30,7 @@ function CalendarIcon() {
 
 function ProjectCard({ project, index }) {
   const [imgIndex, setImgIndex] = useState(0)
+  const [paused, setPaused] = useState(false)
   const images = project.images || []
   const features = project.features || []
   const trackRef = useRef(null)
@@ -42,13 +43,29 @@ function ProjectCard({ project, index }) {
     }
   }
 
-  function prevImg(e) {
+  useEffect(() => {
+    if (images.length <= 1 || paused) return
+    const timer = setInterval(() => {
+      setImgIndex((prev) => {
+        const next = prev === images.length - 1 ? 0 : prev + 1
+        if (trackRef.current) {
+          trackRef.current.scrollTo({ left: trackRef.current.clientWidth * next, behavior: 'smooth' })
+        }
+        return next
+      })
+    }, 3500)
+    return () => clearInterval(timer)
+  }, [images.length, paused])
+
+ function prevImg(e) {
     e.stopPropagation()
+    setPaused(true)
     scrollToIndex(imgIndex === 0 ? images.length - 1 : imgIndex - 1)
   }
 
   function nextImg(e) {
     e.stopPropagation()
+    setPaused(true)
     scrollToIndex(imgIndex === images.length - 1 ? 0 : imgIndex + 1)
   }
 
@@ -67,8 +84,13 @@ function ProjectCard({ project, index }) {
       transition={{ duration: 0.5, delay: (index % 2) * 0.1, ease: 'easeOut' }}
     >
       {images.length > 0 && (
-        <div className="project-media">
+        <div
+          className="project-media"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
           {project.featured && <span className="project-featured-pill">★ Featured</span>}
+
           <div className="project-carousel-track" ref={trackRef} onScroll={handleScroll}>
             {images.map((src, i) => (
               <img key={i} src={src} alt={`${project.title} screenshot ${i + 1}`} className="project-image" />
