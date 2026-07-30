@@ -681,7 +681,7 @@ h3 {
   height: 260px;
 }
 
-.project-featured-pill {
+/* .project-featured-pill {
   position: absolute;
   top: 14px;
   left: 14px;
@@ -689,6 +689,21 @@ h3 {
   background: rgba(192, 132, 252, 0.18);
   color: #d8b4fe;
   border: 1px solid rgba(216, 180, 254, 0.4);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  padding: 5px 12px;
+  border-radius: 999px;
+} */
+
+.project-featured-pill {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  background: rgba(212, 166, 86, 0.2);
+  color: #e0b360;
+  border: 1px solid rgba(224, 179, 96, 0.45);
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.03em;
@@ -724,7 +739,7 @@ h3 {
   white-space: nowrap;
 }
 
-.status-completed {
+/* .status-completed {
   background: rgba(74, 222, 128, 0.14);
   color: #4ade80;
 }
@@ -737,6 +752,21 @@ h3 {
 .status-planned {
   background: rgba(148, 163, 184, 0.14);
   color: #94a3b8;
+} */
+
+.status-completed {
+  background: rgba(212, 166, 86, 0.16);
+  color: #d4a656;
+}
+
+.status-progress {
+  background: rgba(184, 130, 47, 0.18);
+  color: #c9822f;
+}
+
+.status-planned {
+  background: rgba(154, 143, 125, 0.18);
+  color: #9a8f7d;
 }
 
 .project-title-v2 {
@@ -766,11 +796,17 @@ h3 {
   font-weight: 500;
 }
 
-.chip-0 { background: rgba(52, 211, 153, 0.15); color: #34d399; }
+/* .chip-0 { background: rgba(52, 211, 153, 0.15); color: #34d399; }
 .chip-1 { background: rgba(96, 165, 250, 0.15); color: #60a5fa; }
 .chip-2 { background: rgba(251, 146, 60, 0.15); color: #fb923c; }
 .chip-3 { background: rgba(192, 132, 252, 0.15); color: #c084fc; }
-.chip-4 { background: rgba(244, 114, 182, 0.15); color: #f472b6; }
+.chip-4 { background: rgba(244, 114, 182, 0.15); color: #f472b6; } */
+
+.chip-0 { background: rgba(212, 166, 86, 0.16); color: #d4a656; }
+.chip-1 { background: rgba(201, 138, 75, 0.16); color: #c98a4b; }
+.chip-2 { background: rgba(184, 155, 90, 0.16); color: #b98b3d; }
+.chip-3 { background: rgba(207, 154, 92, 0.16); color: #cf9a5c; }
+.chip-4 { background: rgba(224, 179, 96, 0.16); color: #e0b360; }
 
 .project-features-v2 {
   margin-top: 4px;
@@ -803,11 +839,20 @@ h3 {
   gap: 10px;
 }
 
-.feature-dot {
+/* .feature-dot {
   width: 5px;
   height: 5px;
   border-radius: 50%;
   background: #c084fc;
+  flex-shrink: 0;
+  transform: translateY(-2px);
+} */
+
+.feature-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--brass-bright);
   flex-shrink: 0;
   transform: translateY(-2px);
 }
