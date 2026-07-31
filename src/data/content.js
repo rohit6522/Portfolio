@@ -6,8 +6,13 @@
 export const profile = {
   name: 'Rohit Kumar',
   role: 'Full-Stack Developer',
-  tagline:
+
+ tagline:
     'I design and build web systems end to end — from database schema to the pixel you click on.',
+  bio:
+    "I love building things that actually work — clean code, functional apps, real solutions to real problems. I'm not here to write code that just runs; I build things that reduce friction, cut the noise, and make life easier for the people using them.",
+  shortLine: "Clean code. Functional apps. Less pain points. That's the whole vibe.",
+
   location: 'Patna, Bihar',
   email: 'rohitrajyadav6522@gmail.com',
   resumeUrl: '/resume.pdf',
