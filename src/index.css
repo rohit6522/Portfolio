@@ -1,12 +1,12 @@
 :root {
-  --ink: #0e1420;
-  --ink-2: #141b2b;
-  --paper: #edeae1;
-  --paper-dim: #ded9cb;
-  --brass: #b98b3d;
-  --brass-bright: #d4a656;
-  --steel: #8a97a8;
-  --chalk: #e7e3d8;
+  --ink: #0a0a0a;
+  --ink-2: #141414;
+  --paper: #eeeeee;
+  --paper-dim: #dcdcdc;
+  --brass: #0e7490;
+  --brass-bright: #22d3ee;
+  --steel: #8b8f96;
+  --chalk: #e8e8e8;
 
   --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
@@ -377,15 +377,15 @@ h3 {
 }
 
 .hero-grid-v2 {
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 60px;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 64px;
 }
 
 /* ── photo card ────────────────────────────────────────── */
 .hero-photo-wrap {
   position: relative;
   width: 100%;
-  max-width: 380px;
+  max-width: 500px;
 }
 
 .hero-photo-frame {
@@ -486,9 +486,9 @@ h3 {
   position: relative;
   display: inline-block;
 }
-
 .hero-name-base {
-  color: var(--chalk);
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--chalk);
 }
 
 .hero-name-shine {
