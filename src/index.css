@@ -385,20 +385,22 @@ h3 {
 .hero-photo-wrap {
   position: relative;
   width: 100%;
-  max-width: 500px;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
 .hero-photo-frame {
   position: relative;
-  aspect-ratio: 4 / 5;
-  border-radius: 14px;
+  aspect-ratio: 3 / 4;
+  border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(34, 211, 238, 0.3);
+  border: none;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .hero-photo-wrap:hover .hero-photo-frame {
-  box-shadow: 0 0 60px rgba(212, 166, 86, 0.3);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
   transform: translateY(-4px);
 }
 

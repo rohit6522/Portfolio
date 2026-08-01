@@ -83,11 +83,13 @@ export default function AnimatedBackground() {
           if (x === 0) ctx.moveTo(x, finalY)
           else ctx.lineTo(x, finalY)
         }
-        ctx.strokeStyle = 'rgba(184, 155, 90, 0.07)'
-        ctx.stroke()
-      }
 
-      for (let x = 0; x < width; x += gridSize) {
+       ctx.strokeStyle = 'rgba(34, 211, 238, 0.035)'
+        ctx.stroke()
+    }
+
+    for (let x = 0; x < width; x += gridSize) {
+
         ctx.beginPath()
         for (let y = 0; y < height; y += 10) {
           const dx = x - mouse.x
@@ -103,9 +105,9 @@ export default function AnimatedBackground() {
           if (y === 0) ctx.moveTo(finalX, y)
           else ctx.lineTo(finalX, y)
         }
-        ctx.strokeStyle = 'rgba(184, 155, 90, 0.07)'
-        ctx.stroke()
-      }
+        ctx.strokeStyle = 'rgba(34, 211, 238, 0.035)'
+      ctx.stroke()
+    }
 
       const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 10, mouse.x, mouse.y, 200)
       gradient.addColorStop(0, 'rgba(184, 155, 90, 0.05)')
