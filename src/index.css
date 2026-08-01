@@ -398,7 +398,7 @@ h3 {
 
 .hero-photo-wrap:hover .hero-photo-frame {
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
-  transform: translateY(-4px);
+  transform: translateY(-10px);
 }
 
 .hero-photo-frame::after {
@@ -455,6 +455,8 @@ h3 {
   border-radius: 999px;
   white-space: nowrap;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .hero-badge-prefix {
@@ -466,11 +468,23 @@ h3 {
 .hero-badge-top {
   top: 16px;
   right: 16px;
+  transform: translateY(-8px);
+}
+
+.hero-photo-wrap:hover .hero-badge-top {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .hero-badge-bottom {
   bottom: 16px;
   left: 16px;
+  transform: translateY(8px);
+}
+
+.hero-photo-wrap:hover .hero-badge-bottom {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ── text side ─────────────────────────────────────────── */
