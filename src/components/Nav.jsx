@@ -27,21 +27,25 @@ export default function Nav() {
   return (
     <>
       <nav className="nav">
+
+
         <motion.div
-          className="nav-inner"
-          animate={{
-            maxWidth: scrolled ? 760 : 1320,
-            marginTop: scrolled ? 14 : 0,
-            height: scrolled ? 56 : 64,
-            borderRadius: scrolled ? 999 : 0,
-          }}
-          transition={{ type: 'spring', stiffness: 260, damping: 28 }}
-          style={{
-            background: scrolled ? 'rgba(20, 27, 43, 0.85)' : 'rgba(14, 20, 32, 0.85)',
-            border: scrolled ? '1px solid rgba(184, 155, 90, 0.35)' : '1px solid transparent',
-            boxShadow: scrolled ? '0 10px 32px rgba(0, 0, 0, 0.35)' : 'none',
-          }}
-        >
+        className="nav-inner"
+        animate={{
+          maxWidth: scrolled ? 760 : 2200,
+          marginTop: scrolled ? 14 : 0,
+          height: scrolled ? 56 : 68,
+          borderRadius: scrolled ? 999 : 0,
+        }}
+        transition={{ type: 'spring', stiffness: 260, damping: 28 }}
+        style={{
+          background: scrolled ? 'rgba(20, 20, 20, 0.9)' : 'rgba(10, 10, 10, 0.92)',
+          border: scrolled ? '1px solid rgba(34, 211, 238, 0.3)' : '1px solid transparent',
+          borderBottom: scrolled ? '1px solid rgba(34, 211, 238, 0.3)' : '1px solid rgba(255, 255, 255, 0.08)',
+          boxShadow: scrolled ? '0 10px 32px rgba(0, 0, 0, 0.5)' : 'none',
+        }}
+      >
+
           <div className="nav-left">
 
             <button
