@@ -377,21 +377,23 @@ h3 {
 }
 
 .hero-grid-v2 {
-  grid-template-columns: 1fr 1.05fr;
-  gap: 64px;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 56px;
+  align-items: center;
 }
 
 /* ── photo card ────────────────────────────────────────── */
 .hero-photo-wrap {
   position: relative;
   width: 100%;
-  max-width: 480px;
-  margin: 0 auto;
+  max-width: 400px;
+  margin: 40px auto 0;
 }
 
 .hero-photo-frame {
   position: relative;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 5;
+  max-height: 480px;
   border-radius: 16px;
   overflow: hidden;
   border: none;
@@ -464,14 +466,16 @@ h3 {
   color: var(--steel);
 }
 
+
+
 .hero-badge-top {
-  top: -16px;
-  right: -14px;
+  top: 16px;
+  right: 16px;
 }
 
 .hero-badge-bottom {
-  bottom: -16px;
-  left: -14px;
+  bottom: 16px;
+  left: 16px;
 }
 
 /* ── text side ─────────────────────────────────────────── */
