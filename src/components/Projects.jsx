@@ -1,172 +1,86 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { projects, achievements, archiveCategories, archiveProjects } from '../data/content'
-import { profile } from '../data/content'
 import useReveal from '../hooks/useReveal'
 import AnimatedStat from './AnimatedStat'
 
-const statusConfig = {
-  STABLE: { label: 'Completed', className: 'status-completed' },
-  'IN PROGRESS': { label: 'In Progress', className: 'status-progress' },
-  PLANNED: { label: 'Planned', className: 'status-planned' },
-}
-
 function GithubIcon() {
   return (
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
       <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.7 5.4-5.27 5.69.42.36.78 1.07.78 2.16v3.2c0 .3.21.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
     </svg>
   )
 }
 
-function CalendarIcon() {
+function GlobeIcon() {
   return (
-    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <rect x="3" y="5" width="18" height="16" rx="2" />
-      <path d="M16 3v4M8 3v4M3 10h18" />
+    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18M12 3c2.5 2.7 3.8 6 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-6-3.8-9s1.3-6.3 3.8-9Z" />
     </svg>
   )
 }
 
-function ProjectCard({ project, index }) {
-  const [imgIndex, setImgIndex] = useState(0)
-  const [paused, setPaused] = useState(false)
-  const images = project.images || []
+function ProjectCard({ project, index, compact = false }) {
+  const image = project.images?.[0]
   const features = project.features || []
-  const trackRef = useRef(null)
-  const status = statusConfig[project.status] || statusConfig.STABLE
-
-  function scrollToIndex(i) {
-    setImgIndex(i)
-    if (trackRef.current) {
-      trackRef.current.scrollTo({ left: trackRef.current.clientWidth * i, behavior: 'smooth' })
-    }
-  }
-
-  useEffect(() => {
-    if (images.length <= 1 || paused) return
-    const timer = setInterval(() => {
-      setImgIndex((prev) => {
-        const next = prev === images.length - 1 ? 0 : prev + 1
-        if (trackRef.current) {
-          trackRef.current.scrollTo({ left: trackRef.current.clientWidth * next, behavior: 'smooth' })
-        }
-        return next
-      })
-    }, 3500)
-    return () => clearInterval(timer)
-  }, [images.length, paused])
-
- function prevImg(e) {
-    e.stopPropagation()
-    setPaused(true)
-    scrollToIndex(imgIndex === 0 ? images.length - 1 : imgIndex - 1)
-  }
-
-  function nextImg(e) {
-    e.stopPropagation()
-    setPaused(true)
-    scrollToIndex(imgIndex === images.length - 1 ? 0 : imgIndex + 1)
-  }
-
-  function handleScroll() {
-    if (!trackRef.current) return
-    const i = Math.round(trackRef.current.scrollLeft / trackRef.current.clientWidth)
-    setImgIndex(i)
-  }
 
   return (
     <motion.div
-      className="project-card-v2"
-      initial={{ opacity: 0, y: 40 }}
+      className={`project-card-v3 ${compact ? 'project-card-compact' : ''}`}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
+      viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.5, delay: (index % 2) * 0.1, ease: 'easeOut' }}
     >
-      {images.length > 0 && (
-        <div
-          className="project-media"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
-          {project.featured && <span className="project-featured-pill">★ Featured</span>}
+      {image && (
+        <div className="project-cover-v3">
+          <img src={image} alt={project.title} className="project-cover-img" />
+          <div className="project-cover-overlay" />
+          <span className="project-cover-title">{project.title}</span>
+          <span className="project-hover-pill">
+            Hover <span>›</span>
+          </span>
 
-          <div className="project-carousel-track" ref={trackRef} onScroll={handleScroll}>
-            {images.map((src, i) => (
-              <img key={i} src={src} alt={`${project.title} screenshot ${i + 1}`} className="project-image" />
-            ))}
-          </div>
-          {images.length > 1 && (
-            <>
-              <button className="carousel-arrow carousel-arrow-left" onClick={prevImg} aria-label="Previous image">
-                ‹
-              </button>
-              <button className="carousel-arrow carousel-arrow-right" onClick={nextImg} aria-label="Next image">
-                ›
-              </button>
-              <div className="project-dots">
-                {images.map((_, i) => (
-                  <button
-                    key={i}
-                    className={`project-dot ${i === imgIndex ? 'active' : ''}`}
-                    onClick={() => scrollToIndex(i)}
-                    aria-label={`Show image ${i + 1}`}
-                  />
-                ))}
+          {features.length > 0 && (
+            <div className="project-features-panel">
+              <div className="features-panel-label">
+                <span>✓</span> Key Features
               </div>
-            </>
+              <ul className="features-panel-list">
+                {features.map((f, i) => (
+                  <li key={i}>
+                    <span className="features-panel-dot" /> {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
         </div>
       )}
 
-      <div className="project-body-v2">
-        <div className="project-meta-row">
-          <span className="project-category-v2">{'</>'} {project.category}</span>
-          <span className={`status-pill ${status.className}`}>{status.label}</span>
-        </div>
-
-        <h3 className="project-title-v2">{project.title}</h3>
-        <p className="project-summary-v2">{project.summary}</p>
-
+      <div className="project-footer-v3">
         {project.tags?.length > 0 && (
-          <div className="project-tags-row">
-            {project.tags.map((tag, i) => (
-              <span className={`project-tag-chip chip-${i % 5}`} key={tag}>
+          <div className="project-tags-row-v3">
+            {project.tags.map((tag) => (
+              <span className="project-tag-pill-v3" key={tag}>
                 {tag}
               </span>
             ))}
           </div>
         )}
 
-        {features.length > 0 && (
-          <div className="project-features-v2">
-            <span className="features-label">Key Features</span>
-            <ul>
-              {features.map((f, i) => (
-                <li key={i}>
-                  <span className="feature-dot" /> {f}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        <div className="project-footer-v2">
-          <span className="project-period">
-            <CalendarIcon /> {project.period || ''}
-          </span>
-          <div className="project-footer-links">
-            {project.codeUrl && (
-              <a href={project.codeUrl} target="_blank" rel="noreferrer" className="project-icon-link" aria-label="Source code">
-                <GithubIcon />
-              </a>
-            )}
-            {project.liveUrl && (
-              <a href={project.liveUrl} target="_blank" rel="noreferrer" className="live-demo-pill">
-                Live Demo ↗
-              </a>
-            )}
-          </div>
+        <div className="project-links-row-v3">
+          {project.codeUrl && (
+            <a href={project.codeUrl} target="_blank" rel="noreferrer" className="project-link-btn-v3">
+              <GithubIcon /> GitHub
+            </a>
+          )}
+          {project.liveUrl && (
+            <a href={project.liveUrl} target="_blank" rel="noreferrer" className="project-link-btn-v3">
+              <GlobeIcon /> Live
+            </a>
+          )}
         </div>
       </div>
     </motion.div>
@@ -177,7 +91,6 @@ export default function Projects() {
   const [ref, visible] = useReveal()
   const [showArchive, setShowArchive] = useState(false)
   const [activeCategory, setActiveCategory] = useState(archiveCategories[0])
-  const github = profile.social.find((s) => s.label === 'GitHub')
 
   return (
     <section
@@ -186,21 +99,14 @@ export default function Projects() {
       className={`section section-dark reveal ${visible ? 'reveal-visible' : ''}`}
     >
       <div className="container">
-        <div className="section-head projects-head-row">
-          <div>
-            <span className="eyebrow">Portfolio &amp; Work</span>
-            <h2 className="section-title" style={{ marginTop: '12px' }}>
-              Featured Projects
-            </h2>
-          </div>
-          {github && (
-            <a href={github.url} target="_blank" rel="noreferrer" className="view-github-pill">
-              View all on GitHub ↗
-            </a>
-          )}
+        <div className="section-head">
+          <span className="eyebrow">Projects</span>
+          <h2 className="section-title" style={{ marginTop: '12px' }}>
+            Selected work
+          </h2>
         </div>
 
-        <div className="projects-grid-v2">
+        <div className="projects-grid-v3">
           {projects.map((project, i) => (
             <ProjectCard project={project} index={i} key={project.title} />
           ))}
@@ -226,25 +132,11 @@ export default function Projects() {
                 </button>
               ))}
             </div>
-            <div className="projects-grid">
+            <div className="projects-grid-v3 projects-grid-compact">
               {archiveProjects
                 .filter((p) => p.category === activeCategory)
-                .map((project) => (
-                  <div className="blueprint-card project-card" key={project.title}>
-                    <h3>{project.title}</h3>
-                    <p>{project.summary}</p>
-                    <div className="project-links">
-                      <a href={project.liveUrl}>View live →</a>
-                      <a href={project.codeUrl}>Source code →</a>
-                    </div>
-                    <div className="skill-tags">
-                      {project.tags.map((tag) => (
-                        <span className="skill-tag" key={tag}>
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                .map((project, i) => (
+                  <ProjectCard project={project} index={i} key={project.title} compact />
                 ))}
             </div>
           </div>
@@ -273,4 +165,4 @@ export default function Projects() {
       </div>
     </section>
   )
-}  
+}

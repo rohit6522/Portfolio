@@ -1428,6 +1428,223 @@ h3 {
   color: var(--brass-bright);
 }
 
+/* ── projects v3 (hover-reveal features) ──────────────── */
+.projects-grid-v3 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.projects-grid-compact {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.project-card-v3 {
+  background: var(--ink-2);
+  border: 1px solid rgba(34, 211, 238, 0.15);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card-v3:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45);
+}
+
+.project-cover-v3 {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.project-card-compact .project-cover-v3 {
+  aspect-ratio: 16 / 11;
+}
+
+.project-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.project-card-v3:hover .project-cover-img {
+  transform: scale(1.06);
+}
+
+.project-cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.05) 60%);
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+.project-cover-title {
+  position: absolute;
+  bottom: 16px;
+  left: 20px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 24px;
+  color: #ffffff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+.project-card-compact .project-cover-title {
+  font-size: 18px;
+  bottom: 12px;
+  left: 14px;
+}
+
+.project-hover-pill {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+.project-card-v3:hover .project-cover-overlay,
+.project-card-v3:hover .project-cover-title,
+.project-card-v3:hover .project-hover-pill {
+  opacity: 0;
+}
+
+.project-features-panel {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.97);
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-card-v3:hover .project-features-panel {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.features-panel-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--brass-bright);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+.features-panel-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.features-panel-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--chalk);
+  font-size: 14px;
+}
+
+.project-card-compact .features-panel-list li {
+  font-size: 12.5px;
+}
+
+.features-panel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brass-bright);
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.project-footer-v3 {
+  padding: 20px 22px 22px;
+}
+
+.project-card-compact .project-footer-v3 {
+  padding: 14px 16px 16px;
+}
+
+.project-tags-row-v3 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.project-tag-pill-v3 {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  color: var(--chalk);
+}
+
+.project-card-compact .project-tag-pill-v3 {
+  font-size: 10.5px;
+  padding: 5px 11px;
+}
+
+.project-links-row-v3 {
+  display: flex;
+  gap: 12px;
+}
+
+.project-link-btn-v3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  color: var(--chalk);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.project-link-btn-v3:hover {
+  border-color: var(--brass-bright);
+  color: var(--brass-bright);
+}
+
+@media (max-width: 900px) {
+  .projects-grid-v3,
+  .projects-grid-compact {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ── archive ───────────────────────────────────────────── */
 .archive-toggle-wrap {
   display: flex;
