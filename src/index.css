@@ -341,7 +341,7 @@ h3 {
   flex-direction: column;
   gap: 4px;
   background: rgba(14, 20, 32, 0.97);
-  border-bottom: 1px solid rgba(184, 155, 90, 0.25);
+  border-bottom: 1px solid rgba(34, 211, 238, 0.25);
 }
 
 .mobile-menu a {
@@ -350,7 +350,7 @@ h3 {
   font-family: var(--font-mono);
   font-size: 15px;
   color: var(--chalk);
-  border-bottom: 1px solid rgba(184, 155, 90, 0.12);
+  border-bottom: 1px solid rgba(34, 211, 238, 0.12);
 }
 
 .mobile-menu a:hover {
@@ -405,7 +405,7 @@ h3 {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(212, 166, 86, 0.35), transparent 70%);
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%),rgba(34, 211, 238, 0.35), transparent 70%);
   opacity: 0;
   transition: opacity 0.25s ease;
   pointer-events: none;
@@ -431,14 +431,14 @@ h3 {
   height: 8px;
   border-radius: 50%;
   background: var(--brass-bright);
-  box-shadow: 0 0 0 0 rgba(212, 166, 86, 0.6);
+  box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.6);
   animation: dotPulse 2s ease-out infinite;
 }
 
 @keyframes dotPulse {
-  0% { box-shadow: 0 0 0 0 rgba(212, 166, 86, 0.5); }
-  70% { box-shadow: 0 0 0 10px rgba(212, 166, 86, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(212, 166, 86, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.5); }
+  70% { box-shadow: 0 0 0 10px rgba(34, 211, 238, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0); }
 }
 
 .hero-badge {
@@ -449,7 +449,7 @@ h3 {
   font-family: var(--font-mono);
   font-size: 12px;
   background: rgba(20, 27, 43, 0.92);
-  border: 1px solid rgba(184, 155, 90, 0.4);
+  border: 1px solid rgba(34, 211, 238, 0.4);
   color: var(--brass-bright);
   padding: 8px 14px;
   border-radius: 999px;
@@ -496,7 +496,7 @@ h3 {
   position: absolute;
   inset: 0;
   color: var(--brass-bright);
-  text-shadow: 0 0 20px rgba(212, 166, 86, 0.9);
+  text-shadow: 0 0 20px rgba(34, 211, 238, 0.9);
   -webkit-mask-image: radial-gradient(160px circle at var(--mx, 50%) var(--my, 50%), black, transparent 70%);
   mask-image: radial-gradient(160px circle at var(--mx, 50%) var(--my, 50%), black, transparent 70%);
   pointer-events: none;
@@ -625,7 +625,7 @@ h3 {
   align-items: center;
   gap: 6px;
   background: var(--ink-2);
-  border: 1px solid rgba(184, 155, 90, 0.25);
+  border: 1px solid rgba(34, 211, 238, 0.25);
   border-radius: 999px;
   padding: 6px;
 }
@@ -715,7 +715,7 @@ h3 {
 /* ── corner-bracket signature ─────────────────────────── */
 .blueprint-card {
   position: relative;
-  border: 1px solid rgba(184, 155, 90, 0.35);
+  border: 1px solid rgba(34, 211, 238, 0.35);
   padding: 28px;
 }
 
@@ -795,7 +795,7 @@ h3 {
 .skill-card {
   position: relative;
   padding: 22px;
-  border: 1px solid rgba(184, 155, 90, 0.25);
+  border: 1px solid rgba(34, 211, 238, 0.25);
   overflow: hidden;
 }
 
@@ -874,7 +874,7 @@ h3 {
 .view-github-pill {
   font-family: var(--font-mono);
   font-size: 12.5px;
-  border: 1px solid rgba(184, 155, 90, 0.4);
+  border: 1px solid rgba(34, 211, 238, 0.4);
   color: var(--chalk);
   padding: 10px 18px;
   border-radius: 999px;
@@ -896,7 +896,7 @@ h3 {
 
 .project-card-v2 {
   background: var(--ink-2);
-  border: 1px solid rgba(184, 155, 90, 0.2);
+  border: 1px solid rgba(34, 211, 238, 0.2);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -917,7 +917,7 @@ h3 {
   top: 14px;
   left: 14px;
   z-index: 2;
-  background: rgba(212, 166, 86, 0.2);
+  background: rgba(34, 211, 238, 0.2);
   color: #e0b360;
   border: 1px solid rgba(224, 179, 96, 0.45);
   font-family: var(--font-mono);
@@ -958,8 +958,8 @@ h3 {
 
 
 .status-completed {
-  background: rgba(212, 166, 86, 0.16);
-  color: #d4a656;
+  background: rgba(34, 211, 238, 0.16);
+  color: #22d3ee;
 }
 
 .status-progress {
@@ -1001,9 +1001,9 @@ h3 {
 
 
 
-.chip-0 { background: rgba(212, 166, 86, 0.16); color: #d4a656; }
+.chip-0 { background: rgba(34, 211, 238, 0.16); color: #d4a656; }
 .chip-1 { background: rgba(201, 138, 75, 0.16); color: #c98a4b; }
-.chip-2 { background: rgba(184, 155, 90, 0.16); color: #b98b3d; }
+.chip-2 { background: rgba(34, 211, 238, 0.16); color: #0e7490; }
 .chip-3 { background: rgba(207, 154, 92, 0.16); color: #cf9a5c; }
 .chip-4 { background: rgba(224, 179, 96, 0.16); color: #e0b360; }
 
@@ -1052,7 +1052,7 @@ h3 {
 .project-footer-v2 {
   margin-top: auto;
   padding-top: 18px;
-  border-top: 1px solid rgba(184, 155, 90, 0.18);
+  border-top: 1px solid rgba(34, 211, 238, 0.18);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1111,9 +1111,11 @@ h3 {
 .card-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(180px circle at var(--mx, 50%) var(--my, 50%),
-      rgba(212, 166, 86, 0.18),
-      transparent 70%);
+  background: radial-gradient(
+    180px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(34, 211, 238, 0.16),
+    transparent 70%
+  );
   opacity: 0;
   transition: opacity 0.25s ease;
   pointer-events: none;
@@ -1236,7 +1238,7 @@ h3 {
   font-size: 11px;
   letter-spacing: 0.05em;
   color: var(--steel);
-  border: 1px solid rgba(184, 155, 90, 0.3);
+  border: 1px solid rgba(34, 211, 238, 0.3);
   padding: 4px 8px;
 }
 
@@ -1258,7 +1260,7 @@ h3 {
 
 .project-divider {
   height: 1px;
-  background: rgba(184, 155, 90, 0.3);
+  background: rgba(34, 211, 238, 0.3);
   margin: 4px 0 16px;
 }
 
@@ -1376,7 +1378,7 @@ h3 {
 
 .achievement-card {
   background: var(--ink-2);
-  border: 1px solid rgba(184, 155, 90, 0.3);
+  border: 1px solid rgba(34, 211, 238, 0.3);
   padding: 26px;
   display: flex;
   flex-direction: column;
@@ -1405,7 +1407,7 @@ h3 {
 
 .achievement-highlight {
   border-color: var(--brass-bright);
-  box-shadow: 0 0 0 1px rgba(212, 166, 86, 0.25);
+  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.25);
 }
 
 .achievement-highlight .achievement-stat {
@@ -1430,7 +1432,7 @@ h3 {
   display: flex;
   align-items: center;
   gap: 10px;
-  box-shadow: 4px 4px 0 rgba(184, 155, 90, 0.35);
+  box-shadow: 4px 4px 0 rgba(34, 211, 238, 0.35);
   transition: transform 0.15s ease;
 }
 
@@ -1455,7 +1457,7 @@ h3 {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   padding: 10px 16px;
-  border: 1px solid rgba(184, 155, 90, 0.4);
+  border: 1px solid rgba(34, 211, 238, 0.4);
   background: transparent;
   color: var(--steel);
 }
@@ -1529,7 +1531,7 @@ h3 {
 .tabs-bar {
   display: flex;
   flex-wrap: wrap;
-  border-bottom: 1px solid rgba(184, 155, 90, 0.3);
+  border-bottom: 1px solid rgba(34, 211, 238, 0.3);
   margin-bottom: 48px;
 }
 
@@ -1669,7 +1671,7 @@ h3 {
 .cert-shine {
   position: absolute;
   inset: 0;
-  background: linear-gradient(125deg, transparent 30%, rgba(212, 166, 86, 0.4), transparent 70%);
+  background: linear-gradient(125deg, transparent 30%, rgba(34, 211, 238, 0.35), transparent 70%);
   pointer-events: none;
   z-index: 2;
 }
@@ -1689,7 +1691,7 @@ h3 {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--brass-bright);
-  border: 1px solid rgba(184, 155, 90, 0.4);
+  border: 1px solid rgba(34, 211, 238, 0.4);
   padding: 4px 8px;
 }
 
@@ -1816,7 +1818,7 @@ h3 {
   align-items: center;
   justify-content: space-between;
   padding: 26px 4px;
-  border-bottom: 1px solid rgba(184, 155, 90, 0.25);
+  border-bottom: 1px solid rgba(34, 211, 238, 0.25);
   font-family: var(--font-display);
   font-size: 26px;
   font-weight: 700;
@@ -1849,7 +1851,7 @@ h3 {
 .schedule-form textarea {
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(184, 155, 90, 0.35);
+  border-bottom: 1px solid rgba(34, 211, 238, 0.35);
   color: var(--chalk);
   font-family: var(--font-body);
   font-size: 15px;
@@ -1894,7 +1896,7 @@ h3 {
 /* ── footer ────────────────────────────────────────────── */
 .footer {
   padding: 28px 0;
-  border-top: 1px solid rgba(184, 155, 90, 0.2);
+  border-top: 1px solid rgba(34, 211, 238, 0.2);
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--steel);
@@ -1977,7 +1979,7 @@ h3 {
 .loader-bar {
   width: 220px;
   height: 3px;
-  background: rgba(184, 155, 90, 0.2);
+  background: rgba(34, 211, 238, 0.2);
   overflow: hidden;
 }
 
