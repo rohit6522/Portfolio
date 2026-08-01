@@ -168,13 +168,12 @@ export default function Hero() {
           <p className="hero-tagline">{profile.bio}</p>
           <p className="hero-short-line">{profile.shortLine}</p>
 
-         <div className="hero-actions">
+        <div className="hero-actions-row">
             <MagneticLink className="btn btn-solid hero-resume-btn" href={profile.resumeUrl} download>
               {icons.Resume} Resume
             </MagneticLink>
-          </div>
 
-          <div className="hero-social">
+            <div className="hero-social">
             {profile.social
               .filter((s) => s.label === 'LinkedIn')
               .map((s) => (
@@ -207,13 +206,14 @@ export default function Hero() {
                   className="hero-social-link"
                   aria-label={s.label}
                 >
+
+
                   {icons[s.label] || s.label}
                   <span className="social-tooltip">{s.label}</span>
                 </a>
               ))}
+            </div>
           </div>
-
-
         </div>
       </div>
     </section>
