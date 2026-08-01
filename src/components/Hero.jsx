@@ -15,21 +15,19 @@ function SplitReveal({ text }) {
   const ref = useRef(null)
   const words = text.split(' ')
 
-  useEffect(() => {
+useEffect(() => {
     let ctx
     const raf = requestAnimationFrame(() => {
       ctx = gsap.context(() => {
         const letters = ref.current.querySelectorAll('.letter')
         gsap.killTweensOf(letters)
-        gsap.set(letters, { opacity: 0, y: 30, rotateX: -60 })
+        gsap.set(letters, { opacity: 0 })
         gsap.to(letters, {
           opacity: 1,
-          y: 0,
-          rotateX: 0,
-          duration: 0.7,
-          ease: 'back.out(1.6)',
-          stagger: 0.03,
-          delay: 0.1,
+          duration: 0.01,
+          ease: 'none',
+          stagger: 0.045,
+          delay: 0.2,
         })
       }, ref)
     })
