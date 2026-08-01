@@ -386,14 +386,13 @@ h3 {
 .hero-photo-wrap {
   position: relative;
   width: 100%;
-  max-width: 400px;
-  margin: 40px auto 0;
+  max-width: 460px;
+  margin: 0;
 }
 
 .hero-photo-frame {
   position: relative;
-  aspect-ratio: 4 / 5;
-  max-height: 480px;
+  aspect-ratio: 1 / 1;
   border-radius: 16px;
   overflow: hidden;
   border: none;
