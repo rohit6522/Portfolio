@@ -175,22 +175,45 @@ export default function Hero() {
           </div>
 
           <div className="hero-social">
-            {profile.social.map((s) => (
-              <a
-                key={s.label}
-                href={s.url}
-                target="_blank"
-                rel="noreferrer"
-                className="hero-social-link"
-                aria-label={s.label}
-              >
-                {icons[s.label] || s.label}
-              </a>
-            ))}
+            {profile.social
+              .filter((s) => s.label === 'LinkedIn')
+              .map((s) => (
+                <a
+                  key={s.label}
+                  href={s.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hero-social-link"
+                  aria-label={s.label}
+                >
+                  {icons[s.label]}
+                  <span className="social-tooltip">{s.label}</span>
+                </a>
+              ))}
+
             <a href={`mailto:${profile.email}`} className="hero-social-link" aria-label="Email">
               {icons.Email}
+              <span className="social-tooltip">Mail</span>
             </a>
+
+            {profile.social
+              .filter((s) => s.label !== 'LinkedIn')
+              .map((s) => (
+                <a
+                  key={s.label}
+                  href={s.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hero-social-link"
+                  aria-label={s.label}
+                >
+                  {icons[s.label] || s.label}
+                  <span className="social-tooltip">{s.label}</span>
+                </a>
+              ))}
           </div>
+
+
         </div>
       </div>
     </section>

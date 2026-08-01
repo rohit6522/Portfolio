@@ -625,6 +625,7 @@ h3 {
 }
 
 .hero-social-link {
+  position: relative;
   width: 40px;
   height: 40px;
   display: flex;
@@ -633,13 +634,37 @@ h3 {
   border: 1px solid rgba(184, 155, 90, 0.4);
   border-radius: 50%;
   color: var(--steel);
-  transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
 }
 
 .hero-social-link:hover {
-  color: var(--brass-bright);
+  color: var(--ink);
+  background: var(--brass-bright);
   border-color: var(--brass-bright);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+}
+
+.social-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.hero-social-link:hover .social-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .btn {
