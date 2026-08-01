@@ -168,13 +168,10 @@ export default function Hero() {
           <p className="hero-tagline">{profile.bio}</p>
           <p className="hero-short-line">{profile.shortLine}</p>
 
-          <div className="hero-actions">
+         <div className="hero-actions">
             <MagneticLink className="btn btn-solid hero-resume-btn" href={profile.resumeUrl} download>
               {icons.Resume} Resume
             </MagneticLink>
-            <a className="hero-view-projects" href="#projects">
-              View projects →
-            </a>
           </div>
 
           <div className="hero-social">

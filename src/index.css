@@ -8,7 +8,7 @@
   --steel: #8b8f96;
   --chalk: #e8e8e8;
 
-  --font-display: 'Space Grotesk', system-ui, sans-serif;
+--font-display: 'Poppins', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
@@ -391,9 +391,9 @@ h3 {
 .hero-photo-frame {
   position: relative;
   aspect-ratio: 4 / 5;
-  border-radius: 20px;
+  border-radius: 14px;
   overflow: hidden;
-  border: 1px solid rgba(184, 155, 90, 0.35);
+  border: 1px solid rgba(34, 211, 238, 0.3);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
