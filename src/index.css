@@ -1453,14 +1453,46 @@ h3 {
   box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45);
 }
 
-.project-cover-v3 {
+.project-flip-outer {
   position: relative;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 2 / 1;
+  perspective: 1200px;
+}
+
+.project-card-compact .project-flip-outer {
+  aspect-ratio: 3 / 2;
+}
+
+.project-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.project-card-v3:hover .project-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.project-flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
   overflow: hidden;
 }
 
-.project-card-compact .project-cover-v3 {
-  aspect-ratio: 16 / 11;
+.project-flip-front {
+  transform: rotateY(0deg);
+}
+
+.project-flip-back {
+  transform: rotateY(180deg);
+  background: rgba(10, 10, 10, 0.97);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .project-cover-img {
@@ -1468,11 +1500,6 @@ h3 {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease;
-}
-
-.project-card-v3:hover .project-cover-img {
-  transform: scale(1.06);
 }
 
 .project-cover-overlay {
@@ -1519,30 +1546,7 @@ h3 {
   transition: opacity 0.3s ease;
 }
 
-.project-card-v3:hover .project-cover-overlay,
-.project-card-v3:hover .project-cover-title,
-.project-card-v3:hover .project-hover-pill {
-  opacity: 0;
-}
 
-.project-features-panel {
-  position: absolute;
-  inset: 0;
-  background: rgba(10, 10, 10, 0.97);
-  padding: 24px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.project-card-v3:hover .project-features-panel {
-  opacity: 1;
-  pointer-events: auto;
-}
 
 .features-panel-label {
   display: flex;

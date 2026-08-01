@@ -34,16 +34,18 @@ function ProjectCard({ project, index, compact = false }) {
       transition={{ duration: 0.5, delay: (index % 2) * 0.1, ease: 'easeOut' }}
     >
       {image && (
-        <div className="project-cover-v3">
-          <img src={image} alt={project.title} className="project-cover-img" />
-          <div className="project-cover-overlay" />
-          <span className="project-cover-title">{project.title}</span>
-          <span className="project-hover-pill">
-            Hover <span>›</span>
-          </span>
+        <div className="project-flip-outer">
+          <div className="project-flip-inner">
+            <div className="project-flip-face project-flip-front">
+              <img src={image} alt={project.title} className="project-cover-img" />
+              <div className="project-cover-overlay" />
+              <span className="project-cover-title">{project.title}</span>
+              <span className="project-hover-pill">
+                Hover <span>›</span>
+              </span>
+            </div>
 
-          {features.length > 0 && (
-            <div className="project-features-panel">
+            <div className="project-flip-face project-flip-back">
               <div className="features-panel-label">
                 <span>✓</span> Key Features
               </div>
@@ -55,7 +57,7 @@ function ProjectCard({ project, index, compact = false }) {
                 ))}
               </ul>
             </div>
-          )}
+          </div>
         </div>
       )}
 
