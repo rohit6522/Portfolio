@@ -1,6 +1,7 @@
 import AnimatedBackground from './components/AnimatedBackground'
 import Loader from './components/Loader'
 import Nav from './components/Nav'
+import CustomCursor from './components/CustomCursor'
 import useSmoothScroll from './hooks/useSmoothScroll'
 
 import Hero from './components/Hero'
@@ -13,10 +14,10 @@ import Footer from './components/Footer'
 
 export default function App() {
   useSmoothScroll()
-
-  return (
+return (
     <>
       <Loader />
+      <CustomCursor />
       <AnimatedBackground />
       <Nav />
 
