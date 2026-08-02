@@ -5,22 +5,22 @@ import Nav from './components/Nav'
 import Hero from './components/Hero'
 
 import SkillsTabs from './components/SkillsTabs'
-
-
+import ContributionGraph from './components/ContributionGraph'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 export default function App() {
- return (
+  return (
     <>
       <Loader />
       <AnimatedBackground />
       <Nav />
 
       <Hero />
-      
+
       <SkillsTabs />
+      <ContributionGraph />
       <Projects />
 
       <Contact />

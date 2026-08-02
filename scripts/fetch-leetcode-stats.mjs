@@ -11,6 +11,7 @@ const query = `
           count
         }
       }
+      submissionCalendar
     }
   }
 `
@@ -26,7 +27,9 @@ async function main() {
   })
 
   const json = await res.json()
-  const stats = json?.data?.matchedUser?.submitStatsGlobal?.acSubmissionNum || []
+  const user = json?.data?.matchedUser
+  const stats = user?.submitStatsGlobal?.acSubmissionNum || []
+  const calendar = user?.submissionCalendar ? JSON.parse(user.submissionCalendar) : {}
 
   const total = stats.find((s) => s.difficulty === 'All')?.count ?? 0
   const easy = stats.find((s) => s.difficulty === 'Easy')?.count ?? 0
@@ -39,11 +42,12 @@ async function main() {
     easy,
     medium,
     hard,
+    calendar,
     updatedAt: new Date().toISOString(),
   }
 
   writeFileSync('public/leetcode-stats.json', JSON.stringify(output, null, 2))
-  console.log('Saved:', output)
+  console.log('Saved stats with', Object.keys(calendar).length, 'calendar entries')
 }
 
 main().catch((err) => {
