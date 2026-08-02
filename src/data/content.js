@@ -238,7 +238,7 @@ export const archiveProjects = [
   {
     title: 'ResumeAI — AI Resume Analyzer',
     summary: 'A full-stack SaaS platform that parses resumes (PDF/DOCX), generates AI-powered ATS scores, and matches resumes against job descriptions using Gemini AI. Built with JWT authentication, PDF report generation, and a fully responsive UI.',
-     images: ['/projects/fieldnote-1.jpg'],
+     images: ['/projects/Resume.jpg','/projects/Resume1.jpg','/projects/Resume2.jpg','/projects/Resume3.jpg'],
     category: 'Web Apps',
     tags: ['React', 'TypeScript', 'Spring Boot', 'PostgreSQL', 'Gemini AI'],
     liveUrl: 'https://resume-analyzer-frontend-6fx4.onrender.com',
