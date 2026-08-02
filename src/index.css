@@ -2495,6 +2495,11 @@ h3 {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1;
+  margin-right: 0.06em;
+}
+
+.loader-letter:last-child {
+  margin-right: 0;
 }
 
 .loader-type-cursor {
