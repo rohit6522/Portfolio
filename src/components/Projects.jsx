@@ -152,7 +152,7 @@ export default function Projects() {
           </div>
         )}
 
-        <div className="achievements-head">
+       <div id="achievements" className="achievements-head">
           <span className="achievements-eyebrow-line" />
           <span className="achievements-eyebrow">Merit &amp; Milestones</span>
         </div>
