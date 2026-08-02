@@ -27,6 +27,7 @@ function ProjectCard({ project, index, compact = false }) {
   const images = project.images || []
   const features = project.features || []
   const [imgIndex, setImgIndex] = useState(0)
+  const status = statusConfig[project.status] || statusConfig.STABLE
 
   useEffect(() => {
     if (images.length <= 1) return
@@ -57,11 +58,18 @@ function ProjectCard({ project, index, compact = false }) {
                   style={{ opacity: i === imgIndex ? 1 : 0 }}
                 />
               ))}
-              <div className="project-cover-overlay" />
+
+             <div className="project-cover-overlay" />
+              <div className="project-cover-meta-row">
+                {project.category && <span className="project-meta-pill">{project.category}</span>}
+                <span className={`project-meta-pill ${status.className}`}>{status.label}</span>
+              </div>
               <span className="project-cover-title">{project.title}</span>
+              {project.period && <span className="project-cover-period">{project.period}</span>}
               <span className="project-hover-pill">
                 Hover <span>›</span>
               </span>
+
               {images.length > 1 && (
                 <div className="project-cover-dots">
                   {images.map((_, i) => (
@@ -70,12 +78,15 @@ function ProjectCard({ project, index, compact = false }) {
                 </div>
               )}
             </div>
+{/* project-flip-face project-flip-back */}
 
-            <div className="project-flip-face project-flip-back">
+           <div className="project-flip-face project-flip-back">
+              {project.summary && <p className="features-panel-summary">{project.summary}</p>}
               <div className="features-panel-label">
                 <span>✓</span> Key Features
               </div>
               <ul className="features-panel-list">
+
                 {features.map((f, i) => (
                   <li key={i}>
                     <span className="features-panel-dot" /> {f}
