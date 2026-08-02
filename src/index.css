@@ -1531,7 +1531,7 @@ h3 {
   transform-style: preserve-3d;
 }
 
-.project-card-v3:hover .project-flip-inner {
+.project-flip-outer:hover .project-flip-inner {
   transform: rotateY(180deg);
 }
 
