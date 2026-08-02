@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { projects, achievements, archiveCategories, archiveProjects } from '../data/content'
 import useReveal from '../hooks/useReveal'
@@ -24,8 +24,17 @@ function GlobeIcon() {
 }
 
 function ProjectCard({ project, index, compact = false }) {
-  const image = project.images?.[0]
+  const images = project.images || []
   const features = project.features || []
+  const [imgIndex, setImgIndex] = useState(0)
+
+  useEffect(() => {
+    if (images.length <= 1) return
+    const timer = setInterval(() => {
+      setImgIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
+    }, 3500)
+    return () => clearInterval(timer)
+  }, [images.length])
 
   return (
     <motion.div
@@ -35,16 +44,31 @@ function ProjectCard({ project, index, compact = false }) {
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.5, delay: (index % 2) * 0.1, ease: 'easeOut' }}
     >
-      {image && (
+      {images.length > 0 && (
         <div className="project-flip-outer">
           <div className="project-flip-inner">
             <div className="project-flip-face project-flip-front">
-             <img src={image} alt={project.title} className="project-cover-img" loading="lazy" decoding="async" />
+              {images.map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt={project.title}
+                  className="project-cover-img"
+                  style={{ opacity: i === imgIndex ? 1 : 0 }}
+                />
+              ))}
               <div className="project-cover-overlay" />
               <span className="project-cover-title">{project.title}</span>
               <span className="project-hover-pill">
                 Hover <span>›</span>
               </span>
+              {images.length > 1 && (
+                <div className="project-cover-dots">
+                  {images.map((_, i) => (
+                    <span key={i} className={`project-cover-dot ${i === imgIndex ? 'active' : ''}`} />
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="project-flip-face project-flip-back">
