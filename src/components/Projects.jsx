@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { projects, achievements, archiveCategories, archiveProjects } from '../data/content'
 import useReveal from '../hooks/useReveal'
+import useLeetCodeStats from '../hooks/useLeetCodeStats'
 import AnimatedStat from './AnimatedStat'
 
 function GithubIcon() {
@@ -37,7 +38,7 @@ function ProjectCard({ project, index, compact = false }) {
         <div className="project-flip-outer">
           <div className="project-flip-inner">
             <div className="project-flip-face project-flip-front">
-              <img src={image} alt={project.title} className="project-cover-img" />
+             <img src={image} alt={project.title} className="project-cover-img" loading="lazy" decoding="async" />
               <div className="project-cover-overlay" />
               <span className="project-cover-title">{project.title}</span>
               <span className="project-hover-pill">
@@ -93,6 +94,13 @@ export default function Projects() {
   const [ref, visible] = useReveal()
   const [showArchive, setShowArchive] = useState(false)
   const [activeCategory, setActiveCategory] = useState(archiveCategories[0])
+  const leetcode = useLeetCodeStats()
+
+  const liveAchievements = achievements.map((a) =>
+    a.label === 'Coding Platforms' && leetcode?.total
+      ? { ...a, stat: `${leetcode.total}+ Solved` }
+      : a
+  )
 
   return (
     <section
@@ -150,8 +158,8 @@ export default function Projects() {
         </div>
         <h3 className="achievements-title">Key achievements.</h3>
 
-        <div className="achievements-grid">
-          {achievements.map((a) => (
+       <div className="achievements-grid">
+          {liveAchievements.map((a) => (
             <div
               className={`achievement-card ${a.highlight ? 'achievement-highlight' : ''}`}
               key={a.label}
