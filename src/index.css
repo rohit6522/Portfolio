@@ -2479,45 +2479,37 @@ h3 {
   text-align: center;
 }
 
-.loader-mark {
-  font-family: var(--font-mono);
-  font-size: 28px;
-  color: var(--brass-bright);
-  margin-bottom: 14px;
-  animation: loaderBlink 1s steps(2) infinite;
+.loader-big-name {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-@keyframes loaderBlink {
-  50% {
-    opacity: 0.3;
-  }
+.loader-letter {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(48px, 9vw, 110px);
+  color: var(--chalk);
+  background: linear-gradient(180deg, #f5f5f5 0%, #b8b8b8 50%, #e8e8e8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
 }
 
-.loader-text {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  color: var(--steel);
-  margin-bottom: 18px;
-}
-
-.loader-bar {
-  width: 220px;
-  height: 3px;
-  background: rgba(34, 211, 238, 0.2);
-  overflow: hidden;
-}
-
-.loader-bar-fill {
-  height: 100%;
-  width: 0%;
+.loader-type-cursor {
+  display: inline-block;
+  width: 3px;
+  height: clamp(48px, 8vw, 90px);
   background: var(--brass-bright);
-  animation: loaderFill 1.3s ease forwards;
+  margin-left: 8px;
+  animation: blinkCursor 0.9s steps(2) infinite;
 }
 
-@keyframes loaderFill {
-  to {
-    width: 100%;
+@media (prefers-reduced-motion: reduce) {
+  .loader-letter,
+  .loader-type-cursor {
+    animation: none;
   }
 }
 
