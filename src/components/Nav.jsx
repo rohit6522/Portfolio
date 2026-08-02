@@ -10,11 +10,15 @@ const links = [
   { href: '#contact', label: 'Contact' },
 ]
 
+const sectionIds = links.map((l) => l.href.replace('#', ''))
+
 export default function Nav() {
   const [showPhoto, setShowPhoto] = useState(false)
   const [hovered, setHovered] = useState(null)
   const [mobileOpen, setMobileOpen] = useState(false)
+
   const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('top')
 
   useEffect(() => {
     function onScroll() {
@@ -23,6 +27,26 @@ export default function Nav() {
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean)
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
+          }
+        })
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    )
+
+    sections.forEach((s) => observer.observe(s))
+    return () => observer.disconnect()
   }, [])
 
   return (
@@ -65,11 +89,13 @@ export default function Nav() {
             <span className="nav-divider" />
           </div>
 
-          <ul className="nav-links" onMouseLeave={() => setHovered(null)}>
-            {links.map((link) => (
+         <ul className="nav-links" onMouseLeave={() => setHovered(null)}>
+          {links.map((link) => {
+            const isActive = hovered === link.href || (!hovered && activeSection === link.href.replace('#', ''))
+            return (
               <li key={link.href} className="nav-link-item" onMouseEnter={() => setHovered(link.href)}>
                 <a href={link.href}>{link.label}</a>
-                {hovered === link.href && (
+                {isActive && (
                   <motion.span
                     className="nav-underline"
                     layoutId="nav-underline"
@@ -77,8 +103,12 @@ export default function Nav() {
                   />
                 )}
               </li>
-            ))}
-          </ul>
+            )
+          })}
+        </ul>
+
+
+
           <span className="nav-right-spacer" />
 
           <button
