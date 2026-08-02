@@ -180,32 +180,26 @@ export const projects = [
 },
 
 {
-  title: 'Smart Cart — Budget-Aware Shopping Platform',
-  category: 'Full-Stack Web Application',
-  period: 'Jul 2026 – Present',
-  featured: true,
-  status: 'LIVE',
+    title: 'Fitness Training Portal',
+    category: 'Web Application',
+    period: 'March – May 2026',
+    featured: true,
+    status: 'STABLE',
+   summary:
+      'A modern full-stack fitness platform that helps users plan workouts, monitor progress, follow personalized training schedules, and securely manage their accounts with authentication and real-time data.',
 
-  summary:
-    'A full-stack eCommerce platform that solves checkout anxiety by tracking a shopper\'s budget in real time as they add items to their cart, with dedicated dashboards for shoppers, admins, and delivery partners.',
+    features: [
+      'Personalized workout plan builder',
+      'Real-time progress & goal tracking',
+      'Secure auth with JWT & Firebase',
+      'Daily streak, calorie & water tracking',
+    ],
+    images: ['/projects/fitness.jpg','/projects/Fitness1.jpg','/projects/Fitness2.jpg'],
+    tags: ['React', 'Node.js', 'Express.js', 'MongoDB','Tailwind CSS','JWT','Firebase'],
 
-  features: [
-    'Real-time budget tracker with live progress bar and over-budget alerts',
-    'Role-based authentication (Shopper / Admin / Delivery Partner) using JWT',
-    'Razorpay payment integration with Cash-on-Delivery fallback',
-    'Full order lifecycle: cart → checkout → delivery assignment → tracking',
-    'Admin panel for product & order management with delivery assignment',
-    'Automated order confirmation emails and downloadable invoices',
-  ],
-
-  images: ['/projects/smartCart.jpg','/projects/smartCart1.jpg','/projects/smartCart2.jpg','/projects/smartCart3.jpg','/projects/smartCart4.jpg'],
-
-  tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Spring Boot', 'MySQL', 'Razorpay'],
-
-  liveUrl: 'https://smartcart-frontend-g472.onrender.com/',
-  codeUrl: 'https://github.com/rohit6522/smart-cart-ecommerce',
-},
-
+   liveUrl: 'https://fitnessapp-frontend-xiht.onrender.com',
+    codeUrl: 'https://github.com/rohit6522/FitnessApp',
+  },
   {
     title: 'Signalboard',
     category: 'Web Application',
