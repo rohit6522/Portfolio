@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { profile } from '../data/content'
+import IconBadge, { CodeIcon } from './IconBadge'
 
 const currentYear = new Date().getFullYear()
 const years = [currentYear, currentYear - 1, currentYear - 2]
@@ -154,8 +155,10 @@ export default function ContributionGraph() {
   return (
     <section id="contributions" className="section section-dark">
       <div className="container">
-        <div className="contrib-head">
-          <span className="contrib-icon">📅</span>
+       <div className="contrib-head">
+          <IconBadge>
+            <CodeIcon />
+          </IconBadge>
           <h2 className="contrib-title">Contribution Graph</h2>
         </div>
 

@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion'
 import { skills, education, certifications, experience } from '../data/content'
+import IconBadge, { GraduationIcon } from './IconBadge'
 import useReveal from '../hooks/useReveal'
 import ScrambleText from './ScrambleText'
 
@@ -170,11 +171,20 @@ export default function SkillsTabs() {
 
               {active === 'education' && (
                 <div className="edu-timeline">
+                  <div className="section-head-row" style={{ marginBottom: '32px' }}>
+                    <IconBadge>
+                      <GraduationIcon />
+                    </IconBadge>
+                    <h3 className="section-title" style={{ margin: 0, fontSize: '26px' }}>
+                      Education
+                    </h3>
+                  </div>
                   {education.map((e, i) => (
                     <div className="edu-item-scramble" key={e.school}>
                       <span className="edu-node-diamond" />
                       <div className="edu-item-content">
                         <ScrambleText text={e.school} delay={i * 400} className="edu-scramble-title" />
+
                         <div className="edu-meta">
                           {e.period} — {e.degree}
                         </div>

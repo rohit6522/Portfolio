@@ -4,6 +4,7 @@ import { projects, achievements, archiveCategories, archiveProjects } from '../d
 import useReveal from '../hooks/useReveal'
 import useLeetCodeStats from '../hooks/useLeetCodeStats'
 import AnimatedStat from './AnimatedStat'
+import IconBadge, { FolderIcon, AwardIcon } from './IconBadge'
 
 function GithubIcon() {
   return (
@@ -109,11 +110,17 @@ export default function Projects() {
       className={`section section-dark reveal ${visible ? 'reveal-visible' : ''}`}
     >
       <div className="container">
-        <div className="section-head">
-          <span className="eyebrow">Projects</span>
-          <h2 className="section-title" style={{ marginTop: '12px' }}>
-            Selected work
-          </h2>
+
+       <div className="section-head-row">
+          <IconBadge>
+            <FolderIcon />
+          </IconBadge>
+          <div>
+            <span className="eyebrow">Projects</span>
+            <h2 className="section-title" style={{ marginTop: '4px' }}>
+              Personal project
+            </h2>
+          </div>
         </div>
 
         <div className="projects-grid-v3">
@@ -152,11 +159,17 @@ export default function Projects() {
           </div>
         )}
 
-       <div id="achievements" className="achievements-head">
-          <span className="achievements-eyebrow-line" />
-          <span className="achievements-eyebrow">Merit &amp; Milestones</span>
+      <div id="achievements" className="section-head-row" style={{ marginTop: '72px' }}>
+          <IconBadge>
+            <AwardIcon />
+          </IconBadge>
+          <div>
+            <span className="achievements-eyebrow">Merit &amp; Milestones</span>
+            <h3 className="achievements-title" style={{ marginTop: '4px', marginBottom: 0 }}>
+              Key achievements.
+            </h3>
+          </div>
         </div>
-        <h3 className="achievements-title">Key achievements.</h3>
 
        <div className="achievements-grid">
           {liveAchievements.map((a) => (
