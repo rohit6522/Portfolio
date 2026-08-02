@@ -1,6 +1,7 @@
 import AnimatedBackground from './components/AnimatedBackground'
 import Loader from './components/Loader'
 import Nav from './components/Nav'
+import useSmoothScroll from './hooks/useSmoothScroll'
 
 import Hero from './components/Hero'
 
@@ -11,6 +12,8 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 export default function App() {
+  useSmoothScroll()
+
   return (
     <>
       <Loader />
