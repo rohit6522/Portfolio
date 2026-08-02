@@ -4,6 +4,14 @@ import { projects, achievements, archiveCategories, archiveProjects } from '../d
 import useReveal from '../hooks/useReveal'
 import useLeetCodeStats from '../hooks/useLeetCodeStats'
 import AnimatedStat from './AnimatedStat'
+
+const statusConfig = {
+  STABLE: { label: 'Completed', className: 'status-completed' },
+  'IN PROGRESS': { label: 'In Progress', className: 'status-progress' },
+  PLANNED: { label: 'Planned', className: 'status-planned' },
+}
+
+
 import IconBadge, { FolderIcon, AwardIcon } from './IconBadge'
 
 function GithubIcon() {
