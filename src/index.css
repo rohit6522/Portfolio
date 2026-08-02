@@ -373,8 +373,8 @@ h3 {
 }
 
 .hero-grid-v2 {
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 56px;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 80px;
   align-items: center;
 }
 
@@ -382,7 +382,7 @@ h3 {
 .hero-photo-wrap {
   position: relative;
   width: 100%;
-  max-width: 460px;
+  max-width: 520px;
   margin: 0;
 }
 
@@ -606,7 +606,7 @@ h3 {
   font-size: 18px;
   line-height: 1.6;
   color: var(--steel);
-  max-width: 480px;
+  max-width: 640px;
   margin-bottom: 32px;
 }
 
