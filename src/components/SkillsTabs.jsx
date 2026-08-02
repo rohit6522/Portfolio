@@ -3,7 +3,8 @@ import { useState } from 'react'
 
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion'
 import { skills, education, certifications, experience } from '../data/content'
-import IconBadge, { GraduationIcon } from './IconBadge'
+import IconBadge, { GraduationIcon, BriefcaseIcon, AwardIcon, CodeIcon } from './IconBadge'
+
 import useReveal from '../hooks/useReveal'
 import ScrambleText from './ScrambleText'
 
@@ -60,11 +61,18 @@ function TiltCertCard({ c, index }) {
   )
 }
 
+const tabIcons = {
+  skills: <CodeIcon />,
+  education: <GraduationIcon />,
+  experience: <BriefcaseIcon />,
+  certifications: <AwardIcon />,
+}
+
 const tabs = [
-  { key: 'skills', label: 'Skills', icon: '</>' },
-  { key: 'education', label: 'Education', icon: '📘' },
-  { key: 'experience', label: 'Experience', icon: '💼' },
-  { key: 'certifications', label: 'Certifications', icon: '🏆' },
+  { key: 'skills', label: 'Skills' },
+  { key: 'education', label: 'Education' },
+  { key: 'experience', label: 'Experience' },
+  { key: 'certifications', label: 'Certifications' },
 ]
 
 function handleCardGlow(e) {
@@ -139,15 +147,17 @@ export default function SkillsTabs() {
       <div className="container">
         <div className="tabs-bar">
 
-          {tabs.map((tab) => (
+         {tabs.map((tab) => (
             <button
               key={tab.key}
               className={`tab-btn ${active === tab.key ? 'active' : ''}`}
               onClick={() => selectTab(tab.key)}
             >
-              <span>{tab.icon}</span> {tab.label}
+              <IconBadge size={24}>{tabIcons[tab.key]}</IconBadge> {tab.label}
             </button>
           ))}
+
+
         </div>
 
         <div className="tab-panel-clip">
