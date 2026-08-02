@@ -47,15 +47,38 @@ function buildYearGrid(dateCountMap, year, thresholds) {
     }
   })
 
-  return { weeks, monthLabels }
+  return { weeks, monthLabels, weekCount: weeks.length }
+}
+
+function computeClientStreak(dateCountMap) {
+  let streak = 0
+  const cursor = new Date()
+  cursor.setUTCHours(0, 0, 0, 0)
+
+  let key = cursor.toISOString().slice(0, 10)
+  if (!dateCountMap[key]) {
+    cursor.setUTCDate(cursor.getUTCDate() - 1)
+  }
+
+  while (true) {
+    key = cursor.toISOString().slice(0, 10)
+    if (dateCountMap[key] > 0) {
+      streak++
+      cursor.setUTCDate(cursor.getUTCDate() - 1)
+    } else {
+      break
+    }
+  }
+  return streak
 }
 
 export default function ContributionGraph() {
   const [platform, setPlatform] = useState('github')
   const [year, setYear] = useState(currentYear)
   const [loading, setLoading] = useState(true)
-  const [grid, setGrid] = useState({ weeks: [], monthLabels: [] })
+  const [grid, setGrid] = useState({ weeks: [], monthLabels: [], weekCount: 52 })
   const [total, setTotal] = useState(0)
+  const [statCards, setStatCards] = useState(null)
 
   useEffect(() => {
     let cancelled = false
@@ -73,11 +96,18 @@ export default function ContributionGraph() {
         })
         if (cancelled) return
         setGrid(buildYearGrid(map, year, [3, 6, 10]))
-        setTotal(data.total?.[year] ?? Object.values(map).reduce((a, b) => a + b, 0))
+        const yearTotal = data.total?.[year] ?? Object.values(map).reduce((a, b) => a + b, 0)
+        setTotal(yearTotal)
+        setStatCards({
+          streak: computeClientStreak(map),
+          middle: { label: 'total contributions', value: yearTotal },
+          third: { label: 'active days', value: Object.values(map).filter((v) => v > 0).length },
+        })
       } catch {
         if (!cancelled) {
-          setGrid({ weeks: [], monthLabels: [] })
+          setGrid({ weeks: [], monthLabels: [], weekCount: 52 })
           setTotal(0)
+          setStatCards(null)
         }
       }
     }
@@ -99,10 +129,16 @@ export default function ContributionGraph() {
         if (cancelled) return
         setGrid(buildYearGrid(map, year, [1, 2, 4]))
         setTotal(yearTotal)
+        setStatCards({
+          streak: data.streak ?? computeClientStreak(map),
+          middle: { label: 'global rank', value: data.ranking ? `#${data.ranking.toLocaleString()}` : '—' },
+          third: { label: 'questions solved', value: data.total ?? 0 },
+        })
       } catch {
         if (!cancelled) {
-          setGrid({ weeks: [], monthLabels: [] })
+          setGrid({ weeks: [], monthLabels: [], weekCount: 52 })
           setTotal(0)
+          setStatCards(null)
         }
       }
     }
@@ -144,35 +180,33 @@ export default function ContributionGraph() {
               <div className="contrib-loading">Loading {platform} activity…</div>
             ) : (
               <>
-                <div className="contrib-scroll">
-                  <div className="contrib-months">
-                    {grid.monthLabels.map((m) => (
-                      <span key={m.index} style={{ gridColumnStart: m.index + 1 }}>
-                        {m.label}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="contrib-weeks">
-                    {grid.weeks.map((week, wi) => (
-                      <div className="contrib-week-col" key={wi}>
-                        {week.map((day, di) =>
-                          day ? (
-                            <span
-                              key={di}
-                              className={`contrib-cell level-${day.level}`}
-                              title={`${day.count} on ${day.date}`}
-                            />
-                          ) : (
-                            <span key={di} className="contrib-cell contrib-cell-empty" />
-                          )
-                        )}
-                      </div>
-                    ))}
-                  </div>
+                <div className="contrib-months" style={{ gridTemplateColumns: `repeat(${grid.weekCount}, 1fr)` }}>
+                  {grid.monthLabels.map((m) => (
+                    <span key={m.index} style={{ gridColumnStart: m.index + 1 }}>
+                      {m.label}
+                    </span>
+                  ))}
+                </div>
+                <div className="contrib-weeks" style={{ gridTemplateColumns: `repeat(${grid.weekCount}, 1fr)` }}>
+                  {grid.weeks.map((week, wi) => (
+                    <div className="contrib-week-col" key={wi}>
+                      {week.map((day, di) =>
+                        day ? (
+                          <span
+                            key={di}
+                            className={`contrib-cell level-${day.level}`}
+                            title={`${day.count} on ${day.date}`}
+                          />
+                        ) : (
+                          <span key={di} className="contrib-cell contrib-cell-empty" />
+                        )
+                      )}
+                    </div>
+                  ))}
                 </div>
 
                 <div className="contrib-footer">
-                  <span>{total} contributions in {year}</span>
+                  <span>{total} {platform === 'github' ? 'contributions' : 'submissions'} in {year}</span>
                   <span className="contrib-legend">
                     Less
                     <span className="contrib-cell level-0" />
@@ -199,6 +233,32 @@ export default function ContributionGraph() {
             ))}
           </div>
         </div>
+
+        {!loading && statCards && (
+          <div className="contrib-stats-grid">
+            <div className="contrib-stat-card">
+              <span className="contrib-stat-icon">🔥</span>
+              <div>
+                <span className="contrib-stat-value">{statCards.streak}</span>
+                <span className="contrib-stat-label">day streak</span>
+              </div>
+            </div>
+            <div className="contrib-stat-card">
+              <span className="contrib-stat-icon">🏅</span>
+              <div>
+                <span className="contrib-stat-value">{statCards.middle.value}</span>
+                <span className="contrib-stat-label">{statCards.middle.label}</span>
+              </div>
+            </div>
+            <div className="contrib-stat-card">
+              <span className="contrib-stat-icon">✓</span>
+              <div>
+                <span className="contrib-stat-value">{statCards.third.value}</span>
+                <span className="contrib-stat-label">{statCards.third.label}</span>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )

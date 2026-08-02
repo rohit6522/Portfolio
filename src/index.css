@@ -2235,37 +2235,29 @@ h3 {
   text-align: center;
 }
 
-.contrib-scroll {
-  overflow-x: auto;
-}
-
 .contrib-months {
   display: grid;
-  grid-template-columns: repeat(53, 13px);
+  gap: 3px;
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--steel);
   margin-bottom: 8px;
-  min-width: fit-content;
 }
 
 .contrib-weeks {
   display: grid;
-  grid-auto-flow: column;
-  grid-template-rows: repeat(7, 11px);
   gap: 3px;
-  min-width: fit-content;
 }
 
 .contrib-week-col {
   display: grid;
-  grid-template-rows: repeat(7, 11px);
+  grid-template-rows: repeat(7, 1fr);
   gap: 3px;
 }
 
 .contrib-cell {
-  width: 11px;
-  height: 11px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   border-radius: 2px;
   display: inline-block;
 }
@@ -2319,6 +2311,49 @@ h3 {
 .contrib-year-btn.active {
   border-color: var(--brass-bright);
   color: var(--brass-bright);
+}
+
+.contrib-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.contrib-stat-card {
+  background: var(--ink-2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 24px 26px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.contrib-stat-icon {
+  font-size: 26px;
+}
+
+.contrib-stat-value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--chalk);
+}
+
+.contrib-stat-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--steel);
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .contrib-stats-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
