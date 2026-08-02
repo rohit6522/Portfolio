@@ -236,13 +236,14 @@ export const archiveCategories = ['Web Apps', 'Mobile Apps']
 
 export const archiveProjects = [
   {
-    title: 'MicroStack',
-    summary: 'A fully deployed microservices architecture with auth, file upload, and notifications.',
+    title: 'ResumeAI — AI Resume Analyzer',
+    summary: 'A full-stack SaaS platform that parses resumes (PDF/DOCX), generates AI-powered ATS scores, and matches resumes against job descriptions using Gemini AI. Built with JWT authentication, PDF report generation, and a fully responsive UI.',
+     images: ['/projects/fieldnote-1.jpg'],
     category: 'Web Apps',
-    tags: ['Node.js', 'Docker', 'RabbitMQ'],
-    liveUrl: '#',
-    codeUrl: '#',
-  },
+    tags: ['React', 'TypeScript', 'Spring Boot', 'PostgreSQL', 'Gemini AI'],
+    liveUrl: 'https://resume-analyzer-frontend-6fx4.onrender.com',
+    codeUrl: 'https://github.com/rohit6522/resume-analyzer-frontend',
+},
   {
     title: 'VCS-X',
     summary: 'An API-first version control system — Git for the API era.',
