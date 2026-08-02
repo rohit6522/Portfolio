@@ -38,14 +38,25 @@ function computeStreak(calendar) {
 }
 
 async function main() {
+
   const res = await fetch('https://leetcode.com/graphql', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Referer: `https://leetcode.com/${username}/`,
+      'User-Agent':
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+      Origin: 'https://leetcode.com',
     },
     body: JSON.stringify({ query, variables: { username } }),
   })
+
+  if (!res.ok) {
+    console.error('LeetCode API responded with status:', res.status)
+    const text = await res.text()
+    console.error('Response body:', text.slice(0, 500))
+    process.exit(1)
+  }
 
   const json = await res.json()
   const user = json?.data?.matchedUser
