@@ -232,7 +232,7 @@ export const archiveProjects = [
   {
     title: 'ResumeAI — AI Resume Analyzer',
     summary: 'A full-stack SaaS platform that parses resumes (PDF/DOCX), generates AI-powered ATS scores, and matches resumes against job descriptions using Gemini AI. Built with JWT authentication, PDF report generation, and a fully responsive UI.',
-     images: ['/projects/Resume.jpg','/projects/Resume1.jpg','/projects/Resume2.jpg','/projects/Resume3.jpg'],
+     images: ['/projects/AiResume/Resume.jpg','/projects/AiResume/Resume1.jpg','/projects/AiResume/Resume2.jpg','/projects/AiResume/Resume3.jpg'],
     category: 'Web Apps',
     period: 'Jul 2026 – Present',
     tags: ['React', 'TypeScript', 'Spring Boot', 'PostgreSQL', 'Gemini AI'],
@@ -258,10 +258,10 @@ export const archiveProjects = [
   title: 'AI Interview Prep Platform',
   summary: 'A full-stack platform that generates AI-powered interview questions, evaluates spoken or typed answers in real time, and tracks score progress across sessions.',
   images: [
-    '/projects/AIInterviewPrep.jpg',
-    '/projects/AIInterviewPrep1.jpg',
-    '/projects/AIInterviewPrep2.jpg',
-    '/projects/AIInterviewPrep3.jpg',
+    '/projects/AiInterview/AIInterviewPrep.jpg',
+    '/projects/AiInterview/AIInterviewPrep1.jpg',
+    '/projects/AiInterview/AIInterviewPrep2.jpg',
+    '/projects/AiInterview/AIInterviewPrep3.jpg',
   ],
   category: 'Web Apps',
   period: 'Jul 2026 – Present',
