@@ -67,13 +67,8 @@ function ProjectCard({ project, index, compact = false }) {
                 />
               ))}
 
-             <div className="project-cover-overlay" />
-              <div className="project-cover-meta-row">
-                {project.category && <span className="project-meta-pill">{project.category}</span>}
-                <span className={`project-meta-pill ${status.className}`}>{status.label}</span>
-              </div>
+              <div className="project-cover-overlay" />
               <span className="project-cover-title">{project.title}</span>
-              {project.period && <span className="project-cover-period">{project.period}</span>}
               <span className="project-hover-pill">
                 Hover <span>›</span>
               </span>
@@ -86,9 +81,9 @@ function ProjectCard({ project, index, compact = false }) {
                 </div>
               )}
             </div>
-{/* project-flip-face project-flip-back */}
+            {/* project-flip-face project-flip-back */}
 
-           <div className="project-flip-face project-flip-back">
+            <div className="project-flip-face project-flip-back">
               {project.summary && <p className="features-panel-summary">{project.summary}</p>}
               <div className="features-panel-label">
                 <span>✓</span> Key Features
@@ -107,7 +102,14 @@ function ProjectCard({ project, index, compact = false }) {
       )}
 
       <div className="project-footer-v3">
+        <div className="project-meta-row-v3">
+          {project.category && <span className="project-meta-pill">{project.category}</span>}
+          <span className={`project-meta-pill ${status.className}`}>{status.label}</span>
+          {project.period && <span className="project-meta-period">{project.period}</span>}
+        </div>
+
         {project.tags?.length > 0 && (
+
           <div className="project-tags-row-v3">
             {project.tags.map((tag) => (
               <span className="project-tag-pill-v3" key={tag}>
@@ -154,7 +156,7 @@ export default function Projects() {
     >
       <div className="container">
 
-       <div className="section-head-row">
+        <div className="section-head-row">
           <IconBadge>
             <FolderIcon />
           </IconBadge>
@@ -202,7 +204,7 @@ export default function Projects() {
           </div>
         )}
 
-      <div id="achievements" className="section-head-row" style={{ marginTop: '72px' }}>
+        <div id="achievements" className="section-head-row" style={{ marginTop: '72px' }}>
           <IconBadge>
             <AwardIcon />
           </IconBadge>
@@ -214,7 +216,7 @@ export default function Projects() {
           </div>
         </div>
 
-       <div className="achievements-grid">
+        <div className="achievements-grid">
           {liveAchievements.map((a) => (
             <div
               className={`achievement-card ${a.highlight ? 'achievement-highlight' : ''}`}
