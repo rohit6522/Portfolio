@@ -152,7 +152,7 @@ export const projects = [
     'Admin panel for product & order management with delivery assignment',
     'Automated order confirmation emails and downloadable invoices',
     ],
-     images: ['/projects/smartCart.jpg','/projects/smartCart1.jpg','/projects/smartCart2.jpg','/projects/smartCart3.jpg','/projects/smartCart4.jpg'],
+     images: ['/projects/Ecom/smartCart.jpg','/projects/Ecom/smartCart1.jpg','/projects/Ecom/smartCart2.jpg','/projects/Ecom/smartCart3.jpg','/projects/Ecom/smartCart4.jpg'],
 
   tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Spring Boot', 'MySQL', 'Razorpay'],
 
@@ -173,7 +173,7 @@ export const projects = [
     'Live ambulance tracking and dynamic hospital resource management',
     'React frontend with Java backend services',
   ],
-  images: ['/projects/hospital.jpg','/projects/hospital1.jpg','/projects/hospital2.jpg','/projects/hospital3.jpg'],
+  images: ['/projects/Hospital/hospital.jpg','/projects/Hospital/hospital1.jpg','/projects/Hospital/hospital2.jpg','/projects/Hospital/hospital3.jpg'],
   tags: ['React', 'Java', 'Spring Boot', 'Tailwind CSS','MySQL', 'WebSocket', 'JWT Auth'],
   liveUrl: 'https://smart-hospital-frontend-wcd3.onrender.com/',
   codeUrl: 'https://github.com/rohit6522/smart-hospital-emergency-system',
@@ -194,7 +194,7 @@ export const projects = [
       'Secure auth with JWT & Firebase',
       'Daily streak, calorie & water tracking',
     ],
-    images: ['/projects/fitness.jpg','/projects/Fitness1.jpg','/projects/Fitness2.jpg'],
+    images: ['/projects/Fittnesss/fitness.jpg','/projects/Fittnesss/Fitness1.jpg','/projects/Fittnesss/Fitness2.jpg'],
     tags: ['React', 'Node.js', 'Express.js', 'MongoDB','Tailwind CSS','JWT','Firebase'],
 
    liveUrl: 'https://fitnessapp-frontend-xiht.onrender.com',
@@ -234,6 +234,7 @@ export const archiveProjects = [
     summary: 'A full-stack SaaS platform that parses resumes (PDF/DOCX), generates AI-powered ATS scores, and matches resumes against job descriptions using Gemini AI. Built with JWT authentication, PDF report generation, and a fully responsive UI.',
      images: ['/projects/Resume.jpg','/projects/Resume1.jpg','/projects/Resume2.jpg','/projects/Resume3.jpg'],
     category: 'Web Apps',
+    period: 'Jul 2026 – Present',
     tags: ['React', 'TypeScript', 'Spring Boot', 'PostgreSQL', 'Gemini AI'],
     liveUrl: 'https://resume-analyzer-frontend-6fx4.onrender.com',
     codeUrl: 'https://github.com/rohit6522/resume-analyzer-frontend',
@@ -241,8 +242,14 @@ export const archiveProjects = [
   {
   title: 'FlixGenie',
   summary: 'An AI-powered movie discovery platform — Netflix meets ChatGPT, with real-time recommendations, trailers, and a watchlist.',
-  images: ['/projects/FlixGenie.jpg', '/projects/FlixGenie1.jpg', '/projects/FlixGenie2.jpg', '/projects/FlixGenie3.jpg'],
+  images: [
+  '/projects/Flix/FlixGenie.jpg',
+  '/projects/Flix/FlixGenie1.jpg',
+  '/projects/Flix/FlixGenie2.jpg',
+  '/projects/Flix/FlixGenie3.jpg'
+],
   category: 'Web Apps',
+  period: 'Jul 2026 – Present',
   tags: ['React', 'Redux', 'Node.js', 'Firebase', 'Groq AI'],
   liveUrl: 'https://flixgenie-frontend.onrender.com',
   codeUrl: 'https://github.com/rohit6522/FlixGenie',
@@ -257,6 +264,7 @@ export const archiveProjects = [
     '/projects/AIInterviewPrep3.jpg',
   ],
   category: 'Web Apps',
+  period: 'Jul 2026 – Present',
   tags: ['React', 'Node.js', 'PostgreSQL', 'Gemini API', 'Framer Motion'],
   liveUrl: 'https://ai-interview-platform-real-frontend.onrender.com',
   codeUrl: 'https://github.com/rohit6522/ai-interview-platform',
