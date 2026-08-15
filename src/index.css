@@ -203,6 +203,7 @@ h3 {
 
 .nav-cta-pill {
   justify-self: end;
+  margin-left: 32px;
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.06em;
@@ -220,16 +221,16 @@ h3 {
   background: rgba(34, 211, 238, 0.1);
 }
 
-.nav-brand {
+/* .nav-brand {
   font-family: var(--font-mono);
   font-size: 14px;
   color: var(--chalk);
   letter-spacing: 0.02em;
-}
+} */
 
-.nav-brand span {
+/* .nav-brand span {
   color: var(--brass-bright);
-}
+} */
 
 .nav-left {
   display: flex;
@@ -673,14 +674,14 @@ h3 {
   gap: 8px;
 }
 
-.hero-view-projects {
+/* .hero-view-projects {
   font-family: var(--font-mono);
   font-size: 13px;
   color: var(--steel);
   margin-left: 20px;
   border-bottom: 1px solid transparent;
   transition: color 0.15s ease, border-color 0.15s ease;
-}
+} */
 
 .hero-view-projects:hover {
   color: var(--brass-bright);
@@ -739,11 +740,11 @@ h3 {
   transform-style: preserve-3d;
 }
 
-.hero-diagram {
+/* .hero-diagram {
   width: 100%;
   height: auto;
   overflow: visible;
-}
+} */
 
 .hero-actions-row {
   display: flex;
@@ -833,17 +834,17 @@ h3 {
 
 
 
-.node-label {
+/* .node-label {
   font-family: var(--font-mono);
   font-size: 12px;
   fill: var(--chalk);
-}
+} */
 
-.node-center-label {
+/* .node-center-label {
   font-family: var(--font-display);
   font-weight: 600;
   fill: var(--ink);
-}
+} */
 
 /* ── corner-bracket signature ─────────────────────────── */
 .project-card-v3,
@@ -883,7 +884,7 @@ h3 {
 }
 
 /* ── about ─────────────────────────────────────────────── */
-.about-grid {
+/* .about-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 56px;
@@ -921,7 +922,8 @@ h3 {
   color: #5c6270;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-}
+} */
+
 
 /* ── skills ────────────────────────────────────────────── */
 .skills-grid {
