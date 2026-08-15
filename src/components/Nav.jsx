@@ -111,12 +111,12 @@ export default function Nav() {
 
 
 
-          <a href="#contact" className="nav-cta-pill">
-            Get in touch
-          </a>
+         <a href="#contact" className="nav-cta-pill">
+          Get in touch
+        </a>
 
-          <button
-            className="nav-hamburger"
+        <button
+          className="nav-hamburger"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -127,9 +127,9 @@ export default function Nav() {
 
 
         </motion.div>
-        {mobileOpen && (
-          <ul className="mobile-menu">
-            {mobileLinks.map((link) => (
+{mobileOpen && (
+        <ul className="mobile-menu">
+          {mobileLinks.map((link) => (
               <li key={link.href}>
                 <a href={link.href} onClick={() => setMobileOpen(false)}>
                   {link.label}
