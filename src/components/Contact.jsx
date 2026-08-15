@@ -57,7 +57,8 @@ export default function Contact() {
   const [ref, visible] = useReveal()
   const [showForm, setShowForm] = useState(false)
 
-  const linkedin = profile.social.find((s) => s.label === 'LinkedIn')
+const linkedin = profile.social.find((s) => s.label === 'LinkedIn')
+  const github = profile.social.find((s) => s.label === 'GitHub')
 
   function openCalendly() {
     if (window.Calendly) {
@@ -107,11 +108,13 @@ export default function Contact() {
 
         <div>
           <div className="contact-links-list">
+
             <a className="contact-link-row" href={`mailto:${profile.email}`}>
               <span>Email</span>
               <span className="arrow">↗</span>
             </a>
-            {linkedin && (
+
+           {linkedin && (
               <a
                 className="contact-link-row"
                 href={linkedin.url}
@@ -122,6 +125,18 @@ export default function Contact() {
                 <span className="arrow">↗</span>
               </a>
             )}
+            {github && (
+              <a
+                className="contact-link-row"
+                href={github.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span>GitHub</span>
+                <span className="arrow">↗</span>
+              </a>
+            )}
+
           </div>
         </div>
       </div>
