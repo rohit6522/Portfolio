@@ -643,11 +643,12 @@ h3 {
 }
 
 .hero-name {
-  font-family: 'Baloo 2', var(--font-display);
-  font-weight: 800;
+  font-family: 'Clash Display', var(--font-display);
+  font-weight: 700;
   font-size: clamp(40px, 6vw, 64px);
-  line-height: 1.05;
-  margin: 16px 0 20px;
+  line-height: 1.1;
+  letter-spacing: 0.03em;
+  margin: 0 0 12px;
 }
 
 .split-reveal {
