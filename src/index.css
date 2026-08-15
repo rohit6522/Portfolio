@@ -19,6 +19,30 @@
   box-sizing: border-box;
 }
 
+/* ── custom scrollbar ──────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.35);
+  border-radius: 6px;
+  border: 2px solid var(--ink);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brass-bright);
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(34, 211, 238, 0.35) var(--ink);
+}
+
 /* ── custom cursor ─────────────────────────────────────── */
 .custom-cursor-active,
 .custom-cursor-active * {
