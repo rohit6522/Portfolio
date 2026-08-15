@@ -40,8 +40,6 @@ export const stackNodes = [
   'Docker',
 ]
 
-
-
 export const education = [
   {
     school: 'Lovely Professional University (current)',
