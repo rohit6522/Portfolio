@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion'
 import { profile } from '../data/content'
 
 const links = [
@@ -19,17 +19,21 @@ export default function Nav() {
   const [hovered, setHovered] = useState(null)
   const [mobileOpen, setMobileOpen] = useState(false)
 
-  const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('top')
+  const [scrolledPastHalf, setScrolledPastHalf] = useState(false)
 
-  useEffect(() => {
-    function onScroll() {
-      setScrolled(window.scrollY > 40)
-    }
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  const { scrollY } = useScroll()
+  const maxWidth = useTransform(scrollY, [0, 220], [2200, 760])
+  const marginTop = useTransform(scrollY, [0, 220], [0, 14])
+  const height = useTransform(scrollY, [0, 220], [68, 56])
+  const borderRadius = useTransform(scrollY, [0, 220], [0, 999])
+  const bgOpacity = useTransform(scrollY, [0, 220], [0.92, 0.9])
+  const borderOpacity = useTransform(scrollY, [0, 220], [0, 0.3])
+  const shadowOpacity = useTransform(scrollY, [0, 220], [0, 0.5])
+
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    setScrolledPastHalf(latest > 110)
+  })
 
   useEffect(() => {
     const sections = sectionIds
@@ -58,18 +62,17 @@ export default function Nav() {
 
         <motion.div
           className="nav-inner"
-          animate={{
-            maxWidth: scrolled ? 760 : 2200,
-            marginTop: scrolled ? 14 : 0,
-            height: scrolled ? 56 : 68,
-            borderRadius: scrolled ? 999 : 0,
-          }}
-          transition={{ type: 'spring', stiffness: 260, damping: 28 }}
           style={{
-            background: scrolled ? 'rgba(20, 20, 20, 0.9)' : 'rgba(10, 10, 10, 0.92)',
-            border: scrolled ? '1px solid rgba(34, 211, 238, 0.3)' : '1px solid transparent',
-            borderBottom: scrolled ? '1px solid rgba(34, 211, 238, 0.3)' : '1px solid rgba(255, 255, 255, 0.08)',
-            boxShadow: scrolled ? '0 10px 32px rgba(0, 0, 0, 0.5)' : 'none',
+            maxWidth,
+            marginTop,
+            height,
+            borderRadius,
+            background: useTransform(
+              bgOpacity,
+              (v) => `rgba(${scrolledPastHalf ? '20, 20, 20' : '10, 10, 10'}, ${v})`
+            ),
+            border: useTransform(borderOpacity, (v) => `1px solid rgba(34, 211, 238, ${v})`),
+            boxShadow: useTransform(shadowOpacity, (v) => `0 10px 32px rgba(0, 0, 0, ${v})`),
           }}
         >
 
