@@ -6,9 +6,10 @@ import useMagnetic from '../hooks/useMagnetic'
 
 function getGreeting() {
   const hour = new Date().getHours()
-  if (hour < 12) return 'Good morning'
-  if (hour < 18) return 'Good afternoon'
-  return 'Good evening'
+  if (hour >= 5 && hour < 12) return 'Good morning'
+  if (hour >= 12 && hour < 17) return 'Good afternoon'
+  if (hour >= 17 && hour < 21) return 'Good evening'
+  return 'Good night'
 }
 
 function SplitReveal({ text }) {
@@ -154,7 +155,13 @@ function PhotoCard() {
 }
 
 export default function Hero() {
-  const [greeting] = useState(getGreeting())
+  const [greeting, setGreeting] = useState('')
+
+  useEffect(() => {
+    setGreeting(getGreeting())
+    const interval = setInterval(() => setGreeting(getGreeting()), 60000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <section id="top" className="hero">
