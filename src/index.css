@@ -569,13 +569,22 @@ h3 {
 .hero-name-shine {
   position: absolute;
   inset: 0;
-  color: var(--brass-bright);
-  text-shadow: 0 0 20px rgba(34, 211, 238, 0.9);
-  -webkit-mask-image: radial-gradient(160px circle at var(--mx, 50%) var(--my, 50%), black, transparent 70%);
-  mask-image: radial-gradient(160px circle at var(--mx, 50%) var(--my, 50%), black, transparent 70%);
+  color: #ffffff;
+  text-shadow: 0 0 24px rgba(255, 255, 255, 0.6);
+  -webkit-mask-image: linear-gradient(to right, black, black);
+  mask-image: linear-gradient(to right, black, black);
+  -webkit-mask-size: 0% 100%;
+  mask-size: 0% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: -webkit-mask-size 1.1s cubic-bezier(0.55, 0.02, 0.2, 1);
+  transition: mask-size 1.1s cubic-bezier(0.55, 0.02, 0.2, 1);
+}
+
+.hero-name-glow:hover .hero-name-shine {
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
 }
 
 .hero-name-glow:hover .hero-name-shine {

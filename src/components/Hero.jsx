@@ -57,14 +57,8 @@ useEffect(() => {
 }
 
 function GlowName({ text }) {
-  function handleMove(e) {
-    const rect = e.currentTarget.getBoundingClientRect()
-    e.currentTarget.style.setProperty('--mx', `${e.clientX - rect.left}px`)
-    e.currentTarget.style.setProperty('--my', `${e.clientY - rect.top}px`)
-  }
-
   return (
-    <span className="hero-name-glow" onMouseMove={handleMove}>
+    <span className="hero-name-glow">
       <span className="hero-name-base">
         <SplitReveal text={text} />
       </span>
