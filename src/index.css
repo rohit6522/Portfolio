@@ -592,13 +592,32 @@ h3 {
 }
 
 .hero-cursor-blink {
-  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  height: 100%;
   width: 3px;
-  height: 0.8em;
   background: var(--brass-bright);
   margin-left: 8px;
-  vertical-align: middle;
   animation: blinkCursor 1s steps(2) infinite;
+}
+
+.hero-name-glow {
+  padding-right: 14px;
+}
+
+.hero-name-glow:hover .hero-cursor-blink {
+  background: #ffffff;
+  animation: blinkCursor 1s steps(2) infinite, cursorSweep 1.1s cubic-bezier(0.55, 0.02, 0.2, 1);
+}
+
+@keyframes cursorSweep {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 100%;
+  }
 }
 
 @keyframes blinkCursor {
