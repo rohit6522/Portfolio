@@ -5,12 +5,13 @@ import { profile } from '../data/content'
 const links = [
   { href: '#top', label: 'Home' },
   { href: '#skills', label: 'About' },
-  { href: '#contributions', label: 'Contributions' },
   { href: '#projects', label: 'Projects' },
   { href: '#achievements', label: 'Achievements' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#contributions', label: 'Contributions' },
 ]
 
+const desktopLinks = links
+const mobileLinks = [...links, { href: '#contact', label: 'Contact' }]
 const sectionIds = links.map((l) => l.href.replace('#', ''))
 
 export default function Nav() {
@@ -56,21 +57,21 @@ export default function Nav() {
 
 
         <motion.div
-        className="nav-inner"
-        animate={{
-          maxWidth: scrolled ? 760 : 2200,
-          marginTop: scrolled ? 14 : 0,
-          height: scrolled ? 56 : 68,
-          borderRadius: scrolled ? 999 : 0,
-        }}
-        transition={{ type: 'spring', stiffness: 260, damping: 28 }}
-        style={{
-          background: scrolled ? 'rgba(20, 20, 20, 0.9)' : 'rgba(10, 10, 10, 0.92)',
-          border: scrolled ? '1px solid rgba(34, 211, 238, 0.3)' : '1px solid transparent',
-          borderBottom: scrolled ? '1px solid rgba(34, 211, 238, 0.3)' : '1px solid rgba(255, 255, 255, 0.08)',
-          boxShadow: scrolled ? '0 10px 32px rgba(0, 0, 0, 0.5)' : 'none',
-        }}
-      >
+          className="nav-inner"
+          animate={{
+            maxWidth: scrolled ? 760 : 2200,
+            marginTop: scrolled ? 14 : 0,
+            height: scrolled ? 56 : 68,
+            borderRadius: scrolled ? 999 : 0,
+          }}
+          transition={{ type: 'spring', stiffness: 260, damping: 28 }}
+          style={{
+            background: scrolled ? 'rgba(20, 20, 20, 0.9)' : 'rgba(10, 10, 10, 0.92)',
+            border: scrolled ? '1px solid rgba(34, 211, 238, 0.3)' : '1px solid transparent',
+            borderBottom: scrolled ? '1px solid rgba(34, 211, 238, 0.3)' : '1px solid rgba(255, 255, 255, 0.08)',
+            boxShadow: scrolled ? '0 10px 32px rgba(0, 0, 0, 0.5)' : 'none',
+          }}
+        >
 
           <div className="nav-left">
 
@@ -90,27 +91,29 @@ export default function Nav() {
             <span className="nav-divider" />
           </div>
 
-         <ul className="nav-links" onMouseLeave={() => setHovered(null)}>
-          {links.map((link) => {
-            const isActive = hovered === link.href || (!hovered && activeSection === link.href.replace('#', ''))
-            return (
-              <li key={link.href} className="nav-link-item" onMouseEnter={() => setHovered(link.href)}>
-                <a href={link.href}>{link.label}</a>
-                {isActive && (
-                  <motion.span
-                    className="nav-underline"
-                    layoutId="nav-underline"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </li>
-            )
-          })}
-        </ul>
+          <ul className="nav-links" onMouseLeave={() => setHovered(null)}>
+            {desktopLinks.map((link) => {
+              const isActive = hovered === link.href || (!hovered && activeSection === link.href.replace('#', ''))
+              return (
+                <li key={link.href} className="nav-link-item" onMouseEnter={() => setHovered(link.href)}>
+                  <a href={link.href}>{link.label}</a>
+                  {isActive && (
+                    <motion.span
+                      className="nav-underline"
+                      layoutId="nav-underline"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </li>
+              )
+            })}
+          </ul>
 
 
 
-          <span className="nav-right-spacer" />
+          <a href="#contact" className="nav-cta-pill">
+            Get in touch
+          </a>
 
           <button
             className="nav-hamburger"
@@ -124,10 +127,9 @@ export default function Nav() {
 
 
         </motion.div>
-
         {mobileOpen && (
           <ul className="mobile-menu">
-            {links.map((link) => (
+            {mobileLinks.map((link) => (
               <li key={link.href}>
                 <a href={link.href} onClick={() => setMobileOpen(false)}>
                   {link.label}
@@ -141,7 +143,7 @@ export default function Nav() {
       {showPhoto && (
         <div className="photo-modal" onClick={() => setShowPhoto(false)}>
           <div className="photo-modal-frame" onClick={(e) => e.stopPropagation()}>
-           <img src="/avatar.jpg" alt={profile.name} className="photo-modal-img" loading="lazy" decoding="async" />
+            <img src="/avatar.jpg" alt={profile.name} className="photo-modal-img" loading="lazy" decoding="async" />
             <div className="photo-modal-caption">
               <div className="photo-modal-tag">
                 <span className="photo-modal-dash" />
