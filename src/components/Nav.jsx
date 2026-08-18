@@ -20,20 +20,14 @@ export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const [activeSection, setActiveSection] = useState('top')
-  const [scrolledPastHalf, setScrolledPastHalf] = useState(false)
 
   const { scrollY } = useScroll()
   const maxWidth = useTransform(scrollY, [0, 220], [2200, 760])
   const marginTop = useTransform(scrollY, [0, 220], [0, 14])
   const height = useTransform(scrollY, [0, 220], [68, 56])
   const borderRadius = useTransform(scrollY, [0, 220], [0, 999])
-  const bgOpacity = useTransform(scrollY, [0, 220], [0.92, 0.9])
   const borderOpacity = useTransform(scrollY, [0, 220], [0, 0.3])
   const shadowOpacity = useTransform(scrollY, [0, 220], [0, 0.5])
-
-  useMotionValueEvent(scrollY, 'change', (latest) => {
-    setScrolledPastHalf(latest > 110)
-  })
 
   useEffect(() => {
     const sections = sectionIds
@@ -60,17 +54,14 @@ export default function Nav() {
       <nav className="nav">
 
 
-        <motion.div
+               <motion.div
           className="nav-inner"
           style={{
             maxWidth,
             marginTop,
             height,
             borderRadius,
-            background: useTransform(
-              bgOpacity,
-              (v) => `rgba(${scrolledPastHalf ? '20, 20, 20' : '10, 10, 10'}, ${v})`
-            ),
+            background: 'rgba(10, 10, 10, 0.92)',
             border: useTransform(borderOpacity, (v) => `1px solid rgba(34, 211, 238, ${v})`),
             boxShadow: useTransform(shadowOpacity, (v) => `0 10px 32px rgba(0, 0, 0, ${v})`),
           }}
