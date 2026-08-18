@@ -724,7 +724,7 @@ h3 {
 }
 
 .hero-name {
-  font-family: var(--font-display);
+  font-family: 'Clash Display', var(--font-display);
   font-weight: 700;
   font-size: clamp(40px, 6vw, 64px);
   line-height: 1.1;
