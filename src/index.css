@@ -8,8 +8,8 @@
   --steel: #8b8f96;
   --chalk: #e8e8e8;
 
-  --font-display: 'Poppins', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  --font-display: 'General Sans', system-ui, sans-serif;
+  --font-body: 'General Sans', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
   --max-w: 1250px;
@@ -724,7 +724,7 @@ h3 {
 }
 
 .hero-name {
-  font-family: 'Clash Display', var(--font-display);
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(40px, 6vw, 64px);
   line-height: 1.1;
