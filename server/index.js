@@ -42,7 +42,7 @@ app.post('/api/contact', async (req, res) => {
 
   try {
     await resend.emails.send({
-      from: 'Portfolio Contact <rohitworks.dev>', // swap once you verify your own domain
+      from: 'Portfolio Contact <hello@rohitworks.dev>', // swap once you verify your own domain
       to: process.env.RECEIVER_EMAIL,
       replyTo: email,
       subject: `[Portfolio] ${subject} — from ${firstName} ${lastName}`,
