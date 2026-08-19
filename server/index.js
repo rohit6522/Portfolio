@@ -6,16 +6,28 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const app = express()
-
 const PORT = process.env.PORT || 5000
 
-const allowedOrigins = (process.env.CLIENT_URL || '').split(',').map((s) => s.trim())
+const allowedOrigins = (process.env.CLIENT_URL || '')
+  .split(',')
+  .map((s) => s.trim())
+  .filter(Boolean)
+
 console.log('Allowed CORS origins:', allowedOrigins)
+
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true)
+      } else {
+        console.log('Blocked CORS request from origin:', origin)
+        callback(new Error('Not allowed by CORS'))
+      }
+    },
   })
 )
+
 app.use(express.json())
 
 const resend = new Resend(process.env.RESEND_API_KEY)
@@ -41,7 +53,7 @@ app.post('/api/contact', async (req, res) => {
   }
 
   try {
-        await resend.emails.send({
+    await resend.emails.send({
       from: 'Portfolio Contact <onboarding@resend.dev>',
       to: process.env.RECEIVER_EMAIL,
       replyTo: email,
