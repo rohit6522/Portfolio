@@ -3,14 +3,14 @@ import cors from 'cors'
 import { Resend } from 'resend'
 import dotenv from 'dotenv'
 
-
 dotenv.config()
 
 const app = express()
+
 const PORT = process.env.PORT || 5000
 
 const allowedOrigins = (process.env.CLIENT_URL || '').split(',').map((s) => s.trim())
-
+console.log('Allowed CORS origins:', allowedOrigins)
 app.use(
   cors({
     origin: allowedOrigins,
@@ -41,8 +41,8 @@ app.post('/api/contact', async (req, res) => {
   }
 
   try {
-    await resend.emails.send({
-      from: 'Portfolio Contact <hello@rohitworks.dev>', // swap once you verify your own domain
+        await resend.emails.send({
+      from: 'Portfolio Contact <onboarding@resend.dev>',
       to: process.env.RECEIVER_EMAIL,
       replyTo: email,
       subject: `[Portfolio] ${subject} — from ${firstName} ${lastName}`,
