@@ -10,7 +10,7 @@ const subjects = [
   'Job Opportunity',
   'Freelance Project',
   'Collaboration',
-  'Just Saying Hello',
+  'Just Saying Hello',  
 ]
 
 function MailIconSmall() {

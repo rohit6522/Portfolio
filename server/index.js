@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import nodemailer from 'nodemailer'
+import { Resend } from 'resend'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -17,13 +17,7 @@ app.use(
 )
 app.use(express.json())
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-})
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 app.get('/', (req, res) => {
   res.send('Portfolio contact API is running.')
@@ -46,8 +40,8 @@ app.post('/api/contact', async (req, res) => {
   }
 
   try {
-    await transporter.sendMail({
-      from: `"Portfolio Contact Form" <${process.env.EMAIL_USER}>`,
+    await resend.emails.send({
+      from: 'Portfolio Contact <rohitworks.dev>', // swap once you verify your own domain
       to: process.env.RECEIVER_EMAIL,
       replyTo: email,
       subject: `[Portfolio] ${subject} — from ${firstName} ${lastName}`,
