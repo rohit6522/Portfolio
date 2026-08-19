@@ -3,6 +3,7 @@ import cors from 'cors'
 import { Resend } from 'resend'
 import dotenv from 'dotenv'
 
+
 dotenv.config()
 
 const app = express()
