@@ -11,7 +11,7 @@ const links = [
 ]
 
 const desktopLinks = links
-const mobileLinks = [...links, { href: '#contact', label: 'Contact' }]
+const mobileLinks = links
 const sectionIds = links.map((l) => l.href.replace('#', ''))
 
 export default function Nav() {
@@ -54,7 +54,7 @@ export default function Nav() {
       <nav className="nav">
 
 
-               <motion.div
+        <motion.div
           className="nav-inner"
           style={{
             maxWidth,
@@ -105,12 +105,12 @@ export default function Nav() {
 
 
 
-         <a href="#contact" className="nav-cta-pill">
-          Get in touch
-        </a>
+          <a href="#contact" className="nav-cta-pill">
+            Get in touch
+          </a>
 
-        <button
-          className="nav-hamburger"
+          <button
+            className="nav-hamburger"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -121,7 +121,7 @@ export default function Nav() {
 
 
         </motion.div>
-{mobileOpen && (
+              {mobileOpen && (
         <ul className="mobile-menu">
           {mobileLinks.map((link) => (
               <li key={link.href}>
@@ -130,8 +130,18 @@ export default function Nav() {
                 </a>
               </li>
             ))}
+          <li className="mobile-menu-cta-item">
+            <a
+              href="#contact"
+              className="mobile-menu-cta"
+              onClick={() => setMobileOpen(false)}
+            >
+              Get in touch
+            </a>
+          </li>
           </ul>
         )}
+
       </nav>
 
       {showPhoto && (

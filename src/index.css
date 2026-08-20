@@ -458,6 +458,29 @@ h3 {
   color: var(--brass-bright);
 }
 
+.mobile-menu-cta-item {
+  padding-top: 8px;
+}
+
+.mobile-menu-cta {
+  display: block;
+  text-align: center;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 13.76px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--chalk) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 12px !important;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.mobile-menu-cta:hover {
+  border-color: var(--brass-bright);
+  background: rgba(34, 211, 238, 0.1);
+}
+
 /* ── hero ──────────────────────────────────────────────── */
 .hero {
   min-height: 100vh;
