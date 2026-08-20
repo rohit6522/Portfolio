@@ -73,6 +73,22 @@ function computeClientStreak(dateCountMap) {
   return streak
 }
 
+function useIsMobile(breakpoint = 640) {
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' ? window.innerWidth <= breakpoint : false
+  )
+
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth <= breakpoint)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [breakpoint])
+
+  return isMobile
+}
+
 export default function ContributionGraph() {
   const [platform, setPlatform] = useState('github')
   const [year, setYear] = useState(currentYear)
@@ -80,6 +96,7 @@ export default function ContributionGraph() {
   const [grid, setGrid] = useState({ weeks: [], monthLabels: [], weekCount: 52 })
   const [total, setTotal] = useState(0)
   const [statCards, setStatCards] = useState(null)
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     let cancelled = false
@@ -181,31 +198,62 @@ export default function ContributionGraph() {
             {loading ? (
               <div className="contrib-loading">Loading {platform} activity…</div>
             ) : (
-              <>
-                <div className="contrib-months" style={{ gridTemplateColumns: `repeat(${grid.weekCount}, 1fr)` }}>
-                  {grid.monthLabels.map((m) => (
-                    <span key={m.index} style={{ gridColumnStart: m.index + 1 }}>
-                      {m.label}
-                    </span>
-                  ))}
-                </div>
-                <div className="contrib-weeks" style={{ gridTemplateColumns: `repeat(${grid.weekCount}, 1fr)` }}>
-                  {grid.weeks.map((week, wi) => (
-                    <div className="contrib-week-col" key={wi}>
-                      {week.map((day, di) =>
-                        day ? (
-                          <span
-                            key={di}
-                            className={`contrib-cell level-${day.level}`}
-                            title={`${day.count} on ${day.date}`}
-                          />
-                        ) : (
-                          <span key={di} className="contrib-cell contrib-cell-empty" />
-                        )
-                      )}
+
+                           <>
+                {isMobile ? (
+                  <div className="contrib-vertical">
+                    {grid.weeks.map((week, wi) => {
+                      const monthLabel = grid.monthLabels.find((m) => m.index === wi)
+                      return (
+                        <div key={wi} className="contrib-vertical-week">
+                          {monthLabel && <span className="contrib-vertical-month">{monthLabel.label}</span>}
+                          <div className="contrib-vertical-row">
+                            {week.map((day, di) =>
+                              day ? (
+                                <span
+                                  key={di}
+                                  className={`contrib-cell level-${day.level}`}
+                                  title={`${day.count} on ${day.date}`}
+                                />
+                              ) : (
+                                <span key={di} className="contrib-cell contrib-cell-empty" />
+                              )
+                            )}
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                ) : (
+                  <>
+                    <div className="contrib-months" style={{ gridTemplateColumns: `repeat(${grid.weekCount}, 1fr)` }}>
+                      {grid.monthLabels.map((m) => (
+                        <span key={m.index} style={{ gridColumnStart: m.index + 1 }}>
+                          {m.label}
+                        </span>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                    <div className="contrib-weeks" style={{ gridTemplateColumns: `repeat(${grid.weekCount}, 1fr)` }}>
+                      {grid.weeks.map((week, wi) => (
+                        <div className="contrib-week-col" key={wi}>
+                          {week.map((day, di) =>
+                            day ? (
+                              <span
+                                key={di}
+                                className={`contrib-cell level-${day.level}`}
+                                title={`${day.count} on ${day.date}`}
+                              />
+                            ) : (
+                              <span key={di} className="contrib-cell contrib-cell-empty" />
+                            )
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+              
+
 
                 <div className="contrib-footer">
                   <span>{total} {platform === 'github' ? 'contributions' : 'submissions'} in {year}</span>
@@ -220,6 +268,7 @@ export default function ContributionGraph() {
                   </span>
                 </div>
               </>
+
             )}
           </div>
 

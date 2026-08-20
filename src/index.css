@@ -10,7 +10,7 @@
 
   --font-display: 'General Sans', system-ui, sans-serif;
   --font-body: 'General Sans', system-ui, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --font-mono: Inter, system-ui, -apple-system, sans-serif;
 
   --max-w: 1250px;
 }
@@ -228,8 +228,8 @@ h3 {
 .nav-cta-pill {
   justify-self: end;
   margin-left: 32px;
-  font-family: var(--font-mono);
-  font-size: 12px;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 13.76px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--chalk);
@@ -380,8 +380,8 @@ h3 {
 }
 
 .nav-links a {
-  font-family: var(--font-mono);
-  font-size: 13px;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 13.76px;
   color: var(--steel);
   transition: color 0.15s ease;
 }
@@ -851,8 +851,8 @@ h3 {
 }
 
 .btn {
-  font-family: var(--font-mono);
-  font-size: 13px;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 13.76px;
   letter-spacing: 0.03em;
   padding: 12px 22px;
   border: 1px solid var(--brass);
@@ -1012,10 +1012,9 @@ h3 {
   flex-wrap: wrap;
   gap: 8px;
 }
-
 .skill-tag {
-  font-family: var(--font-mono);
-  font-size: 12px;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 13.76px;
   padding: 6px 10px;
   border: 1px solid rgba(231, 227, 216, 0.25);
   color: var(--chalk);
@@ -2902,6 +2901,41 @@ h3 {
   margin-top: 4px;
 }
 
+.contrib-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.contrib-vertical-week {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contrib-vertical-month {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--steel);
+  width: 32px;
+  flex-shrink: 0;
+}
+
+.contrib-vertical-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  flex: 1;
+}
+
+.contrib-vertical-row .contrib-cell {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   .contrib-stats-grid {
     grid-template-columns: 1fr;
@@ -2918,18 +2952,6 @@ h3 {
 
   .contrib-card {
     padding: 16px;
-    overflow-x: auto;
-  }
-
-  .contrib-months,
-  .contrib-weeks {
-    min-width: 600px;
-  }
-
-  .contrib-cell {
-    width: 9px;
-    height: 9px;
-    aspect-ratio: unset;
   }
 }
 
