@@ -129,11 +129,10 @@ export default function ContributionGraph() {
         })
         if (cancelled) return
         setGrid(buildYearGrid(map, year, [1, 2, 4]))
-        setTotal(yearTotal)
-        setStatCards({
+                setStatCards({
           streak: data.streak ?? computeClientStreak(map),
-          middle: { label: 'global rank', value: data.ranking ? `#${data.ranking.toLocaleString()}` : '—' },
-          third: { label: 'questions solved', value: data.total ?? 0 },
+          middle: { label: 'global rank (all-time)', value: data.ranking ? `#${data.ranking.toLocaleString()}` : '—' },
+          third: { label: 'questions solved (all-time)', value: data.total ?? 0 },
         })
       } catch {
         if (!cancelled) {
@@ -242,8 +241,8 @@ export default function ContributionGraph() {
             <div className="contrib-stat-card">
               <span className="contrib-stat-icon">🔥</span>
               <div>
-                <span className="contrib-stat-value">{statCards.streak}</span>
-                <span className="contrib-stat-label">day streak</span>
+                                <span className="contrib-stat-value">{statCards.streak}</span>
+                <span className="contrib-stat-label">day streak (current)</span>
               </div>
             </div>
             <div className="contrib-stat-card">
