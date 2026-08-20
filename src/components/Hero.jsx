@@ -130,7 +130,6 @@ function MagneticLink({ className, href, download, target, rel, children }) {
     </motion.a>
   )
 }
-
 function PhotoCard() {
   function handleMove(e) {
     const rect = e.currentTarget.getBoundingClientRect()
@@ -140,10 +139,14 @@ function PhotoCard() {
 
   return (
     <div className="hero-photo-wrap">
-      <div className="hero-photo-frame" onMouseMove={handleMove}>
-        <img src="/rohit.jpg" alt={profile.name} className="hero-photo-img" />
-        <span className="hero-photo-dot" />
+      <div className="hero-photo-matte">
+        <div className="hero-photo-frame" onMouseMove={handleMove}>
+          <img src="/rohit.jpg" alt={profile.name} className="hero-photo-img" />
+          <span className="hero-photo-dot" />
+        </div>
       </div>
+
+
       <span className="hero-badge hero-badge-top">
         <span className="hero-badge-prefix">&gt;</span> npm run dev
       </span>

@@ -487,19 +487,30 @@ h3 {
   margin: 0;
 }
 
+.hero-photo-matte {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  padding: 12px;
+  border: 0.8px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(0, 77, 97, 0.12), rgba(130, 38, 89, 0.08));
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.4),
+    0 0 1px rgba(255, 255, 255, 0.03) inset;
+  transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.hero-photo-wrap:hover .hero-photo-matte {
+  transform: scale(1.03);
+}
+
 .hero-photo-frame {
   position: relative;
   aspect-ratio: 1 / 1;
-  border-radius: 16px;
+  border-radius: 10px;
   overflow: hidden;
   border: none;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.hero-photo-wrap:hover .hero-photo-frame {
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
-  transform: translateY(-10px);
 }
 
 .hero-photo-frame::after {
@@ -598,12 +609,13 @@ h3 {
 
 /* ── text side ─────────────────────────────────────────── */
 .hero-greeting {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--brass-bright);
-  letter-spacing: 0.02em;
-  display: block;
-  margin-bottom: 10px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #006e8a;
+  display: inline-flex;
+  margin-bottom: 16px;
 }
 
 .hero-name-glow {
@@ -680,10 +692,10 @@ h3 {
 
 .hero-role-line {
   font-size: 20px;
-  color: var(--chalk);
+  color: #f0f0f0;
   margin: 8px 0 20px;
-  font-family: var(--font-display);
-  font-weight: 600;
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 500;
 }
 
 .hero-short-line {
@@ -766,9 +778,10 @@ h3 {
 }
 
 .hero-tagline {
-  font-size: 18px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 16px;
   line-height: 1.6;
-  color: var(--steel);
+  color: #bdbdbd;
   max-width: 640px;
   margin-bottom: 32px;
 }
