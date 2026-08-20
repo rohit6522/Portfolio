@@ -612,15 +612,14 @@ h3 {
 }
 
 .hero-name-base {
-  color: transparent;
-  -webkit-text-stroke: 2px var(--chalk);
+  color: #141414;
+  -webkit-text-stroke: 1.5px #8a8a8a;
 }
-
 .hero-name-shine {
   position: absolute;
   inset: 0;
   color: #ffffff;
-  text-shadow: 0 0 24px rgba(255, 255, 255, 0.6);
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.35);
   -webkit-mask-image: linear-gradient(to right, black, black);
   mask-image: linear-gradient(to right, black, black);
   -webkit-mask-size: 0% 100%;
@@ -628,6 +627,7 @@ h3 {
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   pointer-events: none;
+  overflow: hidden;
   transition: -webkit-mask-size 1.1s cubic-bezier(0.55, 0.02, 0.2, 1);
   transition: mask-size 1.1s cubic-bezier(0.55, 0.02, 0.2, 1);
 }
@@ -650,6 +650,7 @@ h3 {
   background: #ffffff;
   margin-left: 8px;
   opacity: 0;
+  transition: left 0.5s ease, opacity 0.5s ease;
 }
 
 .hero-name-glow {
@@ -658,7 +659,7 @@ h3 {
 
 .hero-name-glow:hover .hero-cursor-blink {
   opacity: 1;
-  animation: cursorSweep 1.1s cubic-bezier(0.55, 0.02, 0.2, 1);
+  animation: cursorSweep 1.1s cubic-bezier(0.55, 0.02, 0.2, 1) forwards;
 }
 
 @keyframes cursorSweep {
@@ -745,9 +746,9 @@ h3 {
 .hero-name {
   font-family: 'Clash Display', var(--font-display);
   font-weight: 700;
-  font-size: clamp(40px, 6vw, 64px);
+  font-size: 75px;
   line-height: 1.1;
-  letter-spacing: 0.03em;
+  letter-spacing: -0.03em;
   margin: 0 0 12px;
 }
 
