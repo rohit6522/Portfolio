@@ -140,7 +140,7 @@ export const projects = [
     category: 'Full-Stack Web Application',
     period: 'Jul 2026 – Present',
     featured: true,
-    status: 'LIVE',
+    status: 'IN PROGRESS',
    summary:
       'A full-stack eCommerce platform that solves checkout anxiety by tracking a shopper\'s budget in real time as they add items to their cart, with dedicated dashboards for shoppers, admins, and delivery partners.',
 
@@ -184,7 +184,7 @@ export const projects = [
     category: 'Web Application',
     period: 'March – May 2026',
     featured: true,
-    status: 'STABLE',
+    status: 'IN PROGRESS',
    summary:
       'A modern full-stack fitness platform that helps users plan workouts, monitor progress, follow personalized training schedules, and securely manage their accounts with authentication and real-time data.',
 
@@ -200,23 +200,24 @@ export const projects = [
    liveUrl: 'https://fitnessapp-frontend-xiht.onrender.com',
     codeUrl: 'https://github.com/rohit6522/FitnessApp',
   },
-  {
-    title: 'Signalboard',
+{
+    title: 'RYDEX',
     category: 'Web Application',
-    period: 'Mar – Jun 2024',
-    featured: false,
-    status: 'STABLE',
+    period: 'Jul 2026 - Present', // apni actual dates daal lena 'LIVE'
+    featured: true,
+    status: 'IN PROGRESS',
     
     summary:
-      'An offline-first note-taking tool for researchers doing fieldwork with unreliable connectivity.',
+      'A full-stack, real-time vehicle-booking platform (Uber/Rapido-style) with live GPS tracking, video KYC driver verification, and dual payment options.',
     features: [
-      'Offline-first with background sync',
-      'Conflict-free merge engine',
+      'Real-time ride tracking & live GPS via Socket.io',
+      'OTP-verified ride start, Razorpay + cash payments',
+      'Driver onboarding with video KYC (ZegoCloud) & admin approval',
     ],
-    images: ['/projects/fieldnote-1.jpg'],
-    tags: ['React Native', 'SQLite', 'Sync engine'],
-    liveUrl: '#',
-    codeUrl: '#',
+    images: ['/projects/Rydex/rydex-1.jpg','/projects/Rydex/rydex-2.jpg','/projects/Rydex/rydex-3.jpg','/projects/Rydex/rydex-4.jpg','/projects/Rydex/rydex-5.jpg','/projects/Rydex/rydex-6.jpg'],
+    tags: ['Next.js', 'MongoDB', 'Socket.io', 'Razorpay', 'Leaflet'],
+    liveUrl: 'https://rydex-eo9t.onrender.com/',
+    codeUrl: 'https://github.com/rohit6522/vehicle-booking-app',
   },
 ]
 
