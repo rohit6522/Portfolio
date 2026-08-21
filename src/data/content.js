@@ -290,30 +290,14 @@ export const archiveProjects = [
 
 export const experience = [
   {
-    role: 'Senior Full-Stack Engineer',
-    company: 'Northbeam Software',
-    period: '2022 — Present',
+    role: 'DSA Placement Bootcamp — Master Data Structures and Algorithms',
+    company: 'Lovely Professional University',
+    period: 'Jun 2026 — Jul 2026',
+    certificateUrl: 'https://drive.google.com/file/d/1LiwlqGSTLMgMGJUI5qPywbJXeOOk6VRM/view?usp=drive_link',
     points: [
-      'Lead a team of 4 engineers rebuilding the core billing platform, cutting invoice-processing time by 60%.',
-      'Introduced a shared component library adopted across 3 product teams.',
-    ],
-  },
-  {
-    role: 'Full-Stack Engineer',
-    company: 'Harborlight',
-    period: '2020 — 2022',
-    points: [
-      'Built the customer-facing dashboard from scratch, growing to 15,000 weekly active users.',
-      'Migrated a legacy monolith to a service-based architecture with zero downtime.',
-    ],
-  },
-  {
-    role: 'Junior Developer',
-    company: 'Kettlecorn Studio',
-    period: '2018 — 2020',
-    points: [
-      'Shipped client websites and internal tools for a 12-person digital agency.',
-      'Owned QA and deployment process for all client projects.',
+      'Developed strong problem-solving and analytical skills through structured Data Structures and Algorithms practice.',
+      'Practiced identifying problem patterns, selecting appropriate algorithms, and optimizing solutions.',
+      'Solved placement and interview-oriented DSA problems using efficient approaches and optimization techniques.',
     ],
   },
 ]

@@ -205,16 +205,32 @@ export default function SkillsTabs() {
                 </div>
               )}
 
-              {active === 'experience' && (
-                <div className="coming-soon">
-                  <span className="coming-soon-icon">🚧</span>
-                  <h3>Experience — Coming Soon</h3>
-                  <p>
-                    I'm just getting started and haven't taken on a professional role yet.
-                    This section will fill up soon — check back later!
-                  </p>
-                </div>
-              )}
+                      {active === 'experience' && (
+          <div className="timeline tab-panel">
+            {experience.map((job) => (
+              <div className="timeline-item" key={job.company + job.period}>
+                <span className="timeline-period">{job.period}</span>
+                <h3 className="timeline-role">{job.role}</h3>
+                <div className="timeline-company">{job.company}</div>
+                <ul>
+                  {job.points.map((point, i) => (
+                    <li key={i}>{point}</li>
+                  ))}
+                </ul>
+                {job.certificateUrl && (
+                  <a
+                    href={job.certificateUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="timeline-cert-link"
+                  >
+                    View Certificate ↗
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
 
               {active === 'certifications' && (
                 <div className="cert-grid">

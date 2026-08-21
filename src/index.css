@@ -2079,6 +2079,20 @@ h3 {
   line-height: 1.7;
 }
 
+.timeline-cert-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  color: var(--brass-bright);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+.timeline-cert-link:hover {
+  border-bottom-color: var(--brass-bright);
+}
+
 
 
 
