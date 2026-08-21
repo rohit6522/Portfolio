@@ -2723,34 +2723,7 @@ h3 {
   color: var(--brass-bright);
 }
 
-.footer-links-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-family: var(--font-mono);
-  font-size: 13px;
-}
 
-.footer-links-row a,
-.footer-scroll-btn {
-  color: var(--steel);
-  background: none;
-  border: none;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  cursor: pointer;
-  transition: color 0.15s ease;
-}
-
-.footer-links-row a:hover,
-.footer-scroll-btn:hover {
-  color: var(--brass-bright);
-}
-
-.footer-dot {
-  color: var(--steel);
-  opacity: 0.5;
-}
 
 .footer-copyright {
   font-family: var(--font-mono);
