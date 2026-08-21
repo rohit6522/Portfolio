@@ -14,9 +14,8 @@ export default function Footer() {
           Built with modern web technologies and a focus on clean and performant code
         </p>
 
-        <p className="footer-made-with">
-          Made with <span className="footer-heart">♥</span> and <span className="footer-coffee">☕</span> by{' '}
-          {profile.name.split(' ')[0]}
+                <p className="footer-console-log">
+          console.log(<span className="footer-console-string">"Thanks for visiting!"</span>);
         </p>
 
         <div className="footer-links-row">
