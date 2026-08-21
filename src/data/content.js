@@ -87,14 +87,15 @@ export const certifications = [
     credentialUrl: 'https://drive.google.com/file/d/1Hc7_7Q4vncXdIfTGl-JWTufARELLEKw_/view?usp=sharing',
   },
 
-    // new add comming soon
 
-  {
-    title: 'Programming in JAVA',
-    issuer: 'iamNeo — An NIIT Venture',
-    date: 'January 2026 – May 2026',
-    credentialUrl: 'https://drive.google.com/file/d/1e6mzjtAvUEqtJ32AK41CSEFPPy_Lo3mq/view?usp=sharing',
-  },
+
+ {
+  title: 'DSA Placement Bootcamp: Master Data Structures & Algorithms for Industry',
+  issuer: 'Centre for Professional Enhancement — Lovely Professional University',
+  date: 'June 2026 – July 2026',
+  credentialUrl: 'https://drive.google.com/file/d/1LiwlqGSTLMgMGJUI5qPywbJXeOOk6VRM/view?usp=drive_link',
+},
+
   {
     title: 'Programming in JAVA',
     issuer: 'iamNeo — An NIIT Venture',
