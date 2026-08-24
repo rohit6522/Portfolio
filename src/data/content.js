@@ -13,7 +13,7 @@ export const profile = {
     "I love building things that actually work — clean code, functional apps, real solutions to real problems. I'm not here to write code that just runs; I build things that reduce friction, cut the noise, and make life easier for the people using them.",
   shortLine: "Clean code. Functional apps. Less pain points. That's the whole vibe.",
 
-  location: 'Patna, Bihar',
+  location: 'Ara, Bihar',
   email: 'rohitrajyadav6522@gmail.com',
 
   resumeUrl: '/Resumeportfolio.pdf',
