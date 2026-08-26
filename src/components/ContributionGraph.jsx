@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { profile } from '../data/content'
 import IconBadge, { CodeIcon } from './IconBadge'
+import MagneticText from './MagneticText'
+
 
 const currentYear = new Date().getFullYear()
 const years = [currentYear, currentYear - 1, currentYear - 2]
@@ -109,9 +111,9 @@ export default function ContributionGraph() {
         )
         const data = await res.json()
         const map = {}
-        ;(data.contributions || []).forEach((c) => {
-          map[c.date] = c.count
-        })
+          ; (data.contributions || []).forEach((c) => {
+            map[c.date] = c.count
+          })
         if (cancelled) return
         setGrid(buildYearGrid(map, year, [3, 6, 10]))
         const yearTotal = data.total?.[year] ?? Object.values(map).reduce((a, b) => a + b, 0)
@@ -146,7 +148,7 @@ export default function ContributionGraph() {
         })
         if (cancelled) return
         setGrid(buildYearGrid(map, year, [1, 2, 4]))
-                setStatCards({
+        setStatCards({
           streak: data.streak ?? computeClientStreak(map),
           middle: { label: 'global rank (all-time)', value: data.ranking ? `#${data.ranking.toLocaleString()}` : '—' },
           third: { label: 'questions solved (all-time)', value: data.total ?? 0 },
@@ -171,11 +173,19 @@ export default function ContributionGraph() {
   return (
     <section id="contributions" className="section section-dark">
       <div className="container">
-       <div className="contrib-head">
+        <div className="contrib-head">
           <IconBadge>
             <CodeIcon />
           </IconBadge>
-          <h2 className="contrib-title">Contribution Graph</h2>
+
+          <h2 className="contrib-title">
+            <MagneticText>
+
+              Contribution Graph
+            </MagneticText>
+
+          </h2>
+
         </div>
 
         <div className="contrib-toggle-row">
@@ -199,7 +209,7 @@ export default function ContributionGraph() {
               <div className="contrib-loading">Loading {platform} activity…</div>
             ) : (
 
-                           <>
+              <>
                 {isMobile ? (
                   <div className="contrib-vertical">
                     {grid.weeks.map((week, wi) => {
@@ -252,7 +262,7 @@ export default function ContributionGraph() {
                     </div>
                   </>
                 )}
-              
+
 
 
                 <div className="contrib-footer">
@@ -290,7 +300,7 @@ export default function ContributionGraph() {
             <div className="contrib-stat-card">
               <span className="contrib-stat-icon">🔥</span>
               <div>
-                                <span className="contrib-stat-value">{statCards.streak}</span>
+                <span className="contrib-stat-value">{statCards.streak}</span>
                 <span className="contrib-stat-label">day streak (current)</span>
               </div>
             </div>

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { profile } from '../data/content'
 import useReveal from '../hooks/useReveal'
 import IconBadge from './IconBadge'
-
+import MagneticText from './MagneticText'
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 const subjects = [
@@ -95,7 +95,13 @@ export default function Contact() {
           <IconBadge size={36}>
             <MailIconSmall />
           </IconBadge>
-          <h2 className="contact-v3-title">Get In Touch</h2>
+          <h2 className="contact-v3-title">
+            <MagneticText> 
+
+            Get In Touch
+            </MagneticText>
+            
+            </h2>
         </div>
         <p className="contact-v3-sub">Let's discuss your next project or just say hello!</p>
 

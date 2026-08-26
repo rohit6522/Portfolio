@@ -4,6 +4,7 @@ import { projects, achievements, archiveCategories, archiveProjects } from '../d
 import useReveal from '../hooks/useReveal'
 import useLeetCodeStats from '../hooks/useLeetCodeStats'
 import AnimatedStat from './AnimatedStat'
+import MagneticText from './MagneticText'
 
 const statusConfig = {
   STABLE: { label: 'Completed', className: 'status-completed' },
@@ -162,9 +163,13 @@ export default function Projects() {
           </IconBadge>
           <div>
             <span className="eyebrow">Projects</span>
+
             <h2 className="section-title" style={{ marginTop: '4px' }}>
-              Personal project
+               <MagneticText>
+                Personal Project
+              </MagneticText>
             </h2>
+
           </div>
         </div>
 
@@ -210,9 +215,16 @@ export default function Projects() {
           </IconBadge>
           <div>
             <span className="achievements-eyebrow">Merit &amp; Milestones</span>
-            <h3 className="achievements-title" style={{ marginTop: '4px', marginBottom: 0 }}>
-              Key achievements.
+
+            <h3
+              className="achievements-title"
+              style={{ marginTop: '4px', marginBottom: 0 }}
+            >
+              <MagneticText>
+                Key achievements
+              </MagneticText>
             </h3>
+
           </div>
         </div>
 

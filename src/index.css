@@ -3576,4 +3576,16 @@ h3 {
       transform: none;
     }
   }
+
+  /* changes for scramble  */
+
+
+.magnetic-text {
+  display: inline;
+}
+
+.magnetic-letter {
+  display: inline-block;
+  position: relative;
+  will-change: transform;
 }
