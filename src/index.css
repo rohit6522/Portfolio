@@ -180,7 +180,7 @@ button {
   padding: 0 24px;
 }
 
-.eyebrow {
+/* .eyebrow {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.12em;
@@ -189,15 +189,15 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-}
+} */
 
-.eyebrow::before {
+/* .eyebrow::before {
   content: '';
   width: 6px;
   height: 6px;
   background: var(--brass-bright);
   display: inline-block;
-}
+} */
 
 h1,
 h2,
@@ -1631,13 +1631,13 @@ h3 {
   background: var(--brass-bright);
 }
 
-.achievements-eyebrow {
+/* .achievements-eyebrow {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--brass-bright);
-}
+} */
 
 .achievements-title {
   font-size: clamp(30px, 5vw, 48px);
@@ -2789,7 +2789,7 @@ h3 {
 }
 
 .contrib-title {
-  font-size: 28px;
+  font-size: clamp(28px, 4vw, 40px);
   color: var(--chalk);
 }
 

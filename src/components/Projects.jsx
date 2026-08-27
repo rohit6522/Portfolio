@@ -162,7 +162,7 @@ export default function Projects() {
             <FolderIcon />
           </IconBadge>
           <div>
-            <span className="eyebrow">Projects</span>
+            {/* <span className="eyebrow">Projects</span> */}
 
             <h2 className="section-title" style={{ marginTop: '4px' }}>
                <MagneticText>
@@ -214,7 +214,7 @@ export default function Projects() {
             <AwardIcon />
           </IconBadge>
           <div>
-            <span className="achievements-eyebrow">Merit &amp; Milestones</span>
+            {/* <span className="achievements-eyebrow">Merit &amp; Milestones</span> */}
 
             <h3
               className="achievements-title"
