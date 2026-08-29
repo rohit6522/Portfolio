@@ -32,6 +32,7 @@ export const profile = {
 
 // Shown as nodes radiating from your name in the hero diagram.
 // Keep this to 5–7 items — it's drawn as a graph, not a list.
+
 export const stackNodes = [
   'React',
   'Node.js',
@@ -49,7 +50,7 @@ export const education = [
     description: 'Currently pursuing an undergraduate program in computer science with a focus on software development and system design.',
   },
   {
-    school: 'B.S.S. College',
+    school: 'Jan Sahkari College',
     degree: 'Higher Secondary Education, Science (PCM)',
     period: 'May 2021 - Jun 2023',
     description: 'Completed higher secondary education with a focus on Physics, Chemistry, and Mathematics.',
