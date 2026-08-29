@@ -17,7 +17,7 @@ export const profile = {
   location: 'Patna, Bihar',
   email: 'rohitrajyadav6522@gmail.com',
 
-  resumeUrl: './Resumeportfolio.pdf',
+  resumeUrl: '/Resumeportfolio.pdf',
   calendlyUrl: 'https://calendly.com/rohitrajyadav6522/30min',
   githubUsername: 'rohit6522',
   leetcodeUsername: 'rohit6522',
