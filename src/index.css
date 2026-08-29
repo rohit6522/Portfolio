@@ -2788,8 +2788,8 @@ h3 {
   flex-shrink: 0;
 }
 
-.contrib-title {
-  font-size: clamp(28px, 4vw, 40px);
+.contrib-head .contrib-title {
+  font-size: clamp(28px, 4vw, 40px) !important;
   color: var(--chalk);
 }
 
