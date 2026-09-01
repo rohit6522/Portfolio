@@ -22,7 +22,7 @@ export const profile = {
     { label: 'GitHub', url: 'https://github.com/rohit6522' },
     { label: 'Twitter', url: 'https://x.com/home' },
     { label: 'LeetCode', url: 'https://leetcode.com/u/rohit6522/' },
-    // { label: 'Discord', url: 'https://discord.com/channels/@me' },
+    { label: 'Discord', url: 'https://discord.com/channels/@me' },
   ],
 }
 
