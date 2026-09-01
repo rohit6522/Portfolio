@@ -1,7 +1,3 @@
-// ─────────────────────────────────────────────────────────
-// EDIT THIS FILE to personalize your portfolio.
-// Every section on the site reads from here.
-// ─────────────────────────────────────────────────────────
 
 export const profile = {
   name: 'Rohit Kumar',
@@ -26,7 +22,7 @@ export const profile = {
     { label: 'GitHub', url: 'https://github.com/rohit6522' },
     { label: 'Twitter', url: 'https://x.com/home' },
     { label: 'LeetCode', url: 'https://leetcode.com/u/rohit6522/' },
-    { label: 'Discord', url: 'https://discord.com/channels/@me' },
+    // { label: 'Discord', url: 'https://discord.com/channels/@me' },
   ],
 }
 
@@ -88,8 +84,6 @@ export const certifications = [
     date: 'July 16, 2026',
     credentialUrl: 'https://drive.google.com/file/d/1Hc7_7Q4vncXdIfTGl-JWTufARELLEKw_/view?usp=sharing',
   },
-
-
 
  {
   title: 'DSA Placement Bootcamp: Master Data Structures & Algorithms for Industry',
