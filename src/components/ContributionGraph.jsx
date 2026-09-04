@@ -205,8 +205,27 @@ export default function ContributionGraph() {
 
         <div className="contrib-grid-wrap">
           <div className="contrib-card">
-            {loading ? (
-              <div className="contrib-loading">Loading {platform} activity…</div>
+                       {loading ? (
+              <div className="contrib-skeleton">
+                <div className="skeleton-months">
+                  {Array.from({ length: 6 }).map((_, i) => (
+                    <span key={i} className="skeleton-shimmer skeleton-month-label" />
+                  ))}
+                </div>
+                <div className="skeleton-grid">
+                  {Array.from({ length: 53 }).map((_, wi) => (
+                    <div className="skeleton-week-col" key={wi}>
+                      {Array.from({ length: 7 }).map((_, di) => (
+                        <span key={di} className="skeleton-shimmer skeleton-cell" />
+                      ))}
+                    </div>
+                  ))}
+                </div>
+                <div className="skeleton-footer">
+                  <span className="skeleton-shimmer skeleton-text-sm" />
+                  <span className="skeleton-shimmer skeleton-text-xs" />
+                </div>
+              </div>
             ) : (
 
               <>
@@ -294,6 +313,20 @@ export default function ContributionGraph() {
             ))}
           </div>
         </div>
+
+               {loading && (
+          <div className="contrib-stats-grid">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <div className="contrib-stat-card" key={i}>
+                <span className="skeleton-shimmer skeleton-icon-circle" />
+                <div style={{ flex: 1 }}>
+                  <span className="skeleton-shimmer skeleton-text-lg" />
+                  <span className="skeleton-shimmer skeleton-text-xs" style={{ marginTop: '8px' }} />
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
 
         {!loading && statCards && (
           <div className="contrib-stats-grid">

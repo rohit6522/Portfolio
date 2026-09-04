@@ -2887,12 +2887,89 @@ h3 {
   min-height: 260px;
 }
 
-.contrib-loading {
-  color: var(--steel);
-  font-family: var(--font-mono);
-  font-size: 13px;
-  padding: 40px 0;
-  text-align: center;
+/* ── loading skeletons ─────────────────────────────────── */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+.contrib-skeleton {
+  width: 100%;
+}
+
+.skeleton-months {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 10px;
+}
+
+.skeleton-month-label {
+  width: 28px;
+  height: 11px;
+}
+
+.skeleton-grid {
+  display: flex;
+  gap: 3px;
+  overflow: hidden;
+}
+
+.skeleton-week-col {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.skeleton-cell {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+}
+
+.skeleton-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.skeleton-text-sm {
+  width: 160px;
+  height: 12px;
+}
+
+.skeleton-text-xs {
+  width: 90px;
+  height: 11px;
+}
+
+.skeleton-text-lg {
+  width: 70px;
+  height: 22px;
+}
+
+.skeleton-icon-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
 }
 
 .contrib-months {
