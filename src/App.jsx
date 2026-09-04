@@ -12,6 +12,8 @@ import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
+import SectionDots from './components/SectionDots'
+
 export default function App() {
   useSmoothScroll()
 return (
@@ -30,6 +32,7 @@ return (
       <Contact />
       <Footer />
       <ScrollToTop/>
+      <SectionDots/>
     </>
   )
 }
