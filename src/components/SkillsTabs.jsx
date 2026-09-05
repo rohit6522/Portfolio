@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion'
 import { skills, education, certifications, experience } from '../data/content'
 import IconBadge, { GraduationIcon, BriefcaseIcon, AwardIcon, CodeIcon } from './IconBadge'
+import SkillIcon from '../data/skillIcons'
 
 import useReveal from '../hooks/useReveal'
 import ScrambleText from './ScrambleText'
@@ -115,11 +116,11 @@ function TiltSkillCard({ group, index }) {
       <div className="skill-card-inner">
         <h3>{group.category}</h3>
         <div className="skill-tags">
-          {group.items.map((item) => (
-            <span className="skill-tag" key={item}>
-              {item}
-            </span>
-          ))}
+                          {group.items.map((item) => (
+                  <span className="skill-tag" key={item}>
+                    <SkillIcon name={item} /> {item}
+                  </span>
+                ))}
         </div>
       </div>
     </motion.div>

@@ -1162,6 +1162,9 @@ h3 {
   font-family: Inter, system-ui, -apple-system, sans-serif;
   font-size: 13.76px;
   padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   border: 1px solid rgba(231, 227, 216, 0.25);
   color: var(--chalk);
   display: inline-block;
