@@ -2875,6 +2875,9 @@ h3 {
 }
 
 .contrib-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-mono);
   font-size: 13px;
   padding: 12px 22px;
