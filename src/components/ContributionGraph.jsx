@@ -98,6 +98,7 @@ export default function ContributionGraph() {
   const [grid, setGrid] = useState({ weeks: [], monthLabels: [], weekCount: 52 })
   const [total, setTotal] = useState(0)
   const [statCards, setStatCards] = useState(null)
+  const [error, setError] = useState(null)
   const isMobile = useIsMobile()
 
   useEffect(() => {
@@ -109,11 +110,12 @@ export default function ContributionGraph() {
         const res = await fetch(
           `https://github-contributions-api.jogruber.de/v4/${profile.githubUsername}?y=${year}`
         )
+        if (!res.ok) throw new Error('GitHub API request failed')
         const data = await res.json()
         const map = {}
-          ; (data.contributions || []).forEach((c) => {
-            map[c.date] = c.count
-          })
+        ;(data.contributions || []).forEach((c) => {
+          map[c.date] = c.count
+        })
         if (cancelled) return
         setGrid(buildYearGrid(map, year, [3, 6, 10]))
         const yearTotal = data.total?.[year] ?? Object.values(map).reduce((a, b) => a + b, 0)
@@ -123,11 +125,13 @@ export default function ContributionGraph() {
           middle: { label: 'total contributions', value: yearTotal },
           third: { label: 'active days', value: Object.values(map).filter((v) => v > 0).length },
         })
-      } catch {
+        setError(null)
+      } catch (err) {
         if (!cancelled) {
           setGrid({ weeks: [], monthLabels: [], weekCount: 52 })
           setTotal(0)
           setStatCards(null)
+          setError('github')
         }
       }
     }
@@ -135,6 +139,7 @@ export default function ContributionGraph() {
     async function loadLeetcode() {
       try {
         const res = await fetch('/leetcode-stats.json')
+        if (!res.ok) throw new Error('LeetCode stats file not found')
         const data = await res.json()
         const map = {}
         let yearTotal = 0
@@ -148,16 +153,19 @@ export default function ContributionGraph() {
         })
         if (cancelled) return
         setGrid(buildYearGrid(map, year, [1, 2, 4]))
+        setTotal(yearTotal)
         setStatCards({
           streak: data.streak ?? computeClientStreak(map),
           middle: { label: 'global rank (all-time)', value: data.ranking ? `#${data.ranking.toLocaleString()}` : '—' },
           third: { label: 'questions solved (all-time)', value: data.total ?? 0 },
         })
-      } catch {
+        setError(null)
+      } catch (err) {
         if (!cancelled) {
           setGrid({ weeks: [], monthLabels: [], weekCount: 52 })
           setTotal(0)
           setStatCards(null)
+          setError('leetcode')
         }
       }
     }
@@ -202,9 +210,27 @@ export default function ContributionGraph() {
           </button>
         </div>
 
-        <div className="contrib-grid-wrap">
+              <div className="contrib-grid-wrap">
           <div className="contrib-card">
-                       {loading ? (
+            {error ? (
+              <div className="contrib-error-state">
+                <span className="contrib-error-icon">⚠</span>
+                <p className="contrib-error-title">
+                  Couldn't load {error === 'github' ? 'GitHub' : 'LeetCode'} activity
+                </p>
+                <p className="contrib-error-sub">
+                  {error === 'github'
+                    ? 'The GitHub activity service might be temporarily down. Please try again in a moment.'
+                    : "LeetCode stats haven't synced yet — they update automatically once a day."}
+                </p>
+                <button
+                  className="contrib-retry-btn"
+                  onClick={() => setPlatform((p) => p)}
+                >
+                  Try again
+                </button>
+              </div>
+            ) : loading ? (
               <div className="contrib-skeleton">
                 <div className="skeleton-months">
                   {Array.from({ length: 6 }).map((_, i) => (

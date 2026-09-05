@@ -7,10 +7,9 @@
   --brass-bright: #22d3ee;
   --steel: #8b8f96;
   --chalk: #e8e8e8;
-
   --font-display: 'General Sans', system-ui, sans-serif;
   --font-body: 'General Sans', system-ui, sans-serif;
-    --font-mono: Inter, system-ui, -apple-system, sans-serif;
+  --font-mono: Inter, system-ui, -apple-system, sans-serif;
 
   --max-w: 1250px;
 }
@@ -511,6 +510,7 @@ h3 {
   height: 2px;
   background: var(--brass-bright);
 }
+
 
 .nav-hamburger {
   display: none;
@@ -2905,6 +2905,51 @@ h3 {
   min-height: 260px;
 }
 
+/* ── error state ───────────────────────────────────────── */
+.contrib-error-state {
+  text-align: center;
+  padding: 48px 24px;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.contrib-error-icon {
+  font-size: 28px;
+  color: var(--brass-bright);
+  display: block;
+  margin-bottom: 14px;
+}
+
+.contrib-error-title {
+  color: var(--chalk);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.contrib-error-sub {
+  color: var(--steel);
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+
+.contrib-retry-btn {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  background: transparent;
+  color: var(--brass-bright);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.contrib-retry-btn:hover {
+  background: rgba(34, 211, 238, 0.1);
+  border-color: var(--brass-bright);
+}
+
 /* ── loading skeletons ─────────────────────────────────── */
 @keyframes shimmer {
   0% {
@@ -3377,13 +3422,13 @@ h3 {
     min-height: 260px;
   }
 
-  .contrib-loading {
+  /* .contrib-loading {
     color: var(--steel);
     font-family: var(--font-mono);
     font-size: 13px;
     padding: 40px 0;
     text-align: center;
-  }
+  } */
 
   .contrib-months {
     display: grid;

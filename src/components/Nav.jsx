@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion'
 import { profile } from '../data/content'
+// import ThemeToggle from './ThemeToggle'
 
 const links = [
   { href: '#top', label: 'Home' },
@@ -105,12 +106,12 @@ export default function Nav() {
 
 
 
-          <a href="#contact" className="nav-cta-pill">
-            Get in touch
-          </a>
+                  <a href="#contact" className="nav-cta-pill">
+          Get in touch
+        </a>
 
-                  <button
-          className="nav-hamburger"
+          <button
+            className="nav-hamburger"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle navigation menu"
             aria-expanded={mobileOpen}
