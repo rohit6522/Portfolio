@@ -194,13 +194,21 @@ export default function Projects() {
                 </button>
               ))}
             </div>
-            <div className="projects-grid-v3 projects-grid-compact">
-              {archiveProjects
-                .filter((p) => p.category === activeCategory)
-                .map((project, i) => (
-                  <ProjectCard project={project} index={i} key={project.title} compact />
-                ))}
-            </div>
+                       {archiveProjects.filter((p) => p.category === activeCategory).length === 0 ? (
+              <div className="archive-empty-state">
+                <span className="archive-empty-icon">🚧</span>
+                <h3>Coming Soon</h3>
+                <p>I haven't built any {activeCategory.toLowerCase()} yet — check back later!</p>
+              </div>
+            ) : (
+              <div className="projects-grid-v3 projects-grid-compact">
+                {archiveProjects
+                  .filter((p) => p.category === activeCategory)
+                  .map((project, i) => (
+                    <ProjectCard project={project} index={i} key={project.title} compact />
+                  ))}
+              </div>
+            )}
           </div>
         )}
 

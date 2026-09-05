@@ -2146,6 +2146,31 @@ h3 {
   border-color: var(--brass-bright);
 }
 
+.archive-empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.archive-empty-icon {
+  font-size: 32px;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.archive-empty-state h3 {
+  color: var(--chalk);
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.archive-empty-state p {
+  color: var(--steel);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
 /* ── experience ────────────────────────────────────────── */
 .timeline {
   border-left: 2px solid var(--brass);
