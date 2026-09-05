@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { projects, achievements, archiveCategories, archiveProjects } from '../data/content'
 import useReveal from '../hooks/useReveal'
-import useLeetCodeStats from '../hooks/useLeetCodeStats'
 import AnimatedStat from './AnimatedStat'
 import MagneticText from './MagneticText'
 
@@ -141,13 +140,9 @@ export default function Projects() {
   const [ref, visible] = useReveal()
   const [showArchive, setShowArchive] = useState(false)
   const [activeCategory, setActiveCategory] = useState(archiveCategories[0])
-  const leetcode = useLeetCodeStats()
+  // const leetcode = useLeetCodeStats()
 
-  const liveAchievements = achievements.map((a) =>
-    a.label === 'Coding Platforms' && leetcode?.total
-      ? { ...a, stat: `${leetcode.total}+ Solved` }
-      : a
-  )
+  const liveAchievements = achievements
 
   return (
     <section

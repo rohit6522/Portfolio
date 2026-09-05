@@ -180,7 +180,6 @@ export default function ContributionGraph() {
 
           <h2 className="contrib-title">
             <MagneticText>
-
               Contribution Graph
             </MagneticText>
 
@@ -281,8 +280,6 @@ export default function ContributionGraph() {
                     </div>
                   </>
                 )}
-
-
 
                 <div className="contrib-footer">
                   <span>{total} {platform === 'github' ? 'contributions' : 'submissions'} in {year}</span>
