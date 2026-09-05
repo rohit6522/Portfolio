@@ -57,11 +57,11 @@ function ProjectCard({ project, index, compact = false }) {
         <div className="project-flip-outer">
           <div className="project-flip-inner">
             <div className="project-flip-face project-flip-front">
-              {images.map((src, i) => (
+                           {images.map((src, i) => (
                 <img
                   key={i}
                   src={src}
-                  alt={project.title}
+                  alt={`${project.title} screenshot ${i + 1} of ${images.length}`}
                   className="project-cover-img"
                   style={{ opacity: i === imgIndex ? 1 : 0 }}
                 />

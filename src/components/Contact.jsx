@@ -10,7 +10,7 @@ const subjects = [
   'Job Opportunity',
   'Freelance Project',
   'Collaboration',
-  'Just Saying Hello',  
+  'Just Saying Hello',
 ]
 
 function MailIconSmall() {
@@ -96,12 +96,12 @@ export default function Contact() {
             <MailIconSmall />
           </IconBadge>
           <h2 className="contact-v3-title">
-            <MagneticText> 
+            <MagneticText>
 
-            Get In Touch
+              Get In Touch
             </MagneticText>
-            
-            </h2>
+
+          </h2>
         </div>
         <p className="contact-v3-sub">Let's discuss your next project or just say hello!</p>
 
@@ -210,14 +210,23 @@ export default function Contact() {
 
             <p className="form-tip">💡 Write a meaningful message with at least 3 words and 10 characters.</p>
 
-            {status === 'error' && <p className="form-status form-status-error">{errorMsg}</p>}
+            {status === 'error' && (
+              <p className="form-status form-status-error" role="alert">
+                {errorMsg}
+              </p>
+            )}
             {status === 'success' && (
-              <p className="form-status form-status-success">
+              <p className="form-status form-status-success" role="status">
                 ✓ Message sent successfully! I'll get back to you soon.
               </p>
             )}
 
-            <button type="submit" className="send-message-btn" disabled={status === 'sending'}>
+            <button
+              type="submit"
+              className="send-message-btn"
+              disabled={status === 'sending'}
+              aria-busy={status === 'sending'}
+            >
               {status === 'sending' ? 'Sending...' : 'Send Message'}
             </button>
           </form>

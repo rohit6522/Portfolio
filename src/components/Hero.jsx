@@ -141,7 +141,8 @@ function PhotoCard() {
     <div className="hero-photo-wrap">
       <div className="hero-photo-matte">
         <div className="hero-photo-frame" onMouseMove={handleMove}>
-          <img src="/rohit.jpg" alt={profile.name} className="hero-photo-img" />
+          <img src="/rohit.jpg" alt={`Photo of ${profile.name}, Full-Stack Developer`} className="hero-photo-img" />
+
           <span className="hero-photo-dot" />
         </div>
       </div>

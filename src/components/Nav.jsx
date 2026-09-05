@@ -77,7 +77,7 @@ export default function Nav() {
               <img
                 className="nav-avatar"
                 src="/rohit.jpg"
-                alt={profile.name}
+                alt={`${profile.name} — click to view full photo`}
               />
             </button>
 
@@ -109,10 +109,11 @@ export default function Nav() {
             Get in touch
           </a>
 
-          <button
-            className="nav-hamburger"
+                  <button
+          className="nav-hamburger"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileOpen}
           >
             <span className={`hamburger-line ${mobileOpen ? 'open' : ''}`} />
             <span className={`hamburger-line ${mobileOpen ? 'open' : ''}`} />
@@ -121,24 +122,24 @@ export default function Nav() {
 
 
         </motion.div>
-              {mobileOpen && (
-        <ul className="mobile-menu">
-          {mobileLinks.map((link) => (
+        {mobileOpen && (
+          <ul className="mobile-menu">
+            {mobileLinks.map((link) => (
               <li key={link.href}>
                 <a href={link.href} onClick={() => setMobileOpen(false)}>
                   {link.label}
                 </a>
               </li>
             ))}
-          <li className="mobile-menu-cta-item">
-            <a
-              href="#contact"
-              className="mobile-menu-cta"
-              onClick={() => setMobileOpen(false)}
-            >
-              Get in touch
-            </a>
-          </li>
+            <li className="mobile-menu-cta-item">
+              <a
+                href="#contact"
+                className="mobile-menu-cta"
+                onClick={() => setMobileOpen(false)}
+              >
+                Get in touch
+              </a>
+            </li>
           </ul>
         )}
 

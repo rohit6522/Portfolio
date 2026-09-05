@@ -49,6 +49,10 @@ html {
   cursor: none !important;
 }
 
+.custom-cursor-active :focus-visible {
+  outline: 2px solid var(--brass-bright) !important;
+  outline-offset: 3px !important;
+}
 .cursor-dot {
   position: fixed;
   top: 0;
@@ -225,10 +229,24 @@ button {
   font-family: inherit;
   cursor: pointer;
 }
-
 :focus-visible {
   outline: 2px solid var(--brass-bright);
   outline-offset: 3px;
+  border-radius: 4px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--brass-bright);
+  outline-offset: 3px;
+}
+
+.skill-tag:focus-visible,
+.contrib-toggle-btn:focus-visible,
+.contrib-year-btn:focus-visible,
+.tab-btn:focus-visible,
+.archive-cat-btn:focus-visible {
+  outline-offset: 1px;
 }
 
 .container {
