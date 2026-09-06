@@ -1072,54 +1072,9 @@ h3 {
   border-top: none;
 }
 
-/* ── about ─────────────────────────────────────────────── */
-/* .about-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 56px;
-}
-
-.about-text p {
-  font-size: 16px;
-  line-height: 1.75;
-  color: #3a3f47;
-  margin: 0 0 18px;
-}
-
-.stat-row {
-  display: flex;
-  gap: 32px;
-  margin-top: 12px;
-}
-
-.stat-block {
-  border-left: 2px solid var(--brass);
-  padding-left: 14px;
-}
-
-.stat-value {
-  font-family: var(--font-display);
-  font-size: 30px;
-  font-weight: 700;
-  color: var(--ink);
-  display: block;
-}
-
-.stat-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: #5c6270;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-} */
-
 
 /* ── skills ────────────────────────────────────────────── */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-}
+
 
 .tech-stack-head {
   display: flex;
@@ -1191,62 +1146,7 @@ h3 {
   }
 }
 
-.skill-card {
-  position: relative;
-  padding: 22px;
-  border: 1px solid rgba(34, 211, 238, 0.25);
-  overflow: hidden;
-}
 
-.skill-card-tilt {
-  transform-style: preserve-3d;
-  transition: box-shadow 0.25s ease, border-color 0.25s ease;
-}
-
-.skill-card-tilt:hover {
-  box-shadow: 0 24px 44px rgba(0, 0, 0, 0.5);
-  border-color: var(--brass-bright);
-}
-
-.skill-card-inner {
-  position: relative;
-  z-index: 1;
-}
-
-.skill-card h3 {
-  font-size: 16px;
-  color: var(--brass-bright);
-  margin-bottom: 16px;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 500;
-}
-
-.skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.skill-tag {
-  font-family: Inter, system-ui, -apple-system, sans-serif;
-  font-size: 13.76px;
-  padding: 6px 10px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  border: 1px solid rgba(231, 227, 216, 0.25);
-  color: var(--chalk);
-  display: inline-block;
-  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
-}
-
-.skill-tag:hover {
-  transform: translateY(-3px) scale(1.05);
-  border-color: var(--brass-bright);
-  background: var(--brass-bright);
-  color: var(--ink);
-}
 
 /* ── projects ──────────────────────────────────────────── */
 .projects-grid {

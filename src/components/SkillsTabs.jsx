@@ -76,56 +76,9 @@ const tabs = [
   { key: 'certifications', label: 'Certifications' },
 ]
 
-function handleCardGlow(e) {
-  const rect = e.currentTarget.getBoundingClientRect()
-  e.currentTarget.style.setProperty('--mx', `${e.clientX - rect.left}px`)
-  e.currentTarget.style.setProperty('--my', `${e.clientY - rect.top}px`)
-}
 
-function TiltSkillCard({ group, index }) {
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
 
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [8, -8]), { stiffness: 220, damping: 22 })
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-8, 8]), { stiffness: 220, damping: 22 })
-  const shineOpacity = useTransform(x, [-0.5, 0.5], [0, 0.35])
 
-  function handleMouseMove(e) {
-    const rect = e.currentTarget.getBoundingClientRect()
-    x.set((e.clientX - rect.left) / rect.width - 0.5)
-    y.set((e.clientY - rect.top) / rect.height - 0.5)
-  }
-
-  function handleMouseLeave() {
-    x.set(0)
-    y.set(0)
-  }
-
-  return (
-    <motion.div
-      className="skill-card skill-card-tilt"
-      style={{ rotateX, rotateY, transformPerspective: 800 }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      whileHover={{ scale: 1.035 }}
-      initial={{ opacity: 0, y: 26 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.45, delay: index * 0.08, ease: 'easeOut' }}
-    >
-      <motion.div className="cert-shine" style={{ opacity: shineOpacity }} />
-      <div className="skill-card-inner">
-        <h3>{group.category}</h3>
-        <div className="skill-tags">
-          {group.items.map((item) => (
-            <span className="skill-tag" key={item}>
-              <SkillIcon name={item} /> {item}
-            </span>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  )
-}
 export default function SkillsTabs() {
   const [active, setActive] = useState('skills')
   const [direction, setDirection] = useState(0)

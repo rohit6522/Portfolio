@@ -102,13 +102,13 @@ export const certifications = [
 
 
 export const skills = [
+  {
+    category: 'Frontend',
+    items: ['HTML', 'CSS', 'React', 'Tailwind CSS'],
+  },
  {
   category: 'Languages',
   items: ['Python', 'JavaScript', 'TypeScript', 'Java', 'C', 'C++', 'SQL'],
-},
-{
-  category: 'Frontend',
-  items: ['HTML', 'CSS', 'React', 'Tailwind CSS', 'Vite'],
 },
 {
   category: 'Backend',
@@ -116,19 +116,14 @@ export const skills = [
 },
 {
   category: 'Database',
-  items: ['MySQL', 'MongoDB', 'DBMS'],
+  items: ['MySQL', 'MongoDB'],
 },
-{
-  category: 'Core CS',
-  items: ['Data Structures & Algorithms', 'Object-Oriented Programming', 'Computer Networks'],
-},
+
 {
   category: 'Tools',
   items: ['Git', 'GitHub', 'VS Code', 'Postman'],
 },
 ]
-
-
 
 
 export const projects = [
