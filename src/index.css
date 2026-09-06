@@ -1121,6 +1121,76 @@ h3 {
   gap: 20px;
 }
 
+.tech-stack-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.tech-stack-title {
+  font-size: 22px;
+  color: var(--chalk);
+}
+
+.tech-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  justify-content: center;
+}
+
+.tech-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, var(--ink-2), var(--ink));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.tech-card:hover {
+  border-color: var(--brass-bright);
+  transform: translateY(-2px);
+}
+
+.tech-card-icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tech-card-icon-box svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.tech-card-name {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 13.5px;
+  color: var(--chalk);
+  white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
+  .tech-stack-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .tech-stack-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .skill-card {
   position: relative;
   padding: 22px;

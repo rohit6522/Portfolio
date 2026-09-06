@@ -116,11 +116,11 @@ function TiltSkillCard({ group, index }) {
       <div className="skill-card-inner">
         <h3>{group.category}</h3>
         <div className="skill-tags">
-                          {group.items.map((item) => (
-                  <span className="skill-tag" key={item}>
-                    <SkillIcon name={item} /> {item}
-                  </span>
-                ))}
+          {group.items.map((item) => (
+            <span className="skill-tag" key={item}>
+              <SkillIcon name={item} /> {item}
+            </span>
+          ))}
         </div>
       </div>
     </motion.div>
@@ -143,12 +143,10 @@ export default function SkillsTabs() {
       ref={ref}
       className={`section section-dark reveal ${visible ? 'reveal-visible' : ''}`}
     >
-
-
       <div className="container">
         <div className="tabs-bar">
 
-         {tabs.map((tab) => (
+          {tabs.map((tab) => (
             <button
               key={tab.key}
               className={`tab-btn ${active === tab.key ? 'active' : ''}`}
@@ -173,10 +171,28 @@ export default function SkillsTabs() {
               transition={{ duration: 0.35, ease: 'easeInOut' }}
             >
               {active === 'skills' && (
-                <div className="skills-grid">
-                  {skills.map((group, i) => (
-                    <TiltSkillCard group={group} index={i} key={group.category} />
-                  ))}
+                <div className="tab-panel">
+
+                  <div className="tech-stack-head">
+                     <IconBadge size={32}>
+                      <CodeIcon />
+                    </IconBadge>
+                    <h3 className="tech-stack-title">Tech Stack</h3> 
+                  </div>
+
+                  <div className="tech-stack-grid">
+                    {skills
+                      .filter((group) => group.category !== 'Core CS')
+                      .flatMap((group) => group.items)
+                      .map((item) => (
+                        <div className="tech-card" key={item}>
+                          <span className="tech-card-icon-box">
+                            <SkillIcon name={item} />
+                          </span>
+                          <span className="tech-card-name">{item}</span>
+                        </div>
+                      ))}
+                  </div>
                 </div>
               )}
 
@@ -206,32 +222,32 @@ export default function SkillsTabs() {
                 </div>
               )}
 
-                      {active === 'experience' && (
-          <div className="timeline tab-panel">
-            {experience.map((job) => (
-              <div className="timeline-item" key={job.company + job.period}>
-                <span className="timeline-period">{job.period}</span>
-                <h3 className="timeline-role">{job.role}</h3>
-                <div className="timeline-company">{job.company}</div>
-                <ul>
-                  {job.points.map((point, i) => (
-                    <li key={i}>{point}</li>
+              {active === 'experience' && (
+                <div className="timeline tab-panel">
+                  {experience.map((job) => (
+                    <div className="timeline-item" key={job.company + job.period}>
+                      <span className="timeline-period">{job.period}</span>
+                      <h3 className="timeline-role">{job.role}</h3>
+                      <div className="timeline-company">{job.company}</div>
+                      <ul>
+                        {job.points.map((point, i) => (
+                          <li key={i}>{point}</li>
+                        ))}
+                      </ul>
+                      {job.certificateUrl && (
+                        <a
+                          href={job.certificateUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="timeline-cert-link"
+                        >
+                          View Certificate ↗
+                        </a>
+                      )}
+                    </div>
                   ))}
-                </ul>
-                {job.certificateUrl && (
-                  <a
-                    href={job.certificateUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="timeline-cert-link"
-                  >
-                    View Certificate ↗
-                  </a>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
+                </div>
+              )}
 
               {active === 'certifications' && (
                 <div className="cert-grid">
