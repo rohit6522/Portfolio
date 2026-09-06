@@ -130,7 +130,7 @@ export const projects = [
   {
     title: 'Smart Cart — Budget-Aware Shopping Platform',
     category: 'Full-Stack Web Application',
-    period: 'Jul 2026 – Present',
+    period: 'Jul 2026 – Aug 2026',
     featured: true,
     status: 'COMPLETED',
    summary:
@@ -155,7 +155,7 @@ export const projects = [
   {
   title: 'Smart Hospital Emergency System',
   category: 'Web Application',
-  period: 'Jul 2026 – Present',
+  period: 'Jul 2026 – Sep 2026',
   featured: true,
   status: 'COMPLETED',
   summary:
