@@ -267,22 +267,22 @@ export const archiveProjects = [
   liveUrl: 'https://ai-interview-platform-real-frontend.onrender.com',
   codeUrl: 'https://github.com/rohit6522/ai-interview-platform',
 },
-  {
-    title: 'Wanderlog',
-    summary: 'A trip-planning app that syncs itineraries across devices, even offline.',
-    category: 'Mobile Apps',
-    tags: ['React Native', 'SQLite'],
-    liveUrl: '#',
-    codeUrl: '#',
-  },
-  {
-    title: 'Focusly',
-    summary: 'A minimalist Pomodoro and habit tracker with home-screen widgets.',
-    category: 'Mobile Apps',
-    tags: ['Flutter', 'Firebase'],
-    liveUrl: '#',
-    codeUrl: '#',
-  },
+  // {
+  //   title: 'Wanderlog',
+  //   summary: 'A trip-planning app that syncs itineraries across devices, even offline.',
+  //   category: 'Mobile Apps',
+  //   tags: ['React Native', 'SQLite'],
+  //   liveUrl: '#',
+  //   codeUrl: '#',
+  // },
+  // {
+  //   title: 'Focusly',
+  //   summary: 'A minimalist Pomodoro and habit tracker with home-screen widgets.',
+  //   category: 'Mobile Apps',
+  //   tags: ['Flutter', 'Firebase'],
+  //   liveUrl: '#',
+  //   codeUrl: '#',
+  // },
   
 ]
 
