@@ -132,7 +132,7 @@ export const projects = [
     category: 'Full-Stack Web Application',
     period: 'Jul 2026 – Present',
     featured: true,
-    status: 'IN PROGRESS',
+    status: 'COMPLETED',
    summary:
       'A full-stack eCommerce platform that solves checkout anxiety by tracking a shopper\'s budget in real time as they add items to their cart, with dedicated dashboards for shoppers, admins, and delivery partners.',
 
@@ -157,7 +157,7 @@ export const projects = [
   category: 'Web Application',
   period: 'Jul 2026 – Present',
   featured: true,
-  status: 'IN PROGRESS',
+  status: 'COMPLETED',
   summary:
     'An AI-powered emergency response and routing system that helps hospitals triage and route incoming emergencies faster.',
   features: [
@@ -166,7 +166,7 @@ export const projects = [
     'React frontend with Java backend services',
   ],
   images: ['/projects/Hospital/hospital.jpg','/projects/Hospital/hospital1.jpg','/projects/Hospital/hospital2.jpg','/projects/Hospital/hospital3.jpg','/projects/Hospital/hospital4.jpg','/projects/Hospital/hospital5.jpg'],
-  tags: ['React', 'Java', 'Spring Boot', 'Tailwind CSS','MySQL', 'WebSocket', 'JWT Auth'],
+  tags: ['React', 'Java', 'Spring Boot', 'Tailwind CSS','MySQL', 'WebSocket'],
   liveUrl: 'https://smart-hospital-frontend-wcd3.onrender.com/',
   codeUrl: 'https://github.com/rohit6522/smart-hospital-emergency-system',
 },
@@ -176,7 +176,7 @@ export const projects = [
     category: 'Web Application',
     period: 'March – May 2026',
     featured: true,
-    status: 'IN PROGRESS',
+    status: 'COMPLETED',
    summary:
       'A modern full-stack fitness platform that helps users plan workouts, monitor progress, follow personalized training schedules, and securely manage their accounts with authentication and real-time data.',
 
@@ -187,7 +187,7 @@ export const projects = [
       'Daily streak, calorie & water tracking',
     ],
     images: ['/projects/Fittnesss/fitness.jpg','/projects/Fittnesss/Fitness1.jpg','/projects/Fittnesss/Fitness2.jpg'],
-    tags: ['React', 'Node.js', 'Express.js', 'MongoDB','Tailwind CSS','JWT','Firebase'],
+    tags: ['React', 'Node.js', 'Express.js', 'MongoDB','Tailwind CSS','JWT'],
 
    liveUrl: 'https://fitnessapp-frontend-xiht.onrender.com',
     codeUrl: 'https://github.com/rohit6522/FitnessApp',
@@ -195,7 +195,7 @@ export const projects = [
 {
     title: 'RYDEX',
     category: 'Web Application',
-    period: 'Jul 2026 - Present', // apni actual dates daal lena 'LIVE'
+    period: 'Jul 2026 - Present', 
     featured: true,
     status: 'IN PROGRESS',
     
@@ -227,8 +227,8 @@ export const archiveProjects = [
     summary: 'A full-stack SaaS platform that parses resumes (PDF/DOCX), generates AI-powered ATS scores, and matches resumes against job descriptions using Gemini AI. Built with JWT authentication, PDF report generation, and a fully responsive UI.',
      images: ['/projects/AiResume/Resume.jpg','/projects/AiResume/Resume1.jpg','/projects/AiResume/Resume2.jpg','/projects/AiResume/Resume3.jpg'],
     category: 'Web Apps',
-    period: 'Jul 2026 – Present',
-    tags: ['React', 'TypeScript', 'Spring Boot', 'PostgreSQL', 'Gemini AI'],
+    period: 'Jul 2026 – Aug 2026',
+    tags: ['React', 'Spring Boot', 'PostgreSQL', 'Gemini AI'],
     liveUrl: 'https://resume-analyzer-frontend-6fx4.onrender.com',
     codeUrl: 'https://github.com/rohit6522/resume-analyzer-frontend',
 },
@@ -242,7 +242,7 @@ export const archiveProjects = [
   '/projects/Flix/FlixGenie3.jpg'
 ],
   category: 'Web Apps',
-  period: 'Jul 2026 – Present',
+  period: 'Jul 2026 – Sep 2026',
   tags: ['React', 'Redux', 'Node.js', 'Firebase', 'Groq AI'],
   liveUrl: 'https://flixgenie-frontend.onrender.com',
   codeUrl: 'https://github.com/rohit6522/FlixGenie',
@@ -257,8 +257,8 @@ export const archiveProjects = [
     '/projects/AiInterview/AIInterviewPrep3.jpg',
   ],
   category: 'Web Apps',
-  period: 'Jul 2026 – Present',
-  tags: ['React', 'Node.js', 'PostgreSQL', 'Gemini API', 'Framer Motion'],
+  period: 'Jul 2026 – Aug 2026',
+  tags: ['React', 'Node.js', 'PostgreSQL', 'Gemini API'],
   liveUrl: 'https://ai-interview-platform-real-frontend.onrender.com',
   codeUrl: 'https://github.com/rohit6522/ai-interview-platform',
 },

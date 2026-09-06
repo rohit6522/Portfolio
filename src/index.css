@@ -1038,7 +1038,7 @@ h3 {
 /* ── corner-bracket signature ─────────────────────────── */
 .project-card-v3,
 .project-flip-outer {
-  border-radius: 18px;
+  border-radius: 24px;
 }
 
 .blueprint-card {
@@ -1764,14 +1764,13 @@ h3 {
 
 .project-flip-outer {
   position: relative;
-  aspect-ratio: 2 / 1;
+  height: 250px;
   perspective: 1200px;
 }
 
 .project-card-compact .project-flip-outer {
-  aspect-ratio: 3 / 2;
+  height: 200px;
 }
-
 .project-flip-inner {
   position: relative;
   width: 100%;
