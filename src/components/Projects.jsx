@@ -57,7 +57,7 @@ function ProjectCard({ project, index, compact = false }) {
         <div className="project-flip-outer">
           <div className="project-flip-inner">
             <div className="project-flip-face project-flip-front">
-                           {images.map((src, i) => (
+              {images.map((src, i) => (
                 <img
                   key={i}
                   src={src}
@@ -160,7 +160,7 @@ export default function Projects() {
             {/* <span className="eyebrow">Projects</span> */}
 
             <h2 className="section-title" style={{ marginTop: '4px' }}>
-               <MagneticText>
+              <MagneticText>
                 Personal Project
               </MagneticText>
             </h2>
@@ -194,7 +194,7 @@ export default function Projects() {
                 </button>
               ))}
             </div>
-                       {archiveProjects.filter((p) => p.category === activeCategory).length === 0 ? (
+            {archiveProjects.filter((p) => p.category === activeCategory).length === 0 ? (
               <div className="archive-empty-state">
                 <span className="archive-empty-icon">🚧</span>
                 <h3>Coming Soon</h3>
