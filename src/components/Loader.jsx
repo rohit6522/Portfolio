@@ -1,47 +1,112 @@
-import { useEffect, useState } from 'react'
-import { profile } from '../data/content'
+import { useEffect, useRef, useState } from "react";
+import { profile } from "../data/content";
 
 export default function Loader() {
-  const [hidden, setHidden] = useState(false)
-  const [fading, setFading] = useState(false)
-  const [typed, setTyped] = useState('')
+  const [hidden, setHidden] = useState(false);
+  const [sliding, setSliding] = useState(false);
+  const [glowing, setGlowing] = useState(false);
+  const [typed, setTyped] = useState("");
 
-  const name = profile.name.split(' ')[0].toUpperCase()
+  const screenRef = useRef(null);
 
+  const name = profile.name.split(" ")[0].toUpperCase();
+
+  // =========================
+  // TYPE NAME
+  // =========================
   useEffect(() => {
-    let i = 0
-    const typeInterval = setInterval(() => {
-      i++
-      setTyped(name.slice(0, i))
-      if (i >= name.length) {
-        clearInterval(typeInterval)
-      }
-    }, 140)
+    let i = 0;
+    let glowTimer;
+    let slideTimer;
 
-     const fadeTimer = setTimeout(() => setFading(true), name.length * 140 + 500)
-    const hideTimer = setTimeout(() => setHidden(true), name.length * 140 + 500 + 1800)
+    const typeInterval = setInterval(() => {
+      i++;
+
+      setTyped(name.slice(0, i));
+
+      if (i >= name.length) {
+        clearInterval(typeInterval);
+
+        // Wait after typing
+        glowTimer = setTimeout(() => {
+          // Start glow
+          setGlowing(true);
+
+          // Start slide after glow
+          slideTimer = setTimeout(() => {
+            setSliding(true);
+          }, 700);
+        }, 500);
+      }
+    }, 140);
 
     return () => {
-      clearInterval(typeInterval)
-      clearTimeout(fadeTimer)
-      clearTimeout(hideTimer)
-    }
-  }, [name])
+      clearInterval(typeInterval);
+      clearTimeout(glowTimer);
+      clearTimeout(slideTimer);
+    };
+  }, [name]);
 
-  if (hidden) return null
+  // =========================
+  // REMOVE LOADER AFTER SLIDE
+  // =========================
+  useEffect(() => {
+    const element = screenRef.current;
+
+    if (!element) return;
+
+    const handleTransitionEnd = (event) => {
+      if (
+        event.propertyName === "transform" &&
+        sliding
+      ) {
+        setHidden(true);
+      }
+    };
+
+    element.addEventListener(
+      "transitionend",
+      handleTransitionEnd
+    );
+
+    return () => {
+      element.removeEventListener(
+        "transitionend",
+        handleTransitionEnd
+      );
+    };
+  }, [sliding]);
+
+  // =========================
+  // HIDE LOADER
+  // =========================
+  if (hidden) {
+    return null;
+  }
 
   return (
-    <div className={`loader-screen ${fading ? 'loader-fade' : ''}`}>
+    <div
+      ref={screenRef}
+      className={`loader-screen ${
+        sliding ? "loader-slide-up" : ""
+      }`}
+    >
       <div className="loader-inner">
-        <div className="loader-big-name">
-          {typed.split('').map((char, i) => (
-            <span key={i} className="loader-letter">
+        <div
+          className={`loader-big-name ${
+            glowing ? "loader-text-glow" : ""
+          }`}
+        >
+          {typed.split("").map((char, index) => (
+            <span
+              key={index}
+              className="loader-letter"
+            >
               {char}
             </span>
           ))}
-          <span className="loader-type-cursor" />
         </div>
       </div>
     </div>
-  )
+  );
 }
