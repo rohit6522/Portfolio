@@ -18,8 +18,8 @@ export default function Loader() {
       }
     }, 140)
 
-    const fadeTimer = setTimeout(() => setFading(true), name.length * 140 + 500)
-    const hideTimer = setTimeout(() => setHidden(true), name.length * 140 + 1000)
+    const fadeTimer = setTimeout(() => setFading(true), name.length * 140 + 400)
+    const hideTimer = setTimeout(() => setHidden(true), name.length * 140 + 400 + 1100)
 
     return () => {
       clearInterval(typeInterval)
