@@ -3794,6 +3794,10 @@ h3 {
    PAGE LOADER
 ========================= */
 
+/* =========================
+   PAGE LOADER
+========================= */
+
 .loader-screen {
   position: fixed;
   top: 0;
@@ -3841,7 +3845,6 @@ h3 {
   letter-spacing: 0.35em;
 }
 
-
 .loader-letter {
   font-family: var(--font-display);
   font-weight: 800;
@@ -3863,7 +3866,6 @@ h3 {
 
   line-height: 1;
 
-  /* spacing between letters */
   margin-right: 0.08em;
 
   text-shadow:
@@ -3871,9 +3873,32 @@ h3 {
     0 0 18px rgba(255, 255, 255, 0.08);
 }
 
-
 .loader-type-cursor {
   display: none;
+}
+
+.loader-text-glow {
+  animation: loaderGlow 0.9s ease-in-out;
+}
+
+@keyframes loaderGlow {
+  0% {
+    filter: brightness(1);
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.15);
+  }
+
+  50% {
+    filter: brightness(1.25);
+    text-shadow:
+      0 0 5px rgba(255, 255, 255, 0.9),
+      0 0 12px rgba(255, 255, 255, 0.6),
+      0 0 22px rgba(255, 255, 255, 0.3);
+  }
+
+  100% {
+    filter: brightness(1);
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.15);
+  }
 }
 
 @keyframes blinkCursor {
