@@ -268,6 +268,7 @@ h3 {
 .section {
   padding: 96px 0;
   position: relative;
+  overflow-x: hidden;
 }
 
 .section-dark {
@@ -3207,15 +3208,56 @@ h3 {
 
   .contrib-grid-wrap {
     flex-direction: column;
+    width: 100%;
   }
 
   .contrib-year-list {
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   .contrib-card {
     padding: 16px;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .contrib-toggle-row {
+    flex-wrap: wrap;
+  }
+
+  .contrib-toggle-btn {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contrib-card {
+    padding: 12px;
+  }
+
+  .contrib-vertical-month {
+    width: 26px;
+    font-size: 9px;
+  }
+
+  .contrib-vertical-week {
+    gap: 6px;
+  }
+
+  .contrib-vertical-row {
+    gap: 3px;
+  }
+
+  .contrib-stat-card {
+    padding: 18px 20px;
+  }
+
+  .contrib-year-btn {
+    padding: 10px 16px;
+    font-size: 12px;
   }
 }
 
