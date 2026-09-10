@@ -1117,6 +1117,34 @@ h3 {
 @media (max-width: 640px) {
   .tech-stack-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .tech-card {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .tech-card-icon-box {
+    width: 28px;
+    height: 28px;
+  }
+
+  .tech-card-icon-box svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .tech-card-name {
+    font-size: 12px;
+    white-space: normal;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 380px) {
+  .tech-stack-grid {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -2388,6 +2416,13 @@ h3 {
 @media (max-width: 640px) {
   .tab-btn {
     min-width: 50%;
+    padding: 14px 10px;
+    font-size: 11px;
+  }
+
+  .tab-btn .icon-badge {
+    width: 24px !important;
+    height: 24px !important;
   }
 }
 
