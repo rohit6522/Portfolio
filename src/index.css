@@ -3236,3 +3236,23 @@ h3 {
       0 0 4px rgba(255, 255, 255, 0.15);
   }
 }
+
+
+.eyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--brass-bright);
+  display: inline-block;
+  border-radius: 50%;
+  animation: eyebrowPulse 2s ease-in-out infinite;
+}
+
+@keyframes eyebrowPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(34, 211, 238, 0);
+  }
+}
