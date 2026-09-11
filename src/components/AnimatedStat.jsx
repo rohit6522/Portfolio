@@ -4,7 +4,7 @@ import { useInView, animate } from 'framer-motion'
 export default function AnimatedStat({ value }) {
   const match = value.match(/^(\d+)(.*)$/)
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-50px' })
+    const inView = useInView(ref, { once: false, margin: '-50px' })
   const [display, setDisplay] = useState(match ? '0' + match[2] : value)
 
   useEffect(() => {
