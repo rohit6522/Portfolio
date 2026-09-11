@@ -2114,6 +2114,16 @@ h3 {
   font-size: 14px;
   color: var(--steel);
   margin: 0;
+  transition: color 0.2s ease;
+  cursor: default;
+}
+
+.footer-console-log:hover {
+  color: var(--chalk);
+}
+
+.footer-console-log:hover .footer-console-string {
+  color: #ffffff;
 }
 
 .footer-console-string {
