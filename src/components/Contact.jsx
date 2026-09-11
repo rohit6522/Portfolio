@@ -198,7 +198,7 @@ export default function Contact() {
 
             <div className="form-field-v3">
               <label>Message <span className="required-star">*</span></label>
-              <textarea
+                            <textarea
                 name="message"
                 rows={5}
                 placeholder="Tell me about your project or how I can help you..."
@@ -206,6 +206,9 @@ export default function Contact() {
                 onChange={handleChange}
                 required
               />
+              <span className={`char-count ${form.message.length >= 10 ? 'char-count-ok' : ''}`}>
+                {form.message.length} characters
+              </span>
             </div>
 
             <p className="form-tip">💡 Write a meaningful message with at least 3 words and 10 characters.</p>

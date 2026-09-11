@@ -1350,6 +1350,28 @@ h3 {
   background: rgba(34, 211, 238, 0.2);
   border-color: rgba(34, 211, 238, 0.4);
   color: #67e8f9;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-meta-pill.status-completed::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  animation: statusShine 3s ease-in-out infinite;
+}
+
+@keyframes statusShine {
+  0% {
+    left: -60%;
+  }
+  100% {
+    left: 120%;
+  }
 }
 
 .project-meta-pill.status-progress {
@@ -2030,10 +2052,24 @@ h3 {
   border-color: var(--brass-bright);
 }
 
+.char-count {
+  display: block;
+  text-align: right;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 11.5px;
+  color: var(--steel);
+  margin-top: 6px;
+  transition: color 0.2s ease;
+}
+
+.char-count-ok {
+  color: var(--brass-bright);
+}
+
 .form-tip {
   font-size: 12.5px;
   color: var(--steel);
-  margin: -6px 0 20px;
+  margin: 8px 0 20px;
 }
 
 .form-status {
