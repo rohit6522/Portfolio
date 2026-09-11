@@ -18,6 +18,11 @@
   box-sizing: border-box;
 }
 
+::selection {
+  background: rgba(34, 211, 238, 0.3);
+  color: var(--chalk);
+}
+
 /* ── custom scrollbar ──────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 10px;
