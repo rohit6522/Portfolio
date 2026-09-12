@@ -84,9 +84,14 @@ export default function Loader() {
     return null;
   }
 
+    function handleSkip() {
+    setSliding(true)
+  }
+
   return (
     <div
       ref={screenRef}
+      onClick={handleSkip}
       className={`loader-screen ${
         sliding ? "loader-slide-up" : ""
       }`}
