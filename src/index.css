@@ -18,6 +18,25 @@
   box-sizing: border-box;
 }
 
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--brass-bright);
+  color: var(--ink);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 10000;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
 ::selection {
   background: rgba(34, 211, 238, 0.3);
   color: var(--chalk);

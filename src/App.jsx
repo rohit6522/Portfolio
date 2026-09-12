@@ -16,8 +16,11 @@ import SectionDots from './components/SectionDots'
 
 export default function App() {
   useSmoothScroll()
-return (
+  return (
     <>
+      <a href="#top" className="skip-link">
+        Skip to content
+      </a>
       <Loader />
       <CustomCursor />
       <AnimatedBackground />
