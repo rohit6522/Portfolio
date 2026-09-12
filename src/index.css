@@ -3287,6 +3287,12 @@ h3 {
   animation: skipHintFade 0.6s ease forwards;
   animation-delay: 1.5s;
   cursor: pointer;
+  transition: color 0.2s ease, letter-spacing 0.2s ease;
+}
+
+.loader-screen:hover .loader-skip-hint {
+  color: var(--brass-bright);
+  letter-spacing: 0.12em;
 }
 
 @keyframes skipHintFade {
