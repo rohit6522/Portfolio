@@ -96,8 +96,8 @@ export default function Loader() {
         sliding ? "loader-slide-up" : ""
       }`}
     >
-      <div className="loader-inner">
-        <div
+           <div className="loader-inner">
+              <div
           className={`loader-big-name ${
             glowing ? "loader-text-glow" : ""
           }`}
@@ -111,6 +111,17 @@ export default function Loader() {
             </span>
           ))}
         </div>
+
+        {glowing && <p className="loader-role-tag">{profile.role.toUpperCase()}</p>}
+
+        <div className="loader-progress-track">
+          <div
+            className="loader-progress-fill"
+            style={{ width: `${(typed.length / name.length) * 100}%` }}
+          />
+        </div>
+
+        <span className="loader-skip-hint">Click anywhere to skip</span>
       </div>
     </div>
   );
