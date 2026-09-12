@@ -5,8 +5,9 @@ export default function CustomCursor() {
   const ringRef = useRef(null)
 
   useEffect(() => {
-    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches
-    if (isTouchDevice) return
+        const isTouchDevice = window.matchMedia('(pointer: coarse)').matches
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (isTouchDevice || prefersReducedMotion) return
 
     const dot = dotRef.current
     const ring = ringRef.current
