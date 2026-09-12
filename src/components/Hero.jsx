@@ -16,7 +16,7 @@ function SplitReveal({ text }) {
   const ref = useRef(null)
   const words = text.split(' ')
 
-useEffect(() => {
+  useEffect(() => {
     let ctx
     const raf = requestAnimationFrame(() => {
       ctx = gsap.context(() => {
@@ -182,50 +182,50 @@ export default function Hero() {
           <p className="hero-tagline">{profile.bio}</p>
           <p className="hero-short-line">{profile.shortLine}</p>
 
-        <div className="hero-actions-row">
+          <div className="hero-actions-row">
             <MagneticLink className="btn btn-solid hero-resume-btn" href={profile.resumeUrl} download>
               {icons.Resume} Resume
             </MagneticLink>
 
             <div className="hero-social">
-            {profile.social
-              .filter((s) => s.label === 'LinkedIn')
-              .map((s) => (
-                <a
-                  key={s.label}
-                  href={s.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hero-social-link"
-                  aria-label={s.label}
-                >
-                  {icons[s.label]}
-                  <span className="social-tooltip">{s.label}</span>
-                </a>
-              ))}
+              {profile.social
+                .filter((s) => s.label === 'LinkedIn')
+                .map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hero-social-link"
+                    aria-label={s.label}
+                  >
+                    {icons[s.label]}
+                    <span className="social-tooltip">{s.label}</span>
+                  </a>
+                ))}
 
-            <a href={`mailto:${profile.email}`} className="hero-social-link" aria-label="Email">
-              {icons.Email}
-              <span className="social-tooltip">Mail</span>
-            </a>
+              <a href={`mailto:${profile.email}`} className="hero-social-link" aria-label="Email">
+                {icons.Email}
+                <span className="social-tooltip">Mail</span>
+              </a>
 
-            {profile.social
-              .filter((s) => s.label !== 'LinkedIn')
-              .map((s) => (
-                <a
-                  key={s.label}
-                  href={s.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hero-social-link"
-                  aria-label={s.label}
-                >
+              {profile.social
+                .filter((s) => s.label !== 'LinkedIn')
+                .map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hero-social-link"
+                    aria-label={s.label}
+                  >
 
 
-                  {icons[s.label] || s.label}
-                  <span className="social-tooltip">{s.label}</span>
-                </a>
-              ))}
+                    {icons[s.label] || s.label}
+                    <span className="social-tooltip">{s.label}</span>
+                  </a>
+                ))}
             </div>
           </div>
         </div>
