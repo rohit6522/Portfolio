@@ -554,7 +554,7 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  background: rgba(14, 20, 32, 0.97);
+  background: rgba(10, 10, 10, 0.97);
   border-bottom: 1px solid rgba(34, 211, 238, 0.25);
 }
 
