@@ -214,7 +214,7 @@ export const projects = [
 ]
 
 export const achievements = [
-  { icon: '</>', label: 'Coding Platforms', stat: '220+ Solved', highlight: false },
+  { icon: '</>', label: 'Coding Platforms', stat: '230+ Solved', highlight: false },
   // { icon: '★', label: 'C++ · HackerRank', stat: '5-Star Status', highlight: false },
   // { icon: '🏅', label: 'National Ranking', stat: '13th Rank, India', highlight: true },
 ]
