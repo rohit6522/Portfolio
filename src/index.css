@@ -308,8 +308,15 @@ h3 {
 }
 
 .section-title {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(28px, 4vw, 40px);
   margin-bottom: 12px;
+
+  background: linear-gradient(135deg, var(--chalk) 40%, var(--brass-bright) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  
+  /* -webkit-text-fill-color: transparent; */
 }
 
 .section-head {
@@ -346,7 +353,7 @@ h3 {
 .nav-cta-pill {
   justify-self: end;
   margin-left: 32px;
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13.76px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -492,7 +499,7 @@ h3 {
 }
 
 .nav-links a {
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13.76px;
   color: var(--steel);
   transition: color 0.15s ease;
@@ -578,7 +585,7 @@ h3 {
 .mobile-menu-cta {
   display: block;
   text-align: center;
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13.76px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -831,7 +838,7 @@ h3 {
   font-size: 20px;
   color: #f0f0f0;
   margin: 8px 0 20px;
-  font-family: Inter, system-ui, sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-weight: 500;
 }
 
@@ -840,6 +847,7 @@ h3 {
   color: var(--steel);
   font-size: 14px;
   margin: 10px 0 32px;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .hero-resume-btn {
@@ -882,8 +890,8 @@ h3 {
 
 .hero-name {
   font-family: 'Clash Display', var(--font-display);
-  font-weight: 700;
-  font-size: 75px;
+  font-weight: 800;
+  font-size: 85px;
   line-height: 1.1;
   letter-spacing: -0.03em;
   margin: 0 0 12px;
@@ -903,7 +911,7 @@ h3 {
 }
 
 .hero-tagline {
-  font-family: Inter, system-ui, sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 16px;
   line-height: 1.6;
   color: #bdbdbd;
@@ -981,7 +989,7 @@ h3 {
 }
 
 .btn {
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13.76px;
   letter-spacing: 0.03em;
   padding: 12px 22px;
@@ -1072,6 +1080,7 @@ h3 {
 }
 
 .tech-stack-title {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 22px;
   color: var(--chalk);
 }
@@ -1182,6 +1191,7 @@ h3 {
 
 
 .achievements-title {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(30px, 5vw, 48px);
   color: var(--chalk);
   margin: 0 0 36px;
@@ -1949,8 +1959,8 @@ h3 {
   gap: 14px;
   margin-bottom: 8px;
 }
-
 .contact-v3-title {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 32px;
   color: var(--chalk);
 }
@@ -1969,6 +1979,7 @@ h3 {
 }
 
 .contact-v3-info h3 {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 24px;
   color: var(--chalk);
   margin-bottom: 14px;
@@ -2252,6 +2263,7 @@ h3 {
 }
 
 .contrib-head .contrib-title {
+  font-family: 'Space Grotesk', sans-serif !important;
   font-size: clamp(28px, 4vw, 40px) !important;
   color: var(--chalk);
 }
