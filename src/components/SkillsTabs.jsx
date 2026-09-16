@@ -5,7 +5,7 @@ import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from
 import { skills, education, certifications, experience } from '../data/content'
 import IconBadge, { GraduationIcon, BriefcaseIcon, AwardIcon, CodeIcon } from './IconBadge'
 import SkillIcon from '../data/skillIcons'
-
+import RollingText from './RollingText'
 import useReveal from '../hooks/useReveal'
 import ScrambleText from './ScrambleText'
 
@@ -100,13 +100,17 @@ export default function SkillsTabs() {
         <div className="tabs-bar">
 
           {tabs.map((tab) => (
-            <button
+            <motion.button
               key={tab.key}
               className={`tab-btn ${active === tab.key ? 'active' : ''}`}
               onClick={() => selectTab(tab.key)}
+              initial="rest"
+              whileHover="hover"
+              animate="rest"
             >
-              <IconBadge size={24}>{tabIcons[tab.key]}</IconBadge> {tab.label}
-            </button>
+              <IconBadge size={24}>{tabIcons[tab.key]}</IconBadge>
+              <RollingText text={tab.label} />
+            </motion.button>
           ))}
 
 
@@ -127,10 +131,10 @@ export default function SkillsTabs() {
                 <div className="tab-panel">
 
                   <div className="tech-stack-head">
-                     <IconBadge size={32}>
+                    <IconBadge size={32}>
                       <CodeIcon />
                     </IconBadge>
-                    <h3 className="tech-stack-title">Tech Stack</h3> 
+                    <h3 className="tech-stack-title">Tech Stack</h3>
                   </div>
 
                   <div className="tech-stack-grid">
