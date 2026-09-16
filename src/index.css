@@ -365,7 +365,8 @@ h3 {
   transition: border-color 0.15s ease, background 0.15s ease;
 }
 
-.nav-cta-pill:hover {
+.nav-cta-pill:hover,
+.nav-cta-active {
   border-color: var(--brass-bright);
   background: rgba(34, 211, 238, 0.1);
 }

@@ -13,7 +13,7 @@ const links = [
 
 const desktopLinks = links
 const mobileLinks = links
-const sectionIds = links.map((l) => l.href.replace('#', ''))
+const sectionIds = [...links.map((l) => l.href.replace('#', '')), 'contact']
 
 export default function Nav() {
   const [showPhoto, setShowPhoto] = useState(false)
@@ -104,11 +104,12 @@ export default function Nav() {
             })}
           </ul>
 
-
-
-                  <a href="#contact" className="nav-cta-pill">
-          Get in touch
-        </a>
+         <a
+            href="#contact"
+            className={`nav-cta-pill ${activeSection === 'contact' ? 'nav-cta-active' : ''}`}
+          >
+            Get in touch
+          </a>
 
           <button
             className="nav-hamburger"
