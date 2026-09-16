@@ -3,6 +3,9 @@ import { profile } from '../data/content'
 import useReveal from '../hooks/useReveal'
 import IconBadge from './IconBadge'
 import MagneticText from './MagneticText'
+import RollingText from './RollingText'
+import { motion } from 'framer-motion'
+
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 const subjects = [
@@ -224,14 +227,17 @@ export default function Contact() {
               </p>
             )}
 
-            <button
+                       <motion.button
               type="submit"
               className="send-message-btn"
               disabled={status === 'sending'}
               aria-busy={status === 'sending'}
+              initial="rest"
+              whileHover={status !== 'sending' ? 'hover' : 'rest'}
+              animate="rest"
             >
-              {status === 'sending' ? 'Sending...' : 'Send Message'}
-            </button>
+              {status === 'sending' ? 'Sending...' : <RollingText text="Send Message" />}
+            </motion.button>
           </form>
         </div>
       </div>

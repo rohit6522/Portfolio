@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion'
 import { profile } from '../data/content'
+import RollingText from './RollingText'
 // import ThemeToggle from './ThemeToggle'
 
 const links = [
@@ -104,12 +105,15 @@ export default function Nav() {
             })}
           </ul>
 
-         <a
+          <motion.a
             href="#contact"
             className={`nav-cta-pill ${activeSection === 'contact' ? 'nav-cta-active' : ''}`}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
           >
-            Get in touch
-          </a>
+            <RollingText text="Get in touch" />
+          </motion.a>
 
           <button
             className="nav-hamburger"

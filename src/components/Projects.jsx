@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { projects, achievements, archiveCategories, archiveProjects } from '../data/content'
+import RollingText from './RollingText'
 import useReveal from '../hooks/useReveal'
 import AnimatedStat from './AnimatedStat'
 import MagneticText from './MagneticText'
@@ -175,10 +176,16 @@ export default function Projects() {
         </div>
 
         <div className="archive-toggle-wrap">
-          <button className="archive-toggle" onClick={() => setShowArchive(!showArchive)}>
-            [ {showArchive ? 'HIDE_ARCHIVE' : 'ACCESS_ARCHIVE'} ]
+                  <motion.button
+            className="archive-toggle"
+            onClick={() => setShowArchive(!showArchive)}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+          >
+            [ <RollingText text={showArchive ? 'HIDE_ARCHIVE' : 'ACCESS_ARCHIVE'} /> ]
             <span>{showArchive ? '▲' : '▼'}</span>
-          </button>
+          </motion.button>
         </div>
 
         {showArchive && (
