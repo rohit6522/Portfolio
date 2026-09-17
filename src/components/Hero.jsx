@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { profile } from '../data/content'
 import useMagnetic from '../hooks/useMagnetic'
 import RollingText from './RollingText'
+import Typewriter from './Typewriter'
 
 function getGreeting() {
   const hour = new Date().getHours()
@@ -182,7 +183,9 @@ export default function Hero() {
           <h1 className="hero-name">
             <GlowName text={profile.name} />
           </h1>
-          <p className="hero-role-line">{profile.role}</p>
+                  <p className="hero-role-line">
+            <Typewriter phrases={profile.rolePhrases} />
+          </p>
           <p className="hero-tagline">{profile.bio}</p>
           <p className="hero-short-line">{profile.shortLine}</p>
 

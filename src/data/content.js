@@ -2,6 +2,12 @@
 export const profile = {
   name: 'Rohit Kumar',
   role: 'Full-Stack Developer',
+    rolePhrases: [
+    'Full-Stack Developer',
+    'React Developer',
+    'Problem Solver',
+    'UI/UX Enthusiast',
+  ],
 
  tagline:
     'I design and build web systems end to end — from database schema to the pixel you click on.',

@@ -841,6 +841,23 @@ h3 {
   margin: 8px 0 20px;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 500;
+  min-height: 1.4em;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--brass-bright);
+  margin-left: 3px;
+  vertical-align: middle;
+  animation: typewriterBlink 0.8s steps(2) infinite;
+}
+
+@keyframes typewriterBlink {
+  50% {
+    opacity: 0;
+  }
 }
 
 .hero-short-line {
