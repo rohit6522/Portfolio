@@ -87,23 +87,25 @@ export default function Nav() {
             <span className="nav-divider" />
           </div>
 
-          <ul className="nav-links" onMouseLeave={() => setHovered(null)}>
-            {desktopLinks.map((link) => {
-              const isActive = hovered === link.href || (!hovered && activeSection === link.href.replace('#', ''))
-              return (
-                <li key={link.href} className="nav-link-item" onMouseEnter={() => setHovered(link.href)}>
-                  <a href={link.href}>{link.label}</a>
-                  {isActive && (
-                    <motion.span
-                      className="nav-underline"
-                      layoutId="nav-underline"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </li>
-              )
-            })}
-          </ul>
+                  <ul className="nav-links" onMouseLeave={() => setHovered(null)}>
+          {desktopLinks.map((link) => {
+            const isActive = hovered === link.href || (!hovered && activeSection === link.href.replace('#', ''))
+            return (
+              <li key={link.href} className="nav-link-item" onMouseEnter={() => setHovered(link.href)}>
+                <motion.a href={link.href} initial="rest" whileHover="hover" animate="rest">
+                  <RollingText text={link.label} />
+                </motion.a>
+                {isActive && (
+                  <motion.span
+                    className="nav-underline"
+                    layoutId="nav-underline"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </li>
+            )
+          })}
+        </ul>
 
           <motion.a
             href="#contact"
