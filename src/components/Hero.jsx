@@ -5,6 +5,7 @@ import { profile } from '../data/content'
 import useMagnetic from '../hooks/useMagnetic'
 import RollingText from './RollingText'
 import Typewriter from './Typewriter'
+import { Reveal, RevealItem } from './Reveal'
 
 function getGreeting() {
   const hour = new Date().getHours()
@@ -163,79 +164,123 @@ function PhotoCard() {
   )
 }
 
+
+
 export default function Hero() {
   const [greeting, setGreeting] = useState('')
 
   useEffect(() => {
     setGreeting(getGreeting())
-    const interval = setInterval(() => setGreeting(getGreeting()), 60000)
+
+    const interval = setInterval(() => {
+      setGreeting(getGreeting())
+    }, 60000)
+
     return () => clearInterval(interval)
   }, [])
 
   return (
     <section id="top" className="hero">
       <div className="container hero-grid hero-grid-v2">
-        <div>
-          <PhotoCard />
-        </div>
-        <div>
-          <span className="hero-greeting">{greeting} —</span>
-          <h1 className="hero-name">
-            <GlowName text={profile.name} />
-          </h1>
-                  <p className="hero-role-line">
-            <Typewriter phrases={profile.rolePhrases} />
-          </p>
-          <p className="hero-tagline">{profile.bio}</p>
-          <p className="hero-short-line">{profile.shortLine}</p>
+        <Reveal className="hero-reveal-column">
+          <RevealItem>
+            <PhotoCard />
+          </RevealItem>
+        </Reveal>
 
-          <div className="hero-actions-row">
-                       <MagneticLink className="btn btn-solid hero-resume-btn" href={profile.resumeUrl} download>
-              {icons.Resume} <RollingText text="Resume" />
-            </MagneticLink>
+        <Reveal className="hero-reveal-column">
+          <RevealItem>
+            <span className="hero-greeting">
+              {greeting} —
+            </span>
+          </RevealItem>
 
-            <div className="hero-social">
-              {profile.social
-                .filter((s) => s.label === 'LinkedIn')
-                .map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hero-social-link"
-                    aria-label={s.label}
-                  >
-                    {icons[s.label]}
-                    <span className="social-tooltip">{s.label}</span>
-                  </a>
-                ))}
+          <RevealItem>
+            <h1 className="hero-name">
+              <GlowName text={profile.name} />
+            </h1>
+          </RevealItem>
 
-              <a href={`mailto:${profile.email}`} className="hero-social-link" aria-label="Email">
-                {icons.Email}
-                <span className="social-tooltip">Mail</span>
-              </a>
+          <RevealItem>
+            <p className="hero-role-line">
+              <Typewriter phrases={profile.rolePhrases} />
+            </p>
+          </RevealItem>
 
-              {profile.social
-                .filter((s) => s.label !== 'LinkedIn')
-                .map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hero-social-link"
-                    aria-label={s.label}
-                  >
+          <RevealItem>
+            <p className="hero-tagline">
+              {profile.bio}
+            </p>
+          </RevealItem>
 
+          <RevealItem>
+            <p className="hero-short-line">
+              {profile.shortLine}
+            </p>
+          </RevealItem>
 
-                    {icons[s.label] || s.label}
-                    <span className="social-tooltip">{s.label}</span>
-                  </a>
-                ))}
+          <RevealItem>
+            <div className="hero-actions-row">
+              <MagneticLink
+                className="btn btn-solid hero-resume-btn"
+                href={profile.resumeUrl}
+                download
+              >
+                {icons.Resume}
+                <RollingText text="Resume" />
+              </MagneticLink>
+
+              <div className="hero-social">
+                {profile.social
+                  .filter((s) => s.label === 'LinkedIn')
+                  .map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hero-social-link"
+                      aria-label={s.label}
+                    >
+                      {icons[s.label]}
+                      <span className="social-tooltip">
+                        {s.label}
+                      </span>
+                    </a>
+                  ))}
+
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="hero-social-link"
+                  aria-label="Email"
+                >
+                  {icons.Email}
+                  <span className="social-tooltip">
+                    Mail
+                  </span>
+                </a>
+
+                {profile.social
+                  .filter((s) => s.label !== 'LinkedIn')
+                  .map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hero-social-link"
+                      aria-label={s.label}
+                    >
+                      {icons[s.label] || s.label}
+                      <span className="social-tooltip">
+                        {s.label}
+                      </span>
+                    </a>
+                  ))}
+              </div>
             </div>
-          </div>
-        </div>
+          </RevealItem>
+        </Reveal>
       </div>
     </section>
   )

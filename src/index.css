@@ -602,7 +602,19 @@ h3 {
   background: rgba(34, 211, 238, 0.1);
 }
 
+
+
 /* ── hero ──────────────────────────────────────────────── */
+
+/* .hero-reveal-column {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+} */
+
+
+
 .hero {
   min-height: 100vh;
   display: flex;
