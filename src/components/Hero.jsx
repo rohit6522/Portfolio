@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { useEffect, useRef, useState } from 'react'
 import { profile } from '../data/content'
 import useMagnetic from '../hooks/useMagnetic'
+import RollingText from './RollingText'
 
 function getGreeting() {
   const hour = new Date().getHours()
@@ -123,6 +124,9 @@ function MagneticLink({ className, href, download, target, rel, children }) {
       target={target}
       rel={rel}
       style={{ x, y }}
+      initial="rest"
+      whileHover="hover"
+      animate="rest"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
@@ -183,8 +187,8 @@ export default function Hero() {
           <p className="hero-short-line">{profile.shortLine}</p>
 
           <div className="hero-actions-row">
-            <MagneticLink className="btn btn-solid hero-resume-btn" href={profile.resumeUrl} download>
-              {icons.Resume} Resume
+                       <MagneticLink className="btn btn-solid hero-resume-btn" href={profile.resumeUrl} download>
+              {icons.Resume} <RollingText text="Resume" />
             </MagneticLink>
 
             <div className="hero-social">
