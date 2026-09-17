@@ -138,17 +138,34 @@ export default function SkillsTabs() {
                   </div>
 
                   <div className="tech-stack-grid">
-                    {skills
-                      .filter((group) => group.category !== 'Core CS')
-                      .flatMap((group) => group.items)
-                      .map((item) => (
-                        <div className="tech-card" key={item}>
-                          <span className="tech-card-icon-box">
-                            <SkillIcon name={item} />
-                          </span>
-                          <span className="tech-card-name">{item}</span>
-                        </div>
-                      ))}
+                                    {skills
+                  .filter((group) => group.category !== 'Core CS')
+                  .flatMap((group) => group.items)
+                  .map((item) => (
+                                       <motion.div
+                      className="tech-card"
+                      key={item}
+                      initial="rest"
+                      whileHover="hover"
+                      animate="rest"
+                    >
+                      <motion.span
+                        className="tech-card-fill"
+                        variants={{
+                          rest: { scaleX: 0 },
+                          hover: { scaleX: 1 },
+                        }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      />
+                      <span className="tech-card-content">
+                        <span className="tech-card-icon-box">
+                          <SkillIcon name={item} />
+                        </span>
+                        <span className="tech-card-name">{item}</span>
+                      </span>
+                    </motion.div>
+                  ))}
+
                   </div>
                 </div>
               )}
