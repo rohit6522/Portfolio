@@ -315,7 +315,7 @@ h3 {
   background: linear-gradient(135deg, var(--chalk) 40%, var(--brass-bright) 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  
+
   /* -webkit-text-fill-color: transparent; */
 }
 
@@ -1127,8 +1127,8 @@ h3 {
   position: absolute;
   inset: 0;
   background: #ffffff;
-  transform-origin: left center;
   z-index: 0;
+  will-change: clip-path;
 }
 
 .tech-card-content {
@@ -1438,6 +1438,7 @@ h3 {
   0% {
     left: -60%;
   }
+
   100% {
     left: 120%;
   }
@@ -2022,6 +2023,7 @@ h3 {
   gap: 14px;
   margin-bottom: 8px;
 }
+
 .contact-v3-title {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 32px;
@@ -3285,10 +3287,13 @@ h3 {
 }
 
 @keyframes loaderGlowPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.6;
     transform: translate(-50%, -50%) scale(1);
   }
+
   50% {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1.1);
@@ -3464,9 +3469,12 @@ h3 {
 }
 
 @keyframes eyebrowPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.5);
   }
+
   50% {
     box-shadow: 0 0 0 5px rgba(34, 211, 238, 0);
   }
