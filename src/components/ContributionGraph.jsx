@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { profile } from '../data/content'
 import IconBadge, { CodeIcon } from './IconBadge'
 import MagneticText from './MagneticText'
+import { Reveal, RevealItem } from './Reveal'
 
 function GithubLogoIcon() {
   return (
@@ -136,9 +137,9 @@ export default function ContributionGraph() {
         if (!res.ok) throw new Error('GitHub API request failed')
         const data = await res.json()
         const map = {}
-        ;(data.contributions || []).forEach((c) => {
-          map[c.date] = c.count
-        })
+          ; (data.contributions || []).forEach((c) => {
+            map[c.date] = c.count
+          })
         if (cancelled) return
         setGrid(buildYearGrid(map, year, [3, 6, 10]))
         const yearTotal = data.total?.[year] ?? Object.values(map).reduce((a, b) => a + b, 0)
@@ -204,201 +205,214 @@ export default function ContributionGraph() {
   return (
     <section id="contributions" className="section section-dark">
       <div className="container">
-        <div className="contrib-head">
-          <IconBadge>
-            <CodeIcon />
-          </IconBadge>
+        <Reveal>
 
-          <h2 className="contrib-title">
-            <MagneticText>
-              Contribution Graph
-            </MagneticText>
+          <RevealItem>
+            <div className="contrib-head">
+              <IconBadge>
+                <CodeIcon />
+              </IconBadge>
 
-          </h2>
+              <h2 className="contrib-title">
+                <MagneticText>
+                  Contribution Graph
+                </MagneticText>
 
-        </div>
+              </h2>
 
-               <div className="contrib-toggle-row">
-          <button
-            className={`contrib-toggle-btn ${platform === 'github' ? 'active' : ''}`}
-            onClick={() => setPlatform('github')}
-          >
-            <GithubLogoIcon /> GitHub
-          </button>
-          <button
-            className={`contrib-toggle-btn ${platform === 'leetcode' ? 'active' : ''}`}
-            onClick={() => setPlatform('leetcode')}
-          >
-            <LeetCodeLogoIcon /> LeetCode
-          </button>
-        </div>
+            </div>
+          </RevealItem>
 
-              <div className="contrib-grid-wrap">
-          <div className="contrib-card">
-            {error ? (
-              <div className="contrib-error-state">
-                <span className="contrib-error-icon">⚠</span>
-                <p className="contrib-error-title">
-                  Couldn't load {error === 'github' ? 'GitHub' : 'LeetCode'} activity
-                </p>
-                <p className="contrib-error-sub">
-                  {error === 'github'
-                    ? 'The GitHub activity service might be temporarily down. Please try again in a moment.'
-                    : "LeetCode stats haven't synced yet — they update automatically once a day."}
-                </p>
-                <button
-                  className="contrib-retry-btn"
-                  onClick={() => setPlatform((p) => p)}
-                >
-                  Try again
-                </button>
-              </div>
-            ) : loading ? (
-              <div className="contrib-skeleton">
-                <div className="skeleton-months">
-                  {Array.from({ length: 6 }).map((_, i) => (
-                    <span key={i} className="skeleton-shimmer skeleton-month-label" />
-                  ))}
-                </div>
-                <div className="skeleton-grid">
-                  {Array.from({ length: 53 }).map((_, wi) => (
-                    <div className="skeleton-week-col" key={wi}>
-                      {Array.from({ length: 7 }).map((_, di) => (
-                        <span key={di} className="skeleton-shimmer skeleton-cell" />
+          <RevealItem>
+
+            <div className="contrib-toggle-row">
+              <button
+                className={`contrib-toggle-btn ${platform === 'github' ? 'active' : ''}`}
+                onClick={() => setPlatform('github')}
+              >
+                <GithubLogoIcon /> GitHub
+              </button>
+              <button
+                className={`contrib-toggle-btn ${platform === 'leetcode' ? 'active' : ''}`}
+                onClick={() => setPlatform('leetcode')}
+              >
+                <LeetCodeLogoIcon /> LeetCode
+              </button>
+            </div>
+          </RevealItem>
+
+          <RevealItem>
+            <div className="contrib-grid-wrap">
+              <div className="contrib-card">
+                {error ? (
+                  <div className="contrib-error-state">
+                    <span className="contrib-error-icon">⚠</span>
+                    <p className="contrib-error-title">
+                      Couldn't load {error === 'github' ? 'GitHub' : 'LeetCode'} activity
+                    </p>
+                    <p className="contrib-error-sub">
+                      {error === 'github'
+                        ? 'The GitHub activity service might be temporarily down. Please try again in a moment.'
+                        : "LeetCode stats haven't synced yet — they update automatically once a day."}
+                    </p>
+                    <button
+                      className="contrib-retry-btn"
+                      onClick={() => setPlatform((p) => p)}
+                    >
+                      Try again
+                    </button>
+                  </div>
+                ) : loading ? (
+                  <div className="contrib-skeleton">
+                    <div className="skeleton-months">
+                      {Array.from({ length: 6 }).map((_, i) => (
+                        <span key={i} className="skeleton-shimmer skeleton-month-label" />
                       ))}
                     </div>
-                  ))}
-                </div>
-                <div className="skeleton-footer">
-                  <span className="skeleton-shimmer skeleton-text-sm" />
-                  <span className="skeleton-shimmer skeleton-text-xs" />
-                </div>
-              </div>
-            ) : (
-
-              <>
-                {isMobile ? (
-                  <div className="contrib-vertical">
-                    {grid.weeks.map((week, wi) => {
-                      const monthLabel = grid.monthLabels.find((m) => m.index === wi)
-                      return (
-                        <div key={wi} className="contrib-vertical-week">
-                          {monthLabel && <span className="contrib-vertical-month">{monthLabel.label}</span>}
-                          <div className="contrib-vertical-row">
-                            {week.map((day, di) =>
-                              day ? (
-                                <span
-                                  key={di}
-                                  className={`contrib-cell level-${day.level}`}
-                                  title={`${day.count} on ${day.date}`}
-                                />
-                              ) : (
-                                <span key={di} className="contrib-cell contrib-cell-empty" />
-                              )
-                            )}
-                          </div>
+                    <div className="skeleton-grid">
+                      {Array.from({ length: 53 }).map((_, wi) => (
+                        <div className="skeleton-week-col" key={wi}>
+                          {Array.from({ length: 7 }).map((_, di) => (
+                            <span key={di} className="skeleton-shimmer skeleton-cell" />
+                          ))}
                         </div>
-                      )
-                    })}
+                      ))}
+                    </div>
+                    <div className="skeleton-footer">
+                      <span className="skeleton-shimmer skeleton-text-sm" />
+                      <span className="skeleton-shimmer skeleton-text-xs" />
+                    </div>
                   </div>
                 ) : (
+
                   <>
-                    <div className="contrib-months" style={{ gridTemplateColumns: `repeat(${grid.weekCount}, 1fr)` }}>
-                      {grid.monthLabels.map((m) => (
-                        <span key={m.index} style={{ gridColumnStart: m.index + 1 }}>
-                          {m.label}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="contrib-weeks" style={{ gridTemplateColumns: `repeat(${grid.weekCount}, 1fr)` }}>
-                      {grid.weeks.map((week, wi) => (
-                        <div className="contrib-week-col" key={wi}>
-                          {week.map((day, di) =>
-                            day ? (
-                              <span
-                                key={di}
-                                className={`contrib-cell level-${day.level}`}
-                                title={`${day.count} on ${day.date}`}
-                              />
-                            ) : (
-                              <span key={di} className="contrib-cell contrib-cell-empty" />
-                            )
-                          )}
+                    {isMobile ? (
+                      <div className="contrib-vertical">
+                        {grid.weeks.map((week, wi) => {
+                          const monthLabel = grid.monthLabels.find((m) => m.index === wi)
+                          return (
+                            <div key={wi} className="contrib-vertical-week">
+                              {monthLabel && <span className="contrib-vertical-month">{monthLabel.label}</span>}
+                              <div className="contrib-vertical-row">
+                                {week.map((day, di) =>
+                                  day ? (
+                                    <span
+                                      key={di}
+                                      className={`contrib-cell level-${day.level}`}
+                                      title={`${day.count} on ${day.date}`}
+                                    />
+                                  ) : (
+                                    <span key={di} className="contrib-cell contrib-cell-empty" />
+                                  )
+                                )}
+                              </div>
+                            </div>
+                          )
+                        })}
+                      </div>
+                    ) : (
+                      <>
+                        <div className="contrib-months" style={{ gridTemplateColumns: `repeat(${grid.weekCount}, 1fr)` }}>
+                          {grid.monthLabels.map((m) => (
+                            <span key={m.index} style={{ gridColumnStart: m.index + 1 }}>
+                              {m.label}
+                            </span>
+                          ))}
                         </div>
-                      ))}
+                        <div className="contrib-weeks" style={{ gridTemplateColumns: `repeat(${grid.weekCount}, 1fr)` }}>
+                          {grid.weeks.map((week, wi) => (
+                            <div className="contrib-week-col" key={wi}>
+                              {week.map((day, di) =>
+                                day ? (
+                                  <span
+                                    key={di}
+                                    className={`contrib-cell level-${day.level}`}
+                                    title={`${day.count} on ${day.date}`}
+                                  />
+                                ) : (
+                                  <span key={di} className="contrib-cell contrib-cell-empty" />
+                                )
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </>
+                    )}
+
+                    <div className="contrib-footer">
+                      <span>{total} {platform === 'github' ? 'contributions' : 'submissions'} in {year}</span>
+                      <span className="contrib-legend">
+                        Less
+                        <span className="contrib-cell level-0" />
+                        <span className="contrib-cell level-1" />
+                        <span className="contrib-cell level-2" />
+                        <span className="contrib-cell level-3" />
+                        <span className="contrib-cell level-4" />
+                        More
+                      </span>
                     </div>
                   </>
+
                 )}
+              </div>
 
-                <div className="contrib-footer">
-                  <span>{total} {platform === 'github' ? 'contributions' : 'submissions'} in {year}</span>
-                  <span className="contrib-legend">
-                    Less
-                    <span className="contrib-cell level-0" />
-                    <span className="contrib-cell level-1" />
-                    <span className="contrib-cell level-2" />
-                    <span className="contrib-cell level-3" />
-                    <span className="contrib-cell level-4" />
-                    More
-                  </span>
-                </div>
-              </>
+              <div className="contrib-year-list">
+                {years.map((y) => (
+                  <button
+                    key={y}
+                    className={`contrib-year-btn ${year === y ? 'active' : ''}`}
+                    onClick={() => setYear(y)}
+                  >
+                    {y}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </RevealItem>
+          <RevealItem>
 
+            {loading && (
+              <div className="contrib-stats-grid">
+                {Array.from({ length: 3 }).map((_, i) => (
+                  <div className="contrib-stat-card" key={i}>
+                    <span className="skeleton-shimmer skeleton-icon-circle" />
+                    <div style={{ flex: 1 }}>
+                      <span className="skeleton-shimmer skeleton-text-lg" />
+                      <span className="skeleton-shimmer skeleton-text-xs" style={{ marginTop: '8px' }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
             )}
-          </div>
 
-          <div className="contrib-year-list">
-            {years.map((y) => (
-              <button
-                key={y}
-                className={`contrib-year-btn ${year === y ? 'active' : ''}`}
-                onClick={() => setYear(y)}
-              >
-                {y}
-              </button>
-            ))}
-          </div>
-        </div>
-
-               {loading && (
-          <div className="contrib-stats-grid">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <div className="contrib-stat-card" key={i}>
-                <span className="skeleton-shimmer skeleton-icon-circle" />
-                <div style={{ flex: 1 }}>
-                  <span className="skeleton-shimmer skeleton-text-lg" />
-                  <span className="skeleton-shimmer skeleton-text-xs" style={{ marginTop: '8px' }} />
+            {!loading && statCards && (
+              <div className="contrib-stats-grid">
+                <div className="contrib-stat-card">
+                  <span className="contrib-stat-icon">🔥</span>
+                  <div>
+                    <span className="contrib-stat-value">{statCards.streak}</span>
+                    <span className="contrib-stat-label">day streak (current)</span>
+                  </div>
+                </div>
+                <div className="contrib-stat-card">
+                  <span className="contrib-stat-icon">🏅</span>
+                  <div>
+                    <span className="contrib-stat-value">{statCards.middle.value}</span>
+                    <span className="contrib-stat-label">{statCards.middle.label}</span>
+                  </div>
+                </div>
+                <div className="contrib-stat-card">
+                  <span className="contrib-stat-icon">✓</span>
+                  <div>
+                    <span className="contrib-stat-value">{statCards.third.value}</span>
+                    <span className="contrib-stat-label">{statCards.third.label}</span>
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
-        )}
-
-        {!loading && statCards && (
-          <div className="contrib-stats-grid">
-            <div className="contrib-stat-card">
-              <span className="contrib-stat-icon">🔥</span>
-              <div>
-                <span className="contrib-stat-value">{statCards.streak}</span>
-                <span className="contrib-stat-label">day streak (current)</span>
-              </div>
-            </div>
-            <div className="contrib-stat-card">
-              <span className="contrib-stat-icon">🏅</span>
-              <div>
-                <span className="contrib-stat-value">{statCards.middle.value}</span>
-                <span className="contrib-stat-label">{statCards.middle.label}</span>
-              </div>
-            </div>
-            <div className="contrib-stat-card">
-              <span className="contrib-stat-icon">✓</span>
-              <div>
-                <span className="contrib-stat-value">{statCards.third.value}</span>
-                <span className="contrib-stat-label">{statCards.third.label}</span>
-              </div>
-            </div>
-          </div>
-        )}
+            )}
+          </RevealItem>
+          
+        </Reveal>
       </div>
     </section>
   )
