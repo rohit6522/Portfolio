@@ -1,19 +1,23 @@
+
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { projects, achievements, archiveCategories, archiveProjects } from '../data/content'
+import {
+  projects,
+  achievements,
+  archiveCategories,
+  archiveProjects,
+} from '../data/content'
 import RollingText from './RollingText'
-import useReveal from '../hooks/useReveal'
 import AnimatedStat from './AnimatedStat'
 import MagneticText from './MagneticText'
+import IconBadge, { FolderIcon, AwardIcon } from './IconBadge'
+import { Reveal, RevealItem } from './Reveal'
 
 const statusConfig = {
   STABLE: { label: 'Completed', className: 'status-completed' },
   'IN PROGRESS': { label: 'In Progress', className: 'status-progress' },
   PLANNED: { label: 'Planned', className: 'status-planned' },
 }
-
-
-import IconBadge, { FolderIcon, AwardIcon } from './IconBadge'
 
 function GithubIcon() {
   return (
@@ -32,7 +36,7 @@ function GlobeIcon() {
   )
 }
 
-function ProjectCard({ project, index, compact = false }) {
+function ProjectCard({ project, compact = false }) {
   const images = project.images || []
   const features = project.features || []
   const [imgIndex, setImgIndex] = useState(0)
@@ -40,20 +44,18 @@ function ProjectCard({ project, index, compact = false }) {
 
   useEffect(() => {
     if (images.length <= 1) return
+
     const timer = setInterval(() => {
-      setImgIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
+      setImgIndex((prev) =>
+        prev === images.length - 1 ? 0 : prev + 1
+      )
     }, 3500)
+
     return () => clearInterval(timer)
   }, [images.length])
 
   return (
-    <motion.div
-      className={`project-card-v3 ${compact ? 'project-card-compact' : ''}`}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.5, delay: (index % 2) * 0.1, ease: 'easeOut' }}
-    >
+    <div className={`project-card-v3 ${compact ? 'project-card-compact' : ''}`}>
       {images.length > 0 && (
         <div className="project-flip-outer">
           <div className="project-flip-inner">
@@ -69,7 +71,10 @@ function ProjectCard({ project, index, compact = false }) {
               ))}
 
               <div className="project-cover-overlay" />
-              <span className="project-cover-title">{project.title}</span>
+              <span className="project-cover-title">
+                {project.title}
+              </span>
+
               <span className="project-hover-pill">
                 Hover <span>›</span>
               </span>
@@ -77,23 +82,31 @@ function ProjectCard({ project, index, compact = false }) {
               {images.length > 1 && (
                 <div className="project-cover-dots">
                   {images.map((_, i) => (
-                    <span key={i} className={`project-cover-dot ${i === imgIndex ? 'active' : ''}`} />
+                    <span
+                      key={i}
+                      className={`project-cover-dot ${i === imgIndex ? 'active' : ''}`}
+                    />
                   ))}
                 </div>
               )}
             </div>
-            {/* project-flip-face project-flip-back */}
 
             <div className="project-flip-face project-flip-back">
-              {project.summary && <p className="features-panel-summary">{project.summary}</p>}
+              {project.summary && (
+                <p className="features-panel-summary">
+                  {project.summary}
+                </p>
+              )}
+
               <div className="features-panel-label">
                 <span>✓</span> Key Features
               </div>
-              <ul className="features-panel-list">
 
-                {features.map((f, i) => (
+              <ul className="features-panel-list">
+                {features.map((feature, i) => (
                   <li key={i}>
-                    <span className="features-panel-dot" /> {f}
+                    <span className="features-panel-dot" />
+                    {feature}
                   </li>
                 ))}
               </ul>
@@ -104,13 +117,24 @@ function ProjectCard({ project, index, compact = false }) {
 
       <div className="project-footer-v3">
         <div className="project-meta-row-v3">
-          {project.category && <span className="project-meta-pill">{project.category}</span>}
-          <span className={`project-meta-pill ${status.className}`}>{status.label}</span>
-          {project.period && <span className="project-meta-period">{project.period}</span>}
+          {project.category && (
+            <span className="project-meta-pill">
+              {project.category}
+            </span>
+          )}
+
+          <span className={`project-meta-pill ${status.className}`}>
+            {status.label}
+          </span>
+
+          {project.period && (
+            <span className="project-meta-period">
+              {project.period}
+            </span>
+          )}
         </div>
 
         {project.tags?.length > 0 && (
-
           <div className="project-tags-row-v3">
             {project.tags.map((tag) => (
               <span className="project-tag-pill-v3" key={tag}>
@@ -122,136 +146,174 @@ function ProjectCard({ project, index, compact = false }) {
 
         <div className="project-links-row-v3">
           {project.codeUrl && (
-            <a href={project.codeUrl} target="_blank" rel="noreferrer" className="project-link-btn-v3">
+            <a
+              href={project.codeUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="project-link-btn-v3"
+            >
               <GithubIcon /> GitHub
             </a>
           )}
+
           {project.liveUrl && (
-            <a href={project.liveUrl} target="_blank" rel="noreferrer" className="project-link-btn-v3">
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="project-link-btn-v3"
+            >
               <GlobeIcon /> Live
             </a>
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
 
 export default function Projects() {
-  const [ref, visible] = useReveal()
   const [showArchive, setShowArchive] = useState(false)
   const [activeCategory, setActiveCategory] = useState(archiveCategories[0])
-  // const leetcode = useLeetCodeStats()
 
   const liveAchievements = achievements
 
+  const filteredArchive = archiveProjects.filter(
+    (project) => project.category === activeCategory
+  )
+
   return (
-    <section
-      id="projects"
-      ref={ref}
-      className={`section section-dark reveal ${visible ? 'reveal-visible' : ''}`}
-    >
+    <section id="projects" className="section section-dark">
       <div className="container">
+        <Reveal>
+          <RevealItem>
+            <div className="section-head-row">
+              <IconBadge>
+                <FolderIcon />
+              </IconBadge>
 
-        <div className="section-head-row">
-          <IconBadge>
-            <FolderIcon />
-          </IconBadge>
-          <div>
-            {/* <span className="eyebrow">Projects</span> */}
-
-            <h2 className="section-title" style={{ marginTop: '4px' }}>
-              <MagneticText>
-                Personal Project
-              </MagneticText>
-            </h2>
-
-          </div>
-        </div>
-
-        <div className="projects-grid-v3">
-          {projects.map((project, i) => (
-            <ProjectCard project={project} index={i} key={project.title} />
-          ))}
-        </div>
-
-        <div className="archive-toggle-wrap">
-                  <motion.button
-            className="archive-toggle"
-            onClick={() => setShowArchive(!showArchive)}
-            initial="rest"
-            whileHover="hover"
-            animate="rest"
-          >
-            [ <RollingText text={showArchive ? 'HIDE_ARCHIVE' : 'ACCESS_ARCHIVE'} /> ]
-            <span>{showArchive ? '▲' : '▼'}</span>
-          </motion.button>
-        </div>
-
-        {showArchive && (
-          <div className="archive-panel tab-panel">
-            <div className="archive-categories">
-              {archiveCategories.map((cat) => (
-                <button
-                  key={cat}
-                  className={`archive-cat-btn ${activeCategory === cat ? 'active' : ''}`}
-                  onClick={() => setActiveCategory(cat)}
-                >
-                  {cat}
-                </button>
-              ))}
+              <div>
+                <h2 className="section-title" style={{ marginTop: '4px' }}>
+                  <MagneticText>
+                    Personal Project
+                  </MagneticText>
+                </h2>
+              </div>
             </div>
-            {archiveProjects.filter((p) => p.category === activeCategory).length === 0 ? (
-              <div className="archive-empty-state">
-                <span className="archive-empty-icon">🚧</span>
-                <h3>Coming Soon</h3>
-                <p>I haven't built any {activeCategory.toLowerCase()} yet — check back later!</p>
-              </div>
-            ) : (
-              <div className="projects-grid-v3 projects-grid-compact">
-                {archiveProjects
-                  .filter((p) => p.category === activeCategory)
-                  .map((project, i) => (
-                    <ProjectCard project={project} index={i} key={project.title} compact />
-                  ))}
-              </div>
-            )}
+          </RevealItem>
+
+          <div className="projects-grid-v3">
+            {projects.map((project) => (
+              <RevealItem key={project.title}>
+                <ProjectCard project={project} />
+              </RevealItem>
+            ))}
           </div>
-        )}
 
-        <div id="achievements" className="section-head-row" style={{ marginTop: '72px' }}>
-          <IconBadge>
-            <AwardIcon />
-          </IconBadge>
-          <div>
-            {/* <span className="achievements-eyebrow">Merit &amp; Milestones</span> */}
+          <RevealItem>
+            <div className="archive-toggle-wrap">
+              <motion.button
+                className="archive-toggle"
+                onClick={() => setShowArchive((prev) => !prev)}
+                initial="rest"
+                whileHover="hover"
+                animate="rest"
+                aria-expanded={showArchive}
+              >
+                [
+                <RollingText
+                  text={showArchive ? 'HIDE_ARCHIVE' : 'ACCESS_ARCHIVE'}
+                />
+                ]
+                <span>{showArchive ? '▲' : '▼'}</span>
+              </motion.button>
+            </div>
+          </RevealItem>
 
-            <h3
-              className="achievements-title"
-              style={{ marginTop: '4px', marginBottom: 0 }}
-            >
-              <MagneticText>
-                Key achievements
-              </MagneticText>
-            </h3>
+          {showArchive && (
+            <Reveal>
+              <RevealItem>
+                <div className="archive-panel tab-panel">
+                  <div className="archive-categories">
+                    {archiveCategories.map((category) => (
+                      <button
+                        key={category}
+                        className={`archive-cat-btn ${activeCategory === category ? 'active' : ''}`}
+                        onClick={() => setActiveCategory(category)}
+                      >
+                        {category}
+                      </button>
+                    ))}
+                  </div>
 
-          </div>
-        </div>
+                  {filteredArchive.length === 0 ? (
+                    <div className="archive-empty-state">
+                      <span className="archive-empty-icon">🚧</span>
+                      <h3>Coming Soon</h3>
+                      <p>
+                        I haven't built any {activeCategory.toLowerCase()} yet —
+                        check back later!
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="projects-grid-v3 projects-grid-compact">
+                      {filteredArchive.map((project) => (
+                        <RevealItem key={project.title}>
+                          <ProjectCard project={project} compact />
+                        </RevealItem>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </RevealItem>
+            </Reveal>
+          )}
 
-        <div className="achievements-grid">
-          {liveAchievements.map((a) => (
+          <RevealItem>
             <div
-              className={`achievement-card ${a.highlight ? 'achievement-highlight' : ''}`}
-              key={a.label}
+              id="achievements"
+              className="section-head-row"
+              style={{ marginTop: '72px' }}
             >
-              <span className="achievement-icon">{a.icon}</span>
-              <span className="achievement-label">{a.label}</span>
-              <span className="achievement-stat">
-                <AnimatedStat value={a.stat} />
-              </span>
+              <IconBadge>
+                <AwardIcon />
+              </IconBadge>
+
+              <div>
+                <h3
+                  className="achievements-title"
+                  style={{ marginTop: '4px', marginBottom: 0 }}
+                >
+                  <MagneticText>
+                    Key achievements
+                  </MagneticText>
+                </h3>
+              </div>
             </div>
-          ))}
-        </div>
+          </RevealItem>
+
+          <div className="achievements-grid">
+            {liveAchievements.map((achievement) => (
+              <RevealItem key={achievement.label}>
+                <div
+                  className={`achievement-card ${achievement.highlight ? 'achievement-highlight' : ''}`}
+                >
+                  <span className="achievement-icon">
+                    {achievement.icon}
+                  </span>
+
+                  <span className="achievement-label">
+                    {achievement.label}
+                  </span>
+
+                  <span className="achievement-stat">
+                    <AnimatedStat value={achievement.stat} />
+                  </span>
+                </div>
+              </RevealItem>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   )

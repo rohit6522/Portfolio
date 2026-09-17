@@ -1,9 +1,10 @@
+
 import { useState } from 'react'
 import { profile } from '../data/content'
-import useReveal from '../hooks/useReveal'
 import IconBadge from './IconBadge'
 import MagneticText from './MagneticText'
 import RollingText from './RollingText'
+import { Reveal, RevealItem } from './Reveal'
 import { motion } from 'framer-motion'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
@@ -18,7 +19,14 @@ const subjects = [
 
 function MailIconSmall() {
   return (
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8">
+    <svg
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+    >
       <rect x="2.5" y="4.5" width="19" height="15" rx="2" />
       <path d="m3 6 9 7 9-7" />
     </svg>
@@ -27,7 +35,14 @@ function MailIconSmall() {
 
 function PinIcon() {
   return (
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8">
+    <svg
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+    >
       <path d="M12 21s7-6.5 7-11.5A7 7 0 0 0 5 9.5C5 14.5 12 21 12 21Z" />
       <circle cx="12" cy="9.5" r="2.3" />
     </svg>
@@ -36,7 +51,14 @@ function PinIcon() {
 
 function ClockIconSmall() {
   return (
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8">
+    <svg
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+    >
       <circle cx="12" cy="12" r="9" />
       <path d="M12 7v5l3.5 2" />
     </svg>
@@ -44,7 +66,6 @@ function ClockIconSmall() {
 }
 
 export default function Contact() {
-  const [ref, visible] = useReveal()
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -52,11 +73,13 @@ export default function Contact() {
     subject: '',
     message: '',
   })
+
   const [status, setStatus] = useState('idle')
   const [errorMsg, setErrorMsg] = useState('')
 
   function handleChange(e) {
-    setForm({ ...form, [e.target.name]: e.target.value })
+    const { name, value } = e.target
+    setForm((prev) => ({ ...prev, [name]: value }))
   }
 
   async function handleSubmit(e) {
@@ -80,165 +103,223 @@ export default function Contact() {
       }
 
       setStatus('success')
-      setForm({ firstName: '', lastName: '', email: '', subject: '', message: '' })
-    } catch (err) {
+      setForm({
+        firstName: '',
+        lastName: '',
+        email: '',
+        subject: '',
+        message: '',
+      })
+    } catch {
       setErrorMsg('Could not reach the server. Please try again later.')
       setStatus('error')
     }
   }
 
   return (
-    <section
-      id="contact"
-      ref={ref}
-      className={`section section-dark reveal ${visible ? 'reveal-visible' : ''}`}
-    >
+    <section id="contact" className="section section-dark">
       <div className="container">
-        <div className="contact-v3-head">
-          <IconBadge size={36}>
-            <MailIconSmall />
-          </IconBadge>
-          <h2 className="contact-v3-title">
-            <MagneticText>
+        <Reveal className="contact-v3-heading-reveal">
+          <RevealItem>
+            <div className="contact-v3-head">
+              <IconBadge size={36}>
+                <MailIconSmall />
+              </IconBadge>
 
-              Get In Touch
-            </MagneticText>
+              <h2 className="contact-v3-title">
+                <MagneticText>Get In Touch</MagneticText>
+              </h2>
+            </div>
+          </RevealItem>
 
-          </h2>
-        </div>
-        <p className="contact-v3-sub">Let's discuss your next project or just say hello!</p>
+          <RevealItem>
+            <p className="contact-v3-sub">
+              Let's discuss your next project or just say hello!
+            </p>
+          </RevealItem>
+        </Reveal>
 
         <div className="contact-v3-grid">
-          <div className="contact-v3-info">
-            <h3>Let's Connect</h3>
-            <p>
-              I'm always open to discussing new opportunities, interesting projects, or just
-              having a chat about technology and development.
-            </p>
+          <Reveal className="contact-v3-info">
+            <RevealItem>
+              <h3>Let's Connect</h3>
+            </RevealItem>
 
-            <div className="contact-v3-item">
-              <span className="contact-v3-icon-circle">
-                <MailIconSmall />
-              </span>
-              <div>
-                <span className="contact-v3-item-label">Email</span>
-                <span className="contact-v3-item-value">{profile.email}</span>
-              </div>
-            </div>
-
-            <div className="contact-v3-item">
-              <span className="contact-v3-icon-circle">
-                <PinIcon />
-              </span>
-              <div>
-                <span className="contact-v3-item-label">Location</span>
-                <span className="contact-v3-item-value">{profile.location.replace('Based in ', '')}</span>
-              </div>
-            </div>
-
-            <div className="contact-v3-item">
-              <span className="contact-v3-icon-circle">
-                <ClockIconSmall />
-              </span>
-              <div>
-                <span className="contact-v3-item-label">Response Time</span>
-                <span className="contact-v3-item-value">Within 24 hours</span>
-              </div>
-            </div>
-          </div>
-
-          <form className="contact-v3-form" onSubmit={handleSubmit}>
-            <div className="form-row-v3">
-              <div className="form-field-v3">
-                <label>First Name <span className="required-star">*</span></label>
-                <input
-                  type="text"
-                  name="firstName"
-                  placeholder="Your first name"
-                  value={form.firstName}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-field-v3">
-                <label>Last Name <span className="required-star">*</span></label>
-                <input
-                  type="text"
-                  name="lastName"
-                  placeholder="Your last name"
-                  value={form.lastName}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="form-field-v3">
-              <label>Email <span className="required-star">*</span></label>
-              <input
-                type="email"
-                name="email"
-                placeholder="your.email@example.com"
-                value={form.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="form-field-v3">
-              <label>Subject <span className="required-star">*</span></label>
-              <select name="subject" value={form.subject} onChange={handleChange} required>
-                <option value="" disabled>
-                  Select a subject
-                </option>
-                {subjects.map((s) => (
-                  <option key={s} value={s}>
-                    {s}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="form-field-v3">
-              <label>Message <span className="required-star">*</span></label>
-                            <textarea
-                name="message"
-                rows={5}
-                placeholder="Tell me about your project or how I can help you..."
-                value={form.message}
-                onChange={handleChange}
-                required
-              />
-              <span className={`char-count ${form.message.length >= 10 ? 'char-count-ok' : ''}`}>
-                {form.message.length} characters
-              </span>
-            </div>
-
-            <p className="form-tip">💡 Write a meaningful message with at least 3 words and 10 characters.</p>
-
-            {status === 'error' && (
-              <p className="form-status form-status-error" role="alert">
-                {errorMsg}
+            <RevealItem>
+              <p>
+                I'm always open to discussing new opportunities, interesting
+                projects, or just having a chat about technology and development.
               </p>
-            )}
-            {status === 'success' && (
-              <p className="form-status form-status-success" role="status">
-                ✓ Message sent successfully! I'll get back to you soon.
-              </p>
-            )}
+            </RevealItem>
 
-                       <motion.button
-              type="submit"
-              className="send-message-btn"
-              disabled={status === 'sending'}
-              aria-busy={status === 'sending'}
-              initial="rest"
-              whileHover={status !== 'sending' ? 'hover' : 'rest'}
-              animate="rest"
-            >
-              {status === 'sending' ? 'Sending...' : <RollingText text="Send Message" />}
-            </motion.button>
-          </form>
+            <RevealItem>
+              <div className="contact-v3-item">
+                <span className="contact-v3-icon-circle">
+                  <MailIconSmall />
+                </span>
+                <div>
+                  <span className="contact-v3-item-label">Email</span>
+                  <span className="contact-v3-item-value">{profile.email}</span>
+                </div>
+              </div>
+            </RevealItem>
+
+            <RevealItem>
+              <div className="contact-v3-item">
+                <span className="contact-v3-icon-circle">
+                  <PinIcon />
+                </span>
+                <div>
+                  <span className="contact-v3-item-label">Location</span>
+                  <span className="contact-v3-item-value">
+                    {profile.location.replace('Based in ', '')}
+                  </span>
+                </div>
+              </div>
+            </RevealItem>
+
+            <RevealItem>
+              <div className="contact-v3-item">
+                <span className="contact-v3-icon-circle">
+                  <ClockIconSmall />
+                </span>
+                <div>
+                  <span className="contact-v3-item-label">Response Time</span>
+                  <span className="contact-v3-item-value">Within 24 hours</span>
+                </div>
+              </div>
+            </RevealItem>
+          </Reveal>
+
+          <Reveal className="contact-v3-form">
+            <RevealItem>
+              <form onSubmit={handleSubmit}>
+                <div className="form-row-v3">
+                  <div className="form-field-v3">
+                    <label htmlFor="contact-first-name">
+                      First Name <span className="required-star">*</span>
+                    </label>
+                    <input
+                      id="contact-first-name"
+                      type="text"
+                      name="firstName"
+                      placeholder="Your first name"
+                      value={form.firstName}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="form-field-v3">
+                    <label htmlFor="contact-last-name">
+                      Last Name <span className="required-star">*</span>
+                    </label>
+                    <input
+                      id="contact-last-name"
+                      type="text"
+                      name="lastName"
+                      placeholder="Your last name"
+                      value={form.lastName}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="form-field-v3">
+                  <label htmlFor="contact-email">
+                    Email <span className="required-star">*</span>
+                  </label>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    name="email"
+                    placeholder="your.email@example.com"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
+                <div className="form-field-v3">
+                  <label htmlFor="contact-subject">
+                    Subject <span className="required-star">*</span>
+                  </label>
+                  <select
+                    id="contact-subject"
+                    name="subject"
+                    value={form.subject}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="" disabled>
+                      Select a subject
+                    </option>
+                    {subjects.map((subject) => (
+                      <option key={subject} value={subject}>
+                        {subject}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="form-field-v3">
+                  <label htmlFor="contact-message">
+                    Message <span className="required-star">*</span>
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    rows={5}
+                    placeholder="Tell me about your project or how I can help you..."
+                    value={form.message}
+                    onChange={handleChange}
+                    required
+                  />
+                  <span
+                    className={`char-count ${
+                      form.message.length >= 10 ? 'char-count-ok' : ''
+                    }`}
+                  >
+                    {form.message.length} characters
+                  </span>
+                </div>
+
+                <p className="form-tip">
+                  💡 Write a meaningful message with at least 3 words and 10
+                  characters.
+                </p>
+
+                {status === 'error' && (
+                  <p className="form-status form-status-error" role="alert">
+                    {errorMsg}
+                  </p>
+                )}
+
+                {status === 'success' && (
+                  <p className="form-status form-status-success" role="status">
+                    ✓ Message sent successfully! I'll get back to you soon.
+                  </p>
+                )}
+
+                <motion.button
+                  type="submit"
+                  className="send-message-btn"
+                  disabled={status === 'sending'}
+                  aria-busy={status === 'sending'}
+                  initial="rest"
+                  whileHover={status !== 'sending' ? 'hover' : 'rest'}
+                  animate="rest"
+                >
+                  {status === 'sending' ? (
+                    'Sending...'
+                  ) : (
+                    <RollingText text="Send Message" />
+                  )}
+                </motion.button>
+              </form>
+            </RevealItem>
+          </Reveal>
         </div>
       </div>
     </section>

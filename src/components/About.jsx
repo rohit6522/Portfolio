@@ -1,148 +1,148 @@
 
-import { about } from '../data/content'
-import { Reveal, RevealItem } from './Reveal'
+// import { about } from '../data/content'
+// import { Reveal, RevealItem } from './Reveal'
 
-function EduBlock({ title, children }) {
-  return (
-    <div style={{ marginTop: '28px' }}>
-      <span
-        className="eyebrow"
-        style={{ color: '#8a6522', marginBottom: '12px' }}
-      >
-        {title}
-      </span>
-      <div style={{ marginTop: '12px' }}>{children}</div>
-    </div>
-  )
-}
+// function EduBlock({ title, children }) {
+//   return (
+//     <div style={{ marginTop: '28px' }}>
+//       <span
+//         className="eyebrow"
+//         style={{ color: '#8a6522', marginBottom: '12px' }}
+//       >
+//         {title}
+//       </span>
+//       <div style={{ marginTop: '12px' }}>{children}</div>
+//     </div>
+//   )
+// }
 
-export default function About() {
-  return (
-    <section id="about" className="section section-paper">
-      <div className="container about-grid">
-        <div className="about-text">
-          <Reveal>
-            <RevealItem>
-              <span className="eyebrow" style={{ color: '#8a6522' }}>
-                About
-              </span>
-            </RevealItem>
+// export default function About() {
+//   return (
+//     <section id="about" className="section section-paper">
+//       <div className="container about-grid">
+//         <div className="about-text">
+//           <Reveal>
+//             <RevealItem>
+//               <span className="eyebrow" style={{ color: '#8a6522' }}>
+//                 About
+//               </span>
+//             </RevealItem>
 
-            <RevealItem>
-              <h2 className="section-title" style={{ margin: '12px 0 24px' }}>
-                How I work
-              </h2>
-            </RevealItem>
+//             <RevealItem>
+//               <h2 className="section-title" style={{ margin: '12px 0 24px' }}>
+//                 How I work
+//               </h2>
+//             </RevealItem>
 
-            {about.paragraphs.map((p, i) => (
-              <RevealItem key={i}>
-                <p>{p}</p>
-              </RevealItem>
-            ))}
-          </Reveal>
-        </div>
+//             {about.paragraphs.map((p, i) => (
+//               <RevealItem key={i}>
+//                 <p>{p}</p>
+//               </RevealItem>
+//             ))}
+//           </Reveal>
+//         </div>
 
-        <div
-          className="blueprint-card"
-          style={{
-            borderColor: 'rgba(184,155,90,0.5)',
-            alignSelf: 'start',
-          }}
-        >
-          <div
-            className="corner-br"
-            style={{
-              top: 'auto',
-              bottom: '-1px',
-              left: '-1px',
-              borderRight: 'none',
-              borderTop: 'none',
-            }}
-          />
+//         <div
+//           className="blueprint-card"
+//           style={{
+//             borderColor: 'rgba(184,155,90,0.5)',
+//             alignSelf: 'start',
+//           }}
+//         >
+//           <div
+//             className="corner-br"
+//             style={{
+//               top: 'auto',
+//               bottom: '-1px',
+//               left: '-1px',
+//               borderRight: 'none',
+//               borderTop: 'none',
+//             }}
+//           />
 
-          <div
-            className="corner-bl"
-            style={{
-              top: '-1px',
-              right: '-1px',
-              left: 'auto',
-              borderLeft: 'none',
-              borderBottom: 'none',
-            }}
-          />
+//           <div
+//             className="corner-bl"
+//             style={{
+//               top: '-1px',
+//               right: '-1px',
+//               left: 'auto',
+//               borderLeft: 'none',
+//               borderBottom: 'none',
+//             }}
+//           />
 
-          <Reveal>
-            <RevealItem>
-              <span
-                className="eyebrow"
-                style={{ color: '#8a6522', marginBottom: '20px' }}
-              >
-                At a glance
-              </span>
-            </RevealItem>
+//           <Reveal>
+//             <RevealItem>
+//               <span
+//                 className="eyebrow"
+//                 style={{ color: '#8a6522', marginBottom: '20px' }}
+//               >
+//                 At a glance
+//               </span>
+//             </RevealItem>
 
-            <div
-              className="stat-row"
-              style={{
-                flexDirection: 'column',
-                gap: '20px',
-                marginTop: '20px',
-              }}
-            >
-              {about.stats.map((s) => (
-                <RevealItem key={s.label}>
-                  <div
-                    className="stat-block"
-                    style={{ borderColor: '#b98b3d' }}
-                  >
-                    <span className="stat-value">{s.value}</span>
-                    <span className="stat-label">{s.label}</span>
-                  </div>
-                </RevealItem>
-              ))}
-            </div>
+//             <div
+//               className="stat-row"
+//               style={{
+//                 flexDirection: 'column',
+//                 gap: '20px',
+//                 marginTop: '20px',
+//               }}
+//             >
+//               {about.stats.map((s) => (
+//                 <RevealItem key={s.label}>
+//                   <div
+//                     className="stat-block"
+//                     style={{ borderColor: '#b98b3d' }}
+//                   >
+//                     <span className="stat-value">{s.value}</span>
+//                     <span className="stat-label">{s.label}</span>
+//                   </div>
+//                 </RevealItem>
+//               ))}
+//             </div>
 
-            <RevealItem>
-              <EduBlock title="Education">
-                {about.education.map((e) => (
-                  <div key={e.degree} style={{ marginBottom: '10px' }}>
-                    <div
-                      style={{
-                        color: '#0e1420',
-                        fontWeight: 600,
-                        fontSize: '15px',
-                      }}
-                    >
-                      {e.degree}
-                    </div>
-                    <div style={{ color: '#5c6270', fontSize: '13px' }}>
-                      {e.school} · {e.period}
-                    </div>
-                  </div>
-                ))}
-              </EduBlock>
-            </RevealItem>
+//             <RevealItem>
+//               <EduBlock title="Education">
+//                 {about.education.map((e) => (
+//                   <div key={e.degree} style={{ marginBottom: '10px' }}>
+//                     <div
+//                       style={{
+//                         color: '#0e1420',
+//                         fontWeight: 600,
+//                         fontSize: '15px',
+//                       }}
+//                     >
+//                       {e.degree}
+//                     </div>
+//                     <div style={{ color: '#5c6270', fontSize: '13px' }}>
+//                       {e.school} · {e.period}
+//                     </div>
+//                   </div>
+//                 ))}
+//               </EduBlock>
+//             </RevealItem>
 
-            <RevealItem>
-              <EduBlock title="Certifications">
-                {about.certifications.map((c) => (
-                  <div
-                    key={c.name}
-                    style={{
-                      color: '#3a3f47',
-                      fontSize: '13.5px',
-                      marginBottom: '6px',
-                    }}
-                  >
-                    {c.name}{' '}
-                    <span style={{ color: '#8a97a8' }}>— {c.year}</span>
-                  </div>
-                ))}
-              </EduBlock>
-            </RevealItem>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  )
-}
+//             <RevealItem>
+//               <EduBlock title="Certifications">
+//                 {about.certifications.map((c) => (
+//                   <div
+//                     key={c.name}
+//                     style={{
+//                       color: '#3a3f47',
+//                       fontSize: '13.5px',
+//                       marginBottom: '6px',
+//                     }}
+//                   >
+//                     {c.name}{' '}
+//                     <span style={{ color: '#8a97a8' }}>— {c.year}</span>
+//                   </div>
+//                 ))}
+//               </EduBlock>
+//             </RevealItem>
+//           </Reveal>
+//         </div>
+//       </div>
+//     </section>
+//   )
+// }
