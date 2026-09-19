@@ -15,6 +15,13 @@ export default function Loader() {
   // TYPE NAME
   // =========================
   useEffect(() => {
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [])
+
+  useEffect(() => {
     let i = 0;
     let glowTimer;
     let slideTimer;
@@ -84,7 +91,7 @@ export default function Loader() {
     return null;
   }
 
-    function handleSkip() {
+  function handleSkip() {
     setSliding(true)
   }
 
@@ -92,15 +99,13 @@ export default function Loader() {
     <div
       ref={screenRef}
       onClick={handleSkip}
-      className={`loader-screen ${
-        sliding ? "loader-slide-up" : ""
-      }`}
+      className={`loader-screen ${sliding ? "loader-slide-up" : ""
+        }`}
     >
-           <div className="loader-inner">
-              <div
-          className={`loader-big-name ${
-            glowing ? "loader-text-glow" : ""
-          }`}
+      <div className="loader-inner">
+        <div
+          className={`loader-big-name ${glowing ? "loader-text-glow" : ""
+            }`}
         >
           {typed.split("").map((char, index) => (
             <span
