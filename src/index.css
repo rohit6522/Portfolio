@@ -90,6 +90,12 @@ html {
   transform: translate(-50%, -50%);
   margin-left: -4px;
   margin-top: -4px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.cursor-dot.cursor-visible {
+  opacity: 1;
 }
 
 .cursor-ring {

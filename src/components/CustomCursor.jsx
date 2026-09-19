@@ -17,10 +17,11 @@ export default function CustomCursor() {
     let ringX = mouseX
     let ringY = mouseY
 
-    function handleMouseMove(e) {
+       function handleMouseMove(e) {
       mouseX = e.clientX
       mouseY = e.clientY
       dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`
+      dot.classList.add('cursor-visible')
     }
 
     function handleMouseDown() {
