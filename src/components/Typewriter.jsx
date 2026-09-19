@@ -5,7 +5,16 @@ export default function Typewriter({ phrases, typingSpeed = 65, deletingSpeed = 
   const [displayed, setDisplayed] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
 
+  const prefersReducedMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
   useEffect(() => {
+    if (prefersReducedMotion) {
+      setDisplayed(phrases[0])
+      return
+    }
+
     const currentPhrase = phrases[phraseIndex]
     let timeout
 
