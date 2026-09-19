@@ -2181,7 +2181,8 @@ h3 {
 .custom-select-trigger:hover,
 .custom-select-trigger:focus-visible {
   border-color: var(--brass-bright);
-  outline: none;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.15);
 }
 
 .custom-select-placeholder {
@@ -2243,10 +2244,14 @@ h3 {
 }
 
 .form-field-v3 input:focus,
+.form-field-v3 input:focus-visible,
 .form-field-v3 select:focus,
-.form-field-v3 textarea:focus {
-  outline: none;
+.form-field-v3 select:focus-visible,
+.form-field-v3 textarea:focus,
+.form-field-v3 textarea:focus-visible {
+  outline: none !important;
   border-color: var(--brass-bright);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.15);
 }
 
 .char-count {
