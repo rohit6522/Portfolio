@@ -1,5 +1,4 @@
-
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { profile } from '../data/content'
 import IconBadge from './IconBadge'
 import MagneticText from './MagneticText'
@@ -76,6 +75,18 @@ export default function Contact() {
 
   const [status, setStatus] = useState('idle')
   const [errorMsg, setErrorMsg] = useState('')
+  const [subjectOpen, setSubjectOpen] = useState(false)
+  const selectRef = useRef(null)
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (selectRef.current && !selectRef.current.contains(e.target)) {
+        setSubjectOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   function handleChange(e) {
     const { name, value } = e.target
@@ -242,25 +253,52 @@ export default function Contact() {
                 </div>
 
                 <div className="form-field-v3">
-                  <label htmlFor="contact-subject">
-                    Subject <span className="required-star">*</span>
-                  </label>
-                  <select
-                    id="contact-subject"
-                    name="subject"
-                    value={form.subject}
-                    onChange={handleChange}
-                    required
-                  >
-                    <option value="" disabled>
-                      Select a subject
-                    </option>
-                    {subjects.map((subject) => (
-                      <option key={subject} value={subject}>
-                        {subject}
-                      </option>
-                    ))}
-                  </select>
+                  <label>Subject <span className="required-star">*</span></label>
+                  <div className="custom-select" ref={selectRef}>
+                    <button
+                      type="button"
+                      className="custom-select-trigger"
+                      onClick={() => setSubjectOpen((prev) => !prev)}
+                      aria-haspopup="listbox"
+                      aria-expanded={subjectOpen}
+                    >
+                      <span className={form.subject ? '' : 'custom-select-placeholder'}>
+                        {form.subject || 'Select a subject'}
+                      </span>
+                      <svg
+                        className={`custom-select-arrow ${subjectOpen ? 'open' : ''}`}
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path d="m6 9 6 6 6-6" />
+                      </svg>
+                    </button>
+
+                    {subjectOpen && (
+                      <ul className="custom-select-menu" role="listbox">
+                        {subjects.map((s) => (
+                          <li
+                            key={s}
+                            role="option"
+                            aria-selected={form.subject === s}
+                            className={`custom-select-option ${form.subject === s ? 'selected' : ''}`}
+                            onClick={() => {
+                              setForm({ ...form, subject: s })
+                              setSubjectOpen(false)
+                            }}
+                          >
+                            {s}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    <input type="hidden" name="subject" value={form.subject} required />
+                  </div>
                 </div>
 
                 <div className="form-field-v3">
@@ -277,9 +315,8 @@ export default function Contact() {
                     required
                   />
                   <span
-                    className={`char-count ${
-                      form.message.length >= 10 ? 'char-count-ok' : ''
-                    }`}
+                    className={`char-count ${form.message.length >= 10 ? 'char-count-ok' : ''
+                      }`}
                   >
                     {form.message.length} characters
                   </span>

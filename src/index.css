@@ -72,6 +72,10 @@ html {
   cursor: none !important;
 }
 
+.custom-cursor-active [data-cursor-disable] {
+  cursor: pointer !important;
+}
+
 .custom-cursor-active :focus-visible {
   outline: 2px solid var(--brass-bright) !important;
   outline-offset: 3px !important;
@@ -2142,7 +2146,6 @@ h3 {
 }
 
 .form-field-v3 input,
-.form-field-v3 select,
 .form-field-v3 textarea {
   width: 100%;
   background: var(--ink);
@@ -2153,6 +2156,84 @@ h3 {
   font-family: var(--font-body);
   font-size: 14px;
   resize: none;
+}
+
+.custom-select {
+  position: relative;
+}
+
+.custom-select-trigger {
+  width: 100%;
+  background: var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: var(--chalk);
+  font-family: var(--font-body);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  transition: border-color 0.15s ease;
+}
+
+.custom-select-trigger:hover,
+.custom-select-trigger:focus-visible {
+  border-color: var(--brass-bright);
+  outline: none;
+}
+
+.custom-select-placeholder {
+  color: var(--steel);
+  opacity: 0.7;
+}
+
+.custom-select-arrow {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+  color: var(--steel);
+}
+
+.custom-select-arrow.open {
+  transform: rotate(180deg);
+}
+
+.custom-select-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--ink-2);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 6px;
+  list-style: none;
+  margin: 0;
+  z-index: 20;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.custom-select-option {
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--chalk);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.custom-select-option:hover {
+  background: rgba(34, 211, 238, 0.12);
+  color: var(--brass-bright);
+}
+
+.custom-select-option.selected {
+  background: rgba(34, 211, 238, 0.18);
+  color: var(--brass-bright);
+  font-weight: 600;
 }
 
 .form-field-v3 input::placeholder,

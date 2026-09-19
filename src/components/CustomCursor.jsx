@@ -32,18 +32,27 @@ export default function CustomCursor() {
       ring.classList.remove('cursor-ring-active')
     }
 
-    function handleMouseOver(e) {
+       function handleMouseOver(e) {
+      if (e.target.closest('[data-cursor-disable]')) {
+        dot.style.opacity = '0'
+        ring.style.opacity = '0'
+        return
+      }
       if (e.target.closest('a, button, [role="button"]')) {
         ring.classList.add('cursor-ring-hover')
       }
     }
 
-    function handleMouseOut(e) {
+       function handleMouseOut(e) {
+      if (e.target.closest('[data-cursor-disable]')) {
+        dot.style.opacity = ''
+        ring.style.opacity = ''
+        return
+      }
       if (e.target.closest('a, button, [role="button"]')) {
         ring.classList.remove('cursor-ring-hover')
       }
     }
-
     let frameId
     function animateRing() {
       ringX += (mouseX - ringX) * 0.15
