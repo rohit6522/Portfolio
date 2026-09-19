@@ -1813,8 +1813,8 @@ h3 {
 .rolling-text-mask {
   display: inline-block;
   overflow: hidden;
-  height: 1em;
-  line-height: 1em;
+  height: 1.2em;
+  line-height: 1.2em;
   vertical-align: top;
 }
 
@@ -1825,8 +1825,8 @@ h3 {
 
 .rolling-text-line {
   display: block;
-  height: 1em;
-  line-height: 1em;
+  height: 1.2em;
+  line-height: 1.2em;
 }
 
 .tab-btn .icon-badge {
