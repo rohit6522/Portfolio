@@ -19,7 +19,7 @@ export default function Loader() {
   }, [])
 
   useEffect(() => {
-    if (sliding) {
+    if (sliding) {``
       document.body.style.overflow = ''
     }
   }, [sliding])

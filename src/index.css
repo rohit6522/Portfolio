@@ -896,6 +896,7 @@ h3 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  border-radius: 999px;
 }
 
 
@@ -996,14 +997,11 @@ h3 {
   justify-content: center;
   border: none;
   border-radius: 50%;
-  color: var(--steel);
-  transition: color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+  transition: background 0.15s ease, transform 0.15s ease;
 }
 
 .hero-social-link:hover {
-  color: var(--ink);
-  background: var(--brass-bright);
-  border-color: var(--brass-bright);
+  background: rgba(255, 255, 255, 0.1);
   transform: translateY(-3px);
 }
 
