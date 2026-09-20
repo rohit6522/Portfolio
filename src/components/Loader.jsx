@@ -14,12 +14,15 @@ export default function Loader() {
   // =========================
   // TYPE NAME
   // =========================
-  useEffect(() => {
+   useEffect(() => {
     document.body.style.overflow = 'hidden'
-    return () => {
+  }, [])
+
+  useEffect(() => {
+    if (sliding) {
       document.body.style.overflow = ''
     }
-  }, [])
+  }, [sliding])
 
   useEffect(() => {
     let i = 0;
