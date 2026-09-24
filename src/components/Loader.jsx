@@ -79,11 +79,17 @@ export default function Loader() {
       handleTransitionEnd
     );
 
+    let fallbackTimer;
+    if (sliding) {
+      fallbackTimer = setTimeout(() => setHidden(true), 2000);
+    }
+
     return () => {
       element.removeEventListener(
         "transitionend",
         handleTransitionEnd
       );
+      clearTimeout(fallbackTimer);
     };
   }, [sliding]);
 
