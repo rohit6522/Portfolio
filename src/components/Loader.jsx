@@ -108,7 +108,7 @@ export default function Loader() {
   return (
     <div
       ref={screenRef}
-      onClick={handleSkip}
+      onClick={sliding ? undefined : handleSkip}
       role="status"
       aria-live="polite"
       aria-label={`Loading ${profile.name}'s portfolio`}
