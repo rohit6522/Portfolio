@@ -29,8 +29,10 @@ export default function Loader() {
     let i = 0;
     let glowTimer;
     let slideTimer;
+    let isActive = true;
 
     const typeInterval = setInterval(() => {
+      if (!isActive) return;
       i++;
 
       setTyped(name.slice(0, i));
@@ -40,11 +42,13 @@ export default function Loader() {
 
         // Wait after typing
         glowTimer = setTimeout(() => {
+          if (!isActive) return;
           // Start glow
           setGlowing(true);
 
           // Start slide after glow
           slideTimer = setTimeout(() => {
+            if (!isActive) return;
             setSliding(true);
           }, 700);
         }, 500);
@@ -52,6 +56,7 @@ export default function Loader() {
     }, 140);
 
     return () => {
+      isActive = false;
       clearInterval(typeInterval);
       clearTimeout(glowTimer);
       clearTimeout(slideTimer);
