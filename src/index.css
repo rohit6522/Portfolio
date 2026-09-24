@@ -1144,6 +1144,7 @@ h3 {
 .tech-card:hover {
   border-color: var(--brass-bright);
 }
+
 .tech-card-fill {
   position: absolute;
   inset: 0;

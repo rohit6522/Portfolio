@@ -207,7 +207,7 @@ export default function SkillsTabs() {
                                   },
                                 }}
                                 transition={{
-                                  duration: 0.7,
+                                  duration: 0.3,
                                   ease: 'easeInOut',
                                 }}
                               />
