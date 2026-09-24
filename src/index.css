@@ -1179,6 +1179,27 @@ h3 {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+
+.tech-card[data-category="Languages"] .tech-card-icon-box {
+  background: rgba(34, 211, 238, 0.14);
+}
+
+.tech-card[data-category="Frontend"] .tech-card-icon-box {
+  background: rgba(168, 85, 247, 0.14);
+}
+
+.tech-card[data-category="Backend"] .tech-card-icon-box {
+  background: rgba(34, 197, 94, 0.14);
+}
+
+.tech-card[data-category="Database"] .tech-card-icon-box {
+  background: rgba(251, 146, 60, 0.14);
+}
+
+.tech-card[data-category="Tools"] .tech-card-icon-box {
+  background: rgba(236, 72, 153, 0.14);
 }
 
 .tech-card-icon-box svg {

@@ -35,14 +35,14 @@ export const profile = {
 // Shown as nodes radiating from your name in the hero diagram.
 // Keep this to 5–7 items — it's drawn as a graph, not a list.
 
-export const stackNodes = [
-  'React',
-  'Node.js',
-  'MySQL',
-  'JavaScript',
-  'AWS',
-  'Docker',
-]
+// export const stackNodes = [
+//   'React',
+//   'Node.js',
+//   'MySQL',
+//   'JavaScript',
+//   'AWS',
+//   'Docker',
+// ]
 
 export const education = [
   {
