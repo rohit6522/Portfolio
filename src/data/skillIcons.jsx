@@ -61,9 +61,6 @@ export function getSkillColor(name) {
   return iconMap[name]?.color || '#22d3ee'
 }
 
-export function getSkillColor(name) {
-  return iconMap[name]?.color || '#22d3ee'
-}
 
 export default function SkillIcon({ name }) {
   const entry = iconMap[name]
