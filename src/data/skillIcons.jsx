@@ -57,6 +57,9 @@ const iconMap = {
   'VS Code': { icon: VscVscode, color: '#007ACC' },
   Postman: { icon: SiPostman, color: '#FF6C37' },
 }
+export function getSkillColor(name) {
+  return iconMap[name]?.color || '#22d3ee'
+}
 
 export default function SkillIcon({ name }) {
   const entry = iconMap[name]
