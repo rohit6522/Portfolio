@@ -14,12 +14,13 @@ export default function Loader() {
   // =========================
   // TYPE NAME
   // =========================
-   useEffect(() => {
+  useEffect(() => {
     document.body.style.overflow = 'hidden'
   }, [])
 
   useEffect(() => {
-    if (sliding) {``
+    if (sliding) {
+      ``
       document.body.style.overflow = ''
     }
   }, [sliding])
@@ -108,13 +109,18 @@ export default function Loader() {
     <div
       ref={screenRef}
       onClick={handleSkip}
+      role="status"
+      aria-live="polite"
+      aria-label={`Loading ${profile.name}'s portfolio`}
       className={`loader-screen ${sliding ? "loader-slide-up" : ""
         }`}
     >
       <div className="loader-inner">
+
         <div
           className={`loader-big-name ${glowing ? "loader-text-glow" : ""
             }`}
+          aria-hidden="true"
         >
           {typed.split("").map((char, index) => (
             <span
@@ -125,6 +131,7 @@ export default function Loader() {
             </span>
           ))}
         </div>
+
 
         {glowing && <p className="loader-role-tag">{profile.role.toUpperCase()}</p>}
 
