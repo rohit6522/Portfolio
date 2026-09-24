@@ -19,7 +19,7 @@ import IconBadge, {
   AwardIcon,
   CodeIcon,
 } from './IconBadge'
-import SkillIcon, { getSkillColor } from '../data/skillIcons'
+import SkillIcon from '../data/skillIcons'
 import RollingText from './RollingText'
 import ScrambleText from './ScrambleText'
 import { Reveal, RevealItem } from './Reveal'
@@ -185,23 +185,16 @@ export default function SkillsTabs() {
                       <div className="tech-stack-grid">
                         {skills
                           .filter((group) => group.category !== 'Core CS')
-                          .flatMap((group) => group.items.map((item) => ({ item, category: group.category })))
-                          // .filter(({ item }) => item.toLowerCase().includes(techSearch.toLowerCase()))
-                          .map(({ item, category }, i) => (
+                          .flatMap((group) => group.items)
+                          .map((item) => (
                             <motion.div
                               className="tech-card"
                               key={item}
-                              data-category={category}
-                              tabIndex={0}
-                              initial={{ opacity: 0, y: 16 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              viewport={{ once: true, margin: '-40px' }}
-                              transition={{ duration: 0.35, delay: (i % 10) * 0.03 }}
-                                                   whileHover="hover"
-                      whileFocus="hover"
-                      animate="rest"
-                      style={{ '--glow-color': getSkillColor(item) }}
-                    >
+                              initial="rest"
+                              whileHover="hover"
+                              whileFocus="hover"
+                              animate="rest"
+                            >
 
                               <motion.span
                                 className="tech-card-fill"
