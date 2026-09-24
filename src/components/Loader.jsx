@@ -101,9 +101,9 @@ export default function Loader() {
   }
 
   function handleSkip() {
+    if (sliding) return
     setSliding(true)
   }
-
   return (
     <div
       ref={screenRef}
