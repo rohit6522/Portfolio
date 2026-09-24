@@ -197,10 +197,11 @@ export default function SkillsTabs() {
                               whileInView={{ opacity: 1, y: 0 }}
                               viewport={{ once: true, margin: '-40px' }}
                               transition={{ duration: 0.35, delay: (i % 10) * 0.03 }}
-                              whileHover="hover"
-                              whileFocus="hover"
-                              animate="rest"
-                            >
+                                                   whileHover="hover"
+                      whileFocus="hover"
+                      animate="rest"
+                      style={{ '--glow-color': getSkillColor(item) }}
+                    >
 
                               <motion.span
                                 className="tech-card-fill"

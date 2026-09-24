@@ -1143,8 +1143,8 @@ h3 {
 
 .tech-card:hover {
   border-color: var(--brass-bright);
+  box-shadow: 0 8px 24px -4px var(--glow-color, rgba(34, 211, 238, 0.3));
 }
-
 .tech-card-fill {
   position: absolute;
   inset: 0;
