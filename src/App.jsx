@@ -11,7 +11,7 @@ import ContributionGraph from './components/ContributionGraph'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-
+import ChatWidget from './components/ChatWidget'
 import SectionDots from './components/SectionDots'
 
 export default function App() {
@@ -36,6 +36,7 @@ export default function App() {
       <Footer />
       <ScrollToTop/>
       <SectionDots/>
+       <ChatWidget />
     </>
   )
 }
