@@ -2,112 +2,13 @@
 import express from 'express'
 import cors from 'cors'
 import { Resend } from 'resend'
-import { GoogleGenerativeAI } from '@google/generative-ai'
+import chatRouter from './chat.js'
 import dotenv from 'dotenv'
 
 dotenv.config()
 
-if (!process.env.GEMINI_API_KEY) {
-  throw new Error('GEMINI_API_KEY is missing from environment variables')
-}
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
 
-const PORTFOLIO_CONTEXT = `
-You are a helpful assistant embedded in Rohit Kumar's developer portfolio website. Answer visitor questions only using the information below. Be friendly, concise, usually 2-4 sentences, and speak about Rohit in third person. If asked something not covered here, politely say you don't have that information and suggest using the contact form. Never invent projects, skills, or experience.
-
-ABOUT ROHIT:
-- Full-Stack Developer based in India
-- Focused on building clean, functional, practical web applications
-- Believes in reducing friction and making software genuinely useful
-
-SKILLS:
-- Languages: Python, JavaScript, TypeScript, Java, C, C++, SQL
-- Frontend: HTML, CSS, React, Next.js, Tailwind CSS, Vite, Redux
-- Backend: Node.js, Express.js, REST APIs, JWT Authentication, MongoDB, GraphQL
-- Tools: Git, GitHub, VS Code, Postman, Docker, Firebase
-
-PROJECTS:
-- Fitness Training Portal using React, Node.js, MongoDB, and JWT authentication
-- Smart Hospital Emergency Response System with AI-powered routing
-- Other web applications listed in the Projects section of the portfolio
-
-EDUCATION:
-- Studying Computer Science, including Data Structures and Algorithms, Object-Oriented Programming, and Computer Networks
-
-CERTIFICATIONS:
-- Programming Using C++ (Infosys Springboard)
-- Computer Programming (LPU/iamNeo)
-- Programming in JAVA
-
-CODING PROFILES:
-- Active on LeetCode and GitHub
-- Contribution graph and solved-problem count are displayed on the portfolio
-
-CONTACT:
-- Visitors can contact Rohit using the website contact form.
-`
-
-async function askGemini(message, history = []) {
-  const model = genAI.getGenerativeModel({
-    model: 'gemini-3.8-flash',
-    systemInstruction: PORTFOLIO_CONTEXT,
-  })
-
-  const normalizedHistory = Array.isArray(history)
-    ? history
-        .filter(
-          (item) =>
-            item &&
-            (item.role === 'user' || item.role === 'model') &&
-            Array.isArray(item.parts)
-        )
-        .map((item) => ({
-          role: item.role,
-          parts: item.parts
-            .filter(
-              (part) =>
-                part &&
-                typeof part.text === 'string' &&
-                part.text.trim().length > 0
-            )
-            .map((part) => ({ text: part.text })),
-        }))
-        .filter((item) => item.parts.length > 0)
-    : []
-
-  const validHistory = []
-
-  for (const item of normalizedHistory) {
-    if (validHistory.length === 0) {
-      if (item.role === 'user') {
-        validHistory.push(item)
-      }
-      continue
-    }
-
-    const previous = validHistory[validHistory.length - 1]
-
-    if (item.role !== previous.role) {
-      validHistory.push(item)
-    }
-  }
-
-  while (
-    validHistory.length > 0 &&
-    validHistory[validHistory.length - 1].role === 'user'
-  ) {
-    validHistory.pop()
-  }
-
-  const chat = model.startChat({
-    history: validHistory,
-  })
-
-  const result = await chat.sendMessage(message.trim())
-
-  return result.response.text()
-}
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -228,42 +129,8 @@ app.post('/api/contact', async (req, res) => {
   }
 })
 
-app.post('/api/chat', async (req, res) => {
-  const { message, history } = req.body
 
-  if (typeof message !== 'string' || !message.trim()) {
-    return res.status(400).json({
-      error: 'Message is required.',
-    })
-  }
-
-  if (message.length > 500) {
-    return res.status(400).json({
-      error: 'Message is too long.',
-    })
-  }
-
-  if (
-    history !== undefined &&
-    (!Array.isArray(history) || history.length > 30)
-  ) {
-    return res.status(400).json({
-      error: 'Invalid chat history.',
-    })
-  }
-
-  try {
-    const reply = await askGemini(message, history)
-
-    return res.status(200).json({ reply })
-  } catch (err) {
-    console.error('Gemini API error:', err)
-
-    return res.status(500).json({
-      error: 'Failed to get a response. Please try again.',
-    })
-  }
-})
+app.use('/api/chat', chatRouter)
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
