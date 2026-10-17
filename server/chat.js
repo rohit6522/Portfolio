@@ -77,6 +77,37 @@ function findHardcodedReply(message) {
   return match ? match.answer : null
 }
 
+// Priority list: GEMINI_MODEL (env) pehle, phir ye. Pehla fail ho to agla try hota hai.
+function getModelChain() {
+  return [
+    ...new Set(
+      [
+        process.env.GEMINI_MODEL,
+        'gemini-flash-latest',
+        'gemini-3-flash-preview',
+        'gemini-3.1-flash-lite',
+      ].filter(Boolean)
+    ),
+  ]
+}
+
+async function generateWithFallback(ai, contents) {
+  let lastError
+  for (const model of getModelChain()) {
+    try {
+      return await ai.models.generateContent({
+        model,
+        contents,
+        config: { systemInstruction: SYSTEM_PROMPT },
+      })
+    } catch (err) {
+      lastError = err
+      console.warn(`Gemini model "${model}" failed:`, err?.status, err?.message)
+    }
+  }
+  throw lastError
+}
+
 router.post('/', async (req, res) => {
   const { message, history } = req.body || {}
 
@@ -112,11 +143,10 @@ router.post('/', async (req, res) => {
   while (past.length && past[0].role !== 'user') past.shift()
 
   try {
-    const response = await ai.models.generateContent({
-      model: process.env.GEMINI_MODEL || 'gemini-flash-latest',
-      contents: [...past, { role: 'user', parts: [{ text: message }] }],
-      config: { systemInstruction: SYSTEM_PROMPT },
-    })
+    const response = await generateWithFallback(ai, [
+      ...past,
+      { role: 'user', parts: [{ text: message }] },
+    ])
 
     const reply = response.text?.trim()
     res.status(200).json({
