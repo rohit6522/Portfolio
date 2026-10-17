@@ -60,6 +60,8 @@ export default function ChatWidget() {
   const [loading, setLoading] = useState(false)
   const scrollRef = useRef(null)
   const inputRef = useRef(null)
+  const openRef = useRef(false)
+  const [showNudge, setShowNudge] = useState(false)
 
   useEffect(() => {
     try {
@@ -90,6 +92,37 @@ export default function ChatWidget() {
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [open])
+
+  useEffect(() => {
+    openRef.current = open
+    if (open) setShowNudge(false)
+  }, [open])
+
+  useEffect(() => {
+    let alreadyShown = false
+    try {
+      alreadyShown = !!sessionStorage.getItem('portfolio-chat-nudged')
+    } catch {
+      // ignore storage errors
+    }
+    if (alreadyShown) return
+
+    const show = setTimeout(() => {
+      if (openRef.current) return
+      setShowNudge(true)
+      try {
+        sessionStorage.setItem('portfolio-chat-nudged', '1')
+      } catch {
+        // ignore storage errors
+      }
+    }, 7000)
+    const hide = setTimeout(() => setShowNudge(false), 15000)
+
+    return () => {
+      clearTimeout(show)
+      clearTimeout(hide)
+    }
+  }, [])
 
   async function sendMessage(text) {
     const trimmed = text.trim()
@@ -146,6 +179,8 @@ export default function ChatWidget() {
 
   return (
     <>
+      {showNudge && !open && <div className="chat-nudge">Ask me anything about Rohit</div>}
+
       <button
         className="chat-fab"
         onClick={() => setOpen(!open)}

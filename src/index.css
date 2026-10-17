@@ -335,6 +335,49 @@ body {
   color: #f87171;
 }
 
+.chat-nudge {
+  position: fixed;
+  bottom: 38px;
+  left: 92px;
+  z-index: 95;
+  background: var(--ink-2);
+  color: var(--chalk);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  white-space: nowrap;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+  animation: chatNudgeIn 0.35s ease both;
+}
+
+@keyframes chatNudgeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .chat-nudge {
+    bottom: 30px;
+    left: 78px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-nudge {
+    animation: none;
+  }
+}
+
 .chat-messages {
   flex: 1;
   overflow-y: auto;
