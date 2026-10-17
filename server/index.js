@@ -2,15 +2,15 @@
 import express from 'express'
 import cors from 'cors'
 import { Resend } from 'resend'
-import chatRouter from './chat.js'
+import chatRouter, { chatLimiter } from './chat.js'
 import dotenv from 'dotenv'
 
 dotenv.config()
 
 
 
-
 const app = express()
+app.set('trust proxy', 1)
 const PORT = process.env.PORT || 5000
 
 const allowedOrigins = (process.env.CLIENT_URL || '')
@@ -130,7 +130,7 @@ app.post('/api/contact', async (req, res) => {
 })
 
 
-app.use('/api/chat', chatRouter)
+app.use('/api/chat', chatLimiter, chatRouter)
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)

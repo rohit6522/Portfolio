@@ -1,8 +1,18 @@
 import { Router } from 'express'
 import { GoogleGenAI } from '@google/genai'
+import rateLimit from 'express-rate-limit'
 import * as kb from './knowledge.js'
 
 const router = Router()
+
+// Ek IP se 1 minute mein max 8 messages (zaroorat ho to number badal lo)
+export const chatLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  limit: 8,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many messages. Please wait a minute and try again.' },
+})
 
 // Client lazily banta hai, kyunki .env ESM imports ke baad load hota hai
 let client = null
