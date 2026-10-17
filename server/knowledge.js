@@ -70,3 +70,10 @@ export const hardcodedReplies = [
       "For privacy, Rohit doesn't share his phone number here. Please use the contact form in the Get in touch section and he'll reply by email.",
   },
 ]
+
+// ✏️ GREETINGS: ye exact words (poora message) aate hi AI call nahi hoga
+export const greetings = {
+  triggers: ['hi', 'hii', 'hello', 'hey', 'hola', 'namaste', 'good morning', 'good afternoon', 'good evening'],
+  reply:
+    "Hi! I'm Rohit's assistant. Ask me about his skills, projects, education, or certifications.",
+}

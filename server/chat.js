@@ -61,6 +61,14 @@ ${faq || '(none yet)'}`
 
 const SYSTEM_PROMPT = buildSystemPrompt()
 
+function normalize(text) {
+  return text.toLowerCase().replace(/[^a-z\s]/g, '').replace(/\s+/g, ' ').trim()
+}
+
+function isGreeting(message) {
+  return kb.greetings.triggers.includes(normalize(message))
+}
+
 function findHardcodedReply(message) {
   const text = message.toLowerCase()
   const match = kb.hardcodedReplies.find((r) =>
@@ -77,6 +85,10 @@ router.post('/', async (req, res) => {
   }
   if (message.length > 500) {
     return res.status(400).json({ error: 'Message is too long.' })
+  }
+
+  if (isGreeting(message)) {
+    return res.status(200).json({ reply: kb.greetings.reply })
   }
 
   const fixed = findHardcodedReply(message)
