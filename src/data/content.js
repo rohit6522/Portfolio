@@ -135,6 +135,30 @@ export const skills = [
 export const projects = [
   {
     title: 'Smart Cart — Budget-Aware Shopping Platform',
+        caseStudy: {
+      slug: 'smart-cart',
+      role: 'Full-stack developer',
+      problem:
+        'Online shoppers may struggle to keep their spending within a fixed budget while adding products to their cart. The project aims to make budget tracking easier during the shopping and checkout process.',
+      solution:
+        'Built a full-stack shopping platform with a real-time budget tracker, role-based authentication, payment options, and order management. The platform also includes dedicated dashboards for shoppers, administrators, and delivery partners.',
+      challenges: [
+        {
+          title: 'Real-time budget tracking',
+          detail:
+            'Implemented a cart budget tracker with a progress indicator and over-budget alerts so shoppers can monitor their spending as they add products.',
+        },
+        {
+          title: 'Order and role management',
+          detail:
+            'Designed separate workflows for shoppers, administrators, and delivery partners to support product management, order processing, and delivery assignment.',
+        },
+      ],
+      outcome: [
+        'Built a full-stack eCommerce application with shopping, checkout, and order-management features.',
+        'Integrated Razorpay with a Cash-on-Delivery fallback.',
+      ],
+    },
     category: 'Full-Stack Web Application',
     period: 'Jul 2026 – Aug 2026',
     featured: true,
@@ -160,6 +184,30 @@ export const projects = [
 
   {
     title: 'Smart Hospital Emergency System',
+        caseStudy: {
+      slug: 'smart-hospital',
+      role: 'Full-stack developer',
+      problem:
+        'Emergency response requires timely coordination between incoming cases, ambulances, and hospital resources. This project explores how a web-based system can support emergency routing and improve visibility into available resources.',
+      solution:
+        'Built a web application focused on emergency routing, ambulance tracking, and hospital resource management, using a React frontend and Java-based backend services.',
+      challenges: [
+        {
+          title: 'Emergency routing and coordination',
+          detail:
+            'Worked on the emergency routing logic and the flow of information between the frontend and backend to support emergency case handling.',
+        },
+        {
+          title: 'Live tracking and resource visibility',
+          detail:
+            'Worked on tracking and resource-management features to help users monitor ambulance movement and hospital resources.',
+        },
+      ],
+      outcome: [
+        'Built a web application focused on emergency response and hospital coordination.',
+        'Implemented the features that are currently available in the project.',
+      ],
+    },
     category: 'Web Application',
     period: 'Jul 2026 – Sep 2026',
     featured: true,
@@ -179,21 +227,31 @@ export const projects = [
 
   {
     title: 'Fitness Training Portal',
-    caseStudy: {
+       caseStudy: {
       slug: 'fitness-portal',
-      role: '[YOUR ROLE, e.g. Solo developer: frontend, backend and deployment]',
-      problem: '[2-3 sentences: what problem were you solving, and for whom?]',
-      solution: '[2-3 sentences: what did you build, and why this approach?]',
+      role: 'Full-stack developer',
+      problem:
+        'Managing workout schedules, fitness goals, and daily activity can be difficult when information is spread across different tools. This project aims to bring workout planning and progress tracking together in one application.',
+      solution:
+        'Built a fitness platform using React, Node.js, Express.js, and MongoDB. It includes personalized workout planning, progress and goal tracking, daily streaks, calorie and water tracking, and user authentication.',
       challenges: [
         {
-          title: '[A real technical problem you hit]',
-          detail: '[How you debugged it and what you changed]',
+          title: 'Workout and progress management',
+          detail:
+            'Organized workout plans and fitness progress features so users can manage their training schedules and monitor their goals in one place.',
+        },
+        {
+          title: 'Authentication and user access',
+          detail:
+            'Worked with the authentication flow using the technologies implemented in the project to support secure user access.',
         },
       ],
       outcome: [
-        '[A real result, e.g. deployed on Render, features shipped. Only true things]',
+        'Built a fitness web application with workout planning and progress-tracking features.',
+        'Implemented fitness tracking and authentication features included in the project.',
       ],
     },
+
     category: 'Web Application',
     period: 'March – May 2026',
     featured: true,
@@ -215,6 +273,30 @@ export const projects = [
   },
   {
     title: 'RYDEX',
+        caseStudy: {
+      slug: 'rydex',
+      role: 'Full-stack developer',
+      problem:
+        'Booking a vehicle requires a smooth connection between riders and drivers, along with reliable ride-status updates. RYDEX aims to bring booking, live ride tracking, driver verification, and payment options together in one platform.',
+      solution:
+        'Built a vehicle-booking platform inspired by ride-hailing apps, with live GPS tracking, Socket.io-based ride updates, OTP-verified ride starts, and Razorpay or cash payment options. The platform also includes driver onboarding with video KYC and an admin approval workflow.',
+      challenges: [
+        {
+          title: 'Real-time ride tracking',
+          detail:
+            'Worked on coordinating live location updates and ride-status changes so users can follow the ride in real time.',
+        },
+        {
+          title: 'Driver verification workflow',
+          detail:
+            'Designed the driver onboarding flow around video KYC and admin approval to support driver verification before accepting rides.',
+        },
+      ],
+      outcome: [
+        'Developed a vehicle-booking application with real-time tracking and ride-management features.',
+        'Integrated the payment and driver-onboarding workflows implemented in the project.',
+      ],
+    },
     category: 'Web Application',
     period: 'Jul 2026 - Present',
     featured: true,
