@@ -3856,3 +3856,54 @@ h3 {
     box-shadow: 0 0 0 5px rgba(34, 211, 238, 0);
   }
 }
+
+
+/* ── availability badge ────────────────────────────────── */
+.availability-badge {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  background: rgba(34, 211, 238, 0.08);
+  color: var(--brass-bright);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+}
+
+.availability-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brass-bright);
+  animation: availabilityPulse 2s ease-out infinite;
+}
+
+@keyframes availabilityPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(34, 211, 238, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0);
+  }
+}
+
+@media (max-width: 860px) {
+  .availability-badge {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .availability-dot {
+    animation: none;
+  }
+}

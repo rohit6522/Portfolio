@@ -5,6 +5,7 @@ import { profile } from '../data/content'
 import useMagnetic from '../hooks/useMagnetic'
 import RollingText from './RollingText'
 import Typewriter from './Typewriter'
+import AvailabilityBadge from './AvailabilityBadge'
 import { Reveal, RevealItem } from './Reveal'
 
 function getGreeting() {
@@ -111,7 +112,7 @@ const icons = {
     </svg>
   ),
 
-   Resume: (
+  Resume: (
     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#0a0a0a" strokeWidth="2.2">
       <path d="M12 3v12m0 0-4-4m4 4 4-4" />
       <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
@@ -194,6 +195,7 @@ export default function Hero() {
 
         <Reveal className="hero-reveal-column">
           <RevealItem>
+            <AvailabilityBadge />
             <span className="hero-greeting">
               {greeting} —
             </span>

@@ -301,3 +301,10 @@ export const experience = [
     ],
   },
 ]
+
+
+// Hero badge: open:false karne par badge hide ho jata hai
+export const availability = {
+  open: true,
+  text: 'Open to internships and junior roles',
+}
