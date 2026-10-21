@@ -145,6 +145,17 @@ function ProjectCard({ project, compact = false }) {
         )}
 
         <div className="project-links-row-v3">
+          {project.caseStudy && (
+            <button
+              type="button"
+              className="project-link-btn-v3 project-case-btn"
+              onClick={() => {
+                window.location.hash = `case-${project.caseStudy.slug}`
+              }}
+            >
+              Case study →
+            </button>
+          )}
           {project.codeUrl && (
             <a
               href={project.codeUrl}

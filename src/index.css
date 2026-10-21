@@ -3907,3 +3907,246 @@ h3 {
     animation: none;
   }
 }
+
+
+
+/* ── case study overlay ────────────────────────────────── */
+.project-case-btn {
+  background: none;
+  cursor: pointer;
+  border-color: rgba(34, 211, 238, 0.4);
+  color: var(--brass-bright);
+}
+
+.case-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: var(--ink);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.case-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+.case-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0 14px;
+  background: linear-gradient(to bottom, var(--ink) 75%, transparent);
+}
+
+.case-back,
+.case-close {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--chalk);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.case-back {
+  font-size: 13px;
+  padding: 9px 16px;
+}
+
+.case-close {
+  width: 38px;
+  height: 38px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.case-back:hover,
+.case-close:hover {
+  border-color: var(--brass-bright);
+  color: var(--brass-bright);
+}
+
+.case-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 14px;
+}
+
+.case-pill {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  color: var(--brass-bright);
+}
+
+.case-title {
+  font-size: clamp(30px, 5vw, 48px);
+  color: var(--chalk);
+  margin: 0 0 14px;
+}
+
+.case-lead {
+  color: var(--steel);
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 28px;
+  max-width: 70ch;
+}
+
+.case-hero-img {
+  display: block;
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--ink-2);
+  margin-bottom: 32px;
+}
+
+.case-facts {
+  display: grid;
+  gap: 18px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.case-facts:empty {
+  display: none;
+}
+
+.case-fact-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 8px;
+}
+
+.case-fact-value {
+  color: var(--chalk);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.case-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.case-stack span {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  color: var(--chalk);
+}
+
+.case-block {
+  margin-top: 36px;
+}
+
+.case-block-title {
+  font-size: 20px;
+  color: var(--chalk);
+  margin-bottom: 12px;
+}
+
+.case-text {
+  color: var(--steel);
+  font-size: 15px;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 70ch;
+}
+
+.case-list {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--steel);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.case-list li + li {
+  margin-top: 6px;
+}
+
+.case-challenge + .case-challenge {
+  margin-top: 18px;
+}
+
+.case-challenge-title {
+  color: var(--chalk);
+  font-weight: 600;
+  font-size: 15px;
+  margin: 0 0 4px;
+}
+
+.case-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.case-gallery img {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.case-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 44px;
+}
+
+.case-link-btn {
+  font-family: var(--font-body);
+  font-size: 14px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--chalk);
+  transition: border-color 0.15s ease, color 0.15s ease, filter 0.15s ease;
+}
+
+.case-link-btn:hover {
+  border-color: var(--brass-bright);
+  color: var(--brass-bright);
+}
+
+.case-link-primary {
+  background: var(--brass-bright);
+  border-color: var(--brass-bright);
+  color: var(--ink);
+}
+
+.case-link-primary:hover {
+  color: var(--ink);
+  filter: brightness(1.08);
+}
+
+@media (max-width: 640px) {
+  .case-inner {
+    padding: 0 18px 72px;
+  }
+
+  .case-gallery {
+    grid-template-columns: 1fr;
+  }
+}

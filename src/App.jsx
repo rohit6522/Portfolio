@@ -12,6 +12,7 @@ import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ChatWidget from './components/ChatWidget'
+import CaseStudyHost from './components/CaseStudyHost'
 import SectionDots from './components/SectionDots'
 
 export default function App() {
@@ -34,9 +35,10 @@ export default function App() {
 
       <Contact />
       <Footer />
-      <ScrollToTop/>
-      <SectionDots/>
-       <ChatWidget />
+      <ScrollToTop />
+      <SectionDots />
+      <ChatWidget />
+      <CaseStudyHost />
     </>
   )
 }
