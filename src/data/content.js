@@ -135,7 +135,7 @@ export const skills = [
 export const projects = [
   {
     title: 'Smart Cart — Budget-Aware Shopping Platform',
-        caseStudy: {
+    caseStudy: {
       slug: 'smart-cart',
       role: 'Full-stack developer',
       problem:
@@ -184,7 +184,7 @@ export const projects = [
 
   {
     title: 'Smart Hospital Emergency System',
-        caseStudy: {
+    caseStudy: {
       slug: 'smart-hospital',
       role: 'Full-stack developer',
       problem:
@@ -227,7 +227,7 @@ export const projects = [
 
   {
     title: 'Fitness Training Portal',
-       caseStudy: {
+    caseStudy: {
       slug: 'fitness-portal',
       role: 'Full-stack developer',
       problem:
@@ -273,7 +273,7 @@ export const projects = [
   },
   {
     title: 'RYDEX',
-        caseStudy: {
+    caseStudy: {
       slug: 'rydex',
       role: 'Full-stack developer',
       problem:
@@ -404,4 +404,15 @@ export const experience = [
 export const availability = {
   open: true,
   text: 'Open to internships and junior roles',
+}
+
+// About section (bento cards). '[' se shuru hone wali lines page par hide rehti hain.
+// Jo cheez sach nahi ya abhi nahi likhni, use '[' wali hi chhod do, card hide ho jayega.
+export const aboutBento = {
+  story:
+    '[WRITE 2-4 sentences: how you got into coding, what you enjoy building, what you are aiming for]',
+  learning: ['[Something you are learning right now]'],
+  funFact: '[One real, human detail about you. Optional]',
+  // Ye sab aapke asli skills mein se hain. Order badal sakte ho.
+  stackHighlights: ['React', 'Node.js', 'MongoDB', 'JavaScript', 'Java', 'Tailwind CSS'],
 }

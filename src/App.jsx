@@ -5,8 +5,8 @@ import CustomCursor from './components/CustomCursor'
 import useSmoothScroll from './hooks/useSmoothScroll'
 import ScrollToTop from './components/ScrollToTop'
 import Hero from './components/Hero'
-
 import SkillsTabs from './components/SkillsTabs'
+import AboutBento from './components/AboutBento'
 import ContributionGraph from './components/ContributionGraph'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
@@ -28,7 +28,7 @@ export default function App() {
       <Nav />
 
       <Hero />
-
+<AboutBento />
       <SkillsTabs />
       <ContributionGraph />
       <Projects />

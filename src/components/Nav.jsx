@@ -6,7 +6,7 @@ import RollingText from './RollingText'
 
 const links = [
   { href: '#top', label: 'Home' },
-  { href: '#skills', label: 'About' },
+{ href: '#about', label: 'About' },
   { href: '#contributions', label: 'Contributions' },
   { href: '#projects', label: 'Projects' },
   { href: '#achievements', label: 'Achievements' },
@@ -14,7 +14,7 @@ const links = [
 
 const desktopLinks = links
 const mobileLinks = links
-const sectionIds = [...links.map((l) => l.href.replace('#', '')), 'contact']
+const sectionIds = [...links.map((l) => l.href.replace('#', '')), 'skills', 'contact']
 
 export default function Nav() {
   const [showPhoto, setShowPhoto] = useState(false)
@@ -87,25 +87,26 @@ export default function Nav() {
             <span className="nav-divider" />
           </div>
 
-                  <ul className="nav-links" onMouseLeave={() => setHovered(null)}>
-          {desktopLinks.map((link) => {
-            const isActive = hovered === link.href || (!hovered && activeSection === link.href.replace('#', ''))
-            return (
-              <li key={link.href} className="nav-link-item" onMouseEnter={() => setHovered(link.href)}>
-                <motion.a href={link.href} initial="rest" whileHover="hover" animate="rest">
-                  <RollingText text={link.label} />
-                </motion.a>
-                {isActive && (
-                  <motion.span
-                    className="nav-underline"
-                    layoutId="nav-underline"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </li>
-            )
-          })}
-        </ul>
+          <ul className="nav-links" onMouseLeave={() => setHovered(null)}>
+            {desktopLinks.map((link) => {
+             const currentSection = activeSection === 'skills' ? 'about' : activeSection
+            const isActive = hovered === link.href || (!hovered && currentSection === link.href.replace('#', ''))
+              return (
+                <li key={link.href} className="nav-link-item" onMouseEnter={() => setHovered(link.href)}>
+                  <motion.a href={link.href} initial="rest" whileHover="hover" animate="rest">
+                    <RollingText text={link.label} />
+                  </motion.a>
+                  {isActive && (
+                    <motion.span
+                      className="nav-underline"
+                      layoutId="nav-underline"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </li>
+              )
+            })}
+          </ul>
 
           <motion.a
             href="#contact"
