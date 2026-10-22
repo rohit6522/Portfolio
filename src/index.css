@@ -4391,3 +4391,218 @@ h3 {
     padding: 20px;
   }
 }
+
+
+
+/* ── command palette ───────────────────────────────────── */
+.cmdk-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 700;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 14vh 16px 0;
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: blur(4px);
+  animation: cmdkFade 0.15s ease both;
+}
+
+.cmdk-panel {
+  width: 100%;
+  max-width: 620px;
+  background: var(--ink-2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  animation: cmdkPop 0.18s ease both;
+}
+
+.cmdk-input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--steel);
+}
+
+.cmdk-input {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--chalk);
+  font-family: var(--font-body);
+  font-size: 16px;
+}
+
+.cmdk-input::placeholder {
+  color: var(--steel);
+}
+
+.cmdk-kbd {
+  display: inline-block;
+  min-width: 22px;
+  padding: 2px 7px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--steel);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.cmdk-list {
+  max-height: min(52vh, 420px);
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.cmdk-group-title {
+  margin: 0;
+  padding: 10px 12px 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--steel);
+}
+
+.cmdk-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: var(--chalk);
+  font-size: 14.5px;
+  cursor: pointer;
+}
+
+.cmdk-option.is-active {
+  background: rgba(34, 211, 238, 0.12);
+  color: var(--brass-bright);
+}
+
+.cmdk-option.is-active::after {
+  content: '↵';
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.cmdk-empty {
+  margin: 0;
+  padding: 28px 12px;
+  text-align: center;
+  color: var(--steel);
+  font-size: 14px;
+}
+
+.cmdk-footer {
+  display: flex;
+  gap: 18px;
+  padding: 10px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--steel);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+}
+
+.cmdk-footer .cmdk-kbd {
+  margin-right: 4px;
+}
+
+.cmdk-hint {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  background: var(--ink-2);
+  color: var(--chalk);
+  font-family: var(--font-body);
+  font-size: 13px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+  animation: cmdkHintIn 0.35s ease both;
+}
+
+.cmdk-toast {
+  position: fixed;
+  bottom: 84px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 720;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--brass-bright);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+  animation: cmdkHintIn 0.25s ease both;
+}
+
+@keyframes cmdkFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cmdkPop {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cmdkHintIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@media (hover: none) {
+  .cmdk-hint,
+  .cmdk-footer {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .cmdk-backdrop {
+    padding-top: 10vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmdk-backdrop,
+  .cmdk-panel,
+  .cmdk-hint,
+  .cmdk-toast {
+    animation: none;
+  }
+}
