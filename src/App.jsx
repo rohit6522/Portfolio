@@ -12,6 +12,7 @@ import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ChatWidget from './components/ChatWidget'
+import CommandPalette from './components/CommandPalette'
 import CaseStudyHost from './components/CaseStudyHost'
 import SectionDots from './components/SectionDots'
 
@@ -28,7 +29,7 @@ export default function App() {
       <Nav />
 
       <Hero />
-<AboutBento />
+      <AboutBento />
       <SkillsTabs />
       <ContributionGraph />
       <Projects />
@@ -38,6 +39,7 @@ export default function App() {
       <ScrollToTop />
       <SectionDots />
       <ChatWidget />
+      <CommandPalette />
       <CaseStudyHost />
     </>
   )
