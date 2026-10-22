@@ -63,7 +63,7 @@ export default function AboutBento() {
             <UserIcon />
           </IconBadge>
           <div>
-            <span className="eyebrow">About</span>
+            {/* <span className="eyebrow">About</span> */}
             <h2 id="about-title" className="section-title" style={{ marginTop: '4px' }}>
               A bit about me
             </h2>
