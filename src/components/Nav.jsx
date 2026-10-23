@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion'
 import { profile } from '../data/content'
+import CommandTrigger from './CommandTrigger'
 import RollingText from './RollingText'
 // import ThemeToggle from './ThemeToggle'
 
@@ -24,7 +25,7 @@ export default function Nav() {
   const [activeSection, setActiveSection] = useState('top')
 
   const { scrollY } = useScroll()
-  const maxWidth = useTransform(scrollY, [0, 220], [2200, 760])
+  const maxWidth = useTransform(scrollY, [0, 220], [2200, 860])
   const marginTop = useTransform(scrollY, [0, 220], [0, 14])
   const height = useTransform(scrollY, [0, 220], [68, 56])
   const borderRadius = useTransform(scrollY, [0, 220], [0, 999])
@@ -84,7 +85,8 @@ export default function Nav() {
             </button>
 
 
-            <span className="nav-divider" />
+           <span className="nav-divider" />
+            <CommandTrigger />
           </div>
 
           <ul className="nav-links" onMouseLeave={() => setHovered(null)}>
