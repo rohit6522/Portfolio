@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { profile, projects } from '../data/content'
+import { OPEN_PALETTE_EVENT } from './CommandTrigger'
 
 const GROUP_ORDER = ['Navigate', 'Projects', 'Actions', 'Links']
 
@@ -330,6 +331,13 @@ export default function CommandPalette() {
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
+  }, [])
+
+  // Navbar ke Search button se bhi khule
+  useEffect(() => {
+    const openIt = () => setOpen(true)
+    window.addEventListener(OPEN_PALETTE_EVENT, openIt)
+    return () => window.removeEventListener(OPEN_PALETTE_EVENT, openIt)
   }, [])
 
   // Ek baar use kar liya to hint dobara nahi dikhega

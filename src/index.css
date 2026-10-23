@@ -4606,3 +4606,57 @@ h3 {
     animation: none;
   }
 }
+
+
+/* ── command palette trigger (navbar) ──────────────────── */
+.cmdk-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--steel);
+  font-family: var(--font-body);
+  font-size: 13px;
+  white-space: nowrap;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.cmdk-trigger:hover {
+  border-color: var(--brass-bright);
+  color: var(--chalk);
+  background: rgba(34, 211, 238, 0.08);
+}
+
+.cmdk-trigger-label,
+.cmdk-trigger-kbd {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .cmdk-trigger:not(.is-compact) {
+    width: auto;
+    padding: 0 10px 0 12px;
+  }
+
+  .cmdk-trigger:not(.is-compact) .cmdk-trigger-label {
+    display: inline;
+  }
+
+  .cmdk-trigger:not(.is-compact) .cmdk-trigger-kbd {
+    display: inline-block;
+  }
+}
+
+/* Touch devices par keyboard shortcut ka matlab nahi */
+@media (hover: none) {
+  .cmdk-trigger .cmdk-trigger-kbd {
+    display: none !important;
+  }
+}
