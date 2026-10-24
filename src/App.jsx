@@ -11,11 +11,13 @@ import AboutBento from './components/AboutBento'
 import ContributionGraph from './components/ContributionGraph'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
+import Testimonials from './components/Testimonials'
 import Footer from './components/Footer'
 import ChatWidget from './components/ChatWidget'
 import CommandPalette from './components/CommandPalette'
 import CaseStudyHost from './components/CaseStudyHost'
 import SectionDots from './components/SectionDots'
+
 
 export default function App() {
   useSmoothScroll()
@@ -38,7 +40,7 @@ export default function App() {
     }
   }, [])
   return (
-    <> 
+    <>
       <a href="#top" className="skip-link">
         Skip to content
       </a>
@@ -52,7 +54,7 @@ export default function App() {
       <SkillsTabs />
       <ContributionGraph />
       <Projects />
-
+      <Testimonials />
       <Contact />
       <Footer />
       <ScrollToTop />
