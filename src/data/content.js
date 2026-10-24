@@ -416,3 +416,14 @@ export const aboutBento = {
   // Ye sab aapke asli skills mein se hain. Order badal sakte ho.
   stackHighlights: ['React', 'Node.js', 'MongoDB', 'JavaScript', 'Java', 'Tailwind CSS'],
 }
+
+// Testimonials: sirf asli quotes, aur us insaan ki permission ke saath.
+// '[' se shuru hone wali entries page par hide rehti hain. Saari hide hui to poora section hide.
+export const testimonials = [
+  {
+    quote: '[A real quote from a mentor, professor or teammate, with their permission]',
+    name: '[Their name]',
+    role: '[Their role, e.g. Mentor at ..., Project teammate]',
+    link: '', // optional: unki LinkedIn profile ka URL
+  },
+]

@@ -38,7 +38,7 @@ export default function App() {
     }
   }, [])
   return (
-    <>
+    <> 
       <a href="#top" className="skip-link">
         Skip to content
       </a>
