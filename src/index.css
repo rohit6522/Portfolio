@@ -7,9 +7,9 @@
   --brass-bright: #22d3ee;
   --steel: #8b8f96;
   --chalk: #e8e8e8;
-  --font-display: 'General Sans', system-ui, sans-serif;
-  --font-body: 'General Sans', system-ui, sans-serif;
-  --font-mono: Inter, system-ui, -apple-system, sans-serif;
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace;
 
   --max-w: 1250px;
 }
@@ -26,7 +26,7 @@
   color: var(--ink);
   padding: 12px 20px;
   border-radius: 8px;
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   font-size: 13px;
   font-weight: 600;
   z-index: 10000;
@@ -199,7 +199,7 @@ body {
   transform: translateY(-50%) translateX(4px);
   background: var(--ink-2);
   color: var(--chalk);
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   font-size: 12px;
   padding: 5px 10px;
   border-radius: 6px;
@@ -591,7 +591,7 @@ h3 {
 }
 
 .section-title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(28px, 4vw, 40px);
   margin-bottom: 12px;
 
@@ -636,7 +636,7 @@ h3 {
 .nav-cta-pill {
   justify-self: end;
   margin-left: 32px;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display);
   font-size: 13.76px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -783,7 +783,7 @@ h3 {
 }
 
 .nav-links a {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display);
   font-size: 13.76px;
   color: var(--steel);
   transition: color 0.15s ease;
@@ -869,7 +869,7 @@ h3 {
 .mobile-menu-cta {
   display: block;
   text-align: center;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display);
   font-size: 13.76px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1050,7 +1050,7 @@ h3 {
 
 /* ── text side ─────────────────────────────────────────── */
 .hero-greeting {
-  font-family: Inter, system-ui, sans-serif;
+  font-family: var(--font-body);
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -1136,7 +1136,7 @@ h3 {
   font-size: 20px;
   color: #f0f0f0;
   margin: 8px 0 20px;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display);
   font-weight: 500;
   min-height: 1.4em;
 }
@@ -1162,7 +1162,7 @@ h3 {
   color: var(--steel);
   font-size: 14px;
   margin: 10px 0 32px;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display);
 }
 
 .hero-resume-btn {
@@ -1205,7 +1205,7 @@ h3 {
 }
 
 .hero-name {
-  font-family: 'Clash Display', var(--font-display);
+  font-family: var(--font-display);
   font-weight: 800;
   font-size: 85px;
   line-height: 1.1;
@@ -1227,7 +1227,7 @@ h3 {
 }
 
 .hero-tagline {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display);
   font-size: 16px;
   line-height: 1.6;
   color: #bdbdbd;
@@ -1302,7 +1302,7 @@ h3 {
 }
 
 .btn {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display);
   font-size: 13.76px;
   letter-spacing: 0.03em;
   padding: 12px 22px;
@@ -1393,7 +1393,7 @@ h3 {
 }
 
 .tech-stack-title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display);
   font-size: 22px;
   color: var(--chalk);
 }
@@ -1459,7 +1459,7 @@ h3 {
 }
 
 .tech-card-name {
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   font-size: 13.5px;
   color: var(--chalk);
   white-space: nowrap;
@@ -1525,7 +1525,7 @@ h3 {
 
 
 .achievements-title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(30px, 5vw, 48px);
   color: var(--chalk);
   margin: 0 0 36px;
@@ -2057,7 +2057,7 @@ h3 {
 .timeline-cert-link {
   display: inline-block;
   margin-top: 14px;
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   font-size: 13px;
   color: var(--brass-bright);
   border-bottom: 1px solid transparent;
@@ -2320,7 +2320,7 @@ h3 {
 }
 
 .contact-v3-title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display);
   font-size: 32px;
   color: var(--chalk);
 }
@@ -2339,7 +2339,7 @@ h3 {
 }
 
 .contact-v3-info h3 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display);
   font-size: 24px;
   color: var(--chalk);
   margin-bottom: 14px;
@@ -2527,7 +2527,7 @@ h3 {
 .char-count {
   display: block;
   text-align: right;
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-mono);
   font-size: 11.5px;
   color: var(--steel);
   margin-top: 6px;
@@ -2618,7 +2618,7 @@ h3 {
 }
 
 .footer-console-log {
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-mono);
   font-size: 14px;
   color: var(--steel);
   margin: 0;
@@ -2705,7 +2705,7 @@ h3 {
 }
 
 .contrib-head .contrib-title {
-  font-family: 'Space Grotesk', sans-serif !important;
+  font-family: var(--font-display) !important;
   font-size: clamp(28px, 4vw, 40px) !important;
   color: var(--chalk);
 }
@@ -2780,7 +2780,7 @@ h3 {
 }
 
 .contrib-retry-btn {
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   font-size: 13px;
   padding: 10px 22px;
   border-radius: 999px;
@@ -3720,7 +3720,7 @@ inset: 0;
 }
 
 .loader-role-tag {
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-mono);
   font-size: 13px;
   letter-spacing: 0.15em;
   color: var(--brass-bright);
@@ -3754,7 +3754,7 @@ inset: 0;
 .loader-skip-hint {
   display: block;
   margin-top: 18px;
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -3870,7 +3870,7 @@ inset: 0;
   border: 1px solid rgba(34, 211, 238, 0.35);
   background: rgba(34, 211, 238, 0.08);
   color: var(--brass-bright);
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display);
   font-size: 12.5px;
   letter-spacing: 0.02em;
 }

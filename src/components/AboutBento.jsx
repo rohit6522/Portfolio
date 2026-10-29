@@ -71,9 +71,15 @@ export default function AboutBento() {
         </div>
 
         <div className="bento-grid">
+
           <BentoCard className="bento-photo" index={0}>
-            <img src="/avatar.jpg" alt={`Photo of ${profile.name}`} loading="lazy" />
+            <img
+              src="/developer-3d.png"
+              alt={`3D portrait of ${profile.name}`}
+              loading="lazy"
+            />
           </BentoCard>
+
 
           <BentoCard className="bento-span-3" index={1}>
             <span className="bento-label">Story</span>
