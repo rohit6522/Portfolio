@@ -1,3 +1,4 @@
+import { useState, useRef } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { profile, education, aboutBento } from '../data/content'
 import IconBadge from './IconBadge'
@@ -43,6 +44,101 @@ function BentoCard({ className = '', index = 0, children }) {
   )
 }
 
+
+function Bento3DPhotoVisual({ name, role }) {
+  const cardRef = useRef(null)
+  const [isHovered, setIsHovered] = useState(false)
+  const reduce = useReducedMotion()
+
+  const handleMouseMove = (e) => {
+    if (reduce || !cardRef.current) return
+    const rect = cardRef.current.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width
+    const y = (e.clientY - rect.top) / rect.height
+
+    const tiltX = (0.5 - y) * 14
+    const tiltY = (x - 0.5) * 14
+
+    cardRef.current.style.setProperty('--tilt-x', `${tiltX.toFixed(2)}deg`)
+    cardRef.current.style.setProperty('--tilt-y', `${tiltY.toFixed(2)}deg`)
+    cardRef.current.style.setProperty('--glare-x', `${(x * 100).toFixed(1)}%`)
+    cardRef.current.style.setProperty('--glare-y', `${(y * 100).toFixed(1)}%`)
+    cardRef.current.style.setProperty('--glare-opacity', '1')
+  }
+
+  const handleMouseEnter = () => {
+    if (reduce) return
+    setIsHovered(true)
+  }
+
+  const handleMouseLeave = () => {
+    if (reduce || !cardRef.current) return
+    setIsHovered(false)
+    cardRef.current.style.setProperty('--tilt-x', '0deg')
+    cardRef.current.style.setProperty('--tilt-y', '0deg')
+    cardRef.current.style.setProperty('--glare-opacity', '0')
+  }
+
+  return (
+    <div
+      ref={cardRef}
+      className={`bento-3d-scene ${isHovered ? 'is-hovered' : ''}`}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="bento-3d-stage">
+        {/* Layer -1: 3D Environmental Backdrop & Volumetric Lighting */}
+        <div className="bento-3d-env" aria-hidden="true">
+          <div className="bento-3d-ambient-glow" />
+          <div className="bento-3d-grid-lines" />
+          <div className="bento-3d-depth-circle" />
+          <span className="bento-3d-coord bento-3d-coord-tl">SYS // 01</span>
+          <span className="bento-3d-coord bento-3d-coord-tr">DEV // 2026</span>
+        </div>
+
+        {/* Layer 0: Original Real Photograph with Cinematic Depth Lighting */}
+        <div className="bento-3d-photo-container">
+          <img
+            src="/rohit.jpg"
+            alt={`Authentic portrait of ${name}, ${role}`}
+            className="bento-3d-img"
+            loading="lazy"
+            decoding="async"
+          />
+          <div className="bento-3d-lighting-overlay" aria-hidden="true" />
+          <div className="bento-3d-rim-light" aria-hidden="true" />
+          <div className="bento-3d-depth-vignette" aria-hidden="true" />
+        </div>
+
+        {/* Layer 1: Modern 3D Floating Frame */}
+        <div className="bento-3d-floating-frame" aria-hidden="true">
+          <div className="bento-3d-glare-sheen" />
+          <span className="bento-3d-corner bento-3d-corner-tl" />
+          <span className="bento-3d-corner bento-3d-corner-tr" />
+          <span className="bento-3d-corner bento-3d-corner-bl" />
+          <span className="bento-3d-corner bento-3d-corner-br" />
+        </div>
+
+        {/* Layer 2: Floating 3D HUD Elements */}
+        <div className="bento-3d-hud" aria-hidden="true">
+          <div className="bento-3d-badge bento-3d-badge-status">
+            <span className="bento-3d-pulse-dot" />
+            <span className="bento-3d-badge-text">Full-Stack Dev</span>
+          </div>
+
+          <div className="bento-3d-badge bento-3d-badge-id">
+            <div className="bento-3d-id-name">{name}</div>
+            <div className="bento-3d-id-tag">
+              <span className="bento-3d-code-prefix">&gt;</span> Real Solutions · Clean Code
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function AboutBento() {
   const story = isFilled(aboutBento?.story) ? aboutBento.story : profile.bio || profile.tagline
   const learning = (aboutBento?.learning || []).filter(isFilled)
@@ -73,11 +169,7 @@ export default function AboutBento() {
         <div className="bento-grid">
 
           <BentoCard className="bento-photo" index={0}>
-            <img
-              src="/developer-3d.png"
-              alt={`3D portrait of ${profile.name}`}
-              loading="lazy"
-            />
+            <Bento3DPhotoVisual name={profile.name} role={profile.role} />
           </BentoCard>
 
 

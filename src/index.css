@@ -4193,19 +4193,360 @@ inset: 0;
   grid-column: span 2;
 }
 
+/* ── 3D Bento Photo Visual ────────────────────────────── */
 .bento-photo {
   grid-row: span 2;
-  padding: 0;
-  min-height: 260px;
+  padding: 0 !important;
+  min-height: 320px;
+  background: var(--ink-2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  position: relative;
 }
 
-.bento-photo img {
+.bento-3d-scene {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  position: relative;
+  perspective: 1000px;
+  overflow: hidden;
+  border-radius: inherit;
+  cursor: pointer;
+  touch-action: pan-y;
+}
+
+.bento-3d-stage {
+  width: 100%;
+  height: 100%;
   position: absolute;
   inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.bento-3d-scene.is-hovered .bento-3d-stage {
+  transition: transform 0.08s ease-out;
+}
+
+/* Layer -1: 3D Environmental Backdrop & Volumetric Lighting */
+.bento-3d-env {
+  position: absolute;
+  inset: -10%;
+  width: 120%;
+  height: 120%;
+  transform: translateZ(-25px);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bento-3d-ambient-glow {
+  position: absolute;
+  top: -20%;
+  left: 10%;
+  width: 90%;
+  height: 80%;
+  background: radial-gradient(
+    circle at center,
+    rgba(34, 211, 238, 0.22) 0%,
+    rgba(14, 116, 144, 0.12) 40%,
+    transparent 70%
+  );
+  filter: blur(28px);
+  border-radius: 50%;
+  opacity: 0.85;
+}
+
+.bento-3d-grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(34, 211, 238, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: center;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+  opacity: 0.7;
+}
+
+.bento-3d-depth-circle {
+  position: absolute;
+  top: 15%;
+  right: 10%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 1px dashed rgba(34, 211, 238, 0.15);
+  animation: bentoSpin 24s linear infinite;
+}
+
+@keyframes bentoSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.bento-3d-coord {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--brass-bright);
+  opacity: 0.45;
+  text-transform: uppercase;
+}
+
+.bento-3d-coord-tl {
+  top: 18px;
+  left: 20px;
+}
+
+.bento-3d-coord-tr {
+  top: 18px;
+  right: 20px;
+}
+
+/* Layer 0: Original Real Photograph with Cinematic Depth */
+.bento-3d-photo-container {
+  position: absolute;
+  inset: 0;
+  transform: translateZ(0px);
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.bento-3d-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   display: block;
+  transform: scale(1.02);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  filter: contrast(1.04) saturate(1.03);
+}
+
+.bento-3d-scene:hover .bento-3d-img {
+  transform: scale(1.06);
+}
+
+.bento-3d-lighting-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 75% 25%,
+    rgba(34, 211, 238, 0.12) 0%,
+    transparent 55%
+  );
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.bento-3d-rim-light {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2),
+              inset 0 0 30px rgba(14, 116, 144, 0.2);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.bento-3d-depth-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(18, 19, 22, 0.95) 0%,
+    rgba(18, 19, 22, 0.55) 25%,
+    rgba(18, 19, 22, 0.08) 55%,
+    rgba(18, 19, 22, 0.2) 100%
+  );
+  pointer-events: none;
+}
+
+/* Layer 1: Modern 3D Floating Frame */
+.bento-3d-floating-frame {
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  transform: translateZ(20px);
+  pointer-events: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 
+    0 12px 32px -8px rgba(0, 0, 0, 0.5),
+    inset 0 0 16px rgba(34, 211, 238, 0.05);
+}
+
+.bento-3d-scene:hover .bento-3d-floating-frame {
+  border-color: rgba(34, 211, 238, 0.35);
+  box-shadow: 
+    0 16px 40px -8px rgba(0, 0, 0, 0.6),
+    0 0 24px rgba(34, 211, 238, 0.18),
+    inset 0 0 20px rgba(34, 211, 238, 0.1);
+}
+
+.bento-3d-glare-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at var(--glare-x, 50%) var(--glare-y, 50%),
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(34, 211, 238, 0.08) 35%,
+    transparent 65%
+  );
+  opacity: var(--glare-opacity, 0);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* Corner Technical Accents */
+.bento-3d-corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: var(--brass-bright);
+  border-style: solid;
+  opacity: 0.7;
+}
+
+.bento-3d-corner-tl {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+  border-top-left-radius: 4px;
+}
+
+.bento-3d-corner-tr {
+  top: -1px;
+  right: -1px;
+  border-width: 2px 2px 0 0;
+  border-top-right-radius: 4px;
+}
+
+.bento-3d-corner-bl {
+  bottom: -1px;
+  left: -1px;
+  border-width: 0 0 2px 2px;
+  border-bottom-left-radius: 4px;
+}
+
+.bento-3d-corner-br {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+  border-bottom-right-radius: 4px;
+}
+
+/* Layer 2: Floating 3D HUD Elements */
+.bento-3d-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+/* Status Badge (Top-Right) */
+.bento-3d-badge-status {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  transform: translateZ(36px);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(18, 19, 22, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+  transition: transform 0.3s ease;
+}
+
+.bento-3d-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brass-bright);
+  box-shadow: 0 0 8px var(--brass-bright);
+  animation: bentoDotPulse 2s ease-out infinite;
+}
+
+@keyframes bentoDotPulse {
+  0% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.6); }
+  70% { box-shadow: 0 0 0 6px rgba(34, 211, 238, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0); }
+}
+
+.bento-3d-badge-text {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--chalk);
+  letter-spacing: 0.04em;
+}
+
+/* Identity Badge (Bottom) */
+.bento-3d-badge-id {
+  position: absolute;
+  bottom: 22px;
+  left: 22px;
+  right: 22px;
+  transform: translateZ(32px);
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(18, 19, 22, 0.76);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.bento-3d-scene:hover .bento-3d-badge-id {
+  border-color: rgba(34, 211, 238, 0.3);
+}
+
+.bento-3d-id-name {
+  font-family: var(--font-display);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--chalk);
+  letter-spacing: 0.01em;
+  margin-bottom: 2px;
+}
+
+.bento-3d-id-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--steel);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.bento-3d-code-prefix {
+  color: var(--brass-bright);
+  font-weight: 600;
+}
+
+/* Mobile & Touch optimization */
+@media (hover: none) or (prefers-reduced-motion: reduce) {
+  .bento-3d-stage {
+    transform: none !important;
+  }
+  .bento-3d-floating-frame {
+    transform: none;
+  }
+  .bento-3d-badge-status,
+  .bento-3d-badge-id {
+    transform: none;
+  }
 }
 
 .bento-label {
