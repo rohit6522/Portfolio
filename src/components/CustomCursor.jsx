@@ -5,22 +5,23 @@ export default function CustomCursor() {
   const ringRef = useRef(null)
 
   useEffect(() => {
-        const isTouchDevice = window.matchMedia('(pointer: coarse)').matches
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (isTouchDevice || prefersReducedMotion) return
 
     const dot = dotRef.current
     const ring = ringRef.current
+    if (!dot || !ring) return
 
     let mouseX = window.innerWidth / 2
     let mouseY = window.innerHeight / 2
     let ringX = mouseX
     let ringY = mouseY
 
-       function handleMouseMove(e) {
+    function handleMouseMove(e) {
       mouseX = e.clientX
       mouseY = e.clientY
-      dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`
+      dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`
       dot.classList.add('cursor-visible')
     }
 
@@ -32,7 +33,7 @@ export default function CustomCursor() {
       ring.classList.remove('cursor-ring-active')
     }
 
-       function handleMouseOver(e) {
+    function handleMouseOver(e) {
       if (e.target.closest('[data-cursor-disable]')) {
         dot.style.opacity = '0'
         ring.style.opacity = '0'
@@ -43,7 +44,7 @@ export default function CustomCursor() {
       }
     }
 
-       function handleMouseOut(e) {
+    function handleMouseOut(e) {
       if (e.target.closest('[data-cursor-disable]')) {
         dot.style.opacity = ''
         ring.style.opacity = ''
@@ -53,19 +54,20 @@ export default function CustomCursor() {
         ring.classList.remove('cursor-ring-hover')
       }
     }
+
     let frameId
     function animateRing() {
-      ringX += (mouseX - ringX) * 0.15
-      ringY += (mouseY - ringY) * 0.15
-      ring.style.transform = `translate(${ringX}px, ${ringY}px)`
+      ringX += (mouseX - ringX) * 0.18
+      ringY += (mouseY - ringY) * 0.18
+      ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`
       frameId = requestAnimationFrame(animateRing)
     }
 
-    window.addEventListener('mousemove', handleMouseMove)
-    window.addEventListener('mousedown', handleMouseDown)
-    window.addEventListener('mouseup', handleMouseUp)
-    document.addEventListener('mouseover', handleMouseOver)
-    document.addEventListener('mouseout', handleMouseOut)
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
+    window.addEventListener('mousedown', handleMouseDown, { passive: true })
+    window.addEventListener('mouseup', handleMouseUp, { passive: true })
+    document.addEventListener('mouseover', handleMouseOver, { passive: true })
+    document.addEventListener('mouseout', handleMouseOut, { passive: true })
     animateRing()
 
     document.body.classList.add('custom-cursor-active')

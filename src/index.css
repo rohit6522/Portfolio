@@ -96,6 +96,7 @@ html {
   margin-top: -4px;
   opacity: 0;
   transition: opacity 0.15s ease;
+  will-change: transform;
 }
 
 .cursor-dot.cursor-visible {
@@ -116,6 +117,7 @@ html {
   margin-left: -22px;
   margin-top: -22px;
   transition: width 0.2s ease, height 0.2s ease, margin 0.2s ease, border-color 0.2s ease, opacity 0.15s ease;
+  will-change: transform;
 }
 
 .cursor-ring-hover {

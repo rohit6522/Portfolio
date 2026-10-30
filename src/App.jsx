@@ -1,5 +1,5 @@
 import AnimatedBackground from './components/AnimatedBackground'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, lazy, Suspense } from 'react'
 import Loader from './components/Loader'
 import Nav from './components/Nav'
 import CustomCursor from './components/CustomCursor'
@@ -13,11 +13,12 @@ import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Testimonials from './components/Testimonials'
 import Footer from './components/Footer'
-import ChatWidget from './components/ChatWidget'
-import CommandPalette from './components/CommandPalette'
-import CaseStudyHost from './components/CaseStudyHost'
 import SectionDots from './components/SectionDots'
 
+// Non-critical interactive overlays deferred off the main critical render path
+const ChatWidget = lazy(() => import('./components/ChatWidget'))
+const CommandPalette = lazy(() => import('./components/CommandPalette'))
+const CaseStudyHost = lazy(() => import('./components/CaseStudyHost'))
 
 export default function App() {
   useSmoothScroll()
@@ -39,6 +40,7 @@ export default function App() {
       /* storage blocked: loader har baar dikhega */
     }
   }, [])
+
   return (
     <>
       <a href="#top" className="skip-link">
@@ -59,9 +61,12 @@ export default function App() {
       <Footer />
       <ScrollToTop />
       <SectionDots />
-      <ChatWidget />
-      <CommandPalette />
-      <CaseStudyHost />
+
+      <Suspense fallback={null}>
+        <ChatWidget />
+        <CommandPalette />
+        <CaseStudyHost />
+      </Suspense>
     </>
   )
 }

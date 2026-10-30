@@ -147,6 +147,16 @@ export default function AnimatedBackground() {
 
     setSize()
 
+    function onVisibilityChange() {
+      if (document.hidden) {
+        cancelAnimationFrame(frameId)
+      } else if (animated) {
+        last = performance.now()
+        frameId = requestAnimationFrame(loop)
+      }
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange)
+
     if (animated) {
       window.addEventListener('mousemove', onMouseMove, { passive: true })
       frameId = requestAnimationFrame(loop)
@@ -156,6 +166,7 @@ export default function AnimatedBackground() {
     window.addEventListener('resize', onResize)
 
     return () => {
+      document.removeEventListener('visibilitychange', onVisibilityChange)
       cancelAnimationFrame(frameId)
       clearTimeout(resizeTimer)
       window.removeEventListener('mousemove', onMouseMove)

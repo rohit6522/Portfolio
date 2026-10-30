@@ -66,6 +66,8 @@ function ProjectCard({ project, compact = false }) {
                   src={src}
                   alt={`${project.title} screenshot ${i + 1} of ${images.length}`}
                   className="project-cover-img"
+                  loading="lazy"
+                  decoding="async"
                   style={{ opacity: i === imgIndex ? 1 : 0 }}
                 />
               ))}
