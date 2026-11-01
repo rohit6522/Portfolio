@@ -178,7 +178,7 @@ export const projects = [
 
     tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Spring Boot', 'MySQL', 'Razorpay'],
 
-    liveUrl: 'https://smartcart-frontend-g472.onrender.com/',
+    liveUrl: 'https://smart-cart-ecommerce-beige.vercel.app/',
     codeUrl: 'https://github.com/rohit6522/smart-cart-ecommerce',
   },
 
@@ -311,7 +311,7 @@ export const projects = [
     ],
     images: ['/projects/Rydex/rydex-1.jpg', '/projects/Rydex/rydex-2.jpg', '/projects/Rydex/rydex-3.jpg', '/projects/Rydex/rydex-4.jpg', '/projects/Rydex/rydex-5.jpg', '/projects/Rydex/rydex-6.jpg'],
     tags: ['Next.js', 'MongoDB', 'Socket.io', 'Razorpay', 'Leaflet'],
-    liveUrl: 'https://rydex-eo9t.onrender.com/',
+    liveUrl: 'https://vehicle-booking-app-jet.vercel.app/',
     codeUrl: 'https://github.com/rohit6522/vehicle-booking-app',
   },
 ]

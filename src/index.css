@@ -360,6 +360,7 @@ body {
     opacity: 0;
     transform: translateX(-8px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -434,10 +435,14 @@ body {
 }
 
 @keyframes chatTypingBounce {
-  0%, 60%, 100% {
+
+  0%,
+  60%,
+  100% {
     transform: translateY(0);
     opacity: 0.5;
   }
+
   30% {
     transform: translateY(-4px);
     opacity: 1;
@@ -1455,6 +1460,7 @@ h3 {
   justify-content: center;
   flex-shrink: 0;
 }
+
 .tech-card-icon-box svg {
   width: 18px !important;
   height: 18px !important;
@@ -2698,9 +2704,17 @@ h3 {
 }
 
 @keyframes footerDotPulse {
-  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
-  70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+  }
+
+  70% {
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
 }
 
 /* Col Titles */
@@ -2936,6 +2950,7 @@ h3 {
     grid-template-columns: 1fr 1fr;
     gap: 36px;
   }
+
   .footer-brand-col {
     grid-column: 1 / -1;
   }
@@ -2945,13 +2960,16 @@ h3 {
   .footer-v2 {
     padding: 56px 0 28px;
   }
+
   .footer-top-grid {
     grid-template-columns: 1fr;
     gap: 32px;
   }
+
   .footer-nav-list {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .footer-bottom-bar {
     flex-direction: column;
     align-items: flex-start;
@@ -3451,7 +3469,7 @@ h3 {
 /* ── animated background ──────────────────────────────── */
 .bg-layer {
   position: fixed;
-inset: 0;
+  inset: 0;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
@@ -4198,9 +4216,11 @@ inset: 0;
   0% {
     box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.55);
   }
+
   70% {
     box-shadow: 0 0 0 8px rgba(34, 211, 238, 0);
   }
+
   100% {
     box-shadow: 0 0 0 0 rgba(34, 211, 238, 0);
   }
@@ -4391,11 +4411,11 @@ inset: 0;
   line-height: 1.75;
 }
 
-.case-list li + li {
+.case-list li+li {
   margin-top: 6px;
 }
 
-.case-challenge + .case-challenge {
+.case-challenge+.case-challenge {
   margin-top: 18px;
 }
 
@@ -4559,12 +4579,10 @@ inset: 0;
   left: 10%;
   width: 90%;
   height: 80%;
-  background: radial-gradient(
-    circle at center,
-    rgba(34, 211, 238, 0.22) 0%,
-    rgba(14, 116, 144, 0.12) 40%,
-    transparent 70%
-  );
+  background: radial-gradient(circle at center,
+      rgba(34, 211, 238, 0.22) 0%,
+      rgba(14, 116, 144, 0.12) 40%,
+      transparent 70%);
   filter: blur(28px);
   border-radius: 50%;
   opacity: 0.85;
@@ -4573,7 +4591,7 @@ inset: 0;
 .bento-3d-grid-lines {
   position: absolute;
   inset: 0;
-  background-image: 
+  background-image:
     linear-gradient(rgba(34, 211, 238, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(34, 211, 238, 0.04) 1px, transparent 1px);
   background-size: 28px 28px;
@@ -4595,8 +4613,13 @@ inset: 0;
 }
 
 @keyframes bentoSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .bento-3d-coord {
@@ -4646,11 +4669,9 @@ inset: 0;
 .bento-3d-lighting-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    circle at 75% 25%,
-    rgba(34, 211, 238, 0.12) 0%,
-    transparent 55%
-  );
+  background: radial-gradient(circle at 75% 25%,
+      rgba(34, 211, 238, 0.12) 0%,
+      transparent 55%);
   pointer-events: none;
   mix-blend-mode: screen;
 }
@@ -4659,7 +4680,7 @@ inset: 0;
   position: absolute;
   inset: 0;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2),
-              inset 0 0 30px rgba(14, 116, 144, 0.2);
+    inset 0 0 30px rgba(14, 116, 144, 0.2);
   pointer-events: none;
   border-radius: inherit;
 }
@@ -4667,13 +4688,11 @@ inset: 0;
 .bento-3d-depth-vignette {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(18, 19, 22, 0.95) 0%,
-    rgba(18, 19, 22, 0.55) 25%,
-    rgba(18, 19, 22, 0.08) 55%,
-    rgba(18, 19, 22, 0.2) 100%
-  );
+  background: linear-gradient(to top,
+      rgba(18, 19, 22, 0.95) 0%,
+      rgba(18, 19, 22, 0.55) 25%,
+      rgba(18, 19, 22, 0.08) 55%,
+      rgba(18, 19, 22, 0.2) 100%);
   pointer-events: none;
 }
 
@@ -4686,14 +4705,14 @@ inset: 0;
   transform: translateZ(20px);
   pointer-events: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 
+  box-shadow:
     0 12px 32px -8px rgba(0, 0, 0, 0.5),
     inset 0 0 16px rgba(34, 211, 238, 0.05);
 }
 
 .bento-3d-scene:hover .bento-3d-floating-frame {
   border-color: rgba(34, 211, 238, 0.35);
-  box-shadow: 
+  box-shadow:
     0 16px 40px -8px rgba(0, 0, 0, 0.6),
     0 0 24px rgba(34, 211, 238, 0.18),
     inset 0 0 20px rgba(34, 211, 238, 0.1);
@@ -4703,12 +4722,10 @@ inset: 0;
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(
-    circle at var(--glare-x, 50%) var(--glare-y, 50%),
-    rgba(255, 255, 255, 0.15) 0%,
-    rgba(34, 211, 238, 0.08) 35%,
-    transparent 65%
-  );
+  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%),
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(34, 211, 238, 0.08) 35%,
+      transparent 65%);
   opacity: var(--glare-opacity, 0);
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -4789,9 +4806,17 @@ inset: 0;
 }
 
 @keyframes bentoDotPulse {
-  0% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.6); }
-  70% { box-shadow: 0 0 0 6px rgba(34, 211, 238, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.6);
+  }
+
+  70% {
+    box-shadow: 0 0 0 6px rgba(34, 211, 238, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0);
+  }
 }
 
 .bento-3d-badge-text {
@@ -4851,9 +4876,11 @@ inset: 0;
   .bento-3d-stage {
     transform: none !important;
   }
+
   .bento-3d-floating-frame {
     transform: none;
   }
+
   .bento-3d-badge-status,
   .bento-3d-badge-id {
     transform: none;
@@ -5210,6 +5237,7 @@ inset: 0;
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -5220,6 +5248,7 @@ inset: 0;
     opacity: 0;
     transform: translateY(-8px) scale(0.98);
   }
+
   to {
     opacity: 1;
     transform: none;
@@ -5231,6 +5260,7 @@ inset: 0;
     opacity: 0;
     transform: translateX(-50%) translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
@@ -5238,6 +5268,7 @@ inset: 0;
 }
 
 @media (hover: none) {
+
   .cmdk-hint,
   .cmdk-footer {
     display: none;
@@ -5251,6 +5282,7 @@ inset: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .cmdk-backdrop,
   .cmdk-panel,
   .cmdk-hint,
