@@ -6,7 +6,7 @@ export const profile = {
     'Full-Stack Developer',
     'React Developer',
     'Problem Solver',
-    'UI/UX Enthusiast',
+    'Java Developer',
   ],
 
   tagline:
@@ -317,7 +317,7 @@ export const projects = [
 ]
 
 export const achievements = [
-  { icon: '</>', label: 'Coding Platforms', stat: '250+ Solved', highlight: false },
+  { icon: '</>', label: 'Coding Platforms', stat: '300+ Solved', highlight: false },
   // { icon: '★', label: 'C++ · HackerRank', stat: '5-Star Status', highlight: false },
   // { icon: '🏅', label: 'National Ranking', stat: '13th Rank, India', highlight: true },
 ]
@@ -410,11 +410,20 @@ export const availability = {
 // Jo cheez sach nahi ya abhi nahi likhni, use '[' wali hi chhod do, card hide ho jayega.
 export const aboutBento = {
   story:
-    '[WRITE 2-4 sentences: how you got into coding, what you enjoy building, what you are aiming for]',
-  learning: ['[Something you are learning right now]'],
-  funFact: '[One real, human detail about you. Optional]',
+    ['I am a B.Tech Computer Science student who enjoys turning ideas into real-world web applications. My journey started with learning programming and gradually grew into building full-stack projects using React, Node.js, and MongoDB. I enjoy solving problems, exploring new technologies, and creating clean, responsive user experiences. My goal is to become a skilled Software Engineer and build products that make a difference.'],
+
+  learning: [ 'Advanced Java & Data Structures',
+    'Problem Solving & Algorithms',
+    'System Design Fundamentals',
+    'Full-Stack Development'],
+  funFact:['I love turning ideas into working projects and continuously challenging myself to learn something new.'],
   // Ye sab aapke asli skills mein se hain. Order badal sakte ho.
-  stackHighlights: ['React', 'Node.js', 'MongoDB', 'JavaScript', 'Java', 'Tailwind CSS'],
+  stackHighlights: [ 'React',
+    'Node.js',
+    'MongoDB',
+    'JavaScript',
+    'Java',
+    'Tailwind CSS'],
 }
 
 // Testimonials: sirf asli quotes, aur us insaan ki permission ke saath.
