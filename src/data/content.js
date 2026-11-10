@@ -176,7 +176,7 @@ export const projects = [
     ],
     images: ['/projects/Ecom/smartCart.jpg', '/projects/Ecom/smartCart1.jpg', '/projects/Ecom/smartCart2.jpg', '/projects/Ecom/smartCart3.jpg', '/projects/Ecom/smartCart4.jpg'],
 
-    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Spring Boot', 'MySQL', 'Razorpay'],
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'MongoDB', 'Razorpay'],
 
     liveUrl: 'https://smart-cart-ecommerce-beige.vercel.app/',
     codeUrl: 'https://github.com/rohit6522/smart-cart-ecommerce',
@@ -410,20 +410,26 @@ export const availability = {
 // Jo cheez sach nahi ya abhi nahi likhni, use '[' wali hi chhod do, card hide ho jayega.
 export const aboutBento = {
   story:
-    ['I am a B.Tech Computer Science student who enjoys turning ideas into real-world web applications. My journey started with learning programming and gradually grew into building full-stack projects using React, Node.js, and MongoDB. I enjoy solving problems, exploring new technologies, and creating clean, responsive user experiences. My goal is to become a skilled Software Engineer and build products that make a difference.'],
+    'I am a B.Tech Computer Science student who enjoys turning ideas into real-world web applications. My journey started with learning programming and gradually grew into building full-stack projects using React, Node.js, and MongoDB. I enjoy solving problems, exploring new technologies, and creating clean, responsive user experiences. My goal is to become a skilled Software Engineer and build products that make a difference.',
 
-  learning: [ 'Advanced Java & Data Structures',
+  learning: [
+    'Advanced Java & Data Structures',
     'Problem Solving & Algorithms',
     'System Design Fundamentals',
-    'Full-Stack Development'],
-  funFact:['I love turning ideas into working projects and continuously challenging myself to learn something new.'],
-  // Ye sab aapke asli skills mein se hain. Order badal sakte ho.
-  stackHighlights: [ 'React',
+    'Full-Stack Development'
+  ],
+
+  funFact:
+    'I love turning ideas into working projects and continuously challenging myself to learn something new.',
+
+  stackHighlights: [
+    'React',
     'Node.js',
     'MongoDB',
     'JavaScript',
     'Java',
-    'Tailwind CSS'],
+    'Tailwind CSS'
+  ],
 }
 
 // Testimonials: sirf asli quotes, aur us insaan ki permission ke saath.
