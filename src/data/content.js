@@ -178,7 +178,7 @@ export const projects = [
 
     tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'MongoDB', 'Razorpay'],
 
-    liveUrl: 'https://smart-cart-ecommerce-beige.vercel.app/',
+    liveUrl: 'https://smart-cart-ecommerce-iota.vercel.app',
     codeUrl: 'https://github.com/rohit6522/smart-cart-ecommerce',
   },
 
