@@ -2,7 +2,6 @@ import { useState, useRef } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { profile, education, aboutBento } from '../data/content'
 import IconBadge from './IconBadge'
-import SkillIcon from '../data/skillIcons'
 
 // '[' se shuru hone wali placeholder lines hide ho jati hain
 const isFilled = (v) => typeof v === 'string' && v.trim() !== '' && !v.trim().startsWith('[')
@@ -43,7 +42,6 @@ function BentoCard({ className = '', index = 0, children }) {
     </motion.div>
   )
 }
-
 
 function Bento3DPhotoVisual({ name, role }) {
   const cardRef = useRef(null)
@@ -141,15 +139,8 @@ function Bento3DPhotoVisual({ name, role }) {
 
 export default function AboutBento() {
   const story = isFilled(aboutBento?.story) ? aboutBento.story : profile.bio || profile.tagline
-  const learning = (aboutBento?.learning || []).filter(isFilled)
-  const funFact = isFilled(aboutBento?.funFact) ? aboutBento.funFact : ''
-  const stack = aboutBento?.stackHighlights || []
   const location = (profile.location || '').replace(/^Based in\s+/i, '')
   const edu = education?.[0]
-
-  // Row 4 ka layout: optional cards kitne hain us hisaab se CTA ki width
-  const extras = [learning.length > 0, Boolean(funFact)].filter(Boolean).length
-  const ctaSpan = extras === 1 ? 'bento-span-2' : 'bento-span-4'
 
   return (
     <section id="about" className="section section-dark" aria-labelledby="about-title">
@@ -167,11 +158,9 @@ export default function AboutBento() {
         </div>
 
         <div className="bento-grid">
-
           <BentoCard className="bento-photo" index={0}>
             <Bento3DPhotoVisual name={profile.name} role={profile.role} />
           </BentoCard>
-
 
           <BentoCard className="bento-span-3" index={1}>
             <span className="bento-label">Story</span>
@@ -198,39 +187,7 @@ export default function AboutBento() {
             </BentoCard>
           )}
 
-          {stack.length > 0 && (
-            <BentoCard className="bento-span-4" index={4}>
-              <span className="bento-label">Stack I use most</span>
-              <div className="bento-chips">
-                {stack.map((name) => (
-                  <span key={name} className="bento-chip">
-                    <SkillIcon name={name} />
-                    {name}
-                  </span>
-                ))}
-              </div>
-            </BentoCard>
-          )}
-
-          {learning.length > 0 && (
-            <BentoCard className="bento-span-2" index={5}>
-              <span className="bento-label">Currently learning</span>
-              <ul className="bento-list">
-                {learning.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </BentoCard>
-          )}
-
-          {funFact && (
-            <BentoCard className="bento-span-2" index={6}>
-              <span className="bento-label">Fun fact</span>
-              <p className="bento-value bento-value-light">{funFact}</p>
-            </BentoCard>
-          )}
-
-          <BentoCard className={`bento-cta-card ${ctaSpan}`} index={7}>
+          <BentoCard className="bento-cta-card bento-span-4" index={4}>
             <a href="#contact" className="bento-cta">
               <div>
                 <p className="bento-cta-title">Have a project or an opportunity in mind?</p>
