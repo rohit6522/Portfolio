@@ -19,6 +19,7 @@ import SectionDots from './components/SectionDots'
 const ChatWidget = lazy(() => import('./components/ChatWidget'))
 const CommandPalette = lazy(() => import('./components/CommandPalette'))
 const CaseStudyHost = lazy(() => import('./components/CaseStudyHost'))
+const ArchiveHost = lazy(() => import('./components/ArchiveHost'))
 
 export default function App() {
   useSmoothScroll()
@@ -66,6 +67,7 @@ export default function App() {
         <ChatWidget />
         <CommandPalette />
         <CaseStudyHost />
+        <ArchiveHost />
       </Suspense>
     </>
   )

@@ -67,6 +67,16 @@ function buildItems(toast) {
     }
   })
 
+  items.push({
+    id: 'open-archive',
+    group: 'Projects',
+    label: 'Open Project Archive',
+    keywords: 'archive web apps mobile apps all projects',
+    run: () => {
+      window.location.hash = 'archive'
+    },
+  })
+
   if (profile.resumeUrl && profile.resumeUrl !== '#') {
     items.push({
       id: 'resume',

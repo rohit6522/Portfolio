@@ -1,12 +1,6 @@
-
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import {
-  projects,
-  achievements,
-  archiveCategories,
-  archiveProjects,
-} from '../data/content'
+import { projects, achievements } from '../data/content'
 import RollingText from './RollingText'
 import AnimatedStat from './AnimatedStat'
 import MagneticText from './MagneticText'
@@ -36,7 +30,7 @@ function GlobeIcon() {
   )
 }
 
-function ProjectCard({ project, compact = false }) {
+export function ProjectCard({ project, compact = false }) {
   const images = project.images || []
   const features = project.features || []
   const [imgIndex, setImgIndex] = useState(0)
@@ -100,18 +94,22 @@ function ProjectCard({ project, compact = false }) {
                 </p>
               )}
 
-              <div className="features-panel-label">
-                <span>✓</span> Key Features
-              </div>
+              {features.length > 0 && (
+                <>
+                  <div className="features-panel-label">
+                    <span>✓</span> Key Features
+                  </div>
 
-              <ul className="features-panel-list">
-                {features.map((feature, i) => (
-                  <li key={i}>
-                    <span className="features-panel-dot" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+                  <ul className="features-panel-list">
+                    {features.map((feature, i) => (
+                      <li key={i}>
+                        <span className="features-panel-dot" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -186,14 +184,11 @@ function ProjectCard({ project, compact = false }) {
 }
 
 export default function Projects() {
-  const [showArchive, setShowArchive] = useState(false)
-  const [activeCategory, setActiveCategory] = useState(archiveCategories[0])
-
   const liveAchievements = achievements
 
-  const filteredArchive = archiveProjects.filter(
-    (project) => project.category === activeCategory
-  )
+  const openArchivePage = () => {
+    window.location.hash = 'archive'
+  }
 
   return (
     <section id="projects" className="section section-dark">
@@ -226,61 +221,20 @@ export default function Projects() {
           <RevealItem>
             <div className="archive-toggle-wrap">
               <motion.button
+                type="button"
                 className="archive-toggle"
-                onClick={() => setShowArchive((prev) => !prev)}
+                onClick={openArchivePage}
                 initial="rest"
                 whileHover="hover"
                 animate="rest"
-                aria-expanded={showArchive}
               >
                 [
-                <RollingText
-                  text={showArchive ? 'HIDE_ARCHIVE' : 'ACCESS_ARCHIVE'}
-                />
+                <RollingText text="ACCESS_ARCHIVE" />
                 ]
-                <span>{showArchive ? '▲' : '▼'}</span>
+                <span aria-hidden="true">→</span>
               </motion.button>
             </div>
           </RevealItem>
-
-          {showArchive && (
-            <Reveal>
-              <RevealItem>
-                <div className="archive-panel tab-panel">
-                  <div className="archive-categories">
-                    {archiveCategories.map((category) => (
-                      <button
-                        key={category}
-                        className={`archive-cat-btn ${activeCategory === category ? 'active' : ''}`}
-                        onClick={() => setActiveCategory(category)}
-                      >
-                        {category}
-                      </button>
-                    ))}
-                  </div>
-
-                  {filteredArchive.length === 0 ? (
-                    <div className="archive-empty-state">
-                      <span className="archive-empty-icon">🚧</span>
-                      <h3>Coming Soon</h3>
-                      <p>
-                        I haven't built any {activeCategory.toLowerCase()} yet —
-                        check back later!
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="projects-grid-v3 projects-grid-compact">
-                      {filteredArchive.map((project) => (
-                        <RevealItem key={project.title}>
-                          <ProjectCard project={project} compact />
-                        </RevealItem>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </RevealItem>
-            </Reveal>
-          )}
 
           <RevealItem>
             <div

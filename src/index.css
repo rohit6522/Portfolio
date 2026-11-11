@@ -1934,18 +1934,21 @@ h3 {
   font-size: 13px;
   letter-spacing: 0.05em;
   background: var(--ink-2);
-  border: 1px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--chalk);
-  padding: 12px 22px;
+  padding: 12px 24px;
   display: flex;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
   box-shadow: none;
   transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .archive-toggle:hover {
   transform: translate(-2px, -2px);
+  border-color: rgba(34, 211, 238, 0.5);
+  box-shadow: 4px 4px 0 rgba(34, 211, 238, 0.25);
 }
 
 .archive-toggle:active,
@@ -1954,61 +1957,165 @@ h3 {
   box-shadow: 4px 4px 0 rgba(34, 211, 238, 0.35);
 }
 
-.archive-panel {
-  margin-top: 40px;
+/* ── full-screen archive page (#archive) ──────────────── */
+.archive-overlay {
+  background: radial-gradient(circle at 50% -10%, rgba(34, 211, 238, 0.08), transparent 45%), var(--ink);
+}
+
+.archive-page-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+.archive-page-head {
+  margin: 24px 0 32px;
+}
+
+.archive-page-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brass-bright);
+  margin-bottom: 10px;
+}
+
+.archive-page-title {
+  margin: 0 0 10px;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.1;
+  color: var(--chalk);
+}
+
+.archive-page-sub {
+  margin: 0;
+  max-width: 580px;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--steel);
 }
 
 .archive-categories {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
 .archive-cat-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.05em;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  padding: 10px 16px;
-  border: 1px solid rgba(34, 211, 238, 0.4);
-  background: transparent;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  background: rgba(255, 255, 255, 0.02);
   color: var(--steel);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .archive-cat-btn:hover:not(.active) {
   color: var(--chalk);
+  border-color: rgba(34, 211, 238, 0.6);
+  background: rgba(34, 211, 238, 0.06);
 }
 
 .archive-cat-btn.active {
   background: var(--brass-bright);
   color: var(--ink);
   border-color: var(--brass-bright);
+  font-weight: 600;
+}
+
+.archive-cat-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--chalk);
+}
+
+.archive-cat-btn.active .archive-cat-count {
+  background: rgba(26, 26, 26, 0.18);
+  color: var(--ink);
+}
+
+.archive-page-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .archive-page-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .archive-page-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.archive-empty-card {
+  border-radius: 16px;
+  border: 1px dashed rgba(34, 211, 238, 0.25);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .archive-empty-state {
   text-align: center;
-  padding: 48px 24px;
-  max-width: 380px;
+  padding: 64px 24px;
+  max-width: 420px;
   margin: 0 auto;
 }
 
 .archive-empty-icon {
-  font-size: 32px;
+  font-size: 34px;
   display: block;
   margin-bottom: 14px;
 }
 
 .archive-empty-state h3 {
   color: var(--chalk);
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 8px;
 }
 
 .archive-empty-state p {
   color: var(--steel);
-  font-size: 13.5px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.65;
+  margin-bottom: 22px;
+}
+
+.archive-empty-reset {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 211, 238, 0.45);
+  background: rgba(34, 211, 238, 0.08);
+  color: var(--brass-bright);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.archive-empty-reset:hover {
+  background: var(--brass-bright);
+  color: var(--ink);
 }
 
 /* ── experience ────────────────────────────────────────── */
