@@ -72,8 +72,9 @@ html {
   cursor: none !important;
 }
 
-.custom-cursor-active [data-cursor-disable] {
-  cursor: pointer !important;
+.custom-cursor-active [data-cursor-disable],
+.custom-cursor-active [data-cursor-disable] * {
+  cursor: auto !important;
 }
 
 .custom-cursor-active :focus-visible {
@@ -81,62 +82,171 @@ html {
   outline-offset: 3px !important;
 }
 
-.cursor-dot {
+.cursor-root {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--chalk);
+  inset: 0;
   pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  margin-left: -4px;
-  margin-top: -4px;
+  z-index: 9998;
   opacity: 0;
-  transition: opacity 0.15s ease;
-  will-change: transform;
+  transition: opacity 0.2s ease;
 }
 
-.cursor-dot.cursor-visible {
+.cursor-root.is-visible {
   opacity: 1;
 }
 
-.cursor-ring {
+.cursor-root[data-mode="hidden"] {
+  opacity: 0 !important;
+}
+
+.cursor-pos {
   position: fixed;
   top: 0;
   left: 0;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 70%);
   pointer-events: none;
-  z-index: 9998;
-  margin-left: -22px;
-  margin-top: -22px;
-  transition: width 0.2s ease, height 0.2s ease, margin 0.2s ease, border-color 0.2s ease, opacity 0.15s ease;
   will-change: transform;
 }
 
-.cursor-ring-hover {
-  width: 60px;
-  height: 60px;
-  margin-left: -30px;
-  margin-top: -30px;
+.cursor-pos-ring {
+  z-index: 9998;
+}
+
+.cursor-pos-dot {
+  z-index: 9999;
+}
+
+.cursor-dot-inner {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--chalk);
+  box-shadow: 0 0 8px rgba(34, 211, 238, 0.55);
+  transform: translate(-50%, -50%) scale(1);
+  transition:
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.18s ease,
+    height 0.18s ease,
+    border-radius 0.18s ease,
+    background-color 0.18s ease,
+    opacity 0.15s ease;
+}
+
+.cursor-ring-inner {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.08), transparent 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%) scale(1);
+  transition:
+    transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.22s ease,
+    height 0.22s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.18s ease;
+}
+
+.cursor-pill-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--brass-bright);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.16s ease, transform 0.18s ease;
+  white-space: nowrap;
+}
+
+.cursor-click-ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid var(--brass-bright);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.45);
+}
+
+/* Hovering Links & Buttons */
+.cursor-root[data-mode="pointer"] .cursor-ring-inner {
+  transform: translate(-50%, -50%) scale(1.45);
   border-color: var(--brass-bright);
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.15), transparent 70%);
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.24);
 }
 
-.cursor-ring-active {
-  width: 34px;
-  height: 34px;
-  margin-left: -17px;
-  margin-top: -17px;
-  opacity: 0.6;
+.cursor-root[data-mode="pointer"] .cursor-dot-inner {
+  background: var(--brass-bright);
+  transform: translate(-50%, -50%) scale(0.75);
 }
 
-@media (pointer: coarse) {
+/* Hovering Cards / Terminal with Context Pill */
+.cursor-root[data-mode="label"] .cursor-ring-inner {
+  width: auto;
+  min-width: 62px;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border-color: rgba(34, 211, 238, 0.65);
+  background: rgba(14, 17, 22, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 14px rgba(34, 211, 238, 0.2);
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.cursor-root[data-mode="label"] .cursor-pill-label {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cursor-root[data-mode="label"] .cursor-dot-inner {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.2);
+}
+
+/* Text Inputs / Textarea I-Beam */
+.cursor-root[data-mode="text"] .cursor-dot-inner {
+  width: 2px;
+  height: 22px;
+  border-radius: 2px;
+  background: var(--brass-bright);
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.7);
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.cursor-root[data-mode="text"] .cursor-ring-inner {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.35);
+}
+
+/* Click Press Feedback */
+.cursor-root.is-pressed[data-mode="default"] .cursor-ring-inner,
+.cursor-root.is-pressed[data-mode="pointer"] .cursor-ring-inner {
+  transform: translate(-50%, -50%) scale(0.84);
+}
+
+.cursor-root.is-pressed[data-mode="label"] .cursor-ring-inner {
+  transform: translate(-50%, -50%) scale(0.92);
+}
+
+.cursor-root.is-pressed:not([data-mode="text"]) .cursor-dot-inner {
+  transform: translate(-50%, -50%) scale(1.35);
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-root {
+    display: none;
+  }
 
   .custom-cursor-active,
   .custom-cursor-active * {
