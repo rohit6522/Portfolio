@@ -133,6 +133,8 @@ export const skills = [
 
 
 export const projects = [
+  // start Smart Cart project
+
   {
     title: 'Smart Cart — Budget-Aware Shopping Platform',
     caseStudy: {
@@ -182,6 +184,8 @@ export const projects = [
     codeUrl: 'https://github.com/rohit6522/smart-cart-ecommerce',
   },
 
+  // start Smart Hospital Emergency System project
+
   {
     title: 'Smart Hospital Emergency System',
     caseStudy: {
@@ -225,52 +229,61 @@ export const projects = [
     codeUrl: 'https://github.com/rohit6522/smart-hospital-emergency-system',
   },
 
-  {
-    title: 'Fitness Training Portal',
+  // Start Fitness Training Portal project
+
+{
+    title: 'Freelancely — Freelance Marketplace Platform',
     caseStudy: {
-      slug: 'fitness-portal',
+      slug: 'freelance-marketplace',
       role: 'Full-stack developer',
       problem:
-        'Managing workout schedules, fitness goals, and daily activity can be difficult when information is spread across different tools. This project aims to bring workout planning and progress tracking together in one application.',
+        'Clients often struggle to find vetted freelancers, manage project milestones, and securely handle payments, while freelancers lack a streamlined platform to showcase skills and track project bids.',
       solution:
-        'Built a fitness platform using React, Node.js, Express.js, and MongoDB. It includes personalized workout planning, progress and goal tracking, daily streaks, calorie and water tracking, and user authentication.',
+        'Built a full-stack freelance marketplace platform featuring user role management, project bidding and posting workflows, secure milestone tracking, and integrated messaging/collaboration tools.',
       challenges: [
         {
-          title: 'Workout and progress management',
+          title: 'Bid and proposal management',
           detail:
-            'Organized workout plans and fitness progress features so users can manage their training schedules and monitor their goals in one place.',
+            'Implemented a robust bidding system allowing freelancers to submit proposals with custom pricing and timelines, while giving clients an interface to evaluate and accept bids.',
         },
         {
-          title: 'Authentication and user access',
+          title: 'Milestone and order workflows',
           detail:
-            'Worked with the authentication flow using the technologies implemented in the project to support secure user access.',
+            'Designed a multi-stage project lifecycle supporting milestone submissions, review cycles, status updates, and secure completion tracking.',
         },
       ],
       outcome: [
-        'Built a fitness web application with workout planning and progress-tracking features.',
-        'Implemented fitness tracking and authentication features included in the project.',
+        'Developed a feature-rich freelance marketplace connecting clients and service providers.',
+        'Implemented secure authentication, proposal workflows, and intuitive dashboard management.',
       ],
     },
-
-    category: 'Web Application',
-    period: 'March – May 2026',
+    category: 'Full-Stack Web Application',
+    period: '2026', // Update according to your timeline
     featured: true,
     status: 'COMPLETED',
     summary:
-      'A modern full-stack fitness platform that helps users plan workouts, monitor progress, follow personalized training schedules, and securely manage their accounts with authentication and real-time data.',
+      'A full-stack freelance marketplace platform enabling clients to post projects, freelancers to submit bids, and both parties to manage deliverables through structured milestone workflows.',
 
     features: [
-      'Personalized workout plan builder',
-      'Real-time progress & goal tracking',
-      'Secure auth with JWT & Firebase',
-      'Daily streak, calorie & water tracking',
+      'Role-based authentication and profile management for clients and freelancers',
+      'Project posting, search, and filtering with custom category tagging',
+      'Proposal submission system allowing custom pricing and timeline bids',
+      'Milestone tracking and secure project progression workflows',
+      'Interactive dashboard for monitoring active contracts, bids, and earnings',
+      'Responsive UI built with modern styling and component architecture',
     ],
-    images: ['/projects/Fittnesss/fitness.jpg', '/projects/Fittnesss/Fitness1.jpg', '/projects/Fittnesss/Fitness2.jpg'],
-    tags: ['React', 'Node.js', 'Express.js', 'MongoDB', 'Tailwind CSS', 'JWT'],
+    images: ['/projects/Freelance/freelance.jpg','/projects/Freelance/freelance1.jpg',
+      '/projects/Freelance/freelance2.jpg','/projects/Freelance/freelance3.jpg',
+      '/projects/Freelance/freelance4.jpg'
+    ], // Update image paths if needed
 
-    liveUrl: 'https://fitnessapp-frontend-xiht.onrender.com',
-    codeUrl: 'https://github.com/rohit6522/FitnessApp',
+    tags: ['React', 'Node.js', 'Express.js', 'MongoDB', 'Tailwind CSS'],
+
+    liveUrl: 'https://freelance-marketplace-react.onrender.com/explore', // Add live deployment URL if available
+    codeUrl: 'https://github.com/rohit6522/Freelance-marketplace-react',
   },
+
+  // start RYDEX project
   {
     title: 'RYDEX',
     caseStudy: {
@@ -314,6 +327,7 @@ export const projects = [
     liveUrl: 'https://vehicle-booking-app-jet.vercel.app/',
     codeUrl: 'https://github.com/rohit6522/vehicle-booking-app',
   },
+
 ]
 
 export const achievements = [
@@ -325,6 +339,7 @@ export const achievements = [
 export const archiveCategories = ['Web Apps', 'Mobile Apps']
 
 export const archiveProjects = [
+  // start ResumeAI project
   {
     title: 'ResumeAI — AI Resume Analyzer',
     summary: 'A full-stack SaaS platform that parses resumes (PDF/DOCX), generates AI-powered ATS scores, and matches resumes against job descriptions using Gemini AI. Built with JWT authentication, PDF report generation, and a fully responsive UI.',
@@ -335,6 +350,8 @@ export const archiveProjects = [
     liveUrl: 'https://resume-analyzer-frontend-6fx4.onrender.com',
     codeUrl: 'https://github.com/rohit6522/resume-analyzer-frontend',
   },
+
+  // start FlixGenie project
   {
     title: 'FlixGenie',
     summary: 'An AI-powered movie discovery platform — Netflix meets ChatGPT, with real-time recommendations, trailers, and a watchlist.',
@@ -350,6 +367,8 @@ export const archiveProjects = [
     liveUrl: 'https://flixgenie-frontend.onrender.com',
     codeUrl: 'https://github.com/rohit6522/FlixGenie',
   },
+
+  // start AI Interview Prep Platform project
   {
     title: 'AI Interview Prep Platform',
     summary: 'A full-stack platform that generates AI-powered interview questions, evaluates spoken or typed answers in real time, and tracks score progress across sessions.',
@@ -366,22 +385,75 @@ export const archiveProjects = [
     codeUrl: 'https://github.com/rohit6522/ai-interview-platform',
   },
 
+
+
+  
   // {
-  //   title: 'Wanderlog',
-  //   summary: 'A trip-planning app that syncs itineraries across devices, even offline.',
-  //   category: 'Mobile Apps',
-  //   tags: ['React Native', 'SQLite'],
-  //   liveUrl: '#',
-  //   codeUrl: '#',
+  //   title: 'Fitness Training Portal',
+  //   caseStudy: {
+  //     slug: 'fitness-portal',
+  //     role: 'Full-stack developer',
+  //     problem:
+  //       'Managing workout schedules, fitness goals, and daily activity can be difficult when information is spread across different tools. This project aims to bring workout planning and progress tracking together in one application.',
+  //     solution:
+  //       'Built a fitness platform using React, Node.js, Express.js, and MongoDB. It includes personalized workout planning, progress and goal tracking, daily streaks, calorie and water tracking, and user authentication.',
+  //     challenges: [
+  //       {
+  //         title: 'Workout and progress management',
+  //         detail:
+  //           'Organized workout plans and fitness progress features so users can manage their training schedules and monitor their goals in one place.',
+  //       },
+  //       {
+  //         title: 'Authentication and user access',
+  //         detail:
+  //           'Worked with the authentication flow using the technologies implemented in the project to support secure user access.',
+  //       },
+  //     ],
+  //     outcome: [
+  //       'Built a fitness web application with workout planning and progress-tracking features.',
+  //       'Implemented fitness tracking and authentication features included in the project.',
+  //     ],
+  //   },
+
+  //   category: 'Web Application',
+  //   period: 'March – May 2026',
+  //   featured: true,
+  //   status: 'COMPLETED',
+  //   summary:
+  //     'A modern full-stack fitness platform that helps users plan workouts, monitor progress, follow personalized training schedules, and securely manage their accounts with authentication and real-time data.',
+
+  //   features: [
+  //     'Personalized workout plan builder',
+  //     'Real-time progress & goal tracking',
+  //     'Secure auth with JWT & Firebase',
+  //     'Daily streak, calorie & water tracking',
+  //   ],
+  //   images: ['/projects/Fittnesss/fitness.jpg', '/projects/Fittnesss/Fitness1.jpg', '/projects/Fittnesss/Fitness2.jpg'],
+  //   tags: ['React', 'Node.js', 'Express.js', 'MongoDB', 'Tailwind CSS', 'JWT'],
+
+  //   liveUrl: 'https://fitnessapp-frontend-xiht.onrender.com',
+  //   codeUrl: 'https://github.com/rohit6522/FitnessApp',
   // },
+
+  
+  // dummy for temp
   // {
-  //   title: 'Focusly',
-  //   summary: 'A minimalist Pomodoro and habit tracker with home-screen widgets.',
-  //   category: 'Mobile Apps',
-  //   tags: ['Flutter', 'Firebase'],
-  //   liveUrl: '#',
-  //   codeUrl: '#',
+  //   title: 'AI Interview Prep Platform',
+  //   summary: 'A full-stack platform that generates AI-powered interview questions, evaluates spoken or typed answers in real time, and tracks score progress across sessions.',
+  //   images: [
+  //     '/projects/AiInterview/AIInterviewPrep.jpg',
+  //     '/projects/AiInterview/AIInterviewPrep1.jpg',
+  //     '/projects/AiInterview/AIInterviewPrep2.jpg',
+  //     '/projects/AiInterview/AIInterviewPrep3.jpg',
+  //   ],
+  //   category: 'Web Apps',
+  //   period: 'Jul 2026 – Aug 2026',
+  //   tags: ['React', 'Node.js', 'PostgreSQL', 'Gemini API'],
+  //   liveUrl: 'https://ai-interview-platform-real-frontend.onrender.com',
+  //   codeUrl: 'https://github.com/rohit6522/ai-interview-platform',
   // },
+
+
 
 ]
 
