@@ -176,7 +176,7 @@ export const projects = [
       'Admin panel for product & order management with delivery assignment',
       'Automated order confirmation emails and downloadable invoices',
     ],
-    images: ['/projects/Ecom/smartCart.jpg', '/projects/Ecom/smartCart1.jpg', '/projects/Ecom/smartCart2.jpg', '/projects/Ecom/smartCart3.jpg', '/projects/Ecom/smartCart4.jpg'],
+    images: ['/projects/Ecom/smartCart.jpg', '/projects/Ecom/smartCart1.jpg', '/projects/Ecom/smartCart2.jpg', '/projects/Ecom/smartCart3.jpg', '/projects/Ecom/smartCart4.jpg', '/projects/Ecom/smartCart5.jpg'],
 
     tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'MongoDB', 'Razorpay'],
 
