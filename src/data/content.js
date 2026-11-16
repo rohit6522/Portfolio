@@ -26,6 +26,7 @@ export const profile = {
   social: [
     { label: 'LinkedIn', url: 'https://www.linkedin.com/in/rohit-kumar-382948324/' },
     { label: 'GitHub', url: 'https://github.com/rohit6522' },
+    { label: 'HackerRank', url: 'https://www.hackerrank.com/profile/rohitrajyadav651' },
     { label: 'Twitter', url: 'https://x.com/home' },
     { label: 'LeetCode', url: 'https://leetcode.com/u/rohit6522/' },
     { label: 'Discord', url: 'https://discord.com/channels/@me' },
@@ -331,9 +332,50 @@ export const projects = [
 ]
 
 export const achievements = [
-  { icon: '</>', label: 'Coding Platforms', stat: '300+ Solved', highlight: false },
-  // { icon: '★', label: 'C++ · HackerRank', stat: '5-Star Status', highlight: false },
-  // { icon: '🏅', label: 'National Ranking', stat: '13th Rank, India', highlight: true },
+  {
+    type: 'dsa-showcase',
+    label: 'Coding Platforms',
+    subTitle: 'LeetCode & GeeksforGeeks',
+    username: 'rohit6522',
+    profileUrl: 'https://leetcode.com/u/rohit6522/',
+    items: [
+      {
+        name: 'LeetCode',
+        stat: '130+',
+        label: '130+ Solved',
+        type: 'leetcode',
+        color: 'orange',
+      },
+      {
+        name: 'GFG',
+        stat: '170+',
+        label: '170+ Solved',
+        type: 'gfg',
+        color: 'green',
+      },
+      {
+        name: 'Combined',
+        stat: '300+',
+        label: '300+ Total',
+        type: 'total',
+        color: 'cyan',
+      },
+    ],
+    highlight: true,
+  },
+  {
+    type: 'hackerrank-showcase',
+    label: 'HackerRank Badges',
+    subTitle: 'Verified Skill Badges',
+    username: 'rohitrajyadav651',
+    profileUrl: 'https://www.hackerrank.com/profile/rohitrajyadav651',
+    badges: [
+      { name: 'Python', stars: 2, icon: 'python' },
+      { name: 'Java', stars: 1, icon: 'java' },
+      { name: 'SQL', stars: 1, icon: 'sql' },
+    ],
+    highlight: true,
+  },
 ]
 
 export const archiveCategories = ['Web Apps', 'Mobile Apps']
