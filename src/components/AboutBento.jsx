@@ -98,7 +98,7 @@ function Bento3DPhotoVisual({ name, role }) {
         {/* Layer 0: Original Real Photograph with Cinematic Depth Lighting */}
         <div className="bento-3d-photo-container">
           <img
-            src="/rohit.jpg"
+            src="/aboutIMG.jpeg"
             alt={`Authentic portrait of ${name}, ${role}`}
             className="bento-3d-img"
             loading="lazy"
