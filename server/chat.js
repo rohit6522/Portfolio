@@ -77,15 +77,65 @@ function findHardcodedReply(message) {
   return match ? match.answer : null
 }
 
-// Priority list: GEMINI_MODEL (env) pehle, phir ye. Pehla fail ho to agla try hota hai.
+// In-memory cache for standalone common questions (TTL: 1 hour)
+const cache = new Map()
+const CACHE_TTL_MS = 60 * 60 * 1000
+
+// Pre-warm cache for the portfolio suggestion chips for instantaneous (0ms) replies
+const PREWARMED_FAQ = [
+  {
+    q: "what are rohits skills",
+    reply:
+      "Rohit is proficient in Python, JavaScript, TypeScript, Java, and C++. On the frontend, he builds with React, Next.js, and Tailwind CSS. For backend and databases, he works with Node.js, Express.js, Spring Boot, MySQL, and MongoDB.",
+  },
+  {
+    q: "tell me about his projects",
+    reply:
+      "Rohit has built several full-stack applications: 1) Fitness Training Portal (workout planning and tracking with React, Node.js, MongoDB), 2) Smart Hospital Emergency System (AI emergency routing with React, Spring Boot, MySQL), and 3) Smart Cart (budget-aware shopping platform with Next.js, Spring Boot, and Razorpay).",
+  },
+  {
+    q: "what certifications does he have",
+    reply:
+      "Rohit has earned certifications in Programming Using C++ (Infosys Springboard), Computer Programming (LPU x iamNeo), Programming in JAVA (iamNeo), and completed the DSA Placement Bootcamp at LPU.",
+  },
+  {
+    q: "how can i contact him",
+    reply:
+      "You can reach Rohit directly through the contact form in the 'Get in touch' section of this website. You can also connect with him via LinkedIn and GitHub from the links in the hero section.",
+  },
+]
+
+for (const item of PREWARMED_FAQ) {
+  cache.set(item.q, { reply: item.reply, timestamp: Date.now() })
+}
+
+function getCachedReply(key) {
+  const entry = cache.get(key)
+  if (!entry) return null
+  if (Date.now() - entry.timestamp > CACHE_TTL_MS) {
+    cache.delete(key)
+    return null
+  }
+  return entry.reply
+}
+
+function setCachedReply(key, reply) {
+  if (cache.size > 200) {
+    const oldestKey = cache.keys().next().value
+    cache.delete(oldestKey)
+  }
+  cache.set(key, { reply, timestamp: Date.now() })
+}
+
+// Priority list: GEMINI_MODEL (env) pehle, phir fastest low-latency models
 function getModelChain() {
   return [
     ...new Set(
       [
         process.env.GEMINI_MODEL,
-        'gemini-flash-latest',
+        'gemini-3.5-flash-lite',
+        'gemini-flash-lite-latest',
         'gemini-3-flash-preview',
-        'gemini-3.1-flash-lite',
       ].filter(Boolean)
     ),
   ]
@@ -95,14 +145,25 @@ async function generateWithFallback(ai, contents) {
   let lastError
   for (const model of getModelChain()) {
     try {
-      return await ai.models.generateContent({
+      // 6 second timeout per model attempt to prevent long stalls
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 6000)
+
+      const response = await ai.models.generateContent({
         model,
         contents,
-        config: { systemInstruction: SYSTEM_PROMPT },
+        config: {
+          systemInstruction: SYSTEM_PROMPT,
+          maxOutputTokens: 300,
+          temperature: 0.7,
+          abortSignal: controller.signal,
+        },
       })
+      clearTimeout(timeoutId)
+      return response
     } catch (err) {
       lastError = err
-      console.warn(`Gemini model "${model}" failed:`, err?.status, err?.message)
+      console.warn(`Gemini model "${model}" failed:`, err?.status || err?.message)
     }
   }
   throw lastError
@@ -127,19 +188,30 @@ router.post('/', async (req, res) => {
     return res.status(200).json({ reply: fixed })
   }
 
+  // Check cache for standalone queries (no prior conversation context)
+  const normalizedMsg = normalize(message)
+  const isStandalone = !Array.isArray(history) || history.length === 0
+  if (isStandalone && normalizedMsg) {
+    const cached = getCachedReply(normalizedMsg)
+    if (cached) {
+      return res.status(200).json({ reply: cached })
+    }
+  }
+
   const ai = getClient()
   if (!ai) {
     return res.status(503).json({ error: 'The chatbot is not configured yet.' })
   }
 
   // Gemini ko conversation 'user' turn se shuru chahiye (greeting 'model' hota hai, isliye drop)
+  // Keep last 4 turns to minimize token processing latency while preserving conversation context
   const past = (Array.isArray(history) ? history : [])
     .filter(
       (m) =>
         (m?.role === 'user' || m?.role === 'model') &&
         typeof m?.parts?.[0]?.text === 'string'
     )
-    .slice(-10)
+    .slice(-4)
   while (past.length && past[0].role !== 'user') past.shift()
 
   try {
@@ -149,11 +221,15 @@ router.post('/', async (req, res) => {
     ])
 
     const reply = response.text?.trim()
-    res.status(200).json({
-      reply:
-        reply ||
-        "Sorry, I couldn't come up with an answer. Please try rephrasing, or use the contact form.",
-    })
+    const finalReply =
+      reply ||
+      "Sorry, I couldn't come up with an answer. Please try rephrasing, or use the contact form."
+
+    if (isStandalone && normalizedMsg && reply) {
+      setCachedReply(normalizedMsg, finalReply)
+    }
+
+    res.status(200).json({ reply: finalReply })
   } catch (err) {
     console.error('Gemini API error:', err?.message || err)
     if (err?.status === 429) {
