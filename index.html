@@ -4,54 +4,146 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rohit Kumar — Full-Stack Developer</title>
+  <title>Rohit Kumar — Full-Stack Developer | Portfolio</title>
 
+  <!-- Favicon & Touch Icons -->
   <link rel="icon" type="image/jpeg" href="/logo.jpg" />
-  <link rel="apple-touch-icon" href="/logo.png" />
+  <link rel="apple-touch-icon" href="/logo.jpg" />
   <meta name="theme-color" content="#1a1a1a" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
   <!-- Primary SEO -->
   <meta name="description"
-    content="Rohit Kumar — Full-Stack Developer building clean, functional web applications with React, Node.js, and modern tools. View projects, skills, and get in touch." />
+    content="Rohit Kumar — Full-Stack Developer building fast, scalable web apps with React, Node.js, and modern tools. Explore projects, skills, and case studies." />
   <meta name="keywords"
-    content="Rohit Kumar, Full Stack Developer, React Developer, Web Developer Portfolio, Node.js, JavaScript Developer" />
+    content="Rohit Kumar, Full Stack Developer, React Developer, Node.js Developer, Web Developer Portfolio, JavaScript, Software Engineer, rohitworks.dev" />
   <meta name="author" content="Rohit Kumar" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <link rel="canonical" href="https://www.rohitworks.dev/" />
 
   <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Rohit Kumar Portfolio" />
+  <meta property="og:locale" content="en_US" />
   <meta property="og:url" content="https://www.rohitworks.dev/" />
-  <meta property="og:title" content="Rohit Kumar — Full-Stack Developer" />
+  <meta property="og:title" content="Rohit Kumar — Full-Stack Developer | Portfolio" />
   <meta property="og:description"
-    content="I love building things that actually work — clean code, functional apps, real solutions to real problems." />
+    content="Full-Stack Developer building clean, high-performance web applications with React, Node.js, and modern tools." />
   <meta property="og:image" content="https://www.rohitworks.dev/og-image.jpg" />
+  <meta property="og:image:alt" content="Rohit Kumar — Full-Stack Developer Portfolio" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Rohit Kumar — Full-Stack Developer" />
+  <meta name="twitter:title" content="Rohit Kumar — Full-Stack Developer | Portfolio" />
   <meta name="twitter:description"
-    content="I love building things that actually work — clean code, functional apps, real solutions to real problems." />
+    content="Full-Stack Developer building clean, high-performance web applications with React, Node.js, and modern tools." />
   <meta name="twitter:image" content="https://www.rohitworks.dev/og-image.jpg" />
+  <meta name="twitter:image:alt" content="Rohit Kumar — Full-Stack Developer Portfolio" />
 
+  <!-- Performance: Preload Critical Hero Image for LCP -->
+  <link rel="preload" as="image" href="/rohit.jpg" fetchpriority="high" />
 
+  <!-- Fonts & Calendly -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <link
+  <link
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
+    rel="stylesheet" />
 
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
   <script async src="https://assets.calendly.com/assets/external/widget.js"></script>
+
+  <!-- Structured Data: ProfilePage + Person Schema (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfilePage",
+        "@id": "https://www.rohitworks.dev/#webpage",
+        "url": "https://www.rohitworks.dev/",
+        "name": "Rohit Kumar — Full-Stack Developer Portfolio",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://www.rohitworks.dev/#website",
+          "url": "https://www.rohitworks.dev/",
+          "name": "Rohit Kumar Portfolio",
+          "description": "Portfolio of Rohit Kumar, Full-Stack Developer specializing in React, Node.js, and modern web applications."
+        },
+        "about": {
+          "@id": "https://www.rohitworks.dev/#person"
+        }
+      },
+      { 
+        "@type": "Person",
+        "@id": "https://www.rohitworks.dev/#person",
+        "name": "Rohit Kumar",
+        "url": "https://www.rohitworks.dev/",
+        "image": "https://www.rohitworks.dev/rohit.jpg",
+        "jobTitle": "Full-Stack Developer",
+        "description": "Full-Stack Developer building clean, functional web applications with React, Node.js, and modern web tools.",
+        "email": "mailto:rohitrajyadav6522@gmail.com",
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Lovely Professional University"
+        },
+        "sameAs": [
+          "https://github.com/rohit6522",
+          "https://www.linkedin.com/in/rohit-kumar-382948324/",
+          "https://leetcode.com/u/rohit6522/"
+        ],
+        "knowsAbout": [
+          "Full-Stack Development",
+          "React.js",
+          "Node.js",
+          "JavaScript",
+          "Express.js",
+          "MongoDB",
+          "Next.js",
+          "Java",
+          "C++",
+          "Tailwind CSS",
+          "REST APIs",
+          "System Design",
+          "Data Structures & Algorithms"
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
   <div id="root"></div>
+
+  <!-- Semantic Fallback for Non-JS Crawlers, Search Engines & Accessibility -->
+  <noscript>
+    <main style="max-width: 800px; margin: 40px auto; padding: 20px; font-family: sans-serif; color: #111;">
+      <h1>Rohit Kumar — Full-Stack Developer</h1>
+      <p>I design and build web systems end to end — from database schema to the pixel you click on. Specializing in
+        React, Node.js, Express, MongoDB, and modern web architectures.</p>
+      <h2>Featured Projects</h2>
+      <ul>
+        <li><strong>SmartCart E-Commerce</strong> — Full-featured e-commerce platform with budget tracking, order
+          management, and responsive shopping experiences.</li>
+        <li><strong>RYDEX Vehicle Booking</strong> — Modern vehicle booking & fleet management platform with real-time
+          driver availability.</li>
+        <li><strong>GigCraft Freelance Marketplace</strong> — Modern freelance service marketplace with real-time client
+          & freelancer dashboards.</li>
+        <li><strong>AI Interview Prep Platform</strong> — AI-powered mock interview practice with real-time feedback.
+        </li>
+      </ul>
+      <h2>Connect & Contact</h2>
+      <p>Email: <a href="mailto:rohitrajyadav6522@gmail.com">rohitrajyadav6522@gmail.com</a></p>
+      <p>GitHub: <a href="https://github.com/rohit6522">github.com/rohit6522</a> | LinkedIn: <a
+          href="https://www.linkedin.com/in/rohit-kumar-382948324/">linkedin.com/in/rohit-kumar-382948324</a> |
+        LeetCode: <a href="https://leetcode.com/u/rohit6522/">leetcode.com/u/rohit6522</a></p>
+    </main>
+  </noscript>
+
   <script type="module" src="/src/main.jsx"></script>
 </body>
 

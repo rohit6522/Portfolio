@@ -159,7 +159,7 @@ export default function Nav() {
       {showPhoto && (
         <div className="photo-modal" onClick={() => setShowPhoto(false)}>
           <div className="photo-modal-frame" onClick={(e) => e.stopPropagation()}>
-            <img src="/avatar.jpg" alt={profile.name} className="photo-modal-img" loading="lazy" decoding="async" />
+            <img src="/rohit.jpg" alt={profile.name} className="photo-modal-img" loading="lazy" decoding="async" />
             <div className="photo-modal-caption">
               <div className="photo-modal-tag">
                 <span className="photo-modal-dash" />
