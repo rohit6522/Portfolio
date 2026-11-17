@@ -4443,7 +4443,7 @@ h3 {
 
   transform: translate3d(0, 0, 0);
 
-  transition: transform 1.4s cubic-bezier(0.76, 0, 0.24, 1);
+  transition: transform 0.65s cubic-bezier(0.76, 0, 0.24, 1);
 
   will-change: transform;
 }
@@ -4539,7 +4539,7 @@ h3 {
   color: var(--brass-bright);
   margin: 16px 0 0;
   opacity: 0;
-  animation: roleTagFade 0.6s ease forwards;
+  animation: roleTagFade 0.25s ease forwards;
 }
 
 @keyframes roleTagFade {
@@ -4560,7 +4560,7 @@ h3 {
 .loader-progress-fill {
   height: 100%;
   background: var(--brass-bright);
-  transition: width 0.14s linear;
+  transition: width 0.08s ease-out;
   box-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
 }
 
@@ -4573,8 +4573,8 @@ h3 {
   text-transform: uppercase;
   color: var(--steel);
   opacity: 0;
-  animation: skipHintFade 0.6s ease forwards;
-  animation-delay: 1.5s;
+  animation: skipHintFade 0.4s ease forwards;
+  animation-delay: 0.8s;
   cursor: pointer;
   transition: color 0.2s ease, letter-spacing 0.2s ease;
 }
@@ -4591,7 +4591,7 @@ h3 {
 }
 
 .loader-text-glow {
-  animation: loaderGlow 0.9s ease-in-out;
+  animation: loaderGlow 0.45s ease-in-out;
 }
 
 @keyframes loaderGlow {

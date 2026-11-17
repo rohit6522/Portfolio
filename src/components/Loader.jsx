@@ -20,7 +20,6 @@ export default function Loader() {
 
   useEffect(() => {
     if (sliding) {
-      ``
       document.body.style.overflow = ''
     }
   }, [sliding])
@@ -31,6 +30,7 @@ export default function Loader() {
     let slideTimer;
     let isActive = true;
 
+    // Fast, crisp typing cadence (~70ms per character)
     const typeInterval = setInterval(() => {
       if (!isActive) return;
       i++;
@@ -40,20 +40,19 @@ export default function Loader() {
       if (i >= name.length) {
         clearInterval(typeInterval);
 
-        // Wait after typing
+        // Brief pause after typing finishes before glow
         glowTimer = setTimeout(() => {
           if (!isActive) return;
-          // Start glow
           setGlowing(true);
 
-          // Start slide after glow
+          // Swiftly trigger curtain slide after a quick branding glimpse
           slideTimer = setTimeout(() => {
             if (!isActive) return;
             setSliding(true);
-          }, 700);
-        }, 500);
+          }, 250);
+        }, 150);
       }
-    }, 140);
+    }, 70);
 
     return () => {
       isActive = false;
@@ -87,7 +86,7 @@ export default function Loader() {
 
     let fallbackTimer;
     if (sliding) {
-      fallbackTimer = setTimeout(() => setHidden(true), 2000);
+      fallbackTimer = setTimeout(() => setHidden(true), 900);
     }
 
     return () => {
@@ -98,6 +97,17 @@ export default function Loader() {
       clearTimeout(fallbackTimer);
     };
   }, [sliding]);
+
+  // Quick skip on keyboard press
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') {
+        if (!sliding) setSliding(true)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [sliding])
 
   // =========================
   // HIDE LOADER
