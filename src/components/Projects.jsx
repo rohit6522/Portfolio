@@ -304,27 +304,37 @@ export function ProjectCard({ project, compact = false }) {
             </div>
 
             <div className="project-flip-face project-flip-back">
-              {project.summary && (
-                <p className="features-panel-summary">
-                  {project.summary}
-                </p>
-              )}
+              <div className="features-panel-label">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="15"
+                  height="15"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M9 11l3 3L22 4" />
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                </svg>
+                <span>KEY FEATURES</span>
+              </div>
 
-              {features.length > 0 && (
-                <>
-                  <div className="features-panel-label">
-                    <span>✓</span> Key Features
-                  </div>
-
-                  <ul className="features-panel-list">
-                    {features.map((feature, i) => (
-                      <li key={i}>
-                        <span className="features-panel-dot" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </>
+              {features.length > 0 ? (
+                <ul className="features-panel-list">
+                  {features.slice(0, 5).map((feature, i) => (
+                    <li key={i}>
+                      <span className="features-panel-dot" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                project.summary && (
+                  <p className="features-panel-summary">{project.summary}</p>
+                )
               )}
             </div>
           </div>

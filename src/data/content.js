@@ -222,9 +222,11 @@ export const projects = [
     summary:
       'An AI-powered emergency response and routing system that helps hospitals triage and route incoming emergencies faster.',
     features: [
-      'AI-assisted emergency routing logic',
-      'Live ambulance tracking and dynamic hospital resource management',
-      'React frontend with Java backend services',
+      'AI-assisted emergency triage & optimal hospital routing',
+      'Live ambulance GPS tracking with real-time WebSocket updates',
+      'Dynamic ICU bed, doctor, and hospital resource availability',
+      'Role-based dashboards for patients, drivers & hospital admins',
+      'React frontend powered by Java Spring Boot & MySQL services',
     ],
     images: ['/projects/Hospital/hospital.jpg', '/projects/Hospital/hospital1.jpg', '/projects/Hospital/hospital2.jpg', '/projects/Hospital/hospital3.jpg', '/projects/Hospital/hospital4.jpg', '/projects/Hospital/hospital5.jpg'],
     tags: ['React', 'Java', 'Spring Boot', 'Tailwind CSS', 'MySQL', 'WebSocket'],
@@ -321,9 +323,11 @@ export const projects = [
     summary:
       'A full-stack, real-time vehicle-booking platform (Uber/Rapido-style) with live GPS tracking, video KYC driver verification, and dual payment options.',
     features: [
-      'Real-time ride tracking & live GPS via Socket.io',
-      'OTP-verified ride start, Razorpay + cash payments',
-      'Driver onboarding with video KYC (ZegoCloud) & admin approval',
+      'Real-time ride tracking & live GPS maps via Socket.io + Leaflet',
+      'OTP-verified ride start for rider & driver safety',
+      'Razorpay online checkout with cash-on-delivery fallback',
+      'Driver onboarding with ZegoCloud video KYC verification',
+      'Admin approval portal & live fleet status management',
     ],
     images: ['/projects/Rydex/rydex-1.jpg', '/projects/Rydex/rydex-2.jpg', '/projects/Rydex/rydex-3.jpg', '/projects/Rydex/rydex-4.jpg', '/projects/Rydex/rydex-5.jpg', '/projects/Rydex/rydex-6.jpg'],
     tags: ['Next.js', 'MongoDB', 'Socket.io', 'Razorpay', 'Leaflet'],
@@ -390,6 +394,13 @@ export const archiveProjects = [
   {
     title: 'ResumeAI — AI Resume Analyzer',
     summary: 'A full-stack SaaS platform that parses resumes (PDF/DOCX), generates AI-powered ATS scores, and matches resumes against job descriptions using Gemini AI. Built with JWT authentication, PDF report generation, and a fully responsive UI.',
+    features: [
+      'PDF & DOCX resume parsing with automated text extraction',
+      'AI-powered ATS compatibility scoring via Gemini AI',
+      'Job description keyword matching & missing skill insights',
+      'Downloadable formatted PDF analysis reports',
+      'Secure JWT authentication with PostgreSQL + Spring Boot',
+    ],
     images: ['/projects/AiResume/Resume.jpg', '/projects/AiResume/Resume1.jpg', '/projects/AiResume/Resume2.jpg', '/projects/AiResume/Resume3.jpg'],
     category: 'Web Apps',
     period: 'Jul 2026 – Aug 2026',
@@ -402,6 +413,13 @@ export const archiveProjects = [
   {
     title: 'FlixGenie',
     summary: 'An AI-powered movie discovery platform — Netflix meets ChatGPT, with real-time recommendations, trailers, and a watchlist.',
+    features: [
+      'Natural-language AI movie search powered by Groq AI',
+      'Netflix-style carousels with live TMDB movie metadata',
+      'Instant in-app trailer playback & cast details',
+      'Firebase Auth with personalized user watchlists',
+      'State management via Redux Toolkit & responsive UI',
+    ],
     images: [
       '/projects/Flix/FlixGenie.jpg',
       '/projects/Flix/FlixGenie1.jpg',
@@ -419,6 +437,13 @@ export const archiveProjects = [
   {
     title: 'AI Interview Prep Platform',
     summary: 'A full-stack platform that generates AI-powered interview questions, evaluates spoken or typed answers in real time, and tracks score progress across sessions.',
+    features: [
+      'Role-specific AI interview question generation via Gemini API',
+      'Real-time evaluation for both voice and typed answers',
+      'Instant feedback, ideal answers & communication scoring',
+      'Session history & score progress tracking dashboard',
+      'Full-stack Node.js + PostgreSQL backend persistence',
+    ],
     images: [
       '/projects/AiInterview/AIInterviewPrep.jpg',
       '/projects/AiInterview/AIInterviewPrep1.jpg',
