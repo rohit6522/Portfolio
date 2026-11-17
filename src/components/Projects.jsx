@@ -102,9 +102,9 @@ function DsaShowcaseCard({ achievement }) {
       </div>
 
       <div className="hackerrank-badges-row">
-        {achievement.items?.map((item) => (
-          <div key={item.name} className="hackerrank-badge-item">
-            <div className="hackerrank-hexagon-wrap">
+        {achievement.items?.map((item) => {
+          const hexContent = (
+            <div className="hackerrank-hexagon-wrap" title={item.tooltip || item.label}>
               <div className="hackerrank-hexagon-border">
                 <div className="hackerrank-hexagon-inner">
                   <span className="hackerrank-badge-icon">
@@ -115,11 +115,29 @@ function DsaShowcaseCard({ achievement }) {
                 </div>
               </div>
             </div>
-            <span className="hackerrank-badge-level">
-              {item.label}
-            </span>
-          </div>
-        ))}
+          )
+
+          return (
+            <div key={item.name} className="hackerrank-badge-item">
+              {item.url ? (
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                  aria-label={`View ${item.name} profile`}
+                >
+                  {hexContent}
+                </a>
+              ) : (
+                hexContent
+              )}
+              <span className="hackerrank-badge-level">
+                {item.label}
+              </span>
+            </div>
+          )
+        })}
       </div>
     </div>
   )
@@ -149,11 +167,21 @@ function SqlLogo() {
   )
 }
 
+function GenericCodeBadgeLogo() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
+    </svg>
+  )
+}
+
 function HackerRankShowcaseCard({ achievement }) {
   const getBadgeIcon = (icon) => {
     if (icon === 'python') return <PythonLogo />
     if (icon === 'java') return <JavaLogo />
-    return <SqlLogo />
+    if (icon === 'sql') return <SqlLogo />
+    return <GenericCodeBadgeLogo />
   }
 
   return (
@@ -186,7 +214,14 @@ function HackerRankShowcaseCard({ achievement }) {
       <div className="hackerrank-badges-row">
         {achievement.badges?.map((badge) => (
           <div key={badge.name} className="hackerrank-badge-item">
-            <div className="hackerrank-hexagon-wrap">
+            <div
+              className="hackerrank-hexagon-wrap"
+              title={
+                badge.points
+                  ? `${badge.name} — ${badge.stars}★ • ${badge.points} pts`
+                  : `${badge.name} — ${badge.stars}★`
+              }
+            >
               <div className="hackerrank-hexagon-border">
                 <div className="hackerrank-hexagon-inner">
                   <span className="hackerrank-badge-icon">
@@ -364,8 +399,130 @@ export function ProjectCard({ project, compact = false }) {
   )
 }
 
+function mergeLiveStats(baseAchievements, stats) {
+  if (!stats) return baseAchievements
+
+  const lcTotal = typeof stats.leetcode?.total === 'number' ? stats.leetcode.total : null
+  const gfgTotal = typeof stats.gfg?.total === 'number' ? stats.gfg.total : null
+  const combinedTotal =
+    lcTotal !== null && gfgTotal !== null
+      ? lcTotal + gfgTotal
+      : typeof stats.combinedTotal === 'number'
+        ? stats.combinedTotal
+        : null
+
+  return baseAchievements.map((achievement) => {
+    if (achievement.type === 'dsa-showcase') {
+      return {
+        ...achievement,
+        items: (achievement.items || []).map((item) => {
+          if (item.type === 'leetcode' && lcTotal !== null) {
+            const breakdown =
+              typeof stats.leetcode?.easy === 'number'
+                ? `LeetCode — Easy: ${stats.leetcode.easy} • Medium: ${stats.leetcode.medium} • Hard: ${stats.leetcode.hard}`
+                : `${lcTotal} LeetCode problems solved`
+            return {
+              ...item,
+              stat: String(lcTotal),
+              label: `${lcTotal} Solved`,
+              tooltip: breakdown,
+            }
+          }
+          if (item.type === 'gfg' && gfgTotal !== null) {
+            const scoreTip = stats.gfg?.score
+              ? `GeeksforGeeks — ${gfgTotal} Solved • Coding Score: ${stats.gfg.score}`
+              : `${gfgTotal} GFG problems solved`
+            return {
+              ...item,
+              stat: String(gfgTotal),
+              label: `${gfgTotal} Solved`,
+              tooltip: scoreTip,
+            }
+          }
+          if (item.type === 'total' && combinedTotal !== null) {
+            return {
+              ...item,
+              stat: String(combinedTotal),
+              label: `${combinedTotal} Total`,
+              tooltip: `Combined Total: ${lcTotal ?? 0} LeetCode + ${gfgTotal ?? 0} GFG`,
+            }
+          }
+          return item
+        }),
+      }
+    }
+
+    if (
+      achievement.type === 'hackerrank-showcase' &&
+      Array.isArray(stats.hackerrank?.badges) &&
+      stats.hackerrank.badges.length > 0
+    ) {
+      return {
+        ...achievement,
+        badges: stats.hackerrank.badges,
+      }
+    }
+
+    return achievement
+  })
+}
+
 export default function Projects() {
-  const liveAchievements = achievements
+  const [codingStats, setCodingStats] = useState(null)
+
+  useEffect(() => {
+    let cancelled = false
+
+    async function loadStats() {
+      // 1. Instant load from automated static JSON snapshot
+      try {
+        const res = await fetch('/coding-stats.json')
+        if (res.ok) {
+          const data = await res.json()
+          if (!cancelled && data) setCodingStats(data)
+        }
+      } catch {
+        // fall back to static defaults in content.js
+      }
+
+      // 2. Background refresh from live backend API (if configured and awake)
+      const apiBase = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
+      if (!apiBase) return
+
+      try {
+        const controller = new AbortController()
+        const timer = setTimeout(() => controller.abort(), 4500)
+        const liveRes = await fetch(`${apiBase}/api/coding-stats`, {
+          signal: controller.signal,
+        })
+        clearTimeout(timer)
+        if (liveRes.ok) {
+          const liveData = await liveRes.json()
+          if (!cancelled && liveData) {
+            setCodingStats((prev) => ({
+              leetcode: liveData.leetcode || prev?.leetcode || null,
+              gfg: liveData.gfg || prev?.gfg || null,
+              combinedTotal: liveData.combinedTotal ?? prev?.combinedTotal ?? null,
+              hackerrank:
+                liveData.hackerrank?.badges?.length > 0
+                  ? liveData.hackerrank
+                  : prev?.hackerrank || null,
+              updatedAt: liveData.updatedAt || prev?.updatedAt,
+            }))
+          }
+        }
+      } catch {
+        // silent fallback — static JSON data is already rendered
+      }
+    }
+
+    loadStats()
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const liveAchievements = mergeLiveStats(achievements, codingStats)
 
   const openArchivePage = () => {
     window.location.hash = 'archive'

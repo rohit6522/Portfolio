@@ -187,40 +187,23 @@ export default function SkillsTabs() {
                           .filter((group) => group.category !== 'Core CS')
                           .flatMap((group) => group.items)
                           .map((item) => (
-                            <motion.div
+                            <div
                               className="tech-card"
                               key={item}
-                              initial="rest"
-                              whileHover="hover"
-                              whileFocus="hover"
-                              animate="rest"
+                              onMouseMove={(e) => {
+                                const rect = e.currentTarget.getBoundingClientRect()
+                                e.currentTarget.style.setProperty('--mx', `${e.clientX - rect.left}px`)
+                                e.currentTarget.style.setProperty('--my', `${e.clientY - rect.top}px`)
+                              }}
                             >
-
-                              <motion.span
-                                className="tech-card-fill"
-                                variants={{
-                                  rest: {
-                                    clipPath: 'circle(0% at 0% 0%)',
-                                    opacity: 0,
-                                  },
-                                  hover: {
-                                    clipPath: 'circle(150% at 0% 0%)',
-                                    opacity: 1,
-                                  },
-                                }}
-                                transition={{
-                                  duration: 0.35,
-                                  ease: 'easeInOut',
-                                }}
-                              />
-
+                              <span className="tech-card-spotlight" aria-hidden="true" />
                               <span className="tech-card-content">
                                 <span className="tech-card-icon-box">
                                   <SkillIcon name={item} />
                                 </span>
                                 <span className="tech-card-name">{item}</span>
                               </span>
-                            </motion.div>
+                            </div>
                           ))}
                       </div>
                     </div>

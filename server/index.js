@@ -3,6 +3,7 @@ import express from 'express'
 import cors from 'cors'
 import { Resend } from 'resend'
 import chatRouter, { chatLimiter } from './chat.js'
+import codingStatsRouter from './codingStats.js'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -131,6 +132,7 @@ app.post('/api/contact', async (req, res) => {
 
 
 app.use('/api/chat', chatLimiter, chatRouter)
+app.use('/api/coding-stats', codingStatsRouter)
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)

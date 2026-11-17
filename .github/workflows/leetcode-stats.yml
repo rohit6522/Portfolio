@@ -1,8 +1,8 @@
-name: Update LeetCode Stats
+name: Update Coding Platform Stats
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 permissions:
@@ -18,13 +18,13 @@ jobs:
         with:
           node-version: 20
 
-      - name: Fetch LeetCode stats
-        run: node scripts/fetch-leetcode-stats.mjs
+      - name: Fetch LeetCode, GFG & HackerRank stats
+        run: node scripts/fetch-coding-stats.mjs
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/leetcode-stats.json
-          git diff --staged --quiet || git commit -m "chore: update LeetCode stats [automated]"
+          git add public/leetcode-stats.json public/coding-stats.json
+          git diff --staged --quiet || git commit -m "chore: update LeetCode, GFG & HackerRank stats [automated]"
           git push
