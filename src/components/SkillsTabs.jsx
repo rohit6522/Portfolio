@@ -201,13 +201,15 @@ export default function SkillsTabs() {
                                 variants={{
                                   rest: {
                                     clipPath: 'circle(0% at 0% 0%)',
+                                    opacity: 0,
                                   },
                                   hover: {
                                     clipPath: 'circle(150% at 0% 0%)',
+                                    opacity: 1,
                                   },
                                 }}
                                 transition={{
-                                  duration: 0.3,
+                                  duration: 0.35,
                                   ease: 'easeInOut',
                                 }}
                               />
