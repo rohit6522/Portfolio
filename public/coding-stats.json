@@ -19,6 +19,13 @@
     "username": "rohitrajyadav651",
     "badges": [
       {
+        "name": "Java",
+        "icon": "java",
+        "stars": 3,
+        "solved": 11,
+        "points": 98
+      },
+      {
         "name": "SQL",
         "icon": "sql",
         "stars": 2,
@@ -26,20 +33,20 @@
         "points": 245
       },
       {
-        "name": "Java",
-        "icon": "java",
-        "stars": 2,
-        "solved": 9,
-        "points": 78
-      },
-      {
         "name": "Python",
         "icon": "python",
         "stars": 2,
         "solved": 7,
         "points": 75
+      },
+      {
+        "name": "C++",
+        "icon": "cpp",
+        "stars": 1,
+        "solved": 2,
+        "points": 10
       }
     ]
   },
-  "updatedAt": "2026-11-18T15:12:39.909Z"
+  "updatedAt": "2026-11-18T23:55:56.989Z"
 }
