@@ -1043,6 +1043,61 @@ h3 {
   margin: 0;
 }
 
+.hero-photo-3d-scene {
+  perspective: 1000px;
+  width: 100%;
+  cursor: pointer;
+  touch-action: pan-y;
+}
+
+.hero-photo-matte-3d {
+  transform-style: preserve-3d;
+  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.hero-photo-3d-scene.is-hovered .hero-photo-matte-3d {
+  transition: transform 0.08s ease-out,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+  border-color: rgba(34, 211, 238, 0.35);
+  box-shadow:
+    0 28px 64px rgba(0, 0, 0, 0.55),
+    0 0 24px rgba(34, 211, 238, 0.14),
+    0 0 1px rgba(255, 255, 255, 0.06) inset;
+}
+
+.hero-photo-wrap:hover .hero-photo-matte-3d {
+  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+}
+
+.hero-photo-matte-3d .hero-photo-frame::after {
+  display: none;
+}
+
+.hero-photo-img-3d {
+  transform: scale(1.02);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  filter: contrast(1.04) saturate(1.03);
+}
+
+.hero-photo-3d-scene:hover .hero-photo-img-3d {
+  transform: scale(1.06);
+}
+
+.hero-photo-vignette {
+  background: linear-gradient(
+    to top,
+    rgba(14, 16, 20, 0.52) 0%,
+    rgba(14, 16, 20, 0.14) 24%,
+    transparent 55%,
+    rgba(14, 16, 20, 0.12) 100%
+  );
+}
+
 .hero-photo-matte {
   position: relative;
   overflow: hidden;
@@ -1121,6 +1176,8 @@ h3 {
 
 .hero-badge {
   position: absolute;
+  z-index: 10;
+  pointer-events: none;
   display: flex;
   align-items: center;
   gap: 6px;

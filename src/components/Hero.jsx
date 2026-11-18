@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import gsap from 'gsap'
 import { useEffect, useRef, useState } from 'react'
 import { profile } from '../data/content'
@@ -148,22 +148,66 @@ function MagneticLink({ className, href, download, target, rel, children }) {
   )
 }
 function PhotoCard() {
+  const cardRef = useRef(null)
+  const [isHovered, setIsHovered] = useState(false)
+  const reduce = useReducedMotion()
+
   function handleMove(e) {
-    const rect = e.currentTarget.getBoundingClientRect()
-    e.currentTarget.style.setProperty('--mx', `${e.clientX - rect.left}px`)
-    e.currentTarget.style.setProperty('--my', `${e.clientY - rect.top}px`)
+    if (reduce || !cardRef.current) return
+    const rect = cardRef.current.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width
+    const y = (e.clientY - rect.top) / rect.height
+
+    const tiltX = (0.5 - y) * 14
+    const tiltY = (x - 0.5) * 14
+
+    cardRef.current.style.setProperty('--tilt-x', `${tiltX.toFixed(2)}deg`)
+    cardRef.current.style.setProperty('--tilt-y', `${tiltY.toFixed(2)}deg`)
+    cardRef.current.style.setProperty('--glare-x', `${(x * 100).toFixed(1)}%`)
+    cardRef.current.style.setProperty('--glare-y', `${(y * 100).toFixed(1)}%`)
+    cardRef.current.style.setProperty('--glare-opacity', '1')
+  }
+
+  function handleEnter() {
+    if (reduce) return
+    setIsHovered(true)
+  }
+
+  function handleLeave() {
+    if (reduce || !cardRef.current) return
+    setIsHovered(false)
+    cardRef.current.style.setProperty('--tilt-x', '0deg')
+    cardRef.current.style.setProperty('--tilt-y', '0deg')
+    cardRef.current.style.setProperty('--glare-opacity', '0')
   }
 
   return (
     <div className="hero-photo-wrap">
-      <div className="hero-photo-matte">
-        <div className="hero-photo-frame" onMouseMove={handleMove}>
-          <img src="/rohit.jpg" alt={`Photo of ${profile.name}, Full-Stack Developer`} className="hero-photo-img" loading="eager" decoding="async" fetchPriority="high" />
-
-          <span className="hero-photo-dot" />
+      <div
+        ref={cardRef}
+        className={`hero-photo-3d-scene ${isHovered ? 'is-hovered' : ''}`}
+        onMouseMove={handleMove}
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
+      >
+        <div className="hero-photo-matte hero-photo-matte-3d">
+          <div className="hero-photo-frame">
+            <img
+              src="/rohit.jpg"
+              alt={`Photo of ${profile.name}, Full-Stack Developer`}
+              className="hero-photo-img hero-photo-img-3d"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+            />
+            <div className="bento-3d-lighting-overlay" aria-hidden="true" />
+            <div className="bento-3d-rim-light" aria-hidden="true" />
+            <div className="bento-3d-depth-vignette hero-photo-vignette" aria-hidden="true" />
+            <div className="bento-3d-glare-sheen" aria-hidden="true" />
+            <span className="hero-photo-dot" />
+          </div>
         </div>
       </div>
-
 
       <span className="hero-badge hero-badge-top">
         <span className="hero-badge-prefix">&gt;</span> npm run dev

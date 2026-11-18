@@ -228,7 +228,7 @@ export const projects = [
       'Role-based dashboards for patients, drivers & hospital admins',
       'React frontend powered by Java Spring Boot & MySQL services',
     ],
-    images: ['/projects/Hospital/hospital.jpg', '/projects/Hospital/hospital1.jpg', '/projects/Hospital/hospital2.jpg', '/projects/Hospital/hospital3.jpg', '/projects/Hospital/hospital4.jpg', '/projects/Hospital/hospital5.jpg'],
+    images: ['/projects/Hospital/hospital.jpg', '/projects/Hospital/hospital1.jpg', '/projects/Hospital/hospital2.jpg', '/projects/Hospital/hospital3.jpg', '/projects/Hospital/hospital4.jpg', '/projects/Hospital/hospital5.jpg', '/projects/Hospital/hospital6.jpg'],
     tags: ['React', 'Java', 'Spring Boot', 'Tailwind CSS', 'MySQL', 'WebSocket'],
     liveUrl: 'https://smart-hospital-frontend-wcd3.onrender.com/',
     codeUrl: 'https://github.com/rohit6522/smart-hospital-emergency-system',
