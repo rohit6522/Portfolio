@@ -1,12 +1,12 @@
 {
   "leetcode": {
     "username": "rohit6522",
-    "total": 131,
-    "easy": 82,
+    "total": 132,
+    "easy": 83,
     "medium": 46,
     "hard": 3,
-    "ranking": 1374690,
-    "streak": 99
+    "ranking": 1365446,
+    "streak": 100
   },
   "gfg": {
     "username": "rohitrajy62",
@@ -14,7 +14,7 @@
     "score": 354,
     "instituteRank": 6029
   },
-  "combinedTotal": 285,
+  "combinedTotal": 286,
   "hackerrank": {
     "username": "rohitrajyadav651",
     "badges": [
@@ -22,8 +22,8 @@
         "name": "Java",
         "icon": "java",
         "stars": 3,
-        "solved": 15,
-        "points": 138
+        "solved": 16,
+        "points": 148
       },
       {
         "name": "SQL",
@@ -48,5 +48,5 @@
       }
     ]
   },
-  "updatedAt": "2026-11-22T05:22:47.511Z"
+  "updatedAt": "2026-11-22T14:09:06.263Z"
 }
