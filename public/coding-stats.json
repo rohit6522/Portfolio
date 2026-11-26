@@ -1,8 +1,8 @@
 {
   "leetcode": {
     "username": "rohit6522",
-    "total": 135,
-    "easy": 86,
+    "total": 136,
+    "easy": 87,
     "medium": 46,
     "hard": 3,
     "ranking": 1338674,
@@ -14,7 +14,7 @@
     "score": 354,
     "instituteRank": 6031
   },
-  "combinedTotal": 289,
+  "combinedTotal": 290,
   "hackerrank": {
     "username": "rohitrajyadav651",
     "badges": [
@@ -29,8 +29,8 @@
         "name": "SQL",
         "icon": "sql",
         "stars": 2,
-        "solved": 23,
-        "points": 275
+        "solved": 24,
+        "points": 295
       },
       {
         "name": "Python",
@@ -48,5 +48,5 @@
       }
     ]
   },
-  "updatedAt": "2026-11-25T16:52:12.898Z"
+  "updatedAt": "2026-11-26T01:38:07.477Z"
 }
