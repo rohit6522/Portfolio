@@ -1,12 +1,12 @@
 {
   "leetcode": {
     "username": "rohit6522",
-    "total": 136,
-    "easy": 87,
-    "medium": 46,
+    "total": 138,
+    "easy": 88,
+    "medium": 47,
     "hard": 3,
     "ranking": 1320747,
-    "streak": 103
+    "streak": 104
   },
   "gfg": {
     "username": "rohitrajy62",
@@ -14,7 +14,7 @@
     "score": 354,
     "instituteRank": 6031
   },
-  "combinedTotal": 290,
+  "combinedTotal": 292,
   "hackerrank": {
     "username": "rohitrajyadav651",
     "badges": [
@@ -48,5 +48,5 @@
       }
     ]
   },
-  "updatedAt": "2026-11-26T16:29:18.576Z"
+  "updatedAt": "2026-11-27T01:32:08.878Z"
 }
